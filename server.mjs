@@ -13,7 +13,7 @@ const instruction=`Sen Türkiye iş hukuku alanında avukatın taslak hazırlama
 const server=http.createServer(async(req,res)=>{
  const url=new URL(req.url||'/',`http://${req.headers.host||'localhost'}`);
  if(req.method==='GET' && (url.pathname==='/'||url.pathname==='/index.html')){
-  const html=await fs.readFile(path.join(root,'public','index.html'));
+  const html=await fs.readFile(path.join(root,'index.html'));
   res.writeHead(200,{'Content-Type':'text/html; charset=utf-8','Cache-Control':'no-store','X-Content-Type-Options':'nosniff','Content-Security-Policy':"default-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline'; connect-src 'self'; object-src 'none'; base-uri 'none'"});res.end(html);return;
  }
  if(req.method==='POST'&&url.pathname==='/api/draft'){
