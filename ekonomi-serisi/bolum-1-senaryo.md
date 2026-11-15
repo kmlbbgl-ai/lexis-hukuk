@@ -123,6 +123,7 @@ Sonra 1 Ocak 2005'te, tek bir gecede, paramızdan **altı sıfır** silindi. Ak�
 ### CEVAP — Peki devlet hiç para basamaz mı? (4:05–4:35)
 [Adaya geri dönülür. Fırın artık 20 ekmek pişiriyor; cepte 20 lira var; etiket "1 ₺" olarak kalıyor.]
 
+Peki devlet hiç mi para basamaz?
 Basar. Ama bir şartla: **Adada daha çok ekmek pişiyorsa.**
 Ekmek de para da birlikte çoğalırsa, fiyat yerinde kalır. Üretilmeden basılan her yeni banknot ise cebindeki parayı biraz daha eritir.
 
