@@ -132,8 +132,8 @@ Peki sen Karun'un hazinesini bulsan ne yapardın? Yorumlara yaz, ama Delfi kâhi
 - Türkiye 1987'de dava açtı … 1993'te hazine evine döndü.
 - Kanatlı Denizatı Broşu çalındı, yerine sahtesi konmuştu … 2013'te mühürlü bir kutuyla geri getirildi.
 - **KAPANIŞ (iki ayrı dosya, yeni cümle):**
-  - **YouTube Short:** "Paranın Manisa'da nasıl icat edildiğini de anlattığımız tamamı kanalımızda!" — ekranda "Tamamı kanalda ▶"
-  - **Instagram Reels:** "Paranın Manisa'da nasıl icat edildiğini de anlattığımız tamamı profildeki bağlantıda!" — ekranda "Devamı profildeki bağlantıda 👆"
+  - **YouTube Short:** "Paranın Manisa'da nasıl icat edildiği kanalımızda. Kimseyle organize olmana gerek yok, tek tık yeter!" 😄 — ekranda "Tamamı kanalda ▶"
+  - **Instagram Reels:** "Paranın Manisa'da nasıl icat edildiği profildeki bağlantıda. Kimseyle organize olmana gerek yok, tek tık yeter!" 😄 — ekranda "Devamı profildeki bağlantıda 👆"
 
 (Ses uzun videodan kesilir; yalnızca iki kapanış cümlesi için ~160 kredi ek ses gerekir.)
 
