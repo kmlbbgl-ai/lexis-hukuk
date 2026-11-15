@@ -117,6 +117,10 @@ Ama merak etme, senden para istemeyeceğim. Sadece bir abonelik… o da bedava.
 Bu videoyu aile grubuna gönder. Zaten herkesin sesli mesajı orada! 😄
 Ve yorumlara yaz: Sizin ailenizin parolası ne olurdu? Şaka şaka… sakın yazma, gizli kalsın! 🤫
 
+[Yorum kutusuna "Merakoloji" yazılır. Piyon kafasını kaşır; yazı silinir, yerine tek bir 🥔 düşer.]
+
+Onun yerine yoruma bizim parolamızı yaz: Merakoloji! Zor mu geldi? O zaman bir patates bırak, o da olur! 🥔😄
+
 ---
 
 ## YOUTUBE SHORT / INSTAGRAM REELS (9:16, ~45 sn) — "Gece 3'te oğlun arasa?"
@@ -125,7 +129,8 @@ Ve yorumlara yaz: Sizin ailenizin parolası ne olurdu? Şaka şaka… sakın yaz
 - Kanca (gece 3, "Anne kaza yaptım…", oğul yan odada horluyor)
 - "15 saniyelik bir kayıt yeterli olabilir … teyzelerimizin 4 dakikalık sesli mesajları tam bir hazine 😄"
 - Aile parolası ("Pazartesi patates" — dolandırıcı tahmin edemez, siz unutamazsınız)
-- "Yorumlara yaz: Sizin ailenizin parolası ne olurdu? Şaka şaka… sakın yazma, gizli kalsın! 🤫" (uzun videodan kesilir; baştaki "Ve" atılır)
+- "Yorumlara yaz: Sizin ailenizin parolası ne olurdu? Şaka şaka… sakın yazma, gizli kalsın! 🤫 Onun yerine yoruma bizim parolamızı yaz: Merakoloji! Zor mu geldi? O zaman bir patates bırak, o da olur! 🥔" (uzun videodan kesilir; baştaki "Ve" atılır)
+- OpenAI cümlesi Short/Reels'te kullanılmaz ("15 SN" sayacı ekranda kalır).
 - **KAPANIŞ (iki ayrı dosya, yeni cümle):**
   - **YouTube Short:** "Korunmanın 3 yolunun tamamı kanalımızda. Bu arada bu ses de yapay zekâ… ama senden para değil, sadece bir abonelik istiyor. O da bedava!" 😄 — ekranda "ABONE OL 🔔" düğmesi + "Tamamı kanalda ▶"
   - **Instagram Reels:** "Korunmanın 3 yolunun tamamı profildeki bağlantıda. Bu arada bu ses de yapay zekâ… ama senden para değil, sadece bir takip istiyor. O da bedava!" 😄 — ekranda "TAKİP ET ➕" + "Devamı profildeki bağlantıda 👆"
