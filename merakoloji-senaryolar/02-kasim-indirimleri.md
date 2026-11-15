@@ -119,8 +119,8 @@ Sen bu Kasım'da kaç kez "son 2 ürün" yazısıyla telaşlandın? Yorumlara ya
 - Yeni kural (son 10 günün en düşük fiyatı, 1 Ağustos 2026)
 - "Şüphelendiğin indirim için tüketici.gov.tr"
 - KAPANIŞ — iki ayrı dosya, görüntü aynı, son cümle farklı:
-  - **YouTube Short:** "Kalan 3 taktik kanalımızda. Üstelik kargo bedava!" 😄 — ekranda "Tamamı kanalda ▶" + "KARGO BEDAVA" damgası
-  - **Instagram Reels:** "Kalan 3 taktik profildeki bağlantıda. Kargo da bedava!" 😄 — ekranda "Devamı profildeki bağlantıda 👆" + "KARGO BEDAVA" damgası
+  - **YouTube Short:** "Kalan 3 taktik kanalımızda. Üstelik kargo da bedava!" 😄 — ekranda "Tamamı kanalda ▶" + "KARGO BEDAVA" damgası
+  - **Instagram Reels:** "Kalan 3 taktik profildeki bağlantıda. Üstelik kargo da bedava!" 😄 — ekranda "Devamı profildeki bağlantıda 👆" + "KARGO BEDAVA" damgası
     (Instagram'da "YouTube" kelimesi ve logosu kullanılmaz; açıklamada da "Tamamı profildeki bağlantıda" yazılır.)
 (Ses uzun videodan kesilir; yalnızca iki kapanış cümlesi için ~120 kredi ek ses gerekir — onayla birlikte üretilecek.)
 
