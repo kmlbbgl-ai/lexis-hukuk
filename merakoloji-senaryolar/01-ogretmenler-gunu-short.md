@@ -12,14 +12,14 @@
 
 Öğretmenler Günü neden 24 Kasım? 5 Ekim değil, okulun ilk günü değil… karne günü hiç değil. 😄
 
-**[0:05] 1928: BÜTÜN ÜLKE SINIFTA**
-[Eski harflerle yazılmış bir tabela silgiyle silinir, yerine "A B C" yazılır.]
+**[0:05] 1928: DEV BİR SEFERBERLİK**
+[Tahtaya yeni harfler tek tek, ışıl ışıl yazılır: "A B C Ç…". Haritada şehir şehir küçük okul ışıkları yanar.]
 
-1928'de Türkiye alfabesini değiştirdi. Ve bir gecede neredeyse bütün ülke… yeniden öğrenci oldu.
+1928'de yeni Türk harfleri kabul edildi ve ülke çapında dev bir okuma yazma seferberliği başladı. Hedef büyüktü: Herkes, her yaşta, okuyup yazabilecekti.
 
-[Sıralarda yan yana: küçük bir piyon, anne piyon, bastonlu ve takkeli dede piyon. Hepsinin önünde aynı alfabe kitabı.]
+[Sıralarda yan yana: küçük bir piyon, anne piyon, bastonlu ve takkeli dede piyon. Hepsinin önünde aynı alfabe kitabı; dede parmağını kaldırıyor.]
 
-Çocuk, anne, dede… aynı sırada, aynı "A, B, C"yi öğreniyor. Ödev kontrolü de herhalde şöyleydi: "Dede, ödevini yaptın mı?" 
+Çocuk, anne, dede… aynı sırada, aynı "A, B, C". Sınıfın en hevesli öğrencisi kim olurdu dersin? Tabii ki dede! 😄
 
 **[0:15] BAŞÖĞRETMEN**
 [Tahtanın başında, elinde tebeşir, kalpaklı bir siluet (yüzsüz, sadece silüet). Üstüne damga: "BAŞÖĞRETMEN".]
