@@ -125,6 +125,7 @@ Ve yorumlara yaz: Sizin ailenizin parolası ne olurdu? Şaka şaka… sakın yaz
 - Kanca (gece 3, "Anne kaza yaptım…", oğul yan odada horluyor)
 - "15 saniyelik bir kayıt yeterli olabilir … teyzelerimizin 4 dakikalık sesli mesajları tam bir hazine 😄"
 - Aile parolası ("Pazartesi patates" — dolandırıcı tahmin edemez, siz unutamazsınız)
+- "Yorumlara yaz: Sizin ailenizin parolası ne olurdu? Şaka şaka… sakın yazma, gizli kalsın! 🤫" (uzun videodan kesilir; baştaki "Ve" atılır)
 - **KAPANIŞ (iki ayrı dosya, yeni cümle):**
   - **YouTube Short:** "Korunmanın 3 yolunun tamamı kanalımızda. Bu arada bu ses de yapay zekâ… ama senden para değil, sadece bir abonelik istiyor. O da bedava!" 😄 — ekranda "ABONE OL 🔔" düğmesi + "Tamamı kanalda ▶"
   - **Instagram Reels:** "Korunmanın 3 yolunun tamamı profildeki bağlantıda. Bu arada bu ses de yapay zekâ… ama senden para değil, sadece bir takip istiyor. O da bedava!" 😄 — ekranda "TAKİP ET ➕" + "Devamı profildeki bağlantıda 👆"
