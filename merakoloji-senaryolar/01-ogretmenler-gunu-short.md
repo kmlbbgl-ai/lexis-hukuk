@@ -32,6 +32,7 @@ Bu unvan, 24 Kasım 1928'de yayımlanan talimatnameyle resmileşti. İşte o tar
 
 Ama işin ilginç yanı ne biliyor musun? Bu gün ilk kez ancak 1981'de, Atatürk'ün doğumunun 100. yılında kutlandı.
 Yani Öğretmenler Günü, kendi kutlamasına tam 53 yıl geç kaldı. Devamsızlıktan kalmadığı iyi oldu. 😄
+Şaka bir yana… o günden beri her 24 Kasım'da, bize okumayı, yazmayı, düşünmeyi öğreten öğretmenlerimize teşekkür ediyoruz.
 
 **[0:37] DÜNYADA**
 [Küçük bir dünya haritası; üç ülkede tebeşir işaretleri belirir.]
