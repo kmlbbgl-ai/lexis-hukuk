@@ -1,0 +1,53 @@
+<!doctype html><html><head><meta charset="utf-8"></head><body style="margin:0">
+<svg id="s" width="1920" height="1080" xmlns="http://www.w3.org/2000/svg"></svg>
+<script>window.SUB=[];</script><script src="ortak.js"></script>
+<script>
+const base=()=>DEFS+BG;
+const title=(a,b)=>`<text x="960" y="120" text-anchor="middle" font-family="Inter" font-weight="800" font-size="28" letter-spacing="10" fill="${AU}">${a}</text><text x="960" y="200" text-anchor="middle" font-family="Bitstream Charter" font-weight="bold" font-size="64" fill="${G}">${b}</text>`;
+const lbl=(x,y,t)=>`<rect x="${x-120}" y="${y-34}" width="240" height="56" rx="28" fill="${INK}"/><text x="${x}" y="${y+5}" text-anchor="middle" font-family="Inter" font-weight="800" font-size="26" fill="#FFD23F">${t}</text>`;
+const end=()=>BORDER+`<rect width="1920" height="1080" fill="url(#vig)"/>`;
+// ---------- 1: rol eşyaları ----------
+function v1(){let o=base()+title('SEÇENEK 1','Rol eşyalarıyla piyon');
+ const y=820,s=.82;
+ // öğretmen: gözlük + tebeşir + kitap
+ o+=pawn(300,y,s,G2,`<g><circle cx="-24" cy="-250" r="20" fill="none" stroke="${INK}" stroke-width="7"/><circle cx="24" cy="-250" r="20" fill="none" stroke="${INK}" stroke-width="7"/><line x1="-4" y1="-250" x2="4" y2="-250" stroke="${INK}" stroke-width="7"/><rect x="40" y="-120" width="70" height="90" rx="6" fill="${B}" stroke="${INK}" stroke-width="5"/><rect x="-110" y="-110" width="16" height="60" rx="4" fill="#fff" stroke="${INK}" stroke-width="4" transform="rotate(-20 -102 -80)"/></g>`)+lbl(300,y+70,'ÖĞRETMEN');
+ // dede: takke + baston
+ o+=pawn(620,y,s,'#3C7A5E',`<g><path d="M -52 -282 q 52 -50 104 0 z" fill="${B}" stroke="${INK}" stroke-width="5"/><line x1="105" y1="0" x2="80" y2="-170" stroke="#6B4A2B" stroke-width="12" stroke-linecap="round"/><path d="M 80 -170 q 6 -36 40 -28" fill="none" stroke="#6B4A2B" stroke-width="12" stroke-linecap="round"/></g>`)+lbl(620,y+70,'DEDE');
+ // anne: çanta + topuz
+ o+=pawn(940,y,s,G2,`<g><circle cx="0" cy="-318" r="26" fill="${G2}" stroke="${INK}" stroke-width="6"/><rect x="60" y="-110" width="80" height="70" rx="12" fill="${AU}" stroke="${INK}" stroke-width="5"/><path d="M 72 -110 q 28 -40 56 0" fill="none" stroke="${INK}" stroke-width="5"/></g>`)+lbl(940,y+70,'ANNE');
+ // işçi: baret + maaş zarfı
+ o+=pawn(1260,y,s,'#3C7A5E',`<g><path d="M -66 -262 q 66 -110 132 0 z" fill="#F5C518" stroke="${INK}" stroke-width="6"/><rect x="-78" y="-268" width="156" height="14" rx="6" fill="#F5C518" stroke="${INK}" stroke-width="5"/><rect x="-140" y="-110" width="90" height="60" fill="#F4E4C1" stroke="${INK}" stroke-width="4"/><path d="M -140 -110 l 45 32 l 45 -32" fill="none" stroke="${INK}" stroke-width="4"/></g>`)+lbl(1260,y+70,'İŞÇİ');
+ // çocuk: küçük + okul çantası
+ o+=pawn(1560,y,.6,G2,`<g><rect x="-130" y="-170" width="70" height="100" rx="14" fill="${B}" stroke="${INK}" stroke-width="6"/><rect x="-122" y="-140" width="54" height="30" rx="6" fill="#a8434e" stroke="${INK}" stroke-width="4"/></g>`)+lbl(1560,y+70,'ÇOCUK');
+ o+=`<text x="960" y="1000" text-anchor="middle" font-family="Inter" font-weight="600" font-size="30" fill="${G}">Aynı yüzsüz piyon; kim olduğu tek bir eşyadan anlaşılır.</text>`;
+ return o+end()}
+// ---------- 2: maskot "Meraklı" ----------
+function arms(a1,a2){return `<g transform="rotate(${a1} -70 -150)"><line x1="-70" y1="-150" x2="-160" y2="-210" stroke="${INK}" stroke-width="16" stroke-linecap="round"/></g><g transform="rotate(${a2} 70 -150)"><line x1="70" y1="-150" x2="160" y2="-210" stroke="${INK}" stroke-width="16" stroke-linecap="round"/></g>`}
+function merakli(x,y,s,extra){ // imza: bordo atkı + kafada soru işareti tutamı
+ return pawn(x,y,s,'#2F7A63',`<text x="6" y="-300" text-anchor="middle" font-family="Bitstream Charter" font-weight="bold" font-size="130" fill="${AU}" stroke="${INK}" stroke-width="4" transform="rotate(12 6 -340)">?</text>
+ <path d="M -70 -180 q 70 30 140 0 l 4 26 q -74 32 -148 0 z" fill="${B}" stroke="${INK}" stroke-width="5"/><path d="M 40 -158 l 26 70 l 22 -8 l -20 -66 z" fill="${B}" stroke="${INK}" stroke-width="5"/>${extra||''}`)}
+function v2(){let o=base()+title('SEÇENEK 2','Maskot: "Meraklı"');
+ const y=800;
+ o+=merakli(330,y,.8,`<g transform="translate(150,-200) rotate(-20)"><circle r="44" fill="#dfeef2" fill-opacity=".6" stroke="${INK}" stroke-width="8"/><line x1="30" y1="32" x2="80" y2="90" stroke="#6B4A2B" stroke-width="16" stroke-linecap="round"/></g>`)+lbl(330,y+70,'MERAK');
+ o+=merakli(730,y-40,.8,arms(-30,30)+`<text x="0" y="-420" text-anchor="middle" font-family="Bitstream Charter" font-weight="bold" font-size="110" fill="${B}">!</text>`)+lbl(730,y+70,'ŞAŞKINLIK');
+ o+=merakli(1130,y,.8,`<text x="110" y="-330" font-family="Bitstream Charter" font-weight="bold" font-size="100" fill="${G}">?</text><line x1="68" y1="-150" x2="118" y2="-232" stroke="${INK}" stroke-width="16" stroke-linecap="round"/><line x1="-68" y1="-150" x2="-120" y2="-90" stroke="${INK}" stroke-width="16" stroke-linecap="round"/>`)+lbl(1130,y+70,'DÜŞÜNCE');
+ o+=merakli(1530,y-60,.8,arms(-60,60)+[...Array(14)].map((_,i)=>`<rect x="${-200+i*30}" y="${-470+(i*37)%90}" width="14" height="8" fill="${[AU,B,G2][i%3]}" transform="rotate(${i*40})"/>`).join(''))+lbl(1530,y+70,'SEVİNÇ');
+ o+=`<text x="960" y="1000" text-anchor="middle" font-family="Inter" font-weight="600" font-size="30" fill="${G}">Her videoda aynı karakter: altın soru işareti tutamı + bordo atkı. Yüzü yok, duygusunu duruşu anlatır.</text>`;
+ return o+end()}
+// ---------- 3: yüzlü karakter ----------
+function face(x,y,s,mood){const col='#3BA58A';
+ const eyes=mood=='sad'?`<path d="M -48 -20 q 18 -14 36 0" stroke="${INK}" stroke-width="8" fill="none"/><path d="M 12 -20 q 18 -14 36 0" stroke="${INK}" stroke-width="8" fill="none"/>`
+  :`<ellipse cx="-30" cy="-20" rx="${mood=='wow'?24:20}" ry="${mood=='wow'?30:26}" fill="#fff" stroke="${INK}" stroke-width="5"/><ellipse cx="30" cy="-20" rx="${mood=='wow'?24:20}" ry="${mood=='wow'?30:26}" fill="#fff" stroke="${INK}" stroke-width="5"/><circle cx="-26" cy="-14" r="10" fill="${INK}"/><circle cx="34" cy="-14" r="10" fill="${INK}"/><circle cx="-22" cy="-20" r="4" fill="#fff"/><circle cx="38" cy="-20" r="4" fill="#fff"/>`;
+ const mouth=mood=='happy'?`<path d="M -26 30 q 26 30 52 0" fill="#c0392b" stroke="${INK}" stroke-width="5"/>`:mood=='wow'?`<ellipse cx="0" cy="38" rx="16" ry="20" fill="#7a1f1f" stroke="${INK}" stroke-width="5"/>`:`<path d="M -20 44 q 20 -16 40 0" fill="none" stroke="${INK}" stroke-width="6"/>`;
+ return `<g transform="translate(${x},${y}) scale(${s})"><ellipse cx="0" cy="170" rx="120" ry="18" fill="${INK}" opacity=".18"/>
+ <text x="10" y="-128" text-anchor="middle" font-family="Bitstream Charter" font-weight="bold" font-size="130" fill="${AU}" stroke="${INK}" stroke-width="4" transform="rotate(12 10 -170)">?</text>
+ <ellipse cx="0" cy="20" rx="130" ry="150" fill="${col}" stroke="${INK}" stroke-width="7"/><ellipse cx="-40" cy="-70" rx="40" ry="22" fill="#fff" opacity=".25"/>
+ <circle cx="-62" cy="22" r="16" fill="#f08a8a" opacity=".6"/><circle cx="62" cy="22" r="16" fill="#f08a8a" opacity=".6"/>${eyes}${mouth}
+ <line x1="-120" y1="40" x2="-180" y2="${mood=='happy'?-30:90}" stroke="${INK}" stroke-width="14" stroke-linecap="round"/><line x1="120" y1="40" x2="180" y2="${mood=='happy'?-30:90}" stroke="${INK}" stroke-width="14" stroke-linecap="round"/>
+ <line x1="-50" y1="160" x2="-50" y2="190" stroke="${INK}" stroke-width="14" stroke-linecap="round"/><line x1="50" y1="160" x2="50" y2="190" stroke="${INK}" stroke-width="14" stroke-linecap="round"/></g>`}
+function v3(){let o=base()+title('SEÇENEK 3','Yüzü olan yeni karakter');
+ o+=face(480,600,1.05,'happy')+lbl(480,880,'MUTLU')+face(960,600,1.05,'wow')+lbl(960,880,'ŞAŞKIN')+face(1440,600,1.05,'sad')+lbl(1440,880,'ÜZGÜN');
+ o+=`<text x="960" y="1000" text-anchor="middle" font-family="Inter" font-weight="600" font-size="30" fill="${G}">Daha sevimli ve duygusu yüzünden okunur; ama Merakoloji'nin bugüne kadarki tarzından ayrılır.</text>`;
+ return o+end()}
+window.ciz=v=>{document.getElementById('s').innerHTML=[v1,v2,v3][v-1]()};
+</script></body></html>
