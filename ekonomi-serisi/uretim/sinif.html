@@ -1,0 +1,49 @@
+<!doctype html><html><head><meta charset="utf-8"></head><body style="margin:0">
+<svg id="s" width="1920" height="1080" xmlns="http://www.w3.org/2000/svg"></svg>
+<script>window.SUB=[];</script><script src="ortak.js"></script>
+<script>
+const W='#F4F1E6',Y='#F2D24B',PK='#F2A7B8',BL='#8CC6EE';
+const PL=(pts,w=7)=>`<polyline points="${pts.map(p=>p.join(',')).join(' ')}" stroke-width="${w}"/>`;
+// tebeşir kollu piyon (baş merkezi -245, omuz ±70,-150)
+function ckp(x,y,s,col,p,extra){return `<g transform="translate(${x},${y}) scale(${s})" stroke="${col}" fill="none" stroke-width="7" stroke-linecap="round" stroke-linejoin="round">
+ <path d="M -75 -10 q 0 -150 75 -190 q 75 40 75 190 z" fill="${col}" fill-opacity=".16"/><rect x="-95" y="-22" width="190" height="30" rx="15"/><circle cx="0" cy="-245" r="62" fill="${col}" fill-opacity=".16"/>
+ ${p.la?PL([[-70,-150],...p.la],9):''}${p.ra?PL([[70,-150],...p.ra],9):''}${extra||''}</g>`}
+// tebeşir çöp adam (baş -300, omuz 0,-230, kalça 0,-120)
+function cst(x,y,s,col,p,extra){return `<g transform="translate(${x},${y}) scale(${s})" stroke="${col}" fill="none" stroke-width="10" stroke-linecap="round" stroke-linejoin="round">
+ <circle cx="0" cy="-300" r="48"/><line x1="0" y1="-252" x2="0" y2="-120"/>${PL([[0,-230],...(p.la||[[-50,-160]])],10)}${PL([[0,-230],...(p.ra||[[50,-160]])],10)}
+ ${PL([[0,-120],...(p.ll||[[-40,0]])],10)}${PL([[0,-120],...(p.rl||[[40,0]])],10)}${extra||''}</g>`}
+function scene(kind){
+ let o=`<rect width="870" height="760" fill="#2E4D3D"/><g filter="url(#ch)">`;
+ // tahtadaki harfler
+ o+=`<text x="470" y="150" text-anchor="middle" font-family="Bitstream Charter" font-weight="bold" font-size="80" letter-spacing="24" fill="${W}">A B C Ç</text><line x1="230" y1="175" x2="720" y2="175" stroke="${W}" stroke-width="3"/>`;
+ // balon
+ o+=`<path d="M 330 210 h 510 v 84 h -70 l -30 40 l -6 -40 h -404 z" fill="none" stroke="${W}" stroke-width="4"/><text x="585" y="262" text-anchor="middle" font-family="Bitstream Charter" font-style="italic" font-size="28" fill="${W}">Öğretmenim, kalem açabilir miyim?</text>`;
+ // sıra (masa)
+ const desk=`<path d="M 260 560 h 580 l -20 40 h -540 z" fill="#2E4D3D" stroke="#c9a36a" stroke-width="7"/><rect x="290" y="600" width="520" height="100" fill="#2E4D3D"/><line x1="290" y1="600" x2="290" y2="700" stroke="#c9a36a" stroke-width="7"/><line x1="810" y1="600" x2="810" y2="700" stroke="#c9a36a" stroke-width="7"/>
+  ${[400,580,740].map(x=>`<path d="M ${x-40} 548 l 40 -14 l 40 14" fill="none" stroke="${W}" stroke-width="4"/>`).join('')}`;
+ if(kind=='kp'){
+  // öğretmen (solda, tahtayı gösteriyor)
+  o+=ckp(120,700,.62,Y,{la:[[-120,-90]],ra:[[150,-260],[210,-330]]},`<circle cx="-24" cy="-250" r="20"/><circle cx="24" cy="-250" r="20"/><line x1="-4" y1="-250" x2="4" y2="-250"/>`);
+  // çocuk
+  o+=ckp(400,600,.42,BL,{la:[[-110,-60],[-80,-10]],ra:[[110,-60],[80,-10]]},`<rect x="-150" y="-170" width="60" height="90" rx="12"/>`);
+  // anne
+  o+=ckp(580,600,.5,PK,{la:[[-100,-50],[-60,-10]],ra:[[100,-50],[60,-10]]},`<circle cx="0" cy="-318" r="26"/>`);
+  // dede (parmak havada, takke, baston)
+  o+=ckp(740,600,.52,W,{la:[[-100,-50],[-60,-10]],ra:[[110,-260],[120,-340]]},`<path d="M -52 -282 q 52 -50 104 0 z"/><line x1="-130" y1="80" x2="-110" y2="-120" stroke-width="9"/><path d="M -110 -120 q -6 -30 -34 -24" stroke-width="9"/>`);
+ } else {
+  o+=cst(120,700,.62,Y,{la:[[-60,-160],[-70,-90]],ra:[[90,-300],[150,-360]]},`<circle cx="-18" cy="-300" r="14" stroke-width="5"/><circle cx="18" cy="-300" r="14" stroke-width="5"/>`);
+  o+=cst(400,620,.42,BL,{la:[[-60,-150],[-40,-100]],ra:[[60,-150],[40,-100]]},`<rect x="-110" y="-240" width="60" height="90" rx="12" stroke-width="7"/>`);
+  o+=cst(580,620,.5,PK,{la:[[-60,-150],[-40,-100]],ra:[[60,-150],[40,-100]]},`<circle cx="0" cy="-360" r="22" stroke-width="8"/>`);
+  o+=cst(740,620,.52,W,{la:[[-60,-150],[-40,-100]],ra:[[70,-330],[80,-410]]},`<path d="M -46 -330 q 46 -46 92 0 z" stroke-width="8"/><line x1="-110" y1="0" x2="-90" y2="-180" stroke-width="9"/><path d="M -90 -180 q -6 -30 -34 -24" stroke-width="9"/>`);
+ }
+ return o+desk+`</g>`}
+function ciz(){
+ let o=DEFS+`<defs><filter id="ch"><feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2"/><feDisplacementMap in="SourceGraphic" scale="4"/></filter></defs>`+BG;
+ o+=`<text x="960" y="110" text-anchor="middle" font-family="Inter" font-weight="800" font-size="28" letter-spacing="10" fill="${AU}">ÖĞRETMENLER GÜNÜ · SINIF SAHNESİ</text><text x="960" y="185" text-anchor="middle" font-family="Bitstream Charter" font-weight="bold" font-size="54" fill="${G}">Çocuk, anne, dede aynı sırada — en hevesli öğrenci dede!</text>`;
+ [[60,'KOLLU PİYON','kp'],[990,'ÇÖP ADAM','st']].forEach(([x0,t,k])=>{
+  o+=`<clipPath id="c${x0}"><rect x="${x0}" y="230" width="870" height="760" rx="18"/></clipPath><g clip-path="url(#c${x0})"><g transform="translate(${x0},230)">${scene(k)}</g></g>
+  <rect x="${x0}" y="230" width="870" height="760" rx="18" fill="none" stroke="#7a5230" stroke-width="10"/>
+  <rect x="${x0+300}" y="250" width="270" height="52" rx="26" fill="${INK}"/><text x="${x0+435}" y="285" text-anchor="middle" font-family="Inter" font-weight="900" font-size="26" fill="#FFD23F">${t}</text>`});
+ return o+BORDER+`<rect width="1920" height="1080" fill="url(#vig)"/>`}
+document.getElementById('s').innerHTML=ciz();
+</script></body></html>
