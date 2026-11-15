@@ -137,22 +137,38 @@ Peki para gerçekten sadece matbaada mı basılıyor? Bir sonraki bölümde daha
 
 ---
 
-## SHORTS (9:16, uzun videonun animasyonlarından)
+## SHORTS / REELS (9:16) — ses uzun videodan kesilir
+> Kural: İlk 1–2 saniyede hem **söz** hem **görüntü** kancası. Sessiz izleyenler için ilk karede büyük yazı.
+> Yeni ses gereken yerler ★ ile işaretli (yalnızca Short 2).
 
-### Short 1 — "Neden herkese 1 milyon basılmıyor?" (~35 sn)
-Devletin kendi matbaası var. Peki neden herkese bir milyon basıp dağıtmıyor?
-Bir ada düşün: 10 ekmek, 10 lira. Bir ekmek bir lira. Devlet 10 lira daha basıp dağıtıyor. Herkes sevinçle fırına koşuyor… ama fırında yine 10 ekmek var. Fırıncı fiyatı ikiye katlıyor.
-Herkesin parası iki katına çıktı, ama kimse zenginleşmedi. Sadece etiketler değişti.
-Para, bir şeyleri almanın biletidir. Bileti çoğaltırsan koltuk artmaz.
+### Short 1 — "Neden herkese 1 milyon basılmıyor?" (~40 sn)
+**Ekran yazısı (0:00):** "Devlet neden herkese 1 milyon basmıyor?"
+**Görüntü (0:00):** Cüzdan açılır, sinek uçar.
+- "Ah… Devlet bir sınırsız para bassa da hepimiz zengin olsak…"
+- "Güzel hayal, değil mi?"
+- Ada bölümünün tamamı → "Bileti çoğaltırsan, koltuk sayısı artmaz."
+**Son:** "Tamamı kanalda" + uzun videoya bağlantı
 
-### Short 2 — "Paranın odundan ucuz olduğu ülke" (~30 sn)
-1923 Almanya. Anlatılanlara göre kışın bazı evlerde sobaya odun değil, para atılıyordu. Çünkü para, oduna göre daha ucuz yakıttı.
-Fiyatlar o kadar hızlı artıyordu ki, işçilere günde iki kez maaş veriliyordu. Çocuklar banknotlardan uçurtma yapıyordu.
-Peki bir ülke nasıl bu hale gelir? Cevabı tek kelime: matbaa.
+### Short 2 — "Paranın odundan ucuz olduğu ülke" (~35 sn)
+**Ekran yazısı (0:00):** "Parayı yakmak, odun almaktan ucuzdu"
+**Görüntü (0:00):** Soba kapağı açılır, içine banknot destesi atılır.
+- ★ "Bir zamanlar bir ülkede, parayı yakmak odun almaktan daha ucuzdu."
+- "İşçiler maaşlarını günde iki kez alıyor, el arabasıyla taşıyor…"
+- "…insanlar kafede kahvelerini içerken fiyat değişiyordu…"
+- "Çocuklar banknotlardan uçurtma yapıyordu…"
+- ★ "Bin dokuz yüz yirmi üç, Almanya. Peki bir ülke nasıl bu hale gelir? Cevabı tek kelime: matbaa."
+**Son:** "Tamamı kanalda"
 
-### Short 3 — "Türkiye bir gecede 6 sıfır sildi" (~30 sn)
-Bu gerçek bir Türk parası: 20 milyon lira. 90'larda Türkiye'de herkes milyonerdi. Bir simide binler, bir ayakkabıya milyonlar verilirdi.
-Sonra 1 Ocak 2005'te, tek bir gecede, paramızdan altı sıfır silindi. Akşam milyoner yatan herkes sabah birkaç lirayla uyandı. Ve unutulmuş bir kelime geri döndü: kuruş.
+### Short 3 — "Türkiye bir gecede 6 sıfır sildi" (~35 sn)
+**Ekran yazısı (0:00):** "Türkiye'de herkes milyonerdi"
+**Görüntü (0:00):** KÜT — "20.000.000" damgası.
+- "Bu, Türkiye'de cebinde taşıdığın gerçek bir para. Yirmi milyon lira. Herkes milyonerdi."
+- "Peki… neden kimse zengin değildi?"
+- Türkiye bölümü (doksanlar → 2005, altı sıfır → "kuruş")
+**Son:** "Neden mi? Tamamı kanalda"
+
+### Instagram özel (~2:50)
+Uzun videonun kancasıyla aynı açılış ("Ah… Devlet bir sınırsız para bassa…"). Macaristan ve Zimbabve çıkarılır, 4 sebep ve Türkiye kalır.
 
 ---
 
