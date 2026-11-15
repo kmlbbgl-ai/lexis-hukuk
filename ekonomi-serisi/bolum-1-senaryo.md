@@ -11,15 +11,23 @@
 ---
 
 ### KANCA (0:00–0:25)
-[Siyah ekran. Bir banknotun üstüne damga sesiyle kocaman "20.000.000" basılır.]
+[Bir piyon figür, cüzdanını açar; içinden bir sinek uçar. Derin bir iç çekiş.]
 
-Bu, bir zamanlar Türkiye'de cebinde taşıdığın gerçek bir para. **Yirmi milyon lira.**
-Yani bu ülkede herkes milyonerdi. Peki… neden kimse zengin değildi?
+*(iç çekerek, hayalperest)* Ah… Devlet bir sınırsız para bassa da hepimiz zengin olsak…
+
+[Piyonun başının üstünde düşünce balonu: matbaa çalışıyor, gökten para yağıyor, piyon parayla yüzüyor.]
+
+Güzel hayal, değil mi? Matbaa devletin, kâğıt ucuz, mürekkep ucuz.
+
+[Balon "pat" diye patlar. Kısa sessizlik. Sonra damga sesiyle kocaman "20.000.000" basılır.]
+
+Peki sana bir şey söyleyeyim: Bu hayal, bu ülkede bir kere gerçek oldu.
+Bu, Türkiye'de cebinde taşıdığın gerçek bir para. **Yirmi milyon lira.** Herkes milyonerdi.
+Peki… neden kimse zengin değildi?
 
 [Matbaa belirir, çark dönmeye başlar.]
 
-Daha basit soralım: Devletin kendi para matbaası var. Kâğıt ucuz, mürekkep ucuz. Neden herkese birer milyon basıp dağıtmıyor?
-Bunun dört sebebi var. Ve dördüncüsü, en tehlikelisi.
+Devletin sınırsız para basamamasının dört sebebi var. Ve dördüncüsü, en tehlikelisi.
 
 ---
 
