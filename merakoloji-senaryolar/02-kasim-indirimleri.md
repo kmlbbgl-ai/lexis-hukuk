@@ -117,8 +117,10 @@ Sen bu Kasım'da kaç kez "son 2 ürün" yazısıyla telaşlandın? Yorumlara ya
 **Ekran yazısı:** "Önce zam sonra indirim… artık kurala takılıyor"
 - Kanca (ayakkabı 1.000 → 2.000 → %50 → "Tebrikler, hiçbir şey kazanmadın… ama çok mutlu oldun")
 - Yeni kural (son 10 günün en düşük fiyatı, 1 Ağustos 2026)
-- "Şüphelendiğin indirim için tüketici.gov.tr" + "4 gizli taktiğin tamamı kanalda 👆"
-(Ses uzun videodan kesilir; ek kredi gerekmez.)
+- "Şüphelendiğin indirim için tüketici.gov.tr"
+- KAPANIŞ (sesli, yeni cümle): "Kalan 3 taktik, profilimizdeki uzun videoda!" + ekranda "Tamamı profilde 👆"
+  (YouTube ve Instagram'da aynı dosya çalışsın diye "profil" denildi.)
+(Ses uzun videodan kesilir; yalnızca kapanış cümlesi için ~60 kredi ek ses gerekir — onayla birlikte üretilecek.)
 
 ---
 
