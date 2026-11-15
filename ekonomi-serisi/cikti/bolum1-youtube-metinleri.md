@@ -38,3 +38,10 @@ devlet neden sınırsız para basamıyor, para basmak, enflasyon nedir, enflasyo
 - Short 1: Devlet neden herkese 1 milyon basmıyor? #shorts
 - Short 2: Parayı yakmak, odun almaktan ucuzdu 🔥 #shorts
 - Short 3: Türkiye bir gecede 6 sıfır sildi #shorts
+
+## Oynatma listesi
+**Ad:** Paranın Sırları | Merakoloji Ekonomi Serisi
+**Açıklama:**
+Para nedir, nereden gelir, neden değer kaybeder? Merakoloji Ekonomi Serisi'nde ekonominin en çok merak edilen sorularını banknot temalı animasyonlarla, hikâyelerle ve tarihten örneklerle anlatıyoruz. Enflasyon, para basmak, bankalar, faiz, altın ve dolar… Ezber yok, rakam yığını yok; sadece "Aaa, demek böyleymiş!" dedirten anlatım. Her bölüm 4 dakikada bir sırrı çözüyor.
+
+**Shorts listesi (isteğe bağlı):** Paranın Sırları – Kısa Kısa
