@@ -1,11 +1,12 @@
 # Merakoloji – Karakter Kuralları (Kasım 2026)
 
-## Standart karakter: KOLLU PİYON
-- Gövde: yüzsüz satranç piyonu (yuvarlak kafa, çan gövde, taban). Yüz YOK.
-- Kollar: ince siyah çöp-adam kolları (işaret etme, kafa kaşıma, para uzatma, alkış, kollar havada).
-- Bacaklar: yalnızca gerektiğinde (koşma, zıplama) kısa siyah çöp bacaklar.
-- Maskot YOK. Her piyon rolüne göre bir EŞYA taşır; kim olduğu eşyadan anlaşılır.
-- Karşılaştırma görseli: `karakter/tarz-karsilastirma.jpg`
+## Standart karakter: ÇÖP ADAM (karar: kullanıcı, Kasım 2026)
+- Bütün videolarda çöp adam: yuvarlak baş, gövde çizgisi, kollar ve bacaklar. Yüz YOK.
+- Gerekçe: duygu ve hareketi en net o anlatıyor (karşılaştırma görselleri: `karakter/sahne-1..5.jpg`, `karakter/sahne-sinif.jpg`).
+- Çizgi rengi: Banknot ve Gece tarzında koyu mürekkep (#0f2e22 / gecede açık krem); Kara Tahta'da renkli tebeşir.
+- Maskot YOK. Her karakter rolüne göre bir EŞYA taşır; kim olduğu eşyadan anlaşılır.
+- Renk: başın içi paletteki renkle dolar (ör. kazanan altın, kaybeden gri). Kaybeden karakterin çizgileri de griye solabilir.
+- (Önceki "kollu piyon" kararı bununla değiştirildi.)
 
 ## Eşyalar (örnek)
 | Rol | Eşya |
