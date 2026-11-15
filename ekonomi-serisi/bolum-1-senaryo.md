@@ -84,8 +84,8 @@ Fiyatlar öyle hızlandı ki, anlatılanlara göre insanlar kafede kahvelerini i
 
 Ve en tehlikeli aşama: İnsanlar paraya inanmayı bırakır.
 
-Aynı Almanya'da kışın bazı evlerde sobaya odun yerine **para** atıldı. Çünkü para, odundan daha ucuz yakıttı.
-Çocuklar para destelerinden oyuncak kule yapıyordu. Bu fotoğraflar gerçek.
+Aynı Almanya'da, anlatılanlara göre, kışın bazı evlerde sobaya odun yerine **para** atılıyordu. Çünkü para, odundan daha ucuz yakıttı.
+Çocuklar banknotlardan uçurtma yapıyordu. O döneme ait fotoğraflar hâlâ duruyor.
 
 [Banknotun üstüne sıfırlar dizilir, kâğıda sığmaz, ekrandan taşar.]
 
@@ -137,8 +137,8 @@ Herkesin parası iki katına çıktı, ama kimse zenginleşmedi. Sadece etiketle
 Para, bir şeyleri almanın biletidir. Bileti çoğaltırsan koltuk artmaz.
 
 ### Short 2 — "Paranın odundan ucuz olduğu ülke" (~30 sn)
-1923 Almanya. Kışın bazı evlerde sobaya odun değil, para atılıyordu. Çünkü para, oduna göre daha ucuz yakıttı.
-Fiyatlar o kadar hızlı artıyordu ki, işçiler maaşlarını el arabasıyla taşıyordu. Çocuklar para destelerinden kule yapıyordu.
+1923 Almanya. Anlatılanlara göre kışın bazı evlerde sobaya odun değil, para atılıyordu. Çünkü para, oduna göre daha ucuz yakıttı.
+Fiyatlar o kadar hızlı artıyordu ki, işçilere günde iki kez maaş veriliyordu. Çocuklar banknotlardan uçurtma yapıyordu.
 Peki bir ülke nasıl bu hale gelir? Cevabı tek kelime: matbaa.
 
 ### Short 3 — "Türkiye bir gecede 6 sıfır sildi" (~30 sn)
@@ -147,10 +147,15 @@ Sonra 1 Ocak 2005'te, tek bir gecede, paramızdan altı sıfır silindi. Akşam 
 
 ---
 
-## Yayından önce doğrulanacak bilgiler
-- 20.000.000 TL banknot (2001, TCMB)
-- 1 Ocak 2005, 6 sıfır atılması (5083 sayılı Kanun)
-- Almanya 1923: maaşların günde iki kez ödenmesi, el arabası, para yakma, çocukların para destesiyle oynaması (dönem fotoğrafları)
-- Kafede kahve fiyatı anekdotu → senaryoda "anlatılanlara göre" diye geçiyor
-- Macaristan 1946: fiyatların ~15 saatte ikiye katlanması; 100 kentilyon (10²⁰) pengő banknotu
-- Zimbabve 100 trilyon dolar banknotu ve koleksiyoncu değeri
+## Doğrulama sonuçları (15 Kasım 2026)
+| Bilgi | Sonuç |
+|---|---|
+| 20.000.000 TL banknot | ✅ 5 Kasım 2001'de tedavüle çıktı (Numista, Greysheet, Wikipedia) |
+| 1 Ocak 2005, 6 sıfır atılması | ✅ 5083 sayılı Kanun, 1.000.000 TL = 1 YTL, 1 YTL = 100 Yeni Kuruş |
+| Almanya 1923: günde iki kez maaş, el arabası | ✅ PBS Commanding Heights ve tarih kaynakları |
+| Almanya 1923: çocukların banknotlardan uçurtma yapması | ✅ Dönem fotoğrafları (1922–23) |
+| Almanya 1923: sobada para yakılması | ⚠️ Tek ve zayıf kaynak → "anlatılanlara göre" ile verildi |
+| Kafede kahve fiyatı anekdotu | ⚠️ Anekdot → "anlatılanlara göre" ile verildi |
+| Macaristan 1946: ~15 saatte ikiye katlanma | ✅ Guinness Dünya Rekorları (günlük %207) |
+| Macaristan: 100 kentilyon (10²⁰) pengő banknotu | ✅ |
+| Zimbabve 100 trilyon $ banknotu koleksiyonda satılıyor | ✅ Bayilerde ~$90–370 arası (Zimbabve doları 2015'te tedavülden kalktı) |
