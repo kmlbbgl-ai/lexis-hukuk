@@ -1,0 +1,24 @@
+<!doctype html><html><head><meta charset="utf-8"></head><body style="margin:0">
+<svg id="s" width="1920" height="1080" xmlns="http://www.w3.org/2000/svg"></svg>
+<script src="bolum1_veri.js"></script><script src="ortak.js"></script><script src="kanca.js"></script><script src="govde.js"></script>
+<script>
+window.kapak=function(v){
+  let o=DEFS+BG;
+  if(v==1){
+    o+=`<g transform="translate(1180,470) rotate(-6)">${bigNote(0,0,1.15,1,0)}</g>`;
+    o+=`<text x="90" y="210" font-family="Inter Display" font-weight="900" font-size="128" fill="${G}" stroke="${P}" stroke-width="10" paint-order="stroke">HERKES</text>`;
+    o+=`<text x="90" y="350" font-family="Inter Display" font-weight="900" font-size="128" fill="${B}" stroke="${P}" stroke-width="10" paint-order="stroke">MİLYONERDİ</text>`;
+    o+=pawn(330,1010,.95,G2,`<path d="M -80 -90 q -40 10 -30 50 q 30 0 30 -40" fill="#fff" stroke="${INK}" stroke-width="5"/><path d="M 80 -90 q 40 10 30 50 q -30 0 -30 -40" fill="#fff" stroke="${INK}" stroke-width="5"/>`);
+    o+=`<g transform="translate(600,600) rotate(8)"><text font-family="Bitstream Charter" font-weight="bold" font-size="300" fill="${B}" stroke="${INK}" stroke-width="5">?</text></g>`;
+    o+=`<rect x="760" y="830" width="1060" height="150" rx="14" fill="${INK}"/><text x="1290" y="930" text-anchor="middle" font-family="Inter Display" font-weight="900" font-size="74" fill="#FFD23F">…ama kimse zengin değildi</text>`;
+  } else {
+    o+=press(560,600,1.15,0.3);
+        o+=`<rect x="900" y="300" width="960" height="360" rx="18" fill="${P}" stroke="${G}" stroke-width="8"/>`;
+    o+=`<text x="1380" y="440" text-anchor="middle" font-family="Inter Display" font-weight="900" font-size="110" fill="${G}">SINIRSIZ PARA</text>`;
+    o+=`<text x="1380" y="590" text-anchor="middle" font-family="Inter Display" font-weight="900" font-size="130" fill="${B}">BASILSA?</text>`;
+    o+=[[930,760,-12,.95],[1100,860,14,1],[1290,770,-20,.9],[1180,960,6,.85],[1450,900,22,.9],[1010,940,-30,.8]].map(a=>note(...a)).join('');
+    o+=`<g transform="translate(1700,860) rotate(-10)"><circle r="150" fill="${P}" stroke="${B}" stroke-width="12"/><circle r="126" fill="none" stroke="${B}" stroke-width="3"/><text y="-30" text-anchor="middle" font-family="Inter" font-weight="900" font-size="40" fill="${B}">4 SEBEP</text><text y="50" text-anchor="middle" font-family="Bitstream Charter" font-weight="bold" font-size="80" fill="${B}">HAYIR</text></g>`;
+  }
+  o+=BORDER+`<rect width="1920" height="1080" fill="url(#vig)"/>`;
+  document.getElementById('s').innerHTML=o;};
+</script></body></html>

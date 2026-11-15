@@ -1,0 +1,44 @@
+<!doctype html><html><head><meta charset="utf-8"></head><body style="margin:0;background:#000">
+<svg id="d" width="1080" height="1920" xmlns="http://www.w3.org/2000/svg"></svg>
+<svg id="s" width="0" height="0"></svg>
+<script>window.SAHNE_SADECE=true;</script>
+<script src="bolum1_veri.js"></script><script src="ortak.js"></script><script src="kanca.js"></script><script src="govde.js"></script><script src="dikey_plan.js"></script>
+<script>
+const SC=0.62, SY=560, SH=1080*SC; // sahne kutusu: y 560..1230
+function vsub(words,t){ // [[kelime,t0,t1],...] -> 2 satıra kadar büyük altyazı
+  const fs=58, maxc=24; let lines=[[]],len=0;
+  for(const w of words){ if(len+w[0].length>maxc&&lines[lines.length-1].length){lines.push([]);len=0} lines[lines.length-1].push(w);len+=w[0].length+1 }
+  let o='';const h=lines.length*76+40, y0=1300;
+  const wmax=Math.max(...lines.map(l=>l.map(w=>w[0]).join(' ').length))*fs*0.53;
+  o+=`<rect x="${540-wmax/2-40}" y="${y0}" width="${wmax+80}" height="${h}" rx="22" fill="rgba(10,14,20,.82)"/>`;
+  lines.forEach((l,i)=>{o+=`<text x="540" y="${y0+78+i*76}" text-anchor="middle" font-family="Inter" font-weight="800" font-size="${fs}">${l.map(([s,a,b])=>`<tspan fill="${t>=a-0.03&&t<b+0.05?'#FFD23F':'#FFFFFF'}">${s} </tspan>`).join('')}</text>`});
+  return o}
+window.dikey=function(ad,T){
+  const p=PLANLAR[ad]; let o=DEFS+`<rect width="1080" height="1920" fill="${P}"/>`+ros(540,300,260,60,180,6,G,.08)+ros(540,1650,260,60,180,6,B,.07);
+  const z=p.zam.find(z=>T>=z.t0&&T<z.t1)||p.zam[p.zam.length-1];
+  let tv, words=null;
+  if(z.tur=='src'){ tv=z.s0+Math.min(T,z.t1)-z.t0; const c=(window.SUB||[]).find(c=>tv>=c.t0-0.05&&tv<c.t1); if(c&&T<z.t1) words=c.w.map(([s,a,b])=>[s,a-z.s0+z.t0,b-z.s0+z.t0]); }
+  else { tv=z.g0+(T-z.t0); if(z.tut!=null) tv=Math.min(tv,z.tut);
+    const ws=z.metin.split(' '), L=ws.reduce((a,x)=>a+x.length+1,0); let acc=0, all=ws.map(x=>{const a=z.t0+(z.t1-z.t0)*acc/L; acc+=x.length+1; return [x,a,z.t0+(z.t1-z.t0)*acc/L]});
+    // en fazla ~24 karakterlik 2 satır göster: bulunduğu parçayı seç
+    let chunks=[[]],n=0; for(const w of all){ if(n+w[0].length>44&&chunks[chunks.length-1].length){chunks.push([]);n=0} chunks[chunks.length-1].push(w); n+=w[0].length+1 }
+    words=chunks.find(c=>T<c[c.length-1][2]+0.2)||chunks[chunks.length-1]; if(T>=z.t1) words=null; }
+  // üst bant
+  o+=`<text x="540" y="200" text-anchor="middle" font-family="Inter" font-weight="800" font-size="30" letter-spacing="10" fill="${AU}">MERAKOLOJİ · EKONOMİ</text>`;
+  p.ust.split('<br>').forEach((s,i)=>o+=`<text x="540" y="${320+i*100}" text-anchor="middle" font-family="Inter Display" font-weight="900" font-size="82" fill="${i?B:G}">${s}</text>`);
+  // sahne
+  const sc=draw(Math.max(0,tv));
+  o+=`<defs><clipPath id="kutu"><rect x="0" y="0" width="1920" height="1080"/></clipPath></defs>
+  <g transform="translate(${540-960*SC},${SY}) scale(${SC})"><g clip-path="url(#kutu)">${sc}</g><rect width="1920" height="1080" fill="none" stroke="${G}" stroke-width="8"/></g>`;
+  if(words) o+=vsub(words,T);
+  // son kart
+  if(p.son&&T>p.sure-p.son){const k=cl((T-(p.sure-p.son))/0.3);
+    o+=`<g opacity="${k}"><rect width="1080" height="1920" fill="${P}" opacity=".96"/>${ros(540,900,300,70,220,6,G,.1)}
+    <g transform="translate(540,880) rotate(-8) scale(${1+1.2*(1-out3(cl((T-(p.sure-p.son)-0.1)/0.35)))})"><circle r="250" fill="none" stroke="${B}" stroke-width="14"/><circle r="220" fill="none" stroke="${B}" stroke-width="3"/>
+    <text y="-50" text-anchor="middle" font-family="Inter Display" font-weight="900" font-size="64" fill="${B}">TAMAMI</text><text y="40" text-anchor="middle" font-family="Inter Display" font-weight="900" font-size="64" fill="${B}">KANALDA</text>
+    <text y="120" text-anchor="middle" font-family="Inter" font-weight="800" font-size="30" letter-spacing="6" fill="${G}">MERAKOLOJİ</text></g>
+    <text x="540" y="1300" text-anchor="middle" font-family="Inter" font-weight="800" font-size="44" fill="${G}">▶ Devlet neden sınırsız para basamıyor?</text></g>`;}
+  o+=`<rect x="20" y="20" width="1040" height="1880" fill="none" stroke="${G}" stroke-width="5"/><rect width="1080" height="1920" fill="url(#vig)"/>`;
+  if(T<0.25) o+=`<rect width="1080" height="1920" fill="#000" opacity="${1-T/0.25}"/>`;
+  document.getElementById('d').innerHTML=o;};
+</script></body></html>
