@@ -1,0 +1,67 @@
+<!doctype html><html><head><meta charset="utf-8"></head><body style="margin:0">
+<svg id="s" width="1920" height="1080" xmlns="http://www.w3.org/2000/svg"></svg>
+<script>window.SUB=[];</script><script src="ortak.js"></script>
+<script>
+const HAR='#C49A2C',BOR='#8C2F39',KIR='#B5562E',GRI='#8A8F8C',LAC='#2E4A6B',CY='#2F6B55';
+const pl=(pts,w=12,c=INK)=>`<polyline points="${pts.map(p=>p.join(',')).join(' ')}" fill="none" stroke="${c}" stroke-width="${w}" stroke-linecap="round" stroke-linejoin="round"/>`;
+// kollu piyon: omuzlar (±70,-150), kalça (±36,6). pose: la, ra, ll, rl = nokta dizileri (omuz/kalçadan sonra)
+function kp(x,y,s,col,p={},extra='',rot=0){
+ const arms=(p.la?pl([[-70,-150],...p.la],14):'')+(p.ra?pl([[70,-150],...p.ra],14):'');
+ const legs=(p.ll?pl([[-36,6],...p.ll],13):'')+(p.rl?pl([[36,6],...p.rl],13):'');
+ return `<g transform="translate(${x},${y}) rotate(${rot})">${pawn(0,0,s,col,legs+(p.back||'')+arms+extra)}</g>`}
+// çöp adam: omuz (0,-230), kalça (0,-120), baş (0,-300)
+function st(x,y,s,p={},extra='',rot=0,col=INK,head=P){
+ let o=`<g transform="translate(${x},${y}) scale(${s}) rotate(${rot})">`;
+ o+=pl([[0,-252],[0,-120]],12,col)+`<circle cx="0" cy="-300" r="48" fill="${head}" stroke="${col}" stroke-width="12"/>`;
+ o+=pl([[0,-230],...(p.la||[[-50,-160]])],12,col)+pl([[0,-230],...(p.ra||[[50,-160]])],12,col);
+ o+=pl([[0,-120],...(p.ll||[[-40,0]])],12,col)+pl([[0,-120],...(p.rl||[[40,0]])],12,col);
+ return o+extra+`</g>`}
+function frame(title,no,bodyL,bodyR,bg){
+ let o=DEFS+BG+`<text x="960" y="110" text-anchor="middle" font-family="Inter" font-weight="800" font-size="28" letter-spacing="10" fill="${AU}">SAHNE ${no} / 5</text><text x="960" y="185" text-anchor="middle" font-family="Bitstream Charter" font-weight="bold" font-size="56" fill="${G}">${title}</text>`;
+ [[60,'KOLLU PİYON',bodyL],[990,'ÇÖP ADAM',bodyR]].forEach(([x0,t,b])=>{
+  o+=`<g><clipPath id="c${x0}"><rect x="${x0}" y="230" width="870" height="760" rx="18"/></clipPath><rect x="${x0}" y="230" width="870" height="760" rx="18" fill="${bg||'#FFF8E7'}" fill-opacity="${bg?1:.55}" stroke="${G}" stroke-width="4"/>
+  <g clip-path="url(#c${x0})"><g transform="translate(${x0},230)">${b}</g></g>
+  <rect x="${x0+300}" y="250" width="270" height="52" rx="26" fill="${INK}"/><text x="${x0+435}" y="285" text-anchor="middle" font-family="Inter" font-weight="900" font-size="26" fill="#FFD23F">${t}</text></g>`});
+ return o+BORDER+`<rect width="1920" height="1080" fill="url(#vig)"/>`}
+const ground=`<line x1="20" y1="640" x2="850" y2="640" stroke="${G}" stroke-width="3"/>`;
+const sweat=(x,y)=>`<path d="M ${x} ${y} q 12 22 0 34 q -12 -12 0 -34 z" fill="#7FD1F7" stroke="${INK}" stroke-width="3"/>`;
+const shake=(x,y)=>`<path d="M ${x-120} ${y} q -16 -20 0 -40 M ${x-140} ${y+10} q -20 -26 0 -56 M ${x+120} ${y} q 16 -20 0 -40 M ${x+140} ${y+10} q 20 -26 0 -56" stroke="${INK}" stroke-width="5" fill="none"/>`;
+// ---------- 1: SAYAÇ STRESİ ----------
+function s1(){const sign=`<rect x="520" y="150" width="300" height="200" rx="14" fill="${INK}"/><text x="670" y="250" text-anchor="middle" font-family="JetBrains Mono" font-weight="800" font-size="80" fill="#FFD23F">09:59</text><text x="670" y="310" text-anchor="middle" font-family="Inter" font-weight="900" font-size="28" fill="#ff6b6b">STOKTA SON 2!</text>`;
+ const L=ground+sign+kp(300,630,.85,HAR,{la:[[-120,-250],[-60,-290]],ra:[[120,-250],[60,-290]]},'',0)+shake(300,330)+sweat(390,330)+sweat(205,360);
+ const R=ground+sign+st(300,630,.9,{la:[[-60,-290],[-30,-330]],ra:[[60,-290],[30,-330]],ll:[[-50,-60],[-30,0]],rl:[[50,-60],[30,0]]})+shake(300,320)+sweat(380,330)+sweat(215,350);
+ return frame('Stres: "Stokta son 2 ürün!" sayacı',1,L,R)}
+// ---------- 2: KARUN NEHRİ GEÇİYOR ----------
+function palace(x,y,col){return `<g transform="translate(${x},${y}) rotate(-12)"><path d="M -110 -200 L 0 -260 L 110 -200 Z" fill="${col}" stroke="${INK}" stroke-width="5"/>${[-80,-30,20,70].map((c,i)=>`<rect x="${c}" y="-200" width="22" height="200" fill="#EBDDBB" stroke="${INK}" stroke-width="4" transform="rotate(${(i-1.5)*9} ${c} 0)"/>`).join('')}</g>${[0,1,2,3].map(i=>`<rect x="${x-60+i*40}" y="${y-20-i*14}" width="24" height="18" fill="#EBDDBB" stroke="${INK}" stroke-width="3" transform="rotate(${i*30} ${x-50+i*40} ${y})"/>`).join('')}`}
+function s2(){const river=`<rect x="0" y="560" width="870" height="80" fill="#cfe0d4"/>${[0,1].map(i=>`<path d="M 0 ${585+i*25} q 40 -10 80 0 t 80 0 t 80 0 t 80 0 t 80 0 t 80 0 t 80 0 t 80 0 t 80 0 t 80 0 t 80 0" stroke="${G}" stroke-width="3" fill="none" opacity=".5"/>`).join('')}`;
+ const crown=`<path d="M -50 -296 l 0 -40 l 25 22 l 25 -36 l 25 36 l 25 -22 l 0 40 z" fill="#FFD23F" stroke="${INK}" stroke-width="5"/>`;
+ const L=river+palace(170,560,BOR)+kp(560,610,.8,HAR,{la:[[-120,-90]],ra:[[130,-210],[170,-250]],ll:[[-70,60]],rl:[[50,70]]},crown,8)+`<text x="660" y="300" font-family="Bitstream Charter" font-weight="bold" font-size="60" fill="${G}">♪</text>`;
+ const R=river+palace(170,560,BOR)+st(560,620,.85,{la:[[-60,-160],[-90,-110]],ra:[[60,-300],[90,-340]],ll:[[-50,-50],[-70,10]],rl:[[40,-50],[70,0]]},`<path d="M -50 -342 l 0 -40 l 25 22 l 25 -36 l 25 36 l 25 -22 l 0 40 z" fill="#FFD23F" stroke="${INK}" stroke-width="6"/>`,6)+`<text x="660" y="300" font-family="Bitstream Charter" font-weight="bold" font-size="60" fill="${G}">♪</text>`;
+ return frame('Hareket: Karun nehri geçerken arkasında sarayı yıkılıyor',2,L,R)}
+// ---------- 3: GECE 3 TELEFONU (koyu) ----------
+function s3(){const night=`<rect width="870" height="760" fill="#111d33"/><rect x="560" y="80" width="250" height="160" fill="#1c2b48" stroke="#2e4a6b" stroke-width="4"/><circle cx="740" cy="140" r="30" fill="#f4f1d0"/><text x="190" y="140" font-family="JetBrains Mono" font-weight="800" font-size="44" fill="#ff6b6b">03:12</text>
+ <rect x="520" y="560" width="300" height="70" rx="14" fill="#6B4A2B"/><rect x="540" y="520" width="270" height="50" rx="20" fill="#e8e0cc"/><text x="720" y="470" font-family="Bitstream Charter" font-weight="bold" font-size="46" fill="#cfe0ff">Z z z</text>`;
+ const phone=(x,y)=>`<rect x="${x}" y="${y}" width="44" height="80" rx="8" fill="#ddd" stroke="#fff" stroke-width="4"/><path d="M ${x+60} ${y+10} q 20 30 0 60 M ${x+80} ${y} q 30 40 0 80" stroke="#7FD1F7" stroke-width="5" fill="none"/>`;
+ const L=night+kp(250,620,.8,KIR,{la:[[-110,-220],[-60,-240]],ra:[[120,-250],[90,-300]]},`<circle cx="0" cy="-318" r="26" fill="${KIR}" stroke="${INK}" stroke-width="6"/>`,0)+phone(305,330)+shake(250,330)+kp(680,555,.32,'#4a7fb5',{},'',-80);
+ const R=night+st(250,620,.85,{la:[[-60,-290],[-40,-320]],ra:[[60,-280],[40,-320]],ll:[[-30,-60],[-40,0]],rl:[[30,-60],[40,0]]},'',0,'#e8efe9','#111d33')+phone(290,320)+shake(250,320)+st(680,560,.32,{la:[[-60,-200]],ra:[[60,-200]]},'',-90,'#e8efe9','#111d33');
+ return frame('Korku ve gece: "Anne, kaza yaptım!" (oğul yan odada uyuyor)',3,L,R,'#111d33')}
+// ---------- 4: KUYRUĞUN SONU (üzüntü) ----------
+function s4(){const tag=`<line x1="700" y1="120" x2="700" y2="170" stroke="#5a3a17" stroke-width="3"/><rect x="620" y="170" width="160" height="96" fill="#FFF8E7" stroke="${G}" stroke-width="4"/><text x="700" y="238" text-anchor="middle" font-family="Bitstream Charter" font-weight="bold" font-size="54" fill="${B}">2 ₺</text>`;
+ const loaf=(x,y)=>`<g transform="translate(${x},${y})"><ellipse rx="40" ry="18" fill="#D49A52" stroke="#5a3a17" stroke-width="4"/></g>`;
+ const meltNote=(x,y)=>`<g transform="translate(${x},${y})"><rect x="-50" y="-12" width="100" height="40" rx="4" fill="${NOTE}" stroke="${G}" stroke-width="3"/>${[-30,0,30].map(d=>`<path d="M ${d} 28 q 6 20 0 34" stroke="${NOTE}" stroke-width="10" stroke-linecap="round" fill="none"/>`).join('')}</g>`;
+ const L=ground+tag+kp(650,630,.6,HAR,{la:[[-120,-120]],ra:[[120,-210]],ll:[[-60,60]],rl:[[50,50]]},'',5)+loaf(740,410)+kp(260,630,.75,GRI,{la:[[-90,-60],[-110,0]],ra:[[150,-110]]},'',8)+meltNote(395,470)+`<text x="160" y="300" font-family="Bitstream Charter" font-weight="bold" font-size="80" fill="${GRI}">…</text>`;
+ const R=ground+tag+st(650,630,.62,{la:[[-60,-170]],ra:[[60,-300],[80,-330]],ll:[[-40,-50],[-60,0]],rl:[[40,-60],[70,-10]]},'',4)+loaf(710,400)+st(260,630,.8,{la:[[-40,-150],[-50,-90]],ra:[[90,-200]],ll:[[-30,0]],rl:[[30,0]]},'',14)+meltNote(345,480)+`<text x="150" y="300" font-family="Bitstream Charter" font-weight="bold" font-size="80" fill="${GRI}">…</text>`;
+ return frame('Üzüntü: Para kuyruğun sonuna ulaştığında ekmek çoktan 2 lira',4,L,R)}
+// ---------- 5: KUPA ÇIĞI (tebeşir) ----------
+function s5(){const W='#F4F1E6',Y='#F2D24B';
+ const board=`<rect width="870" height="760" fill="#2E4D3D"/><g filter="url(#chalk5)"><rect x="560" y="140" width="220" height="440" fill="none" stroke="${W}" stroke-width="6"/><path d="M 560 140 l -90 40 v 420 l 90 -20" fill="none" stroke="${W}" stroke-width="6"/>
+ ${[[420,250,-30],[480,330,20],[380,400,-60],[520,440,40],[440,520,-15],[600,300,10],[640,420,-25]].map(([x,y,r])=>`<g transform="translate(${x},${y}) rotate(${r})"><path d="M -24 -30 h 48 l -6 40 h -36 z M -24 -22 q -18 0 -16 16 q 2 12 18 10 M 24 -22 q 18 0 16 16 q -2 12 -18 10 M -10 10 v 14 h 20 v -14 M -20 26 h 40" fill="none" stroke="${Y}" stroke-width="5"/></g>`).join('')}</g>`;
+ const defs=`<defs><filter id="chalk5"><feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2"/><feDisplacementMap in="SourceGraphic" scale="4"/></filter></defs>`;
+ const chalkKP=`<g filter="url(#chalk5)" fill="none" stroke="${Y}" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"><g transform="translate(230,640) scale(.8)"><path d="M -75 -10 q 0 -150 75 -190 q 75 40 75 190 z" fill="${Y}" fill-opacity=".18"/><rect x="-95" y="-22" width="190" height="30" rx="15"/><circle cx="0" cy="-245" r="62" fill="${Y}" fill-opacity=".18"/><circle cx="-24" cy="-250" r="20"/><circle cx="24" cy="-250" r="20"/>
+  <polyline points="-70,-150 -140,-280 -60,-330"/><polyline points="70,-150 140,-280 60,-330"/><polyline points="-36,6 -60,50"/><polyline points="36,6 60,50"/></g></g>`;
+ const chalkSt=`<g filter="url(#chalk5)" fill="none" stroke="${Y}" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"><g transform="translate(230,640) scale(.85)"><circle cx="0" cy="-300" r="48"/><circle cx="-18" cy="-300" r="14" stroke-width="5"/><circle cx="18" cy="-300" r="14" stroke-width="5"/><line x1="0" y1="-252" x2="0" y2="-120"/>
+  <polyline points="0,-230 -70,-320 -10,-370"/><polyline points="0,-230 70,-320 10,-370"/><polyline points="0,-120 -50,-50 -30,0"/><polyline points="0,-120 50,-50 30,0"/></g></g>`;
+ const lbl2=`<text x="230" y="720" text-anchor="middle" font-family="Inter" font-weight="800" font-size="24" fill="${W}">"Dünyanın en iyi öğretmeni" ×30</text>`;
+ return frame('Komik kaos: Dolaptan kupa çığı (Kara Tahta)',5,defs+board+chalkKP+lbl2,defs+board+chalkSt+lbl2,'#2E4D3D')}
+window.ciz=v=>{document.getElementById('s').innerHTML=[s1,s2,s3,s4,s5][v-1]()};
+</script></body></html>
