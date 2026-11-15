@@ -30,7 +30,7 @@ window.dikey=function(ad,T){
   const sc=draw(Math.max(0,tv));
   o+=`<defs><clipPath id="kutu"><rect x="0" y="0" width="1920" height="1080"/></clipPath></defs>
   <g transform="translate(${540-960*SC},${SY}) scale(${SC})"><g clip-path="url(#kutu)">${sc}</g><rect width="1920" height="1080" fill="none" stroke="${G}" stroke-width="8"/></g>`;
-  if(words) o+=vsub(words,T);
+  if(words&&!window.NOSUB) o+=vsub(words,T);
   // son kart
   if(p.son&&T>p.sure-p.son){const k=cl((T-(p.sure-p.son))/0.3);
     o+=`<g opacity="${k}"><rect width="1080" height="1920" fill="${P}" opacity=".96"/>${ros(540,900,300,70,220,6,G,.1)}

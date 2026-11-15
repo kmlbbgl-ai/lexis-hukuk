@@ -1,0 +1,20 @@
+<!doctype html><html><head><meta charset="utf-8"></head><body style="margin:0">
+<svg id="d" width="1080" height="1920" xmlns="http://www.w3.org/2000/svg"></svg><svg id="s" width="0" height="0"></svg>
+<script>window.SAHNE_SADECE=true;</script>
+<script src="bolum1_veri.js"></script><script src="ortak.js"></script><script src="kanca.js"></script><script src="govde.js"></script>
+<script>
+const K={
+ instagram:{l:['Devlet neden sınırsız','para basamıyor?'],alt:'4 sebep · 3 dakikada',g:()=>press(540,1130,1.0,0.3)+[[220,760,-14],[860,760,12],[170,1000,8],[900,1010,-10],[640,700,20]].map(a=>note(a[0],a[1],a[2],.85)).join('')+qmark(880,830,1.1)},
+ short1:{l:['Devlet herkese','1 milyon bassa?'],alt:'Hepimiz zengin olur muyuz?',g:()=>pawn(250,1420,1.05)+wallet(430,1220,1.05,1)+`<circle cx="430" cy="1060" r="26" fill="#FFFDF5" stroke="${INK}" stroke-width="5"/><circle cx="480" cy="990" r="40" fill="#FFFDF5" stroke="${INK}" stroke-width="5"/><ellipse cx="660" cy="830" rx="360" ry="220" fill="#FFFDF5" stroke="${INK}" stroke-width="6"/>`+[[520,780,-10],[700,740,12],[820,860,-20],[600,900,8],[760,950,18]].map(a=>note(a[0],a[1],a[2],.62)).join('')},
+ short2:{l:['Parayı yakmak, odun','almaktan ucuzdu'],alt:'Almanya, 1923',g:()=>stove(470,1330,1.55,0.7,1)+bundle(830,870,-30,1.8)},
+ short3:{l:["Türkiye'de herkes","milyonerdi"],alt:'…ama kimse zengin değildi',g:()=>`<g transform="translate(540,960) rotate(-6)">${bigNote(0,0,.86,1,0)}</g>`+[0,1,2].map(i=>pawn(260+i*280,1500,.75,i%2?G2:'#3C7A5E',`<g><rect x="-100" y="-140" width="200" height="44" fill="${AU}" stroke="${INK}" stroke-width="4" transform="rotate(-12)"/><text x="0" y="-110" text-anchor="middle" font-family="Inter" font-weight="900" font-size="28" fill="${INK}" transform="rotate(-12)">MİLYONER</text></g>`)).join('')},
+};
+window.kapak=function(ad){const k=K[ad];
+ let o=DEFS+`<rect width="1080" height="1920" fill="${P}"/>`+ros(540,1000,420,100,320,6,G,.08);
+ o+=`<text x="540" y="300" text-anchor="middle" font-family="Inter" font-weight="800" font-size="32" letter-spacing="10" fill="${AU}">MERAKOLOJİ · EKONOMİ</text>`;
+ k.l.forEach((s,i)=>o+=`<text x="540" y="${430+i*112}" text-anchor="middle" font-family="Inter Display" font-weight="900" font-size="${s.length>18?88:100}" fill="${i?B:G}">${s}</text>`);
+ o+=k.g();
+ o+=`<rect x="${540-k.alt.length*15-50}" y="1560" width="${k.alt.length*30+100}" height="96" rx="48" fill="${INK}"/><text x="540" y="1624" text-anchor="middle" font-family="Inter Display" font-weight="900" font-size="50" fill="#FFD23F">${k.alt}</text>`;
+ o+=`<rect x="20" y="20" width="1040" height="1880" fill="none" stroke="${G}" stroke-width="5"/><rect width="1080" height="1920" fill="url(#vig)"/>`;
+ document.getElementById('d').innerHTML=o;};
+</script></body></html>
