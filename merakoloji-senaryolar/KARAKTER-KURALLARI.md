@@ -5,6 +5,8 @@
 - Gerekçe: duygu ve hareketi en net o anlatıyor (karşılaştırma görselleri: `karakter/sahne-1..5.jpg`, `karakter/sahne-sinif.jpg`).
 - Çizgi rengi: Banknot ve Gece tarzında koyu mürekkep (#0f2e22 / gecede açık krem); Kara Tahta'da renkli tebeşir.
 - Maskot YOK. Her karakter rolüne göre bir EŞYA taşır; kim olduğu eşyadan anlaşılır.
+- EŞYALAR DOLU VE RENKLİ çizilir (ince çizgi değil): kırmızı takke, kalın kahverengi baston, altın taç, bordo pelerin, lacivert şapka, dolu çanta/kitap. Gövde ince çizgi kalır. Örnek: `karakter/standart-copadam.jpg`
+- Başın içi varsayılan olarak nötr kâğıt/krem tonu; hikâye gerektirince paletten renk (kazanan altın, kaybeden gri).
 - Renk: başın içi paletteki renkle dolar (ör. kazanan altın, kaybeden gri). Kaybeden karakterin çizgileri de griye solabilir.
 - (Önceki "kollu piyon" kararı bununla değiştirildi.)
 
