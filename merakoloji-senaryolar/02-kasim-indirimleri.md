@@ -118,9 +118,10 @@ Sen bu Kasım'da kaç kez "son 2 ürün" yazısıyla telaşlandın? Yorumlara ya
 - Kanca (ayakkabı 1.000 → 2.000 → %50 → "Tebrikler, hiçbir şey kazanmadın… ama çok mutlu oldun")
 - Yeni kural (son 10 günün en düşük fiyatı, 1 Ağustos 2026)
 - "Şüphelendiğin indirim için tüketici.gov.tr"
-- KAPANIŞ (sesli, yeni cümle): "Kalan 3 taktik, profilimizdeki uzun videoda!" + ekranda "Tamamı profilde 👆"
-  (YouTube ve Instagram'da aynı dosya çalışsın diye "profil" denildi.)
-(Ses uzun videodan kesilir; yalnızca kapanış cümlesi için ~60 kredi ek ses gerekir — onayla birlikte üretilecek.)
+- KAPANIŞ — iki ayrı dosya, görüntü aynı, son cümle farklı:
+  - **YouTube Short:** "Kalan 3 taktik kanalımızda. Üstelik kargo bedava!" 😄 — ekranda "Tamamı kanalda ▶" + "KARGO BEDAVA" damgası
+  - **Instagram Reels:** "Kalan 3 taktik YouTube'da, bağlantı profilde. Kargo da bedava!" 😄 — ekranda "Devamı YouTube'da 👉 Profildeki bağlantı" + "KARGO BEDAVA" damgası
+(Ses uzun videodan kesilir; yalnızca iki kapanış cümlesi için ~120 kredi ek ses gerekir — onayla birlikte üretilecek.)
 
 ---
 
