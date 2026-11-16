@@ -2,3 +2,4 @@ cikti/*.mp4
 */mix_*.wav
 */*.npy
 **/__pycache__/
+cikti/*.zip
