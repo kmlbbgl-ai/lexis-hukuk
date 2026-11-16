@@ -63,7 +63,7 @@ def donustur(ws):  # ws: [[kelime,t0,t1],...]
         if conv:
             words=[ws[k][0] for k in seq]; n=sum_seq(words); r,s,o=split(words[-1])
             nxt=ws[seq[-1]+1][0].lower() if seq[-1]+1<len(ws) else ''
-            year=1900<=n<=2099 and (s in ('de','da','te','ta','den','dan','ten','tan') or nxt=='ve' or (seq[0]>0 and ws[seq[0]-1][0].lower().startswith(AYLAR)))
+            year=1900<=n<=2099 and (s in ('de','da','te','ta','den','dan','ten','tan','larda','lerde','lar','ler','ları','leri') or nxt=='ve' or (seq[0]>0 and ws[seq[0]-1][0].lower().startswith(AYLAR)))
             # virgül: 39 virgül 9
             if nxt.startswith('virgül') and seq[-1]+2<len(ws) and split(ws[seq[-1]+2][0]):
                 k=seq[-1]+2; frac=[k]

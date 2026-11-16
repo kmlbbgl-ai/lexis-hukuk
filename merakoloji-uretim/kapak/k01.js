@@ -1,0 +1,11 @@
+window.kapak=function(v){let o=DEFS+CHALK_DEFS+`<rect width="1080" height="1920" fill="#7a5230"/><rect x="40" y="40" width="1000" height="1840" fill="#2E4D3D"/><rect x="40" y="40" width="1000" height="1840" filter="url(#smudge)"/>`;
+ const tx=(x,y,fs,col,s,font='Inter Display')=>`<text x="${x}" y="${y}" text-anchor="middle" font-family="${font}" font-weight="900" font-size="${fs}" fill="${col}" filter="url(#chalk)">${s}</text>`;
+ o+=tx(540,220,36,Wt,'MERAKOLOJİ','Inter');
+ o+=tx(540,400,110,Wt,'ÖĞRETMENLER')+tx(540,520,110,Wt,'GÜNÜ NEDEN');
+ o+=`<g transform="rotate(-4 540 720)">${tx(540,770,175,Yt,'24 KASIM?')}</g>`;
+ [['5 EKİM?',880],['KARNE GÜNÜ?',980]].forEach(([s,y])=>{o+=tx(540,y,70,PKt,s)+strike(330,y-24,750,y-24,1)});
+ o+=OGRETMEN(330,1620,1.25,POZ.parmak,tTebesir(70,-390));
+ o+=DEDE(760,1620,1.05,POZ.parmak);
+ o+=kupa(560,1680,-10,2.2)+kupa(930,1700,12,1.8);
+ o+=tx(540,1800,52,Wt,'53 yıl geç kalan kutlama 😄','Inter');
+ return o};
