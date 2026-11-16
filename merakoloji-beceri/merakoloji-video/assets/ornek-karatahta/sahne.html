@@ -1,0 +1,181 @@
+<!doctype html><html><head><meta charset="utf-8"></head><body style="margin:0;background:#000">
+<svg id="s" width="1080" height="1920" xmlns="http://www.w3.org/2000/svg"></svg>
+<script>const VER=(location.hash.match(/v=(\w+)/)||[0,'yt'])[1];document.write(`<script src="veri_${VER}.js"><\/script>`);</script>
+<script src="../lib/ortak.js"></script><script src="../lib/parcalar.js"></script><script src="../lib/cop.js"></script>
+<script>
+/* Öğretmenler Günü — dikey Short, Kara Tahta tarzı, tebeşir çöp adamlar */
+const Wt=TEB.beyaz,Yt=TEB.sari,PKt=TEB.pembe,BLt=TEB.mavi,RD='#FF7B7B';
+const T=(l,i)=>{const a=LW[l];return a&&a[i<0?a.length+i:i]!=null?a[i<0?a.length+i:i]:9999};
+const ctext=(x,y,fs,col,txt,k=1,anchor='middle',font='Inter Display',wgt=900)=>{ // k: yazılma oranı
+  if(k<=0)return '';const id='cl'+Math.round(x)+'_'+Math.round(y)+'_'+fs;
+  return `<defs><clipPath id="${id}"><rect x="${anchor=='middle'?x-1000:x}" y="${y-fs*1.2}" width="${2000*cl(k)}" height="${fs*1.6}"/></clipPath></defs><text x="${x}" y="${y}" text-anchor="${anchor}" font-family="${font}" font-weight="${wgt}" font-size="${fs}" fill="${col}" clip-path="url(#${id})" filter="url(#chalk)">${txt}</text>`};
+const strike=(x1,y1,x2,y2,k,col=RD,w=10)=>k>0?`<line x1="${x1}" y1="${y1}" x2="${x1+(x2-x1)*cl(k)}" y2="${y1+(y2-y1)*cl(k)+3}" stroke="${col}" stroke-width="${w}" stroke-linecap="round" filter="url(#chalk)"/>`:'';
+function bal(x,y,wd,txt,k,tx=-1,fs=40){ // tx: kuyruk yönü (-1 sol, 1 sağ)
+  if(k<=0)return '';const s=back(k);const tp=tx*(wd/2-60);
+  return `<g transform="translate(${x},${y}) scale(${s})"><g filter="url(#chalk)"><path d="M ${-wd/2} -50 h ${wd} v 100 H ${tp+30} l ${-20*tx-10} 50 l ${-10} -50 H ${-wd/2} z" fill="#2E4D3D" fill-opacity=".85" stroke="${Wt}" stroke-width="5"/></g>
+  <text x="0" y="${fs*0.35}" text-anchor="middle" font-family="Bitstream Charter" font-style="italic" font-weight="bold" font-size="${fs}" fill="${Wt}" filter="url(#chalk)">${txt}</text></g>`}
+const kisi=(x,y,s,col,poz,front='',back='',o={})=>cop(x,y,s,Object.assign({tema:'tahta',c:col,poz,front,back},o));
+// tebeşirle dolu eşyalar
+const tTakke=()=>`<path d="M -48 -322 q 48 -62 96 0 z" fill="${RD}" fill-opacity=".85" stroke="${RD}" stroke-width="6" filter="url(#chalk)"/>`;
+const tBaston=()=>`<g filter="url(#chalk)"><line x1="100" y1="-110" x2="120" y2="0" stroke="#d9a066" stroke-width="16" stroke-linecap="round"/><path d="M 100 -110 q -6 -34 26 -40" fill="none" stroke="#d9a066" stroke-width="16" stroke-linecap="round"/></g>`;
+const tGozluk=()=>`<g filter="url(#chalk)"><circle cx="-20" cy="-300" r="18" fill="${Yt}" fill-opacity=".25" stroke="${Yt}" stroke-width="7"/><circle cx="20" cy="-300" r="18" fill="${Yt}" fill-opacity=".25" stroke="${Yt}" stroke-width="7"/></g>`;
+const tTopuz=()=>`<circle cx="0" cy="-358" r="26" fill="${PKt}" fill-opacity=".8" stroke="${PKt}" stroke-width="6" filter="url(#chalk)"/>`;
+const tElbise=()=>`<path d="M 0 -230 l -55 115 h 110 z" fill="${PKt}" fill-opacity=".55" stroke="${PKt}" stroke-width="6" filter="url(#chalk)"/>`;
+const tCanta=(c=BLt)=>`<rect x="-80" y="-230" width="50" height="80" rx="12" fill="${c}" fill-opacity=".6" stroke="${c}" stroke-width="5" filter="url(#chalk)"/>`;
+const tKitap=()=>`<rect x="-90" y="-150" width="64" height="80" rx="6" fill="#9BE3A8" fill-opacity=".6" stroke="#9BE3A8" stroke-width="5" filter="url(#chalk)"/>`;
+const tTebesir=(x,y)=>`<rect x="${x-6}" y="${y-20}" width="12" height="40" rx="4" fill="${Wt}" transform="rotate(30 ${x} ${y})"/>`;
+const OGRETMEN=(x,y,s,poz,extra='')=>kisi(x,y,s,Yt,poz,tGozluk()+tKitap()+extra);
+const DEDE=(x,y,s,poz,extra='')=>kisi(x,y,s,Wt,poz,tTakke()+tBaston()+extra);
+const ANNE=(x,y,s,poz)=>kisi(x,y,s,PKt,poz,tElbise(),tTopuz());
+const COCUK=(x,y,s,poz)=>kisi(x,y,s,BLt,poz,'',tCanta());
+const wig=(t,f=6,a=1)=>Math.sin(t*f)*a;
+// silüet (Başöğretmen) — saygılı, hareketsiz
+function siluet(x,y,s,k){if(k<=0)return '';const L=2600;
+ return `<g transform="translate(${x},${y}) scale(${s})" filter="url(#chalk)" fill="none" stroke="${Wt}" stroke-width="7" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="${L}" stroke-dashoffset="${L*(1-cl(k))}">
+  <path d="M -38 -330 h 76 l -6 -50 q -32 -12 -64 0 z" fill="${Wt}" fill-opacity="${.25*cl(k)}"/><ellipse cx="0" cy="-292" rx="36" ry="42"/>
+  <path d="M -20 -252 l -60 30 q -30 110 -24 230 h 208 q 6 -120 -24 -230 l -60 -30"/><path d="M -20 -252 l 20 60 l 20 -60"/>
+  <path d="M 70 -210 q 50 -10 80 -70" stroke-width="10"/><line x1="150" y1="-280" x2="166" y2="-302" stroke-width="12"/></g>`}
+function kupa(x,y,r,s=1,c=Yt){return `<g transform="translate(${x},${y}) rotate(${r}) scale(${s})" filter="url(#chalk)"><path d="M -24 -30 h 48 l -6 40 h -36 z M -24 -22 q -18 0 -16 16 q 2 12 18 10 M 24 -22 q 18 0 16 16 q -2 12 -18 10 M -10 10 v 14 h 20 v -14 M -20 26 h 40" fill="${c}" fill-opacity=".2" stroke="${c}" stroke-width="5"/></g>`}
+function okul(x,y,s,lit){return `<g transform="translate(${x},${y}) scale(${s})" filter="url(#chalk)"><path d="M -60 0 v -70 l 60 -40 l 60 40 v 70 z" fill="none" stroke="${Wt}" stroke-width="5"/><rect x="-36" y="-56" width="24" height="24" fill="${lit?Yt:'none'}" fill-opacity=".8" stroke="${Wt}" stroke-width="4"/><rect x="12" y="-56" width="24" height="24" fill="${lit?Yt:'none'}" fill-opacity=".8" stroke="${Wt}" stroke-width="4"/><rect x="-12" y="-28" width="24" height="28" fill="none" stroke="${Wt}" stroke-width="4"/></g>`}
+// ---------- altyazı (dikey) ----------
+function vsub(t){
+ const c=(window.SUB||[]).find(c=>t>=c.t0-0.05&&t<c.t1); if(!c) return '';
+ const fs=56,maxc=22;let lines=[[]],len=0;
+ for(const w of c.w){if(len+w[0].length>maxc&&lines[lines.length-1].length){lines.push([]);len=0}lines[lines.length-1].push(w);len+=w[0].length+1}
+ const y0=1400,h=lines.length*74+36,wm=Math.max(...lines.map(l=>l.map(w=>w[0]).join(' ').length))*fs*0.53;
+ let o=`<g opacity="${cl((t-c.t0+0.05)/0.12)}"><rect x="${540-wm/2-36}" y="${y0}" width="${wm+72}" height="${h}" rx="22" fill="rgba(10,18,14,.85)"/>`;
+ lines.forEach((l,i)=>{o+=`<text x="540" y="${y0+72+i*74}" text-anchor="middle" font-family="Inter" font-weight="800" font-size="${fs}">${l.map(([s,a,b])=>`<tspan fill="${t>=a-0.03&&t<b+0.05?'#FFD23F':'#FFFFFF'}">${s} </tspan>`).join('')}</text>`});
+ return o+`</g>`}
+// ---------- tahta zemini (dikey) ----------
+const ZEMIN=`<rect width="1080" height="1920" fill="#7a5230"/><rect x="30" y="30" width="1020" height="1860" fill="#2E4D3D"/><rect x="30" y="30" width="1020" height="1860" filter="url(#smudge)"/>
+ <rect x="30" y="1840" width="1020" height="50" fill="#5c3b20"/><rect x="200" y="1832" width="90" height="14" rx="4" fill="${Wt}"/><rect x="320" y="1834" width="60" height="12" rx="4" fill="${Yt}"/><rect x="760" y="1826" width="120" height="26" rx="6" fill="#c9a36a"/>`;
+// ---------- sahneler ----------
+function sahne(t){
+ let o='';
+ const S=(a,b)=>t>=a-0.3&&t<b+0.4, F=(a,b)=>fadeIO(t,a-0.3,b+0.4,0.35);
+ // S0 kanca
+ if(S(0,T(1,0))){o+=`<g opacity="${F(0,T(1,0))}">`;
+  o+=ctext(540,640,190,Yt,'24 KASIM',(t-0.15)/1.4);
+  [['5 EKİM',T(0,6),T(0,8),830],['OKULUN İLK GÜNÜ',T(0,9),T(0,12),950],['KARNE GÜNÜ',T(0,13),T(0,15),1070]].forEach(([s,a,b,y],i)=>{
+   o+=ctext(600,y,i==1?78:88,Wt,s,(t-a)/0.5); const wd=i==1?680:i==2?540:400;
+   o+=strike(600-wd/2,y-26,600+wd/2,y-26,(t-b)/0.3); if(i==2){o+=strike(600-wd/2,y-50,600+wd/2,y-2,(t-b-0.25)/0.3);o+=strike(600-wd/2,y-2,600+wd/2,y-50,(t-b-0.5)/0.3)}});
+  o+=OGRETMEN(150,1360,1.0,t<T(0,13)?POZ.goster:POZ.omuzsilk,tTebesir(180,-300));
+  o+=`</g>`}
+ // S1 hocam sınavda çıkar mı
+ if(S(T(1,0),T(2,0))){o+=`<g opacity="${F(T(1,0),T(2,0))}">`;
+  const sal=t>T(1,6)&&t<T(1,7)?wig(t,18,10):0;
+  o+=OGRETMEN(250,1330,1.3,t<T(1,7)?POZ.dur:POZ.parmak,'',{rot:sal});
+  o+=COCUK(820,1330,1.0,POZ.parmak);
+  o+=bal(640,720,700,'Hocam, sınavda çıkar mı?',t<T(1,6)?(t-T(1,0))/0.35:0,1,48);
+  o+=bal(330,880,340,'Çıkmaz!',t<T(1,7)?(t-T(1,6))/0.3:0,-1,56);
+  if(t>T(1,7))o+=bal(440,800,640,'Ama merak ettiysen…',(t-T(1,7))/0.3,-1,48);
+  o+=`</g>`}
+ // S2 1928 seferberlik
+ if(S(T(2,0),T(3,0))){o+=`<g opacity="${F(T(2,0),T(3,0))}">`;
+  o+=ctext(540,640,200,Yt,'1928',(t-T(2,0))/1.0);
+  'A B C Ç D E'.split(' ').forEach((c,i)=>{o+=ctext(170+i*148,860,120,Wt,c,(t-T(2,5)-i*0.28)/0.35,'middle','Bitstream Charter',700)});
+  for(let i=0;i<10;i++){const r=Math.floor(i/5),x=170+(i%5)*185,y=1060+r*160;if(t>T(2,11)+i*0.1)o+=`<g opacity="${cl((t-T(2,11)-i*0.1)/0.3)}">`+okul(x,y,.95,t>T(2,13)+i*0.35)+`</g>`}
+  if(t>T(2,21))o+=`<g transform="translate(540,1345) scale(${back((t-T(2,21))/0.4)})">${ctext(0,0,76,'#9BE3A8','HERKES, HER YAŞTA!',1)}</g>`;
+  o+=`</g>`}
+ // S3 sınıf
+ if(S(T(3,0),T(4,0))){o+=`<g opacity="${F(T(3,0),T(4,0))}">`;
+  o+=ctext(540,600,120,Wt,'A  B  C',(t-T(3,6))/0.8,'middle','Bitstream Charter',700);
+  const hev=t>T(3,9);const zip=hev?Math.abs(Math.sin((t-T(3,9))*7))*24:0;
+  o+=COCUK(220,1200,.95,POZ.dur)+ANNE(540,1200,1.05,POZ.dur)+DEDE(860,1200-zip,1.05,hev?POZ.parmak:POZ.dur);
+  o+=`<g filter="url(#chalk)"><path d="M 60 1080 h 960 l -30 50 h -900 z" fill="#2E4D3D" stroke="#c9a36a" stroke-width="7"/><rect x="90" y="1130" width="900" height="160" fill="#2E4D3D"/><line x1="120" y1="1130" x2="120" y2="1300" stroke="#c9a36a" stroke-width="7"/><line x1="960" y1="1130" x2="960" y2="1300" stroke="#c9a36a" stroke-width="7"/></g>`;
+  [220,540,860].forEach(x=>o+=`<path d="M ${x-44} 1072 l 44 -16 l 44 16" fill="none" stroke="${Wt}" stroke-width="4" filter="url(#chalk)"/>`);
+  o+=bal(560,740,900,'Öğretmenim, kalem açabilir miyim?',(t-T(3,16))/0.3,1,46);
+  o+=`</g>`}
+ // S4 Millet Mektepleri + Başöğretmen
+ if(S(T(4,0),T(5,0))){o+=`<g opacity="${F(T(4,0),T(5,0))}">`;
+  const b=t<T(4,8);
+  if(b||t<T(4,8)+0.5){o+=`<g opacity="${b?1:cl((T(4,8)+0.5-t)/0.5)}">`+ctext(540,560,96,Yt,'MİLLET MEKTEPLERİ',(t-T(4,6))/0.6)+okul(540,1120,3.2,true);
+   const yur=(t-T(4,0))*120; o+=kisi(120+yur,1260,.7,Wt,(Math.floor(t*4)%2)?POZ.yuru1:POZ.yuru2,tKitap())+kisi(-60+yur,1260,.7,PKt,(Math.floor(t*4)%2)?POZ.yuru2:POZ.yuru1,tElbise(),tTopuz()); o+=`</g>`}
+  if(t>T(4,8)){o+=siluet(540,1250,1.6,(t-T(4,8))/2.2);
+   o+=`<g opacity="${cl((t-T(4,11))/0.5)}" filter="url(#chalk)"><rect x="300" y="520" width="480" height="90" fill="none" stroke="${Wt}" stroke-width="5"/><text x="540" y="582" text-anchor="middle" font-family="Inter" font-weight="900" font-size="50" letter-spacing="8" fill="${Wt}">BAŞÖĞRETMEN</text></g>`}
+  o+=`</g>`}
+ // S5 talimatname
+ if(S(T(5,0),T(6,0))){o+=`<g opacity="${F(T(5,0),T(6,0))}">`;
+  o+=siluet(250,1250,1.0,1);
+  o+=`<g transform="translate(720,880) rotate(3)" filter="url(#chalk)"><rect x="-230" y="-300" width="460" height="600" fill="${Wt}" fill-opacity=".1" stroke="${Wt}" stroke-width="5"/><text x="0" y="-200" text-anchor="middle" font-family="Inter" font-weight="900" font-size="44" letter-spacing="4" fill="${Wt}">TALİMATNAME</text>${[0,1,2,3,4,5].map(i=>`<line x1="-180" y1="${-120+i*60}" x2="180" y2="${-120+i*60}" stroke="${Wt}" stroke-width="4" opacity=".6"/>`).join('')}</g>`;
+  if(t>T(5,9)){const s=cl((t-T(5,9))/0.3);o+=`<g transform="translate(720,1000) rotate(-12) scale(${1+1.3*(1-out3(s))})" opacity="${s}" filter="url(#chalk)"><rect x="-220" y="-80" width="440" height="160" rx="12" fill="none" stroke="${RD}" stroke-width="10"/><text y="-8" text-anchor="middle" font-family="Inter Display" font-weight="900" font-size="58" fill="${RD}">24 KASIM</text><text y="56" text-anchor="middle" font-family="Inter Display" font-weight="900" font-size="54" fill="${RD}">1928</text></g>`}
+  if(t>T(5,13))o+=`<ellipse cx="720" cy="1000" rx="${270*out3((t-T(5,13))/0.5)}" ry="${120*out3((t-T(5,13))/0.5)}" fill="none" stroke="${Yt}" stroke-width="8" filter="url(#chalk)"/>`;
+  o+=`</g>`}
+ // S6 1981
+ if(S(T(6,0),T(7,0))){o+=`<g opacity="${F(T(6,0),T(7,0))}">`;
+  const k=cl((t-T(6,12))/(T(6,16)+0.4-T(6,12))); const yil=Math.round(1928+53*ease(k));
+  o+=`<g filter="url(#chalk)"><rect x="240" y="560" width="600" height="520" rx="20" fill="none" stroke="${Wt}" stroke-width="6"/><rect x="240" y="560" width="600" height="120" rx="20" fill="${RD}" fill-opacity=".5" stroke="${Wt}" stroke-width="6"/></g>`;
+  o+=`<text x="540" y="645" text-anchor="middle" font-family="Inter" font-weight="900" font-size="54" letter-spacing="8" fill="${Wt}" filter="url(#chalk)">YIL</text><text x="540" y="930" text-anchor="middle" font-family="Inter Display" font-weight="900" font-size="200" fill="${t>T(6,16)?Yt:Wt}" filter="url(#chalk)">${yil}</text>`;
+  if(t>T(6,19)){const s=back((t-T(6,19))/0.4);o+=`<g transform="translate(540,1220) scale(${s}) rotate(-6)" filter="url(#chalk)"><circle r="120" fill="${Yt}" fill-opacity=".2" stroke="${Yt}" stroke-width="8"/><text y="-10" text-anchor="middle" font-family="Inter Display" font-weight="900" font-size="80" fill="${Yt}">100.</text><text y="56" text-anchor="middle" font-family="Inter" font-weight="900" font-size="40" fill="${Yt}">YIL</text></g>`}
+  o+=`</g>`}
+ // S7 53 yıl geç
+ if(S(T(7,0),T(8,0))){o+=`<g opacity="${F(T(7,0),T(8,0))}">`;
+  o+=`<g filter="url(#chalk)"><rect x="140" y="480" width="800" height="380" fill="${Wt}" fill-opacity=".08" stroke="${Wt}" stroke-width="5"/><text x="540" y="545" text-anchor="middle" font-family="Inter" font-weight="900" font-size="40" letter-spacing="6" fill="${Wt}">YOKLAMA</text>${[0,1,2].map(i=>`<line x1="170" y1="${600+i*80}" x2="910" y2="${600+i*80}" stroke="${Wt}" stroke-width="3" opacity=".6"/>`).join('')}
+   <text x="190" y="660" font-family="Inter" font-weight="800" font-size="40" fill="${Wt}">Öğretmenler Günü</text></g>`;
+  if(t>T(7,5))o+=`<text x="890" y="660" text-anchor="end" font-family="Inter" font-weight="900" font-size="40" fill="${RD}" filter="url(#chalk)" opacity="${cl((t-T(7,5))/0.3)}">53 YIL GEÇ!</text>`;
+  if(t>T(7,11)){const s=cl((t-T(7,11))/0.3);o+=`<g transform="translate(800,760) rotate(-10) scale(${1+1.2*(1-out3(s))})" opacity="${s}" filter="url(#chalk)"><circle r="70" fill="none" stroke="${RD}" stroke-width="10"/><text y="34" text-anchor="middle" font-family="Inter Display" font-weight="900" font-size="100" fill="${RD}">D</text></g>`}
+  // geç kalan öğrenci koşuyor
+  const kx=1200-cl((t-T(7,1))/3.2)*660; const kz=Math.floor(t*6)%2;
+  o+=kisi(kx,1360,.85,'#9BE3A8',kz?POZ.kos1:POZ.kos2,'',tCanta('#9BE3A8'))+`<text x="${kx}" y="${1360-380}" text-anchor="middle" font-family="Inter" font-weight="900" font-size="30" fill="#9BE3A8" filter="url(#chalk)">ÖĞRETMENLER GÜNÜ</text>`;
+  o+=OGRETMEN(170,1360,.85,t>T(7,13)?POZ.basielinde:POZ.goster);
+  o+=`</g>`}
+ // S8 şaka bir yana – teşekkür
+ if(S(T(8,0),T(9,0))){o+=`<g opacity="${F(T(8,0),T(9,0))}">`;
+  const h=cl((t-T(8,3))/2.5),L=2400;
+  o+=`<g transform="translate(540,800) scale(3.2)" filter="url(#chalk)"><path d="M 0 70 C -120 -10 -90 -110 0 -50 C 90 -110 120 -10 0 70 Z" fill="${RD}" fill-opacity="${.25*h}" stroke="${RD}" stroke-width="3" stroke-dasharray="${L/3.2}" stroke-dashoffset="${L/3.2*(1-h)}"/></g>`;
+  o+=ctext(540,790,58,Wt,'TEŞEKKÜRLER',(t-T(8,15))/0.6)+ctext(540,860,58,Wt,'ÖĞRETMENİM',(t-T(8,15)-0.3)/0.6);
+  const alk=t>T(8,16)?(Math.floor(t*8)%2?POZ.kucakla:POZ.zipla):POZ.dur;
+  o+=OGRETMEN(540,1330,.75,t>T(8,16)?POZ.zipla:POZ.dur)+COCUK(230,1330,.6,alk)+ANNE(850,1330,.66,alk)+DEDE(380,1330,.66,alk)+COCUK(700,1330,.55,alk);
+  o+=`</g>`}
+ // S9 dünyada
+ if(S(T(9,0),T(10,0))){o+=`<g opacity="${F(T(9,0),T(10,0))}">`;
+  const pasta=t>T(9,24)-0.2;
+  if(!pasta||t<T(9,24)+0.3){o+=`<g opacity="${pasta?cl((T(9,24)+0.3-t)/0.5):1}" filter="url(#chalk)"><circle cx="540" cy="800" r="250" fill="none" stroke="${Wt}" stroke-width="6"/><ellipse cx="540" cy="800" rx="110" ry="250" fill="none" stroke="${Wt}" stroke-width="3"/><line x1="290" y1="800" x2="790" y2="800" stroke="${Wt}" stroke-width="3"/><ellipse cx="540" cy="800" rx="250" ry="90" fill="none" stroke="${Wt}" stroke-width="3" opacity=".6"/></g>`;
+   [['5 EKİM · DÜNYA',T(9,4),540,480,Yt],['5 EYLÜL · HİNDİSTAN',T(9,7),300,1130,'#F5A35C'],['28 EYLÜL · TAYVAN',T(9,11),790,1130,'#9BE3A8']].forEach(([s,a,x,y,c])=>{if(t>a)o+=`<g transform="translate(${x},${y}) scale(${back((t-a)/0.35)})" opacity="${pasta?cl((T(9,24)+0.3-t)/0.5):1}"><rect x="${-s.length*15-20}" y="-44" width="${s.length*30+40}" height="64" rx="32" fill="#1f362b" stroke="${c}" stroke-width="4" filter="url(#chalk)"/><text y="2" text-anchor="middle" font-family="Inter" font-weight="900" font-size="36" fill="${c}">${s}</text></g>`});}
+  if(pasta){const s=back((t-T(9,24)+0.2)/0.45);o+=`<g transform="translate(540,1000) scale(${s})" filter="url(#chalk)"><rect x="-300" y="-120" width="600" height="220" rx="16" fill="${PKt}" fill-opacity=".35" stroke="${PKt}" stroke-width="6"/><rect x="-220" y="-260" width="440" height="140" rx="14" fill="${Wt}" fill-opacity=".2" stroke="${Wt}" stroke-width="6"/>
+   ${[...Array(15)].map((_,i)=>{const x=-200+i*28.5;return `<rect x="${x}" y="-330" width="10" height="70" fill="${Yt}"/><path d="M ${x+5} -335 q -10 -16 0 -30 q 10 14 0 30 z" fill="#F5A35C" transform="translate(0,${wig(t+i,9,3)})"/>`}).join('')}
+   <text y="40" text-anchor="middle" font-family="Inter Display" font-weight="900" font-size="80" fill="${Wt}">2.500</text></g>`}
+  o+=`</g>`}
+ // S10 mumlar
+ if(S(T(10,0),T(11,0))){o+=`<g opacity="${F(T(10,0),T(11,0))}">`;
+  o+=`<g transform="translate(700,1060)" filter="url(#chalk)"><rect x="-260" y="-100" width="520" height="200" rx="16" fill="${PKt}" fill-opacity=".35" stroke="${PKt}" stroke-width="6"/>${[...Array(12)].map((_,i)=>{const x=-220+i*40,lit=((i+Math.floor(t*5))%4)!=0;return `<rect x="${x}" y="-170" width="10" height="70" fill="${Yt}"/>${lit?`<path d="M ${x+5} -175 q -10 -16 0 -30 q 10 14 0 30 z" fill="#F5A35C"/>`:''}`}).join('')}</g>`;
+  o+=kisi(260,1300,.9,Wt,POZ.basielinde,`<g filter="url(#chalk)">${[0,1,2].map(i=>`<path d="M ${70+i*30+((t*200)%60)} -300 q 20 -10 40 0" stroke="#cfe0ff" stroke-width="6" fill="none"/>`).join('')}</g><path d="M 52 -340 q 12 22 0 34 q -12 -12 0 -34 z" fill="#7FD1F7"/>`);
+  o+=`</g>`}
+ // S11 kupa çığı
+ if(S(T(11,0),T(12,0))){o+=`<g opacity="${F(T(11,0),T(12,0))}">`;
+  const ac=cl((t-T(11,3))/0.4);
+  o+=`<g filter="url(#chalk)"><rect x="600" y="520" width="340" height="760" fill="none" stroke="${Wt}" stroke-width="7"/>${[0,1,2].map(i=>`<line x1="600" y1="${700+i*180}" x2="940" y2="${700+i*180}" stroke="${Wt}" stroke-width="4"/>`).join('')}<path d="M 600 520 l ${-160*ac} ${40*ac} v ${680} l ${160*ac} ${40*ac}" fill="none" stroke="${Wt}" stroke-width="7"/></g>`;
+  for(let i=0;i<30;i++){const st=T(11,12)-0.4+i*0.09,k=cl((t-st)/0.8);
+   const x0=680+(i%4)*70,y0=640+Math.floor(i/4)%4*180;
+   if(k<=0){if(t<T(11,12))o+=kupa(x0,y0,0,1.3);continue}
+   const x1=200+(i*137)%560,y1=1280-Math.floor(i/6)*55;o+=kupa(x0+(x1-x0)*k,y0+(y1-y0)*k*k-Math.sin(k*Math.PI)*120,k*360*(i%2?1:-1),1.3)}
+  o+=OGRETMEN(330,1320,.95,t>T(11,12)?POZ.kalkan:POZ.goster);
+  if(t>T(11,15))o+=`<g transform="translate(300,560) rotate(-8) scale(${back((t-T(11,15))/0.4)})">${ctext(0,0,120,Yt,'×30',1)}</g>`;
+  o+=`</g>`}
+ // S12 gönder
+ if(S(T(12,0),98.0)){o+=`<g opacity="${F(T(12,0),97.9)}">`;
+  const pk=cl((t-T(12,5))/1.4);
+  if(pk>0&&pk<1)o+=`<g transform="translate(${100+pk*900},${1000-Math.sin(pk*Math.PI)*400}) rotate(${-20+pk*30})" filter="url(#chalk)"><path d="M -70 0 l 140 -40 l -50 70 z M -70 0 l 90 10 l 20 50" fill="${Wt}" fill-opacity=".25" stroke="${Wt}" stroke-width="5"/><path d="M -10 -14 c -12 -14 -30 -2 -18 12 l 18 14 l 18 -14 c 12 -14 -6 -26 -18 -12" fill="${RD}"/></g>`;
+  [['KUPA KADAR KALICI',T(12,7),620,Yt],['ÇİÇEK KADAR GÜZEL',T(12,10),800,PKt]].forEach(([s,a,y,c])=>{if(t>a)o+=`<g transform="translate(540,${y}) scale(${back((t-a)/0.4)})">${ctext(0,0,70,c,s,1)}</g>`});
+  if(t>T(12,7))o+=kupa(300,1050,-8,2.2);
+  if(t>T(12,10))o+=`<g transform="translate(780,1100) scale(${back((t-T(12,10))/0.4)*1.8})" filter="url(#chalk)"><line x1="0" y1="0" x2="0" y2="120" stroke="#9BE3A8" stroke-width="8"/>${[0,72,144,216,288].map(a=>`<ellipse cx="${Math.cos(a*Math.PI/180)*26}" cy="${Math.sin(a*Math.PI/180)*26}" rx="20" ry="14" fill="${PKt}" transform="rotate(${a} ${Math.cos(a*Math.PI/180)*26} ${Math.sin(a*Math.PI/180)*26})"/>`).join('')}<circle r="14" fill="${Yt}"/></g>`;
+  if(t>T(12,13)){const s=cl((t-T(12,13))/0.3);o+=`<g transform="translate(540,1290) rotate(-8) scale(${1+1.2*(1-out3(s))})" opacity="${s}" filter="url(#chalk)"><rect x="-240" y="-62" width="480" height="110" rx="14" fill="none" stroke="#9BE3A8" stroke-width="9"/><text y="16" text-anchor="middle" font-family="Inter Display" font-weight="900" font-size="64" fill="#9BE3A8">BEDAVA!</text></g>`}
+  o+=`</g>`}
+ // S13 kapanış
+ if(t>=97.9){const k=cl((t-97.9)/0.4),yt=VER=='yt';
+  o+=`<g opacity="${k}">`+COCUK(300,1330,.85,t>98.6?POZ.parmak:POZ.dur)+bal(560,800,520,'Burada öğretmenim!',(t-98.6)/0.3,-1,44);
+  const s=cl((t-99.4)/0.3),pul=1+0.05*Math.sin(t*10);
+  o+=`<g transform="translate(700,1120) scale(${(1+1.2*(1-out3(s)))*pul})" opacity="${s}"><rect x="-240" y="-70" width="480" height="140" rx="70" fill="${yt?'#E53935':'#7E57C2'}"/><text y="22" text-anchor="middle" font-family="Inter Display" font-weight="900" font-size="64" fill="#fff">${yt?'ABONE OL 🔔':'TAKİP ET ➕'}</text></g>`;
+  o+=`</g>`}
+ return o}
+function draw(t){
+ let o=`<defs>${CHALK_DEFS}</defs>`+ZEMIN;
+ // üst başlık
+ o+=`<g filter="url(#chalk)"><text x="540" y="200" text-anchor="middle" font-family="Inter" font-weight="800" font-size="34" letter-spacing="10" fill="${Yt}">MERAKOLOJİ</text>
+  <text x="540" y="300" text-anchor="middle" font-family="Inter Display" font-weight="900" font-size="74" fill="${Wt}">Öğretmenler Günü</text><text x="540" y="390" text-anchor="middle" font-family="Inter Display" font-weight="900" font-size="74" fill="${Yt}">neden 24 Kasım?</text></g>`;
+ o+=sahne(t)+vsub(t);
+ if(t<0.25)o+=`<rect width="1080" height="1920" fill="#000" opacity="${1-t/0.25}"/>`;
+ if(t>V.END-0.4)o+=`<rect width="1080" height="1920" fill="#000" opacity="${cl((t-V.END+0.4)/0.4)}"/>`;
+ document.getElementById('s').innerHTML=o;}
+window.draw=draw;
+</script></body></html>
