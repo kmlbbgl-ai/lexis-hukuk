@@ -25,3 +25,19 @@ https://github.com/kmlbbgl-ai/lexis-hukuk/releases/download/vakit-latest/vakit.a
 3. Meal: beklemede. Seçenekler: QuranEnc Türkçe meali (şartlı ücretsiz, teyit e-postası) veya yayınevinden ücretli lisans. Diyanet meali izinsiz kullanılmayacak.
 4. Eklendi: namaz takibi, kaza takibi (namaz takibinden kazaya aktarma), Esmâü'l-Hüsnâ (99 isim, kendi anlamlarımız), 30 hadis (kendi sadeleştirilmiş çevirimiz + temel kaynak adı), Kur'an'dan 12 dua; ana sayfada günün hadisi/duası/esması. Ayrıca: günlük iyilikler (21.00 hatırlatma), bebek isimleri (54), bilgi yarışması (36 soru). Ramazan ekranı (geri sayım, iftar/sahur sayacı, imsakiye, oruç takibi, bitince kazaya aktarma, bildirimde İftar vakti) ve nafile oruç eklendi. İlmihal (10 konu, Hanefi özet, kendi metnimiz) eklendi. Sonra: ortak hatim (sunucu gerekiyor: kullanıcının hesabıyla Firebase vb.). Kâbe canlı / Kur'an radyo yayın hakkı gerektirir.
 5. Google Play: kullanıcı geliştirici hesabı açacak (25 $), imzalı sürüm, gizlilik politikası, AdMob.
+
+## Kullanıcı geri bildirimi (telefon testi, bir önceki sürüm) — görüşülüyor, henüz yapılmadı
+1. Ana sekmeler arasında sağa-sola kaydırarak geçiş (kurulum ekranında da).
+2. Günün ayetine Türkçe meal (meal lisansına bağlı).
+3. Bildirim sesi seçimi; ezan vaktinde ezan okunması (izinli kayıt gerekli).
+4. "Akşam hatırlatması" = Günlük iyilikler 21.00 hatırlatması (açıklama netleştirilecek).
+5. İsim listesini çok genişlet.
+6. Alt menü: kıble sayfasında kaydırınca kayboluyor; telefonun alt tuşlarının arkasında kalıyor (edge-to-edge/safe-area düzeltmesi).
+7. Ayetlerin sesli okunması (kıraat kaydı lisansı).
+8. "Dua kardeşliği" benzeri bölüm (sunucu + moderasyon; kullanıcı fotoğraf gönderecek).
+9. Kur'an okuyucuda ayet ayet kutucuk, meal ve ayet numarası (kullanıcı fotoğraf gönderecek).
+10. Namaz vakitlerinde il + ilçe seçimi.
+11. Günün ayeti/hadisi/duası paylaşılabilir kart: 9:16, 16:9, 1:1; tek renk ve hazır temalar; WhatsApp ile yayılma (kullanıcı fotoğraf gönderecek).
+12. Uygulama tema seçimi (açık, koyu, yeşil, pembe vb.).
+13. "Soru sor" yapay zekâ bölümü — maliyet ve dini risk değerlendirilecek.
+Kural: kullanıcıya sormadan ücretli bir şey (API, görsel üretimi vb.) kullanılmayacak.
