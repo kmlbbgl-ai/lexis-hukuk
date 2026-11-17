@@ -39,6 +39,12 @@
       mHatim: 'Ortak hatim', mEsma: "Esmâü'l-Hüsnâ", mPrayerLog: 'Namaz takibi', mDua: 'Dualar',
       logToday: 'Bugünkü namazlarım', streak: n => `🔥 ${n} gün seri`, prayed: 'Kıldım', notYet: 'Vakti girmedi', mark: 'İşaretle',
       stStreak: 'günlük seri', stBest: 'en uzun seri', stMonth: 'bu ay', last7: 'Son 7 gün', logNote: 'Kayıtlarınız yalnızca bu telefonda tutulur.', today: 'Bugün', tLog: 'Namaz takibi', mPrayerLogSub: 'Kıldığınız vakitler',
+      deedsQ: 'Bugün Allah için ne yaptınız?', deedsSub: (n, s) => `Bugün ${n} iyilik${s ? ` · 🔥 ${s} gün` : ''}`, deedsToday: 'bugünkü iyilik', deedAddPh: 'Kendi iyiliğinizi ekleyin', add: 'Ekle',
+      deedRemind: 'Akşam hatırlatması', deedRemindSub: "Her akşam 21.00'de", deedStreak: n => `🔥 ${n} gündür iyilik yapıyorsunuz`, tDeeds: 'Günlük iyilikler', mDeeds: 'Günlük iyilikler', mDeedsSub: 'Bugün Allah için',
+      deedNotifTitle: 'Bugün Allah için ne yaptınız?', deedNotifBody: 'Günün iyiliklerini işaretlemeyi unutmayın.',
+      deedList: ["Kur'an okudum", 'Zikir çektim', 'Sadaka verdim', 'Anne babamı aradım veya ziyaret ettim', 'Bir akrabamı aradım', 'Birine yardım ettim', 'Başkası için dua ettim', 'Güzel söz söyledim, gülümsedim', 'Nafile namaz kıldım', 'Faydalı bir şey öğrendim', 'Bir hayvanı veya doğayı gözettim', 'Kimsenin gıybetini yapmadım'],
+      dailyNames: 'Günün isimleri', allNames: 'Tümü', searchName: 'İsim veya anlam ara', all: 'Tümü', boy: 'Erkek', girl: 'Kız', unisex: 'Her ikisi', tNames: 'İsimler', mNames: 'İsimler', mNamesSub: 'Anlamlarıyla isimler',
+      tQuiz: 'Bilgi yarışması', mQuiz: 'Bilgi yarışması', mQuizSub: '5 soruluk turlar', qOf: (i, n) => `Soru ${i} / ${n}`, qNext: 'Sonraki soru', qFinish: 'Sonucu gör', qScore: 'Doğru cevap', qAgain: 'Yeni tur', qBest: n => `En iyi skorunuz: ${n} / 5`,
       fajrPrayer: 'Sabah', dailyHadis: 'Günün hadisi', dailyDua: 'Günün duası', allDuas: 'Tüm dualar', esma: "Esmâü'l-Hüsnâ", searchEsma: 'İsim veya anlam ara',
       hadisNote: 'Türkçe ifadeler uygulamaya özel sadeleştirilmiş anlamdır; kaynak olarak hadisin geçtiği temel eserler belirtilmiştir.',
       duaNote: "Dualar Kur'an-ı Kerim'den alınmıştır; Türkçe ifadeler anlamdır.", tHadis: 'Hadisler', tDua: 'Dualar', mHadis: 'Hadisler', mHadisSub: '30 seçme hadis', mEsmaSub: '99 güzel isim', mDuaSub: "Kur'an'dan dualar",
@@ -89,6 +95,12 @@
       mHatim: 'Group khatm', mEsma: '99 Names', mPrayerLog: 'Prayer log', mDua: 'Duas',
       logToday: "Today's prayers", streak: n => `🔥 ${n}-day streak`, prayed: 'Prayed', notYet: 'Not yet', mark: 'Mark',
       stStreak: 'day streak', stBest: 'best streak', stMonth: 'this month', last7: 'Last 7 days', logNote: 'Your records stay on this phone only.', today: 'Today', tLog: 'Prayer log', mPrayerLogSub: 'Prayers you performed',
+      deedsQ: 'What did you do for Allah today?', deedsSub: (n, s) => `${n} good deeds today${s ? ` · 🔥 ${s} days` : ''}`, deedsToday: 'good deeds today', deedAddPh: 'Add your own good deed', add: 'Add',
+      deedRemind: 'Evening reminder', deedRemindSub: 'Every evening at 21:00', deedStreak: n => `🔥 ${n}-day good deed streak`, tDeeds: 'Daily good deeds', mDeeds: 'Good deeds', mDeedsSub: 'For Allah today',
+      deedNotifTitle: 'What did you do for Allah today?', deedNotifBody: "Don't forget to mark today's good deeds.",
+      deedList: ['I read the Quran', 'I did dhikr', 'I gave charity', 'I called or visited my parents', 'I called a relative', 'I helped someone', 'I prayed for someone else', 'I said a kind word, I smiled', 'I prayed a voluntary prayer', 'I learned something useful', 'I cared for an animal or nature', 'I avoided backbiting'],
+      dailyNames: 'Names of the day', allNames: 'All', searchName: 'Search name or meaning', all: 'All', boy: 'Boy', girl: 'Girl', unisex: 'Unisex', tNames: 'Names', mNames: 'Baby names', mNamesSub: 'Names with meanings',
+      tQuiz: 'Quiz', mQuiz: 'Quiz', mQuizSub: '5-question rounds', qOf: (i, n) => `Question ${i} of ${n}`, qNext: 'Next question', qFinish: 'See result', qScore: 'Correct answers', qAgain: 'New round', qBest: n => `Your best score: ${n} / 5`,
       fajrPrayer: 'Fajr', dailyHadis: 'Hadith of the day', dailyDua: 'Dua of the day', allDuas: 'All duas', esma: '99 Names', searchEsma: 'Search name or meaning',
       hadisNote: 'English wording is a simplified meaning; the main collections containing each hadith are cited.',
       duaNote: 'Duas are from the Holy Quran; English wording is the meaning.', tHadis: 'Hadiths', tDua: 'Duas', mHadis: 'Hadiths', mHadisSub: '30 selected hadiths', mEsmaSub: 'Names of Allah', mDuaSub: 'Duas from the Quran',
@@ -234,7 +246,7 @@
 
   // ---------------- Görünümler ve gezinme ----------------
   const ROOTS = ['home', 'qibla', 'quran', 'dhikr', 'menu'];
-  const TITLES = { home: 'appName', qibla: 'tabQibla', quran: 'tabQuran', dhikr: 'tabDhikr', menu: 'tabMenu', settings: 'tSettings', monthly: 'tMonthly', days: 'tDays', notif: 'mNotif', log: 'tLog', kaza: 'tKaza', esma: 'mEsma', hadis: 'tHadis', dua: 'tDua' };
+  const TITLES = { home: 'appName', qibla: 'tabQibla', quran: 'tabQuran', dhikr: 'tabDhikr', menu: 'tabMenu', settings: 'tSettings', monthly: 'tMonthly', days: 'tDays', notif: 'mNotif', log: 'tLog', kaza: 'tKaza', esma: 'mEsma', hadis: 'tHadis', dua: 'tDua', deeds: 'tDeeds', names: 'tNames', quiz: 'tQuiz' };
   let stack = ['home'];
   const cur = () => stack[stack.length - 1];
   function render(view) {
@@ -253,6 +265,9 @@
     if (view === 'esma') renderEsma();
     if (view === 'hadis') renderTextList('hadis');
     if (view === 'dua') renderTextList('dua');
+    if (view === 'deeds') renderDeeds();
+    if (view === 'names') renderNames();
+    if (view === 'quiz') { if (!quiz) newQuiz(); renderQuiz(); }
     if (view !== 'reader') window.scrollTo(0, 0);
   }
   function go(view) { if (cur() !== view) stack.push(view); render(view); }
@@ -282,6 +297,7 @@
     renderVerse(now);
     renderHomeLog(now);
     renderDaily(now);
+    renderHomeDeeds();
     const last = store.get('lastRead', null);
     $('continueCard').hidden = !last || !surahs;
     if (last && surahs) $('continueName').textContent = `${surahName(surahs[last.s - 1])} · ${last.v}. ${t('ayah')}`;
@@ -306,7 +322,7 @@
     try {
       const [a, b] = await Promise.all([fetch('data/surahs.json').then(r => r.json()), fetch('data/quran-ar.json').then(r => r.json())]);
       surahs = a; quran = b;
-      [esmaData, hadisData, duaData] = await Promise.all(['esma', 'hadis', 'dua'].map(n => fetch(`data/${n}.json`).then(r => r.json())));
+      [esmaData, hadisData, duaData, namesData, quizData] = await Promise.all(['esma', 'hadis', 'dua', 'isimler', 'quiz'].map(n => fetch(`data/${n}.json`).then(r => r.json())));
       renderSurahList(); renderHome();
     } catch (e) { console.error("Kur'an verisi yüklenemedi", e); }
   }
@@ -426,7 +442,9 @@
 
  { soon: 1, ic: 'i-people', t: 'mHatim' },
     { go: 'esma', ic: 'i-star', t: 'mEsma', s: 'mEsmaSub' }, { go: 'hadis', ic: 'i-book', t: 'mHadis', s: 'mHadisSub' },
-    { go: 'dua', ic: 'i-moon', t: 'mDua', s: 'mDuaSub' }
+    { go: 'dua', ic: 'i-moon', t: 'mDua', s: 'mDuaSub' },
+    { go: 'deeds', ic: 'i-heart', t: 'mDeeds', s: 'mDeedsSub' }, { go: 'quiz', ic: 'i-quiz', t: 'mQuiz', s: 'mQuizSub' },
+    { go: 'names', ic: 'i-baby', t: 'mNames', s: 'mNamesSub' }
   ];
   function renderMenu() {
     $('menuGrid').innerHTML = MENU.map(m => `<button type="button" class="tile${m.soon ? ' soon' : ''}" ${m.go ? `data-go="${m.go}"` : 'disabled'}>${m.soon ? `<span class="badge">${t('soon')}</span>` : ''}<span class="t-ic"><svg><use href="#${m.ic}"/></svg></span><b>${t(m.t)}</b>${m.s ? `<small>${t(m.s)}</small>` : ''}</button>`).join('');
@@ -541,6 +559,8 @@
     $('hadisTr').textContent = lang === 'tr' ? h.tr : h.en; $('hadisSrc').textContent = h.src;
     const ei = n % 99, e = esmaData[ei];
     $('esmaNo').textContent = `${ei + 1}/99`; $('esmaAr').textContent = e.ar; $('esmaTl').textContent = e.tl; $('esmaTr').textContent = lang === 'tr' ? e.tr : e.en;
+    const nb = namesData.filter(x => x.g !== 'k'), ng = namesData.filter(x => x.g === 'k');
+    $('namesToday').innerHTML = [nb[(n * 2) % nb.length], ng[(n * 2) % ng.length], nb[(n * 2 + 1) % nb.length], ng[(n * 2 + 1) % ng.length]].map(nameRow).join('');
     const d = duaData[n % duaData.length];
     $('duaAr').textContent = duaAr(d); $('duaTr').textContent = lang === 'tr' ? d.tr : d.en; $('duaRef').textContent = duaRef(d);
   }
@@ -555,6 +575,54 @@
     const n = dayOfYear(new Date());
     if (kind === 'hadis') $('hadisList').innerHTML = hadisData.map((h, i) => `<li class="${i === n % hadisData.length ? 'hl' : ''}"><p>${lang === 'tr' ? h.tr : h.en}</p><small>${h.src}</small></li>`).join('');
     else $('duaList').innerHTML = duaData.map((d, i) => `<li class="${i === n % duaData.length ? 'hl' : ''}"><p class="ar" dir="rtl" lang="ar">${duaAr(d)}</p><p>${lang === 'tr' ? d.tr : d.en}</p><small>${duaRef(d)}</small></li>`).join('');
+  }
+
+  // ---------------- Günlük iyilikler ----------------
+  const deeds = Object.assign({ custom: [], days: {}, remind: false }, store.get('deeds', {}));
+  const saveDeeds = () => store.set('deeds', deeds);
+  const deedItems = () => [...t('deedList').map((x, i) => ({ id: 'b' + i, t: x })), ...deeds.custom.map(c => ({ id: c.id, t: c.t, custom: 1 }))];
+  const deedsOn = d => deeds.days[dkey(d)] || [];
+  function deedStreak() { let s = 0, off = deedsOn(dayAt(0)).length ? 0 : -1; while (deedsOn(dayAt(off)).length) { s++; off--; } return s; }
+  function renderHomeDeeds() { $('deedsSub').textContent = t('deedsSub')(deedsOn(dayAt(0)).length, deedStreak()); }
+  function renderDeeds() {
+    const on = deedsOn(dayAt(0));
+    $('deedsCount').textContent = on.length;
+    const s = deedStreak(); $('deedsStreak').textContent = s ? t('deedStreak')(s) : '';
+    $('deedsList').innerHTML = deedItems().map(x => `<li data-deed="${x.id}" class="${on.includes(x.id) ? 'on' : ''}"><span class="box">${on.includes(x.id) ? '✓' : ''}</span><span class="t"></span>${x.custom ? `<button class="del" type="button" data-del="${x.id}" aria-label="Sil">×</button>` : ''}</li>`).join('');
+    // Kullanıcı metni güvenli şekilde eklenir
+    deedItems().forEach((x, i) => { $('deedsList').children[i].querySelector('.t').textContent = x.t; });
+    $('deedRemindOn').checked = !!deeds.remind;
+  }
+
+  // ---------------- İsimler ----------------
+  let namesData = null, quizData = null, nameG = '';
+  const nameRow = x => `<li><b>${x.n}</b><small>${x.m}</small><span class="tag ${x.g}">${x.g === 'e' ? t('boy') : x.g === 'k' ? t('girl') : t('unisex')} · ${x.o}</span></li>`;
+  function renderNames() {
+    if (!namesData) return;
+    const q = norm(($('nameSearch').value || '').trim());
+    $('nameList').innerHTML = namesData.filter(x => (!nameG || x.g === nameG || x.g === 'u') && (!q || norm(x.n).includes(q) || norm(x.m).includes(q))).map(nameRow).join('');
+    document.querySelectorAll('#nameSeg button').forEach(b => b.classList.toggle('on', b.dataset.g === nameG));
+  }
+
+  // ---------------- Bilgi yarışması ----------------
+  let quiz = null;
+  function newQuiz() {
+    if (!quizData) return;
+    const idx = quizData.map((_, i) => i).sort(() => Math.random() - 0.5).slice(0, 5);
+    quiz = { qs: idx.map(i => { const q = quizData[i]; return { q, opts: [q.c, ...q.w].sort(() => Math.random() - 0.5) }; }), i: 0, score: 0, picked: null };
+  }
+  function renderQuiz() {
+    if (!quiz) { $('quizBox').innerHTML = ''; return; }
+    const best = store.get('quizBest', 0);
+    $('quizBest').textContent = best ? t('qBest')(best) : '';
+    if (quiz.i >= quiz.qs.length) {
+      $('quizBox').innerHTML = `<div class="qn">${t('qScore')}</div><div class="bigscore">${quiz.score} / ${quiz.qs.length}</div><button class="btn" type="button" id="qAgain">${t('qAgain')}</button>`;
+      return;
+    }
+    const cur = quiz.qs[quiz.i], answered = quiz.picked !== null;
+    $('quizBox').innerHTML = `<div class="qn">${t('qOf')(quiz.i + 1, quiz.qs.length)}</div><h3>${lang === 'tr' ? cur.q.q : cur.q.en}</h3>
+      <div class="opts">${cur.opts.map((o, k) => `<button type="button" data-opt="${k}" class="${answered ? (o === cur.q.c ? 'ok' : (k === quiz.picked ? 'no' : '')) : ''}" ${answered ? 'disabled' : ''}>${o}</button>`).join('')}</div>
+      ${answered ? `<button class="btn" type="button" id="qNext">${quiz.i === quiz.qs.length - 1 ? t('qFinish') : t('qNext')}</button>` : ''}`;
   }
 
   // ---------------- Kaza takibi ----------------
@@ -607,7 +675,14 @@
     try {
       const pending = await LN.getPending();
       if (pending.notifications.length) await LN.cancel({ notifications: pending.notifications.map(n => ({ id: n.id })) });
-      if (!nf.on || (await LN.checkPermissions()).display !== 'granted') { $('nfStatus').textContent = t('nfOff'); return 0; }
+      const granted = (await LN.checkPermissions()).display === 'granted';
+      if (granted && deeds.remind) {
+        await ensureChannels();
+        const now0 = new Date(), dl = [];
+        for (let d = 0; d < 10; d++) { const at = new Date(now0.getFullYear(), now0.getMonth(), now0.getDate() + d, 21, 0); if (at > now0) dl.push({ id: 800 + d, title: t('deedNotifTitle'), body: t('deedNotifBody'), schedule: { at, allowWhileIdle: true }, channelId: 'hatirlatma', isExactNotification: false }); }
+        if (dl.length) await LN.schedule({ notifications: dl });
+      }
+      if (!nf.on || !granted) { $('nfStatus').textContent = t('nfOff'); return 0; }
       await ensureChannels();
       const exact = await exactGranted();
       const now = new Date(), DAYS = 10, list = [];
@@ -726,6 +801,27 @@
   $('logList').addEventListener('click', e => { const b = e.target.closest('[data-lp]'); if (!b) return; togglePrayer(dayAt(logDay), +b.dataset.lp); renderLog(); });
   $('logPrev').addEventListener('click', () => { logDay--; renderLog(); });
   $('logNext').addEventListener('click', () => { if (logDay < 0) { logDay++; renderLog(); } });
+  // İyilik, isim ve yarışma olayları
+  $('deedsList').addEventListener('click', e => {
+    const del = e.target.closest('[data-del]');
+    if (del) { deeds.custom = deeds.custom.filter(c => c.id !== del.dataset.del); saveDeeds(); renderDeeds(); return; }
+    const li = e.target.closest('[data-deed]'); if (!li) return;
+    const k = dkey(dayAt(0)), on = deeds.days[k] || [], id = li.dataset.deed;
+    deeds.days[k] = on.includes(id) ? on.filter(x => x !== id) : [...on, id];
+    if (!deeds.days[k].length) delete deeds.days[k];
+    if (navigator.vibrate && deeds.days[k] && deeds.days[k].includes(id)) navigator.vibrate(15);
+    saveDeeds(); renderDeeds();
+  });
+  $('deedAdd').addEventListener('click', () => { const v = $('deedNew').value.trim(); if (!v) return; deeds.custom.push({ id: 'c' + Date.now(), t: v.slice(0, 60) }); $('deedNew').value = ''; saveDeeds(); renderDeeds(); });
+  $('deedRemindOn').addEventListener('change', async e => { deeds.remind = e.target.checked; saveDeeds(); if (deeds.remind && LN) { const p = await LN.checkPermissions(); if (p.display !== 'granted') await LN.requestPermissions(); } queueReschedule(); });
+  $('nameSearch').addEventListener('input', renderNames);
+  $('nameSeg').addEventListener('click', e => { const b = e.target.closest('button'); if (!b) return; nameG = b.dataset.g; renderNames(); });
+  $('quizBox').addEventListener('click', e => {
+    const o = e.target.closest('[data-opt]');
+    if (o && quiz.picked === null) { quiz.picked = +o.dataset.opt; const cur = quiz.qs[quiz.i]; if (cur.opts[quiz.picked] === cur.q.c) { quiz.score++; if (navigator.vibrate) navigator.vibrate(20); } else if (navigator.vibrate) navigator.vibrate([40, 40, 40]); renderQuiz(); return; }
+    if (e.target.id === 'qNext') { quiz.i++; quiz.picked = null; if (quiz.i >= quiz.qs.length && quiz.score > store.get('quizBest', 0)) store.set('quizBest', quiz.score); renderQuiz(); return; }
+    if (e.target.id === 'qAgain') { newQuiz(); renderQuiz(); }
+  });
   // Kaza olayları
   document.querySelector('[data-view="kaza"]').addEventListener('click', e => {
     const b = e.target.closest('[data-kz]'); const dn = e.target.closest('[data-kzdone]');

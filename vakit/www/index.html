@@ -25,6 +25,9 @@
     <symbol id="i-check" viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="3" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="m8.5 12 2.5 2.5 4.5-5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol>
     <symbol id="i-people" viewBox="0 0 24 24"><circle cx="9" cy="8.5" r="3" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M3.5 19c.6-3 2.8-4.5 5.5-4.5s4.9 1.5 5.5 4.5M16 6a3 3 0 0 1 0 5.5m2 2.5c1.4.6 2.3 2 2.6 4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></symbol>
     <symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 21s-6.5-6-6.5-11a6.5 6.5 0 0 1 13 0c0 5-6.5 11-6.5 11z" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="10" r="2.3" fill="currentColor"/></symbol>
+    <symbol id="i-heart" viewBox="0 0 24 24"><path d="M12 20s-7.5-4.6-7.5-10A4.3 4.3 0 0 1 12 7.4 4.3 4.3 0 0 1 19.5 10c0 5.4-7.5 10-7.5 10z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></symbol>
+    <symbol id="i-quiz" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M9.5 9.5a2.5 2.5 0 1 1 3.5 2.3c-.6.3-1 .8-1 1.5v.7M12 17h.01" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></symbol>
+    <symbol id="i-baby" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M5 20c1-3.5 3.8-5.5 7-5.5s6 2 7 5.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></symbol>
     <symbol id="i-back" viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
     <symbol id="i-chev" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
     <symbol id="i-moon" viewBox="0 0 24 24"><path d="M19 15.5A8 8 0 0 1 8.5 5a8 8 0 1 0 10.5 10.5z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></symbol>
@@ -124,6 +127,12 @@
         <footer id="verseRef"></footer>
       </article>
 
+      <button class="card row-card" type="button" data-go="deeds">
+        <span class="rc-ic"><svg><use href="#i-heart"/></svg></span>
+        <span class="rc-body"><b data-i18n="deedsQ">Bugün Allah için ne yaptınız?</b><em id="deedsSub"></em></span>
+        <svg class="chev"><use href="#i-chev"/></svg>
+      </button>
+
       <div class="duo">
         <article class="card mini-card" data-go="hadis">
           <header data-i18n="dailyHadis">Günün hadisi</header>
@@ -142,6 +151,11 @@
         <p class="ar" id="duaAr" dir="rtl" lang="ar"></p>
         <p class="dua-tr" id="duaTr"></p>
         <footer id="duaRef"></footer>
+      </article>
+
+      <article class="card names-card" data-go="names">
+        <header><span data-i18n="dailyNames">Günün isimleri</span><span class="link" data-i18n="allNames">Tümü</span></header>
+        <ul id="namesToday"></ul>
       </article>
 
       <button class="card row-card" type="button" data-go="quran" id="continueCard" hidden>
@@ -261,6 +275,29 @@
     <section class="view" data-view="dua" hidden>
       <ul class="text-list" id="duaList"></ul>
       <p class="note src" data-i18n="duaNote">Dualar Kur'an-ı Kerim'den alınmıştır; Türkçe ifadeler anlamdır.</p>
+    </section>
+
+    <!-- Günlük iyilikler -->
+    <section class="view" data-view="deeds" hidden>
+      <div class="card deeds-head"><b id="deedsCount">0</b><small data-i18n="deedsToday">bugünkü iyilik</small><span id="deedsStreak"></span></div>
+      <ul class="card deeds-list" id="deedsList"></ul>
+      <div class="card form">
+        <div class="row"><input id="deedNew" class="field" type="text" maxlength="60" data-i18n-ph="deedAddPh" placeholder="Kendi iyiliğinizi ekleyin"><button class="btn" id="deedAdd" type="button" style="flex:0 0 auto;width:auto" data-i18n="add">Ekle</button></div>
+        <label class="switch-row" style="margin-top:14px"><span><b data-i18n="deedRemind">Akşam hatırlatması</b><small data-i18n="deedRemindSub">Her akşam 21.00'de</small></span><input type="checkbox" id="deedRemindOn"><i></i></label>
+      </div>
+    </section>
+
+    <!-- İsimler -->
+    <section class="view" data-view="names" hidden>
+      <input id="nameSearch" class="field search" type="search" data-i18n-ph="searchName" placeholder="İsim veya anlam ara">
+      <div class="seg" id="nameSeg"><button type="button" data-g="" class="on" data-i18n="all">Tümü</button><button type="button" data-g="e" data-i18n="boy">Erkek</button><button type="button" data-g="k" data-i18n="girl">Kız</button></div>
+      <ul class="card name-list" id="nameList"></ul>
+    </section>
+
+    <!-- Bilgi yarışması -->
+    <section class="view" data-view="quiz" hidden>
+      <div class="card quiz" id="quizBox"></div>
+      <p class="note" id="quizBest"></p>
     </section>
 
     <!-- Kaza takibi -->
