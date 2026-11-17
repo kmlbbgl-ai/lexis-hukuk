@@ -156,7 +156,7 @@
       ev: { hijriNY: 'Islamic New Year', ashura: 'Day of Ashura', mawlid: 'Mawlid', ragaib: 'Laylat al-Raghaib', miraj: "Isra and Mi'raj", barat: 'Laylat al-Baraat', ramadan: 'Start of Ramadan', qadr: 'Laylat al-Qadr', arafaF: 'Eve of Eid al-Fitr', eidF: 'Eid al-Fitr', arafa: 'Day of Arafah', eidA: 'Eid al-Adha' }
     }
   };
-  let lang = store.get('lang', (navigator.language || 'tr').toLowerCase().startsWith('tr') ? 'tr' : 'en');
+  let lang = store.get('lang', 'tr'); // varsayılan dil Türkçe; sağ üstteki düğmeyle değiştirilebilir
   const t = k => T[lang][k];
   const loc = () => (lang === 'tr' ? 'tr-TR' : 'en-GB');
 
