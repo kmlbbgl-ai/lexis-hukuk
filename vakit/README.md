@@ -1,6 +1,6 @@
 # Vakit — İlk sürüm (prototip)
 
-Namaz vakitleri, kıble pusulası ve zikirmatik. Türkçe / İngilizce.
+Namaz vakitleri, kıble, Kur'an-ı Kerim (Arapça metin), zikirmatik, aylık vakitler ve mübarek günler. Türkçe / İngilizce.
 
 - Tüm hesaplamalar telefonda yapılır; sunucu, yapay zekâ ve konum paylaşımı yoktur.
 - Vakit hesaplama: açık kaynak `adhan` kütüphanesi (MIT lisansı, `lib/ADHAN-LICENSE`).

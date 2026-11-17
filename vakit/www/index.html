@@ -3,98 +3,230 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="theme-color" content="#0f5c4d">
+<meta name="theme-color" content="#0d4a3e">
 <title>Vakit</title>
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<header class="top">
-  <div>
-    <h1 data-i18n="appName">Vakit</h1>
-    <button id="locBtn" class="loc" type="button"><span id="locName">—</span> ▾</button>
+
+<!-- Uygulama içi ikon seti -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="i-home" viewBox="0 0 24 24"><path d="M3 10.5 12 3l9 7.5V20a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></symbol>
+    <symbol id="i-qibla" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="m15.5 8.5-2.2 4.8-4.8 2.2 2.2-4.8z" fill="currentColor"/></symbol>
+    <symbol id="i-book" viewBox="0 0 24 24"><path d="M12 6.5C10 5 7 4.5 3.5 5v13c3.5-.5 6.5 0 8.5 1.5m0-13C14 5 17 4.5 20.5 5v13c-3.5-.5-6.5 0-8.5 1.5m0-13v13" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></symbol>
+    <symbol id="i-beads" viewBox="0 0 24 24"><circle cx="12" cy="5" r="2" fill="none" stroke="currentColor" stroke-width="1.6"/><circle cx="6.5" cy="8.5" r="2" fill="none" stroke="currentColor" stroke-width="1.6"/><circle cx="17.5" cy="8.5" r="2" fill="none" stroke="currentColor" stroke-width="1.6"/><circle cx="6.5" cy="15" r="2" fill="none" stroke="currentColor" stroke-width="1.6"/><circle cx="17.5" cy="15" r="2" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M12 17v4m-1.5 0h3" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></symbol>
+    <symbol id="i-grid" viewBox="0 0 24 24"><rect x="3.5" y="3.5" width="7" height="7" rx="2" fill="none" stroke="currentColor" stroke-width="1.8"/><rect x="13.5" y="3.5" width="7" height="7" rx="2" fill="none" stroke="currentColor" stroke-width="1.8"/><rect x="3.5" y="13.5" width="7" height="7" rx="2" fill="none" stroke="currentColor" stroke-width="1.8"/><rect x="13.5" y="13.5" width="7" height="7" rx="2" fill="none" stroke="currentColor" stroke-width="1.8"/></symbol>
+    <symbol id="i-cal" viewBox="0 0 24 24"><rect x="3.5" y="5" width="17" height="15.5" rx="2.5" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M3.5 10h17M8 3v4m8-4v4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></symbol>
+    <symbol id="i-table" viewBox="0 0 24 24"><rect x="3.5" y="4" width="17" height="16" rx="2.5" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M3.5 9h17M3.5 14.5h17M9.5 9v11" stroke="currentColor" stroke-width="1.6"/></symbol>
+    <symbol id="i-star" viewBox="0 0 24 24"><path d="M12 3.5l2.3 4.8 5.2.7-3.8 3.7.9 5.2L12 15.4l-4.6 2.5.9-5.2-3.8-3.7 5.2-.7z" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></symbol>
+    <symbol id="i-gear" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M12 2.8v2.4m0 13.6v2.4M2.8 12h2.4m13.6 0h2.4M5.5 5.5l1.7 1.7m9.6 9.6 1.7 1.7m0-13-1.7 1.7m-9.6 9.6-1.7 1.7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></symbol>
+    <symbol id="i-bell" viewBox="0 0 24 24"><path d="M6 16V11a6 6 0 1 1 12 0v5l1.5 2h-15zM10 20.5h4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="3" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="m8.5 12 2.5 2.5 4.5-5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-people" viewBox="0 0 24 24"><circle cx="9" cy="8.5" r="3" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M3.5 19c.6-3 2.8-4.5 5.5-4.5s4.9 1.5 5.5 4.5M16 6a3 3 0 0 1 0 5.5m2 2.5c1.4.6 2.3 2 2.6 4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></symbol>
+    <symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 21s-6.5-6-6.5-11a6.5 6.5 0 0 1 13 0c0 5-6.5 11-6.5 11z" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="10" r="2.3" fill="currentColor"/></symbol>
+    <symbol id="i-back" viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-chev" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-moon" viewBox="0 0 24 24"><path d="M19 15.5A8 8 0 0 1 8.5 5a8 8 0 1 0 10.5 10.5z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></symbol>
+    <symbol id="i-mihrab" viewBox="0 0 64 64"><path d="M14 56V30c0-10 8-18 18-22 10 4 18 12 18 22v26" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linejoin="round"/><path d="M22 56V33c0-6 4.5-10.5 10-13 5.5 2.5 10 7 10 13v23" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linejoin="round" opacity=".7"/><path d="M8 56h48" stroke="currentColor" stroke-width="3.2" stroke-linecap="round"/><circle cx="32" cy="38" r="2.6" fill="currentColor"/></symbol>
+  </defs>
+</svg>
+
+<!-- ============ İlk açılış kurulumu ============ -->
+<div id="onboard" class="onboard" hidden>
+  <div class="ob-top"><button id="obBack" class="link" type="button" data-i18n="back">Geri</button><span></span><button id="obSkip" class="link" type="button" data-i18n="skip">Atla</button></div>
+  <div class="ob-step" data-step="0">
+    <div class="ob-logo"><svg><use href="#i-mihrab"/></svg></div>
+    <h2 data-i18n="obWelcome">Hoş geldiniz</h2>
+    <p data-i18n="obWelcomeText">Namaz vakitleri, kıble, Kur'an-ı Kerim ve zikirmatik tek yerde. Reklamlar sade, verileriniz telefonunuzda kalır.</p>
+    <ul class="ob-list">
+      <li><svg><use href="#i-pin"/></svg><span data-i18n="obP1">Konumunuz hiçbir sunucuya gönderilmez</span></li>
+      <li><svg><use href="#i-check"/></svg><span data-i18n="obP2">Hesap açmanız gerekmez</span></li>
+      <li><svg><use href="#i-moon"/></svg><span data-i18n="obP3">İnternetsiz de çalışır</span></li>
+    </ul>
   </div>
-  <button id="langBtn" class="lang" type="button">EN</button>
-</header>
-
-<main>
-  <!-- Namaz vakitleri -->
-  <section id="tab-times" class="tab active">
-    <div class="next card">
-      <div class="next-label" data-i18n="nextPrayer">Sonraki vakit</div>
-      <div class="next-name" id="nextName">—</div>
-      <div class="next-count" id="nextCount">--:--:--</div>
-      <div class="next-date" id="today"></div>
-      <div class="next-date" id="hijri"></div>
+  <div class="ob-step" data-step="1" hidden>
+    <div class="ob-icon"><svg><use href="#i-pin"/></svg></div>
+    <h2 data-i18n="obLocTitle">Konumunuz</h2>
+    <p data-i18n="obLocText">Vakitler bulunduğunuz yere göre hesaplanır.</p>
+    <button id="obGps" class="btn" type="button" data-i18n="useGps">Konumumu kullan</button>
+    <div class="or" data-i18n="or">veya</div>
+    <select id="obCity" class="field" aria-label="Şehir"></select>
+    <p class="note" id="obLocStatus"></p>
+  </div>
+  <div class="ob-step" data-step="2" hidden>
+    <div class="ob-icon"><svg><use href="#i-table"/></svg></div>
+    <h2 data-i18n="obCalcTitle">Hesaplama</h2>
+    <p data-i18n="obCalcText">Türkiye'de Diyanet yöntemi kullanılır. Dilerseniz sonra Ayarlar'dan değiştirebilirsiniz.</p>
+    <label class="lbl" data-i18n="method">Hesaplama yöntemi</label>
+    <select id="obMethod" class="field"></select>
+    <label class="lbl" data-i18n="madhab">İkindi (Asr) hesabı</label>
+    <div class="choice" id="obMadhab">
+      <button type="button" data-v="Shafi"><b data-i18n="asrStd">Standart</b><small data-i18n="asrStdSub">Diyanet, Şafii, Maliki, Hanbeli</small></button>
+      <button type="button" data-v="Hanafi"><b data-i18n="asrHan">Hanefi</b><small data-i18n="asrHanSub">Asr-ı sani (daha geç)</small></button>
     </div>
-    <ul class="times card" id="timesList"></ul>
-    <p class="note" id="methodNote"></p>
-    <details class="card month">
-      <summary data-i18n="monthly">Aylık namaz vakitleri</summary>
-      <div class="scroll"><table id="monthTable"></table></div>
-    </details>
-  </section>
+  </div>
+  <div class="ob-foot">
+    <div class="dots" id="obDots"><i></i><i></i><i></i></div>
+    <button id="obNext" class="btn big" type="button" data-i18n="continue">Devam et</button>
+  </div>
+</div>
 
-  <!-- Kıble -->
-  <section id="tab-qibla" class="tab">
-    <div class="card qibla">
-      <div class="compass" id="compass">
-        <div class="dial" id="dial">
-          <span class="n">N</span><span class="e">E</span><span class="s">S</span><span class="w">W</span>
-          <div class="arm" id="arm"><i></i><span>🕋</span></div>
-        </div>
-        <div class="needle"></div>
+<!-- ============ Uygulama ============ -->
+<div id="app">
+  <header class="bar" id="bar">
+    <button id="barBack" class="icon-btn" type="button" aria-label="Geri" hidden><svg><use href="#i-back"/></svg></button>
+    <h1 id="barTitle">Vakit</h1>
+    <span class="bar-gap"></span>
+    <button id="langBtn" class="pill" type="button">EN</button>
+  </header>
+
+  <main>
+    <!-- Ana sayfa -->
+    <section class="view" data-view="home">
+      <button class="loc-chip" id="locChip" type="button"><svg><use href="#i-pin"/></svg><span id="locName">—</span><svg class="chev"><use href="#i-chev"/></svg></button>
+      <div class="hero">
+        <div class="hero-dates"><span id="today"></span><span id="hijri"></span></div>
+        <div class="hero-next"><span data-i18n="nextPrayer">Sonraki vakit</span> · <b id="nextName">—</b></div>
+        <div class="hero-count" id="nextCount">--:--:--</div>
+        <div class="hero-bar"><i id="nextBar"></i></div>
+        <ol class="hero-times" id="heroTimes"></ol>
       </div>
-      <div class="qibla-deg" id="qiblaDeg">—</div>
-      <div class="turn" id="turnHint"></div>
-      <p class="note" id="qiblaHint" data-i18n="qiblaHint">Telefonu düz tutun ve kendi etrafınızda yavaşça dönün. Üstteki ok Kâbe simgesinin üzerine gelince kıbleye dönmüşsünüz demektir.</p>
-      <button id="compassBtn" class="btn" type="button" data-i18n="enableCompass">Pusulayı başlat</button>
-    </div>
-  </section>
 
-  <!-- Zikirmatik -->
-  <section id="tab-dhikr" class="tab">
-    <div class="card dhikr">
-      <select id="dhikrSel" aria-label="Zikir"></select>
-      <button id="counter" class="counter" type="button" aria-live="polite">
-        <span id="count">0</span>
-        <small id="target">/ 33</small>
+      <div class="quick">
+        <button type="button" data-go="qibla"><span><svg><use href="#i-qibla"/></svg></span><b data-i18n="tabQibla">Kıble</b></button>
+        <button type="button" data-go="quran"><span><svg><use href="#i-book"/></svg></span><b data-i18n="tabQuran">Kur'an</b></button>
+        <button type="button" data-go="dhikr"><span><svg><use href="#i-beads"/></svg></span><b data-i18n="tabDhikr">Zikirmatik</b></button>
+        <button type="button" data-go="monthly"><span><svg><use href="#i-table"/></svg></span><b data-i18n="monthlyShort">Aylık</b></button>
+      </div>
+
+      <button class="card row-card" id="nextDayCard" type="button" data-go="days">
+        <span class="rc-ic gold"><svg><use href="#i-moon"/></svg></span>
+        <span class="rc-body"><small data-i18n="upcoming">Yaklaşan mübarek gün</small><b id="nextDayName">—</b><em id="nextDayDate"></em></span>
+        <svg class="chev"><use href="#i-chev"/></svg>
       </button>
-      <div class="row">
-        <button id="resetBtn" class="btn ghost" type="button" data-i18n="reset">Sıfırla</button>
-        <select id="targetSel" aria-label="Hedef">
-          <option value="33">33</option><option value="99">99</option><option value="100">100</option><option value="0">∞</option>
-        </select>
+
+      <article class="card verse-card" id="verseCard">
+        <header><span data-i18n="dailyVerse">Günün ayeti</span><button class="link" id="verseOpen" type="button" data-i18n="readSurah">Sureyi oku</button></header>
+        <p class="ar" id="verseAr" dir="rtl" lang="ar"></p>
+        <footer id="verseRef"></footer>
+      </article>
+
+      <button class="card row-card" type="button" data-go="quran" id="continueCard" hidden>
+        <span class="rc-ic"><svg><use href="#i-book"/></svg></span>
+        <span class="rc-body"><small data-i18n="continueReading">Okumaya devam et</small><b id="continueName">—</b></span>
+        <svg class="chev"><use href="#i-chev"/></svg>
+      </button>
+    </section>
+
+    <!-- Kıble -->
+    <section class="view" data-view="qibla" hidden>
+      <div class="card qibla">
+        <div class="compass" id="compass">
+          <div class="dial" id="dial">
+            <span class="n">N</span><span class="e">E</span><span class="s">S</span><span class="w">W</span>
+            <div class="arm" id="arm"><i></i><span>🕋</span></div>
+          </div>
+          <div class="needle"></div>
+        </div>
+        <div class="qibla-deg" id="qiblaDeg">—</div>
+        <div class="turn" id="turnHint"></div>
+        <p class="note" id="qiblaHint" data-i18n="qiblaHint">Telefonu düz tutun ve kendi etrafınızda yavaşça dönün. Üstteki ok Kâbe simgesinin üzerine gelince kıbleye dönmüşsünüz demektir.</p>
+        <button id="compassBtn" class="btn" type="button" data-i18n="enableCompass">Pusulayı başlat</button>
       </div>
-      <p class="note"><span data-i18n="total">Toplam</span>: <b id="total">0</b></p>
-    </div>
-  </section>
+    </section>
 
-  <!-- Ayarlar -->
-  <section id="tab-settings" class="tab">
-    <div class="card form">
-      <label><span data-i18n="method">Hesaplama yöntemi</span>
-        <select id="methodSel"></select></label>
-      <label><span data-i18n="madhab">İkindi (Asr) hesabı</span>
-        <select id="madhabSel">
-          <option value="Shafi" data-i18n="shafi">Standart (Diyanet)</option>
-          <option value="Hanafi" data-i18n="hanafi">Hanefi (asr-ı sani)</option>
-        </select></label>
-      <div><span class="note" data-i18n="fineTune">İnce ayar (dakika) — vakitleri camiinizin takvimine eşitlemek için</span>
-        <div class="fine" id="fineBox"></div></div>
-      <label><span data-i18n="city">Şehir</span>
-        <select id="citySel"></select></label>
-      <button id="gpsBtn" class="btn" type="button" data-i18n="useGps">Konumumu kullan</button>
-      <p class="note" data-i18n="privacy">Konumunuz yalnızca bu telefonda kullanılır; hiçbir sunucuya gönderilmez.</p>
-    </div>
-  </section>
-</main>
+    <!-- Kur'an: sure listesi -->
+    <section class="view" data-view="quran" hidden>
+      <input id="surahSearch" class="field search" type="search" data-i18n-ph="searchSurah" placeholder="Sure ara (ör. Yâsîn, 36)">
+      <ul class="surah-list" id="surahList"></ul>
+      <p class="note src" data-i18n="quranSource">Arapça metin: Kur'an Meâlleri Ansiklopedisi (QuranEnc.com). Meal yakında eklenecek.</p>
+    </section>
 
-<nav class="bottom">
-  <button data-tab="times" class="active" type="button"><span>🕰️</span><b data-i18n="tabTimes">Vakitler</b></button>
-  <button data-tab="qibla" type="button"><span>🧭</span><b data-i18n="tabQibla">Kıble</b></button>
-  <button data-tab="dhikr" type="button"><span>📿</span><b data-i18n="tabDhikr">Zikirmatik</b></button>
-  <button data-tab="settings" type="button"><span>⚙️</span><b data-i18n="tabSettings">Ayarlar</b></button>
-</nav>
+    <!-- Kur'an: okuyucu -->
+    <section class="view" data-view="reader" hidden>
+      <div class="reader-head card">
+        <div class="rh-ar" id="rdAr" dir="rtl" lang="ar"></div>
+        <div class="rh-meta" id="rdMeta"></div>
+      </div>
+      <p class="basmala" id="rdBasmala" dir="rtl" lang="ar">بِسۡمِ ٱللَّهِ ٱلرَّحۡمَٰنِ ٱلرَّحِيمِ</p>
+      <div class="verses" id="rdVerses" dir="rtl" lang="ar"></div>
+      <div class="reader-nav">
+        <button class="btn ghost" id="rdPrev" type="button" data-i18n="prevSurah">Önceki sure</button>
+        <button class="btn ghost" id="rdNext" type="button" data-i18n="nextSurah">Sonraki sure</button>
+      </div>
+    </section>
+
+    <!-- Zikirmatik -->
+    <section class="view" data-view="dhikr" hidden>
+      <div class="card dhikr">
+        <select id="dhikrSel" class="field" aria-label="Zikir"></select>
+        <p class="ar dhikr-ar" id="dhikrAr" dir="rtl" lang="ar"></p>
+        <button id="counter" class="counter" type="button" aria-live="polite">
+          <svg class="ring" viewBox="0 0 100 100"><circle cx="50" cy="50" r="45"/><circle id="ringFg" class="fg" cx="50" cy="50" r="45"/></svg>
+          <span id="count">0</span><small id="target">/ 33</small>
+        </button>
+        <div class="row">
+          <button id="resetBtn" class="btn ghost" type="button" data-i18n="reset">Sıfırla</button>
+          <select id="targetSel" class="field" aria-label="Hedef"><option value="33">33</option><option value="99">99</option><option value="100">100</option><option value="0">∞</option></select>
+        </div>
+        <p class="note"><span data-i18n="total">Toplam</span>: <b id="total">0</b></p>
+      </div>
+    </section>
+
+    <!-- Menü -->
+    <section class="view" data-view="menu" hidden>
+      <div class="grid" id="menuGrid"></div>
+    </section>
+
+    <!-- Aylık vakitler -->
+    <section class="view" data-view="monthly" hidden>
+      <div class="month-nav card"><button class="icon-btn" id="mPrev" type="button"><svg><use href="#i-back"/></svg></button><b id="mTitle"></b><button class="icon-btn" id="mNext" type="button"><svg><use href="#i-chev"/></svg></button></div>
+      <div class="card month"><div class="scroll"><table id="monthTable"></table></div></div>
+    </section>
+
+    <!-- Mübarek günler -->
+    <section class="view" data-view="days" hidden>
+      <div class="card hijri-today"><b id="hijriBig"></b><span id="gregBig"></span></div>
+      <ul class="days" id="daysList"></ul>
+      <p class="note" data-i18n="daysNote">Tarihler astronomik hesapla bulunur; Diyanet'in ilan ettiği tarihle 1 gün farklı olabilir.</p>
+    </section>
+
+    <!-- Ayarlar -->
+    <section class="view" data-view="settings" hidden>
+      <div class="card form">
+        <label class="lbl" data-i18n="city">Şehir</label>
+        <select id="citySel" class="field"></select>
+        <button id="gpsBtn" class="btn ghost" type="button" data-i18n="useGps">Konumumu kullan</button>
+        <p class="note" data-i18n="privacy">Konumunuz yalnızca bu telefonda kullanılır; hiçbir sunucuya gönderilmez.</p>
+      </div>
+      <div class="card form">
+        <label class="lbl" data-i18n="method">Hesaplama yöntemi</label>
+        <select id="methodSel" class="field"></select>
+        <label class="lbl" data-i18n="madhab">İkindi (Asr) hesabı</label>
+        <select id="madhabSel" class="field">
+          <option value="Shafi" data-i18n="asrStd">Standart</option>
+          <option value="Hanafi" data-i18n="asrHan">Hanefi</option>
+        </select>
+        <label class="lbl" data-i18n="fineTune">İnce ayar (dakika)</label>
+        <div class="fine" id="fineBox"></div>
+        <p class="note" data-i18n="fineNote">Vakitleri camiinizin takvimine birebir eşitlemek için kullanın.</p>
+      </div>
+      <div class="card form">
+        <button id="replayOb" class="btn ghost" type="button" data-i18n="replayOb">Kurulumu yeniden başlat</button>
+        <p class="note src" data-i18n="credits">Vakit hesabı: adhan (MIT). Arapça metin: QuranEnc.com. Yazı tipi: Amiri Quran (OFL).</p>
+      </div>
+    </section>
+  </main>
+
+  <nav class="tabbar" id="tabbar">
+    <button data-tab="home" type="button"><svg><use href="#i-home"/></svg><b data-i18n="tabHome">Ana sayfa</b></button>
+    <button data-tab="qibla" type="button"><svg><use href="#i-qibla"/></svg><b data-i18n="tabQibla">Kıble</b></button>
+    <button data-tab="quran" type="button"><svg><use href="#i-book"/></svg><b data-i18n="tabQuran">Kur'an</b></button>
+    <button data-tab="dhikr" type="button"><svg><use href="#i-beads"/></svg><b data-i18n="tabDhikr">Zikirmatik</b></button>
+    <button data-tab="menu" type="button"><svg><use href="#i-grid"/></svg><b data-i18n="tabMenu">Menü</b></button>
+  </nav>
+</div>
 
 <script src="lib/adhan.umd.min.js"></script>
 <script src="app.js"></script>
