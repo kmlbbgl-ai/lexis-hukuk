@@ -47,3 +47,7 @@ SIRADA: → 3/7 sesler → 8 dua kardeşliği + hatim (Firebase) → 13 asistan 
 12. Uygulama tema seçimi (açık, koyu, yeşil, pembe vb.).
 13. "Soru sor" yapay zekâ bölümü — maliyet ve dini risk değerlendirilecek.
 Kural: kullanıcıya sormadan ücretli bir şey (API, görsel üretimi vb.) kullanılmayacak.
+
+## YAYINDAN ÖNCE MUTLAKA
+- Kur'an ses kayıtları (Islamic Network CDN) şartları "ticari olmayan" diyor: reklam/Pro varsa izin alınmalı veya sesli dinleme kapatılmalı (www/app.js RECITERS/playAyah).
+- Paket adı + iletişim e-postası kararı, imzalı sürüm, gizlilik sayfasını herkese açık yapma.
