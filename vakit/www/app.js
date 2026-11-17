@@ -1338,6 +1338,7 @@
   $('dkNewBtn').addEventListener('click', () => { $('dkForm').hidden = false; $('dkNewBtn').hidden = true; });
   $('dkCancel').addEventListener('click', () => { $('dkForm').hidden = true; $('dkNewBtn').hidden = false; });
   $('dkItems').addEventListener('click', e => { if (e.target.tagName === 'SELECT' || e.target.tagName === 'OPTION') return; const l = e.target.closest('label'); if (!l) return; e.preventDefault(); if (!l.classList.contains('on') && document.querySelectorAll('#dkItems label.on').length >= 5) return; l.classList.toggle('on'); });
+  $('dkItems').addEventListener('change', e => { const l = e.target.closest('label'); if (l && !l.classList.contains('on') && document.querySelectorAll('#dkItems label.on').length < 5) l.classList.add('on'); });
   $('dkSend').addEventListener('click', sendDua);
   $('dkReload').addEventListener('click', loadDuas);
   $('dkList').addEventListener('click', async e => {
