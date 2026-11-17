@@ -656,7 +656,7 @@
   }
   function renderHomeLog(now) {
     const d = dayAt(0);
-    $('homeLog').innerHTML = FARZ.map((p, i) => `<button type="button" data-hp="${i}" class="${isOn(d, i) ? 'on' : ''}" ${started(d, p) || isOn(d, i) ? '' : 'disabled'}><i>${isOn(d, i) ? '✓' : ''}</i>${pname(p)}</button>`).join('');
+    $('homeLog').innerHTML = FARZ.map((p, i) => `<button type="button" data-hp="${i}" class="${isOn(d, i) ? 'on' : ''}" ${started(d, p) || isOn(d, i) ? '' : 'disabled'}><i>${isOn(d, i) ? '<svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>' : ''}</i>${pname(p)}</button>`).join('');
     const s = streaks().cur;
     $('logStreak').textContent = s ? t('streak')(s) : `${countDay(d)}/5`;
   }

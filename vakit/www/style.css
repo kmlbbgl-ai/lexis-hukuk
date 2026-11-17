@@ -446,3 +446,9 @@ input[type=range]{width:100%;accent-color:var(--brand-2)}
 
 .ay-tr.muted{color:var(--muted);font-size:14px;font-style:italic}
 #rdMeal.on{background:var(--tint);border-color:var(--brand-2);color:var(--brand)}
+
+/* Bugünkü namazlarım: net tik ve okunur yazılar */
+.log-dots button{color:var(--ink);font-weight:600;font-size:13px}
+.log-dots button i svg{width:24px;height:24px;color:#fff}
+.log-dots button:disabled{opacity:.55}
+.log-dots button:disabled i{border-style:dashed}
