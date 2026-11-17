@@ -466,3 +466,7 @@ input[type=range]{width:100%;accent-color:var(--brand-2)}
 
 .ay-top .ay-play{color:var(--brand-2);font-size:16px;border:1.5px solid var(--line);border-radius:50%;width:36px;height:36px}
 .ayah.playing .ay-play{background:var(--brand-2);color:#fff;border-color:var(--brand-2)}
+
+.rd-topnav{display:flex;justify-content:space-between;gap:8px;margin:0 2px 8px}
+.rd-topnav button{background:var(--card);border:1px solid var(--line);color:var(--brand-2);border-radius:999px;padding:7px 14px;font:inherit;font-size:14px;font-weight:600}
+.rd-topnav button[hidden]{display:block;visibility:hidden}

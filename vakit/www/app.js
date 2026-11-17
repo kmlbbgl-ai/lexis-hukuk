@@ -420,7 +420,7 @@
     $('rdMeta').textContent = `${surahName(s)} ${t('surah')} · ${s.mk ? t('meccan') : t('medinan')} · ${s.v} ${t('verses')}`.replace(/\s+·/, ' ·');
     $('rdBasmala').hidden = n === 1 || n === 9;
     renderVerses(); $('rdAudioBar').hidden = false;
-    $('rdPrev').disabled = n === 1; $('rdNext').disabled = n === 114;
+    $('rdPrev').disabled = n === 1; $('rdNext').disabled = n === 114; $('rdPrevT').hidden = n === 1; $('rdNextT').hidden = n === 114; if (n > 1) $('rdPrevT').textContent = '‹ ' + surahName(surahs[n - 2]); if (n < 114) $('rdNextT').textContent = surahName(surahs[n]) + ' ›';
     go('reader');
     store.set('lastRead', { s: n, v: verse || 1 });
     requestAnimationFrame(() => {
@@ -1324,6 +1324,8 @@
   $('esmaSearch').addEventListener('input', renderEsma);
   $('rdPrev').addEventListener('click', () => { stack.pop(); openSurah(readerSurah - 1); });
   $('rdNext').addEventListener('click', () => { stack.pop(); openSurah(readerSurah + 1); });
+  $('rdPrevT').addEventListener('click', () => $('rdPrev').click());
+  $('rdNextT').addEventListener('click', () => $('rdNext').click());
   $('mPrev').addEventListener('click', () => { mOffset--; renderMonth(); });
   $('mNext').addEventListener('click', () => { mOffset++; renderMonth(); });
   // Namaz takibi olayları
