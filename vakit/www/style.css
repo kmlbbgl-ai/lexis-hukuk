@@ -326,3 +326,17 @@ main{max-width:560px;margin:0 auto;padding:0 16px calc(96px + env(safe-area-inse
 .quiz .opts button.no{background:#fbe7e4;border-color:#d0655a;color:#9a3329}
 .quiz .bigscore{font-size:54px;font-weight:700;color:var(--brand)}
 .quiz .btn{margin-top:16px}
+
+/* Ramazan ve nafile */
+.ram-pair{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px}
+.ram-pair div{background:rgba(255,255,255,.1);border-radius:14px;padding:10px;text-align:center}
+.ram-pair small{display:block;opacity:.8;font-size:12px}
+.ram-pair b{font-size:24px;font-variant-numeric:tabular-nums;color:#f0d79a}
+.ram-table td.chk{cursor:pointer;font-size:18px;color:var(--brand-2)}
+.ram-table tr.past td:not(.chk){color:var(--muted)}
+.stat-row{text-align:center}
+.stat-row b{display:block;font-size:34px;color:var(--brand)}
+.stat-row small{color:var(--muted)}
+.days li .fchk{margin-left:auto;padding:8px 12px;border-radius:12px;border:1.5px solid var(--line);background:var(--card);font-weight:600;font-size:13px;white-space:nowrap}
+.days li .fchk.on{background:var(--brand-2);border-color:var(--brand-2);color:#fff}
+#ramToKaza{margin-top:4px}

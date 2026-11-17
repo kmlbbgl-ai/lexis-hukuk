@@ -39,6 +39,14 @@
       mHatim: 'Ortak hatim', mEsma: "Esmâü'l-Hüsnâ", mPrayerLog: 'Namaz takibi', mDua: 'Dualar',
       logToday: 'Bugünkü namazlarım', streak: n => `🔥 ${n} gün seri`, prayed: 'Kıldım', notYet: 'Vakti girmedi', mark: 'İşaretle',
       stStreak: 'günlük seri', stBest: 'en uzun seri', stMonth: 'bu ay', last7: 'Son 7 gün', logNote: 'Kayıtlarınız yalnızca bu telefonda tutulur.', today: 'Bugün', tLog: 'Namaz takibi', mPrayerLogSub: 'Kıldığınız vakitler',
+      ramLeft: "Ramazan'a kalan", dayShort: 'gün', sahur: 'Sahur (imsak)', iftar: 'İftar', iftarDua: 'İftar duası', iftarDuaTr: "Allah'ım! Senin rızan için oruç tuttum ve senin rızkınla orucumu açtım.",
+      ramNote: "Tarihler Diyanet'in ilan ettiği takvime göredir. Tuttuğunuz günleri tablodan işaretleyebilirsiniz.", tRamazan: 'Ramazan', mRamazan: 'Ramazan', mRamazanSub: 'İmsakiye ve oruç takibi',
+      ramTo: n => `Ramazan'a ${n} gün`, ramStarts: d => `1 Ramazan: ${d}`, ramDay: n => `Ramazan'ın ${n}. günü`, toIftar: 'İftara kalan', toSahur: 'Sahura kalan', ramEnded: 'Ramazan sona erdi. Bayramınız mübarek olsun!',
+      ramUpcoming: 'Ramazan yaklaşıyor', ramNow: 'Hayırlı Ramazanlar', fastCol: 'Oruç', ramToKaza: n => `Tutulamayan ${n} günü kaza borcuna ekle`, ramToKazaDone: 'Tutulamayan günler kaza borcuna eklendi ✓',
+      tNafile: 'Nafile oruç', mNafile: 'Nafile oruç', mNafileSub: 'Sünnet oruç günleri', nafileYear: 'bu yıl tutulan nafile oruç', fasted: 'Tuttum', fastMark: 'İşaretle',
+      forbiddenTitle: 'Oruç tutulmayan günler', forbiddenText: "Ramazan Bayramı'nın 1. günü ile Kurban Bayramı'nın 4 gününde oruç tutulmaz.", nafileNote: 'Hicrî ay başları astronomik hesapla bulunur; 1 gün farklı olabilir.',
+      nfIftar: 'İftar vakti', nfSahurEnd: 'İmsak vakti · sahur sona erdi',
+      fType: { mon: 'Pazartesi orucu', thu: 'Perşembe orucu', biyd: 'Eyyâm-ı bîd orucu', ashura: 'Aşure orucu', arafa: 'Arefe orucu', shawwal: 'Şevval orucu' },
       deedsQ: 'Bugün Allah için ne yaptınız?', deedsSub: (n, s) => `Bugün ${n} iyilik${s ? ` · 🔥 ${s} gün` : ''}`, deedsToday: 'bugünkü iyilik', deedAddPh: 'Kendi iyiliğinizi ekleyin', add: 'Ekle',
       deedRemind: 'Akşam hatırlatması', deedRemindSub: "Her akşam 21.00'de", deedStreak: n => `🔥 ${n} gündür iyilik yapıyorsunuz`, tDeeds: 'Günlük iyilikler', mDeeds: 'Günlük iyilikler', mDeedsSub: 'Bugün Allah için',
       deedNotifTitle: 'Bugün Allah için ne yaptınız?', deedNotifBody: 'Günün iyiliklerini işaretlemeyi unutmayın.',
@@ -95,6 +103,14 @@
       mHatim: 'Group khatm', mEsma: '99 Names', mPrayerLog: 'Prayer log', mDua: 'Duas',
       logToday: "Today's prayers", streak: n => `🔥 ${n}-day streak`, prayed: 'Prayed', notYet: 'Not yet', mark: 'Mark',
       stStreak: 'day streak', stBest: 'best streak', stMonth: 'this month', last7: 'Last 7 days', logNote: 'Your records stay on this phone only.', today: 'Today', tLog: 'Prayer log', mPrayerLogSub: 'Prayers you performed',
+      ramLeft: 'Time to Ramadan', dayShort: 'd', sahur: 'Suhoor (Fajr)', iftar: 'Iftar', iftarDua: 'Iftar dua', iftarDuaTr: 'O Allah, for You I have fasted and with Your provision I break my fast.',
+      ramNote: 'Dates follow the announced calendar. Mark the days you fasted in the table.', tRamazan: 'Ramadan', mRamazan: 'Ramadan', mRamazanSub: 'Timetable and fasting log',
+      ramTo: n => `${n} days to Ramadan`, ramStarts: d => `1 Ramadan: ${d}`, ramDay: n => `Day ${n} of Ramadan`, toIftar: 'Time to iftar', toSahur: 'Time to suhoor ends', ramEnded: 'Ramadan has ended. Eid Mubarak!',
+      ramUpcoming: 'Ramadan is coming', ramNow: 'Ramadan Mubarak', fastCol: 'Fast', ramToKaza: n => `Add ${n} missed days to make-up fasts`, ramToKazaDone: 'Missed days were added to make-up fasts ✓',
+      tNafile: 'Voluntary fasts', mNafile: 'Voluntary fasts', mNafileSub: 'Sunnah fasting days', nafileYear: 'voluntary fasts this year', fasted: 'Fasted', fastMark: 'Mark',
+      forbiddenTitle: 'Days not to fast', forbiddenText: 'Do not fast on the first day of Eid al-Fitr or the four days of Eid al-Adha.', nafileNote: 'Hijri month starts are calculated and may differ by one day.',
+      nfIftar: 'Iftar time', nfSahurEnd: 'Fajr · suhoor has ended',
+      fType: { mon: 'Monday fast', thu: 'Thursday fast', biyd: 'White days fast', ashura: 'Ashura fast', arafa: 'Day of Arafah fast', shawwal: 'Shawwal fast' },
       deedsQ: 'What did you do for Allah today?', deedsSub: (n, s) => `${n} good deeds today${s ? ` · 🔥 ${s} days` : ''}`, deedsToday: 'good deeds today', deedAddPh: 'Add your own good deed', add: 'Add',
       deedRemind: 'Evening reminder', deedRemindSub: 'Every evening at 21:00', deedStreak: n => `🔥 ${n}-day good deed streak`, tDeeds: 'Daily good deeds', mDeeds: 'Good deeds', mDeedsSub: 'For Allah today',
       deedNotifTitle: 'What did you do for Allah today?', deedNotifBody: "Don't forget to mark today's good deeds.",
@@ -246,7 +262,7 @@
 
   // ---------------- Görünümler ve gezinme ----------------
   const ROOTS = ['home', 'qibla', 'quran', 'dhikr', 'menu'];
-  const TITLES = { home: 'appName', qibla: 'tabQibla', quran: 'tabQuran', dhikr: 'tabDhikr', menu: 'tabMenu', settings: 'tSettings', monthly: 'tMonthly', days: 'tDays', notif: 'mNotif', log: 'tLog', kaza: 'tKaza', esma: 'mEsma', hadis: 'tHadis', dua: 'tDua', deeds: 'tDeeds', names: 'tNames', quiz: 'tQuiz' };
+  const TITLES = { home: 'appName', qibla: 'tabQibla', quran: 'tabQuran', dhikr: 'tabDhikr', menu: 'tabMenu', settings: 'tSettings', monthly: 'tMonthly', days: 'tDays', notif: 'mNotif', log: 'tLog', kaza: 'tKaza', esma: 'mEsma', hadis: 'tHadis', dua: 'tDua', deeds: 'tDeeds', names: 'tNames', quiz: 'tQuiz', ramazan: 'tRamazan', nafile: 'tNafile' };
   let stack = ['home'];
   const cur = () => stack[stack.length - 1];
   function render(view) {
@@ -266,6 +282,8 @@
     if (view === 'hadis') renderTextList('hadis');
     if (view === 'dua') renderTextList('dua');
     if (view === 'deeds') renderDeeds();
+    if (view === 'ramazan') renderRamazan();
+    if (view === 'nafile') renderNafile();
     if (view === 'names') renderNames();
     if (view === 'quiz') { if (!quiz) newQuiz(); renderQuiz(); }
     if (view !== 'reader') window.scrollTo(0, 0);
@@ -298,6 +316,7 @@
     renderHomeLog(now);
     renderDaily(now);
     renderHomeDeeds();
+    renderRamCard(now);
     const last = store.get('lastRead', null);
     $('continueCard').hidden = !last || !surahs;
     if (last && surahs) $('continueName').textContent = `${surahName(surahs[last.s - 1])} · ${last.v}. ${t('ayah')}`;
@@ -314,6 +333,7 @@
     $('nextBar').style.width = (done * 100).toFixed(1) + '%';
     if (now.getSeconds() === 0) renderHome();
   }
+  setInterval(() => { if (cur() === 'ramazan') ramTick(); }, 1000);
 
   // ---------------- Kur'an ----------------
   let surahs = null, quran = null, readerSurah = 1;
@@ -443,6 +463,7 @@
  { soon: 1, ic: 'i-people', t: 'mHatim' },
     { go: 'esma', ic: 'i-star', t: 'mEsma', s: 'mEsmaSub' }, { go: 'hadis', ic: 'i-book', t: 'mHadis', s: 'mHadisSub' },
     { go: 'dua', ic: 'i-moon', t: 'mDua', s: 'mDuaSub' },
+    { go: 'ramazan', ic: 'i-moon', t: 'mRamazan', s: 'mRamazanSub' }, { go: 'nafile', ic: 'i-cal', t: 'mNafile', s: 'mNafileSub' },
     { go: 'deeds', ic: 'i-heart', t: 'mDeeds', s: 'mDeedsSub' }, { go: 'quiz', ic: 'i-quiz', t: 'mQuiz', s: 'mQuizSub' },
     { go: 'names', ic: 'i-baby', t: 'mNames', s: 'mNamesSub' }
   ];
@@ -577,6 +598,106 @@
     else $('duaList').innerHTML = duaData.map((d, i) => `<li class="${i === n % duaData.length ? 'hl' : ''}"><p class="ar" dir="rtl" lang="ar">${duaAr(d)}</p><p>${lang === 'tr' ? d.tr : d.en}</p><small>${duaRef(d)}</small></li>`).join('');
   }
 
+  // ---------------- Ramazan ----------------
+  // Ramazan'ın ilk günü ve bayramın ilk günü (Diyanet tarihi varsa onu, yoksa hesabı kullanır)
+  const ramMemo = {};
+  function ramadanRange(now) {
+    const mk = settings.method + dkey(now);
+    if (!(mk in ramMemo)) ramMemo[mk] = ramadanRangeCalc(now);
+    return ramMemo[mk];
+  }
+  function ramadanRangeCalc(now) {
+    const ev = holyDays(new Date(now.getFullYear(), now.getMonth(), now.getDate() - 60), 40);
+    const start = ev.find(e => e.key === 'ramadan'); if (!start) return null;
+    const eid = ev.find(e => e.key === 'eidF' && e.date > start.date);
+    const end = eid ? eid.date : new Date(start.date.getFullYear(), start.date.getMonth(), start.date.getDate() + 30, 12);
+    const days = Math.round((end - start.date) / 864e5);
+    return { start: start.date, end, days, year: start.h ? start.h.y : '' };
+  }
+  const day0 = d => new Date(d.getFullYear(), d.getMonth(), d.getDate());
+  const ramIndex = (r, d) => Math.round((day0(d) - day0(r.start)) / 864e5); // 0 = 1 Ramazan
+  const fasts = Object.assign({ ram: {}, nafile: {}, ramKaza: {} }, store.get('fasts', {}));
+  const saveFasts = () => store.set('fasts', fasts);
+  function renderRamCard(now) {
+    const r = ramadanRange(now);
+    if (!r) { $('ramCard').hidden = true; return; }
+    const i = ramIndex(r, now);
+    const until = -i;
+    $('ramCard').hidden = !(until <= 90 && i < r.days);
+    if (i < 0) { $('ramCardSmall').textContent = t('ramUpcoming'); $('ramCardBig').textContent = t('ramTo')(until); $('ramCardSub').textContent = t('ramStarts')(r.start.toLocaleDateString(loc(), { day: 'numeric', month: 'long', weekday: 'long' })); }
+    else { const pt = timesFor(now); $('ramCardSmall').textContent = t('ramNow'); $('ramCardBig').textContent = t('ramDay')(i + 1); $('ramCardSub').textContent = `${t('sahur')} ${hm(pt.fajr)} · ${t('iftar')} ${hm(pt.maghrib)}`; }
+  }
+  function ramTick() {
+    const now = new Date(), r = ramadanRange(now); if (!r) return;
+    const i = ramIndex(r, now);
+    let target, label;
+    if (i < 0) { target = timesFor(r.start).fajr; label = t('ramLeft'); }
+    else if (i >= r.days) { $('ramNext').textContent = t('ramEnded'); $('ramCount').textContent = ''; return; }
+    else {
+      const pt = timesFor(now);
+      if (now < pt.fajr) { target = pt.fajr; label = t('toSahur'); }
+      else if (now < pt.maghrib) { target = pt.maghrib; label = t('toIftar'); }
+      else { const tm = new Date(now); tm.setDate(tm.getDate() + 1); target = timesFor(tm).fajr; label = ramIndex(r, tm) < r.days ? t('toSahur') : t('ramEnded'); }
+    }
+    let s = Math.max(0, Math.floor((target - now) / 1000));
+    const dd = Math.floor(s / 86400); s %= 86400;
+    const hh = String(Math.floor(s / 3600)).padStart(2, '0'); s %= 3600;
+    $('ramNext').textContent = label;
+    $('ramCount').textContent = `${dd ? dd + ' ' + t('dayShort') + ' ' : ''}${hh}:${String(Math.floor(s / 60)).padStart(2, '0')}:${String(s % 60).padStart(2, '0')}`;
+  }
+  function renderRamazan() {
+    const now = new Date(), r = ramadanRange(now); if (!r) return;
+    const i = ramIndex(r, now);
+    $('ramTitle').textContent = `${t('tRamazan')} ${r.year}`;
+    $('ramDayNo').textContent = i >= 0 && i < r.days ? t('ramDay')(i + 1) : r.start.toLocaleDateString(loc(), { day: 'numeric', month: 'long' });
+    const ptToday = timesFor(i >= 0 && i < r.days ? now : r.start);
+    $('ramSahur').textContent = hm(ptToday.fajr); $('ramIftar').textContent = hm(ptToday.maghrib);
+    let rows = `<tr><th>#</th><th>${t('day')}</th><th>${t('sahur')}</th><th>${t('iftar')}</th><th>${t('fastCol')}</th></tr>`;
+    let missed = 0;
+    for (let k = 0; k < r.days; k++) {
+      const d = new Date(r.start.getFullYear(), r.start.getMonth(), r.start.getDate() + k, 12), pt = timesFor(d), key = dkey(d);
+      const past = day0(d) < day0(now), isToday = k === i, can = day0(d) <= day0(now);
+      if (past && !fasts.ram[key]) missed++;
+      rows += `<tr class="${isToday ? 'today' : ''}${past ? ' past' : ''}"><td>${k + 1}</td><td>${d.toLocaleDateString(loc(), { day: '2-digit', month: '2-digit' })}</td><td>${hm(pt.fajr)}</td><td>${hm(pt.maghrib)}</td><td class="${can ? 'chk' : ''}" data-rd="${can ? key : ''}">${fasts.ram[key] ? '✓' : can ? '○' : ''}</td></tr>`;
+    }
+    $('ramTable').innerHTML = rows; $('ramTable').classList.add('ram-table');
+    const kKey = dkey(r.start), done = !!fasts.ramKaza[kKey];
+    $('ramToKaza').hidden = !(missed || done) || i < r.days;
+    $('ramToKaza').disabled = done;
+    $('ramToKaza').textContent = done ? t('ramToKazaDone') : t('ramToKaza')(missed);
+    ramTick();
+  }
+
+  // ---------------- Nafile oruç ----------------
+  function nafileDays(from, n) {
+    const out = [], hd = holyDays(from, 20);
+    const ashura = hd.find(e => e.key === 'ashura'), arafa = hd.find(e => e.key === 'arafa'), eidF = hd.find(e => e.key === 'eidF');
+    for (let k = 0; k < 60 && out.length < n; k++) {
+      const d = new Date(from.getFullYear(), from.getMonth(), from.getDate() + k, 12), h = hijri(d), types = [];
+      if (h && h.m === 9) continue; // Ramazan
+      const same = e => e && dkey(e.date) === dkey(d);
+      if (same(eidF)) continue;
+      if (hd.some(e => e.key === 'eidA' && Math.round((day0(d) - day0(e.date)) / 864e5) >= 0 && Math.round((day0(d) - day0(e.date)) / 864e5) < 4)) continue;
+      if (d.getDay() === 1) types.push('mon');
+      if (d.getDay() === 4) types.push('thu');
+      if (h && h.d >= 13 && h.d <= 15) types.push('biyd');
+      if (ashura && Math.abs(Math.round((day0(d) - day0(ashura.date)) / 864e5)) <= 1) types.push('ashura');
+      if (same(arafa)) types.push('arafa');
+      if (eidF && Math.round((day0(d) - day0(eidF.date)) / 864e5) >= 1 && Math.round((day0(d) - day0(eidF.date)) / 864e5) <= 29) types.push('shawwal');
+      if (types.length) out.push({ d, h, types });
+    }
+    return out;
+  }
+  function renderNafile() {
+    const now = new Date(), y = String(now.getFullYear());
+    $('nfCountYear').textContent = Object.keys(fasts.nafile).filter(k => k.startsWith(y)).length;
+    const today0 = day0(now);
+    $('nafileList').innerHTML = nafileDays(now, 12).map(x => {
+      const n = Math.round((day0(x.d) - today0) / 864e5), key = dkey(x.d), on = !!fasts.nafile[key];
+      return `<li><span class="d-date"><b>${x.d.getDate()}</b><small>${x.d.toLocaleDateString(loc(), { month: 'short' })}</small></span><span class="d-body"><b>${x.types.map(k => t('fType')[k]).join(' · ')}</b><small>${x.h ? `${x.h.d} ${t('hijriMonths')[x.h.m - 1]}` : ''} · ${x.d.toLocaleDateString(loc(), { weekday: 'long' })} · ${t('inDays')(n)}</small></span>${n === 0 ? `<button type="button" class="fchk${on ? ' on' : ''}" data-nf-day="${key}">${on ? '✓ ' + t('fasted') : t('fastMark')}</button>` : ''}</li>`;
+    }).join('');
+  }
+
   // ---------------- Günlük iyilikler ----------------
   const deeds = Object.assign({ custom: [], days: {}, remind: false }, store.get('deeds', {}));
   const saveDeeds = () => store.set('deeds', deeds);
@@ -690,7 +811,9 @@
         const pt = timesFor(new Date(now.getFullYear(), now.getMonth(), now.getDate() + d, 12));
         PRAYERS.forEach((p, i) => {
           const at = pt[p], sun = p === 'sunrise';
-          if (nf.at[p] && at > now) list.push({ id: d * 20 + i * 2 + 1, title: sun ? t('nfSunTitle') : t('nfTitle')(t(p)), body: `${settings.place.name} · ${hm(at)}`,
+          const rr = ramadanRange(at), inRam = rr && ramIndex(rr, at) >= 0 && ramIndex(rr, at) < rr.days;
+          const title = sun ? t('nfSunTitle') : inRam && p === 'maghrib' ? t('nfIftar') : inRam && p === 'fajr' ? t('nfSahurEnd') : t('nfTitle')(t(p));
+          if (nf.at[p] && at > now) list.push({ id: d * 20 + i * 2 + 1, title, body: `${settings.place.name} · ${hm(at)}`,
             schedule: { at, allowWhileIdle: true }, channelId: 'ezan', isExactNotification: exact });
           const b = new Date(at - nf.mins * 60000);
           if (nf.pre[p] && b > now) list.push({ id: d * 20 + i * 2 + 2, title: sun ? t('nfSunPre')(nf.mins) : t('nfPreTitle')(t(p), nf.mins), body: `${t(p)} ${hm(at)} · ${settings.place.name}`,
@@ -822,6 +945,15 @@
     if (e.target.id === 'qNext') { quiz.i++; quiz.picked = null; if (quiz.i >= quiz.qs.length && quiz.score > store.get('quizBest', 0)) store.set('quizBest', quiz.score); renderQuiz(); return; }
     if (e.target.id === 'qAgain') { newQuiz(); renderQuiz(); }
   });
+  // Ramazan ve nafile olayları
+  $('ramTable').addEventListener('click', e => { const td = e.target.closest('[data-rd]'); if (!td || !td.dataset.rd) return; const k = td.dataset.rd; if (fasts.ram[k]) delete fasts.ram[k]; else fasts.ram[k] = 1; saveFasts(); renderRamazan(); });
+  $('ramToKaza').addEventListener('click', () => {
+    const now = new Date(), r = ramadanRange(now); if (!r || fasts.ramKaza[dkey(r.start)]) return;
+    let n = 0;
+    for (let k = 0; k < r.days; k++) { const d = new Date(r.start.getFullYear(), r.start.getMonth(), r.start.getDate() + k, 12); if (day0(d) < day0(now) && !fasts.ram[dkey(d)]) n++; }
+    kz.left.fast += n; store.set('kaza', kz); fasts.ramKaza[dkey(r.start)] = n; saveFasts(); renderRamazan();
+  });
+  $('nafileList').addEventListener('click', e => { const b = e.target.closest('[data-nf-day]'); if (!b) return; const k = b.dataset.nfDay; if (fasts.nafile[k]) delete fasts.nafile[k]; else fasts.nafile[k] = 1; saveFasts(); renderNafile(); });
   // Kaza olayları
   document.querySelector('[data-view="kaza"]').addEventListener('click', e => {
     const b = e.target.closest('[data-kz]'); const dn = e.target.closest('[data-kzdone]');

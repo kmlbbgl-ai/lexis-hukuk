@@ -103,6 +103,12 @@
         <ol class="hero-times" id="heroTimes"></ol>
       </div>
 
+      <button class="card row-card ram-card" type="button" data-go="ramazan" id="ramCard" hidden>
+        <span class="rc-ic gold"><svg><use href="#i-moon"/></svg></span>
+        <span class="rc-body"><small id="ramCardSmall"></small><b id="ramCardBig"></b><em id="ramCardSub"></em></span>
+        <svg class="chev"><use href="#i-chev"/></svg>
+      </button>
+
       <div class="quick">
         <button type="button" data-go="qibla"><span><svg><use href="#i-qibla"/></svg></span><b data-i18n="tabQibla">Kıble</b></button>
         <button type="button" data-go="quran"><span><svg><use href="#i-book"/></svg></span><b data-i18n="tabQuran">Kur'an</b></button>
@@ -275,6 +281,33 @@
     <section class="view" data-view="dua" hidden>
       <ul class="text-list" id="duaList"></ul>
       <p class="note src" data-i18n="duaNote">Dualar Kur'an-ı Kerim'den alınmıştır; Türkçe ifadeler anlamdır.</p>
+    </section>
+
+    <!-- Ramazan -->
+    <section class="view" data-view="ramazan" hidden>
+      <div class="hero ram-hero">
+        <div class="hero-dates"><span id="ramTitle"></span><span id="ramDayNo"></span></div>
+        <div class="hero-next" id="ramNext"></div>
+        <div class="hero-count" id="ramCount">--:--:--</div>
+        <div class="ram-pair"><div><small data-i18n="sahur">Sahur (imsak)</small><b id="ramSahur">--:--</b></div><div><small data-i18n="iftar">İftar</small><b id="ramIftar">--:--</b></div></div>
+      </div>
+      <article class="card verse-card">
+        <header><span data-i18n="iftarDua">İftar duası</span></header>
+        <p class="ar" dir="rtl" lang="ar">اللَّهُمَّ لَكَ صُمْتُ وَعَلَى رِزْقِكَ أَفْطَرْتُ</p>
+        <p class="dua-tr" data-i18n="iftarDuaTr">Allah'ım! Senin rızan için oruç tuttum ve senin rızkınla orucumu açtım.</p>
+        <footer>Ebû Dâvûd</footer>
+      </article>
+      <div class="card month"><div class="scroll"><table id="ramTable"></table></div></div>
+      <button class="btn ghost" id="ramToKaza" type="button" hidden></button>
+      <p class="note" data-i18n="ramNote">Tarihler Diyanet'in ilan ettiği takvime göredir. Tuttuğunuz günleri tablodan işaretleyebilirsiniz.</p>
+    </section>
+
+    <!-- Nafile oruç -->
+    <section class="view" data-view="nafile" hidden>
+      <div class="card stat-row"><div><b id="nfCountYear">0</b><small data-i18n="nafileYear">bu yıl tutulan nafile oruç</small></div></div>
+      <ul class="days" id="nafileList"></ul>
+      <div class="card warn"><b data-i18n="forbiddenTitle">Oruç tutulmayan günler</b><p data-i18n="forbiddenText">Ramazan Bayramı'nın 1. günü ile Kurban Bayramı'nın 4 gününde oruç tutulmaz.</p></div>
+      <p class="note" data-i18n="nafileNote">Hicrî ay başları astronomik hesapla bulunur; 1 gün farklı olabilir.</p>
     </section>
 
     <!-- Günlük iyilikler -->
