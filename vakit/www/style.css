@@ -452,3 +452,14 @@ input[type=range]{width:100%;accent-color:var(--brand-2)}
 .log-dots button i svg{width:24px;height:24px;color:#fff}
 .log-dots button:disabled{opacity:.55}
 .log-dots button:disabled i{border-style:dashed}
+
+/* Tik: CSS ile çizilir (her telefonda aynı) */
+.log-dots button i.tick{position:relative}
+.log-dots button.on i.tick::after{content:"";position:absolute;left:50%;top:46%;width:10px;height:19px;border:solid #fff;border-width:0 3.5px 3.5px 0;transform:translate(-50%,-50%) rotate(45deg)}
+.log-dots button i{color:transparent}
+/* Okuma sayısı seçimi */
+.dk-count{margin-top:12px;padding:12px;border-radius:14px;background:var(--tint)}
+.dk-nums{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px}
+.dk-nums button{min-width:46px;padding:9px 12px;border-radius:12px;border:1.5px solid var(--brand-2);background:var(--card);color:var(--brand);font-weight:700}
+.dk-nums button.ok{background:var(--brand-2);color:#fff}
+.dk-nums input{width:80px;padding:9px;border-radius:12px;border:1.5px solid var(--line);background:var(--card);font-size:15px}

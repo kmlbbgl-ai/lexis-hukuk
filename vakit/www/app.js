@@ -42,6 +42,7 @@
       stStreak: 'günlük seri', stBest: 'en uzun seri', stMonth: 'bu ay', last7: 'Son 7 gün', logNote: 'Kayıtlarınız yalnızca bu telefonda tutulur.', today: 'Bugün', tLog: 'Namaz takibi', mPrayerLogSub: 'Kıldığınız vakitler',
       listenModes: { ar: 'Arapça', ar_tr: 'Arapça + meal', tr: 'Sadece meal' },
       mealBtn: 'Meal', mealMissing: 'Bu ayetin meali kaynak metinde ayrıca yer almıyor.', mealMerged: 'Bu ayetin meali bir önceki ayetle birlikte verilmiştir.', quranSource: "Arapça metin: QuranEnc.com. Meal: Elmalılı Muhammed Hamdi Yazır (1938), Vikikaynak (kamu malı). Ses: AlQuran.cloud / Islamic Network.",
+      dkHowMany: 'kaç kez okudunuz?', dkOther: 'Diğer', dkOk: 'Tamam',
       tDk: 'Dua kardeşliği', mDk: 'Dua kardeşliği', mDkSub: 'Birbirimiz için dua', tHatim: 'Ortak hatim', mHatimSub: 'Cüzleri paylaşarak hatim',
       dkNew: '+ Dua isteği paylaş', dkText: 'Dua isteğiniz', dkTextPh: 'Örneğin: Annem için şifa duası istiyorum.', dkWhat: 'Ne okunsun? (en fazla 5)', cancel: 'Vazgeç', dkSend: 'Paylaş', reload: 'Yenile',
       dkRules: 'Dua isteğinizi herkes görebilir. Ad, telefon, adres gibi kişisel bilgi yazmayın. Uygunsuz paylaşımlar şikâyetle kaldırılır.',
@@ -127,6 +128,7 @@
       stStreak: 'day streak', stBest: 'best streak', stMonth: 'this month', last7: 'Last 7 days', logNote: 'Your records stay on this phone only.', today: 'Today', tLog: 'Prayer log', mPrayerLogSub: 'Prayers you performed',
       listenModes: { ar: 'Arabic', ar_tr: 'Arabic + Turkish', tr: 'Turkish only' },
       mealBtn: 'Turkish', mealMissing: 'This verse has no separate translation in the source text.', mealMerged: 'Translated together with the previous verse.',
+      dkHowMany: 'how many times did you recite?', dkOther: 'Other', dkOk: 'OK',
       tDk: 'Prayer circle', mDk: 'Prayer circle', mDkSub: 'Pray for one another', tHatim: 'Group khatm', mHatimSub: 'Share the juz of a khatm',
       dkNew: '+ Share a prayer request', dkText: 'Your request', dkTextPh: 'For example: please pray for my mother’s health.', dkWhat: 'What should be recited? (max 5)', cancel: 'Cancel', dkSend: 'Share', reload: 'Refresh',
       dkRules: 'Everyone can see your request. Do not write names, phone numbers or addresses. Inappropriate posts are removed after reports.',
@@ -656,7 +658,7 @@
   }
   function renderHomeLog(now) {
     const d = dayAt(0);
-    $('homeLog').innerHTML = FARZ.map((p, i) => `<button type="button" data-hp="${i}" class="${isOn(d, i) ? 'on' : ''}" ${started(d, p) || isOn(d, i) ? '' : 'disabled'}><i>${isOn(d, i) ? '<svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>' : ''}</i>${pname(p)}</button>`).join('');
+    $('homeLog').innerHTML = FARZ.map((p, i) => `<button type="button" data-hp="${i}" class="${isOn(d, i) ? 'on' : ''}" ${started(d, p) || isOn(d, i) ? '' : 'disabled'}><i class="tick"></i>${pname(p)}</button>`).join('');
     const s = streaks().cur;
     $('logStreak').textContent = s ? t('streak')(s) : `${countDay(d)}/5`;
   }
@@ -932,7 +934,7 @@
         const prog = Object.entries(x.targets || {}).map(([k, tg]) => { const c2 = (x.counts || {})[k] || 0; return `<div class="dk-prog"><div class="top"><span>${names[k] || escH(k)}</span><span>${c2} / ${tg}</span></div><div class="dk-bar"><i style="width:${Math.min(100, c2 * 100 / tg)}%"></i></div></div>`; }).join('');
         const rs = reads[i]; const who = rs.length ? `<div class="dk-reads"><b>${t('dkWho')}</b><br>${rs.map(r => `${escH(r.nick)} · ${r.n} ${names[r.item] || ''}`).join('<br>')}</div>` : '';
         const acts = Object.keys(x.targets || {}).map(k => `<button type="button" data-dkread="${x.id}" data-item="${k}">${names[k] || escH(k)} ✓</button>`).join('');
-        return `<article class="dk-card"><header><span>🤲 ${escH(x.nick)}</span>${mine ? `<span class="tag">${t('dkMine')}</span><button class="flag" type="button" data-dkdel="${x.id}" aria-label="Sil">🗑</button>` : `<button class="flag" type="button" data-dkflag="${x.id}" aria-label="Bildir">⚑</button>`}</header><p class="dk-text">${escH(x.text)}</p>${prog}${who}<div class="dk-act">${acts}</div></article>`;
+        return `<article class="dk-card"><header><span>🤲 ${escH(x.nick)}</span>${mine ? `<span class="tag">${t('dkMine')}</span><button class="flag" type="button" data-dkdel="${x.id}" aria-label="Sil">🗑</button>` : `<button class="flag" type="button" data-dkflag="${x.id}" aria-label="Bildir">⚑</button>`}</header><p class="dk-text">${escH(x.text)}</p>${prog}${who}<div class="dk-act">${acts}</div><div class="dk-count" hidden></div></article>`;
       }).join('');
     } catch (e) { console.error(e); $('dkMsg').textContent = fmtErr(e); }
   }
@@ -948,13 +950,13 @@
       $('dkForm').hidden = true; $('dkNewBtn').hidden = false; await loadDuas(); $('dkMsg').textContent = t('dkSent');
     } catch (e) { console.error(e); $('dkMsg').textContent = fmtErr(e); }
   }
-  async function readDua(id, item, btn) {
+  async function readDua(id, item, btn, n = 1) {
     try {
       const u = await C.user(), F = C.fs;
-      await F.updateDoc(F.doc(C.db, 'duas', id), { ['counts.' + item]: F.increment(1) });
-      await F.addDoc(F.collection(C.db, 'duas', id, 'reads'), { uid: u.uid, nick: myNick(), item, n: 1, at: F.serverTimestamp() });
+      await F.updateDoc(F.doc(C.db, 'duas', id), { ['counts.' + item]: F.increment(n) });
+      await F.addDoc(F.collection(C.db, 'duas', id, 'reads'), { uid: u.uid, nick: myNick(), item, n, at: F.serverTimestamp() });
       if (navigator.vibrate) navigator.vibrate(20);
-      btn.classList.add('done'); btn.textContent = t('dkThanks'); setTimeout(loadDuas, 1200);
+      btn.innerHTML = `<b>${t('dkThanks')}</b>`; setTimeout(loadDuas, 1200);
     } catch (e) { console.error(e); $('dkMsg').textContent = fmtErr(e); }
   }
   let htOpen = null;
@@ -1374,7 +1376,16 @@
   $('dkSend').addEventListener('click', sendDua);
   $('dkReload').addEventListener('click', loadDuas);
   $('dkList').addEventListener('click', async e => {
-    const r = e.target.closest('[data-dkread]'); if (r) { if (!r.classList.contains('done')) readDua(r.dataset.dkread, r.dataset.item, r); return; }
+    const r = e.target.closest('[data-dkread]');
+    if (r) { if (r.classList.contains('done')) return;
+      const box = r.closest('.dk-card').querySelector('.dk-count'); const nm = t('dkItemNames')[r.dataset.item] || r.dataset.item;
+      box.hidden = false; box.dataset.id = r.dataset.dkread; box.dataset.item = r.dataset.item;
+      box.innerHTML = `<b>${nm}: ${t('dkHowMany')}</b><div class="dk-nums">${[1, 3, 7, 11].map(n => `<button type="button" data-dkn="${n}">${n}</button>`).join('')}<input type="number" min="1" max="100" inputmode="numeric" placeholder="${t('dkOther')}" aria-label="${t('dkOther')}"><button type="button" class="ok" data-dkn="input">${t('dkOk')}</button></div>`;
+      return; }
+    const nb = e.target.closest('[data-dkn]');
+    if (nb) { const box = nb.closest('.dk-count'); let n = nb.dataset.dkn === 'input' ? parseInt(box.querySelector('input').value, 10) : +nb.dataset.dkn;
+      if (!(n >= 1 && n <= 100)) { box.querySelector('input').focus(); return; }
+      box.innerHTML = `<b>${t('dkLoading')}</b>`; readDua(box.dataset.id, box.dataset.item, box, n); return; }
     const f = e.target.closest('[data-dkflag]');
     if (f) { if (f.dataset.confirm !== '1') { f.dataset.confirm = '1'; f.textContent = '⚑?'; $('dkMsg').textContent = t('dkReport'); return; }
       try { await C.user(); const F = C.fs; await F.updateDoc(F.doc(C.db, 'duas', f.dataset.dkflag), { reports: F.increment(1) }); f.disabled = true; $('dkMsg').textContent = t('dkReported'); } catch (err) { $('dkMsg').textContent = fmtErr(err); } return; }
