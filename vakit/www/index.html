@@ -131,14 +131,14 @@
       <div class="card qibla">
         <div class="compass" id="compass">
           <div class="dial" id="dial">
-            <span class="n">N</span><span class="e">E</span><span class="s">S</span><span class="w">W</span>
-            <div class="arm" id="arm"><i></i><span>🕋</span></div>
+            <span class="n" data-i18n="cN">K</span><span class="e" data-i18n="cE">D</span><span class="s" data-i18n="cS">G</span><span class="w" data-i18n="cW">B</span>
+            <div class="arm" id="arm"><span>🕋</span></div>
           </div>
           <div class="needle"></div>
         </div>
         <div class="qibla-deg" id="qiblaDeg">—</div>
         <div class="turn" id="turnHint"></div>
-        <p class="note" id="qiblaHint" data-i18n="qiblaHint">Telefonu düz tutun ve kendi etrafınızda yavaşça dönün. Üstteki ok Kâbe simgesinin üzerine gelince kıbleye dönmüşsünüz demektir.</p>
+        <p class="note" id="qiblaHint" data-i18n="qiblaHint">Telefonu yere paralel tutun ve yavaşça dönün.</p>
         <button id="compassBtn" class="btn" type="button" data-i18n="enableCompass">Pusulayı başlat</button>
       </div>
     </section>
@@ -262,6 +262,7 @@
 </div>
 
 <script src="lib/adhan.umd.min.js"></script>
+<script src="lib/declination.min.js"></script>
 <script src="app.js"></script>
 </body>
 </html>

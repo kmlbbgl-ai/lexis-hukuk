@@ -11,7 +11,7 @@
   // ---------------- Diller ----------------
   const T = {
     tr: {
-      appName: 'Vakit', back: 'Geri', skip: 'Atla', continue: 'Devam et', finish: 'Başla', or: 'veya',
+      appName: 'Vakit', cN: 'K', cE: 'D', cS: 'G', cW: 'B', back: 'Geri', skip: 'Atla', continue: 'Devam et', finish: 'Başla', or: 'veya',
       obWelcome: 'Hoş geldiniz', obWelcomeText: "Namaz vakitleri, kıble, Kur'an-ı Kerim ve zikirmatik tek yerde. Reklamlar sade, verileriniz telefonunuzda kalır.",
       obP1: 'Konumunuz hiçbir sunucuya gönderilmez', obP2: 'Hesap açmanız gerekmez', obP3: 'İnternetsiz de çalışır',
       obLocTitle: 'Konumunuz', obLocText: 'Vakitler bulunduğunuz yere göre hesaplanır.', obCalcTitle: 'Hesaplama',
@@ -24,7 +24,7 @@
       continueReading: 'Okumaya devam et', searchSurah: 'Sure ara (ör. Yâsîn, 36)', verses: 'ayet', meccan: 'Mekkî', medinan: 'Medenî',
       quranSource: "Arapça metin: Kur'an Meâlleri Ansiklopedisi (QuranEnc.com). Meal yakında eklenecek.",
       prevSurah: 'Önceki sure', nextSurah: 'Sonraki sure', surah: 'Suresi', ayah: 'âyet',
-      qiblaHint: 'Telefonu düz tutun ve kendi etrafınızda yavaşça dönün. Üstteki ok Kâbe simgesinin üzerine gelince kıbleye dönmüşsünüz demektir.',
+      qiblaHint: 'Telefonu yere paralel tutun ve yavaşça dönün. Üstteki ok Kâbe simgesinin üzerine gelince kıbleye dönmüşsünüz demektir. Yön şaşıyorsa telefonu havada birkaç kez 8 çizerek pusulayı ayarlayın; mıknatıslı kılıf ve metal eşyalardan uzak durun.',
       enableCompass: 'Pusulayı başlat', compassNA: 'Bu cihazda pusula yok. Kıble, kuzeyden saat yönünde gösterilen açıdadır.',
       qiblaFromNorth: 'Kuzeyden', turnRight: d => `${d}° sağa dönün`, turnLeft: d => `${d}° sola dönün`, aligned: 'Kıbleye döndünüz ✓',
       reset: 'Sıfırla', total: 'Toplam', method: 'Hesaplama yöntemi', madhab: 'İkindi (Asr) hesabı', city: 'Şehir', useGps: 'Konumumu kullan',
@@ -51,7 +51,7 @@
       ev: { hijriNY: 'Hicrî yılbaşı', ashura: 'Aşure günü', mawlid: 'Mevlid Kandili', ragaib: 'Regaib Kandili', miraj: 'Mirac Kandili', barat: 'Berat Kandili', ramadan: 'Ramazan başlangıcı', qadr: 'Kadir Gecesi', arafaF: 'Ramazan Bayramı arifesi', eidF: 'Ramazan Bayramı', arafa: 'Kurban Bayramı arifesi', eidA: 'Kurban Bayramı' }
     },
     en: {
-      appName: 'Vakit', back: 'Back', skip: 'Skip', continue: 'Continue', finish: 'Start', or: 'or',
+      appName: 'Vakit', cN: 'N', cE: 'E', cS: 'S', cW: 'W', back: 'Back', skip: 'Skip', continue: 'Continue', finish: 'Start', or: 'or',
       obWelcome: 'Welcome', obWelcomeText: 'Prayer times, qibla, the Holy Quran and a tasbih counter in one place. Simple ads, your data stays on your phone.',
       obP1: 'Your location is never sent to a server', obP2: 'No account needed', obP3: 'Works offline',
       obLocTitle: 'Your location', obLocText: 'Prayer times are calculated for where you are.', obCalcTitle: 'Calculation',
@@ -64,7 +64,7 @@
       continueReading: 'Continue reading', searchSurah: 'Search surah (e.g. Yasin, 36)', verses: 'verses', meccan: 'Meccan', medinan: 'Medinan',
       quranSource: 'Arabic text: The Noble Quran Encyclopedia (QuranEnc.com). Translation coming soon.',
       prevSurah: 'Previous surah', nextSurah: 'Next surah', surah: '', ayah: 'verse',
-      qiblaHint: 'Hold the phone flat and turn slowly. When the top arrow is over the Kaaba icon, you are facing the qibla.',
+      qiblaHint: 'Hold the phone flat and turn slowly. When the top arrow is over the Kaaba icon, you are facing the qibla. If the direction drifts, move the phone in a figure 8 a few times to calibrate, and keep away from magnetic cases and metal.',
       enableCompass: 'Start compass', compassNA: 'No compass on this device. The qibla is at the angle shown, clockwise from north.',
       qiblaFromNorth: 'From north', turnRight: d => `Turn ${d}° right`, turnLeft: d => `Turn ${d}° left`, aligned: 'You are facing the qibla ✓',
       reset: 'Reset', total: 'Total', method: 'Calculation method', madhab: 'Asr calculation', city: 'City', useGps: 'Use my location',
@@ -329,10 +329,11 @@
   }, { passive: true });
 
   // ---------------- Kıble ----------------
-  let qibla = 0, shown = null, wasAligned = false;
+  let qibla = 0, decl = 0, shown = null, wasAligned = false;
   const wrap = a => ((a % 360) + 540) % 360 - 180;
   function renderQibla() {
     qibla = A.Qibla(new A.Coordinates(settings.place.lat, settings.place.lng));
+    decl = window.vakitDeclination ? window.vakitDeclination(settings.place.lat, settings.place.lng, new Date()) : 0;
     $('arm').style.transform = `rotate(${qibla}deg)`;
     $('qiblaDeg').textContent = `${t('qiblaFromNorth')} ${Math.round(qibla)}°`;
   }
@@ -341,7 +342,8 @@
     if (typeof e.webkitCompassHeading === 'number') heading = e.webkitCompassHeading;
     else if (e.absolute && typeof e.alpha === 'number') heading = 360 - e.alpha;
     if (heading === null) return;
-    heading = (heading + ((screen.orientation && screen.orientation.angle) || 0) + 360) % 360;
+    // Pusula manyetik kuzeyi verir; manyetik sapma eklenerek gerçek kuzeye çevrilir.
+    heading = (heading + decl + ((screen.orientation && screen.orientation.angle) || 0) + 720) % 360;
     shown = shown === null ? heading : shown + wrap(heading - shown) * 0.2;
     $('dial').style.transform = `rotate(${-shown}deg)`;
     const diff = wrap(qibla - shown);
