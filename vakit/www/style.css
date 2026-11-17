@@ -425,8 +425,8 @@ input[type=range]{width:100%;accent-color:var(--brand-2)}
 .dk-card .dk-text{margin:10px 0 12px;font-size:17px;line-height:1.5;white-space:pre-wrap;overflow-wrap:anywhere}
 .dk-prog{margin:8px 0}
 .dk-prog .top{display:flex;justify-content:space-between;font-weight:600;font-size:15px}
-.dk-prog .bar{height:7px;border-radius:4px;background:var(--tint);margin-top:5px;overflow:hidden}
-.dk-prog .bar i{display:block;height:100%;background:var(--brand-2);border-radius:4px}
+.dk-prog .dk-bar{height:7px;border-radius:4px;background:var(--tint);margin-top:5px;overflow:hidden}
+.dk-prog .dk-bar i{display:block;height:100%;background:var(--brand-2);border-radius:4px}
 .dk-reads{color:var(--muted);font-size:13px;margin:10px 0}
 .dk-act{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
 .dk-act button{padding:9px 12px;border-radius:12px;border:0;background:var(--brand-2);color:#fff;font-weight:600;font-size:14px}

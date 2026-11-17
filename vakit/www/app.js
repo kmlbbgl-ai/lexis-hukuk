@@ -929,7 +929,7 @@
       const names = t('dkItemNames');
       $('dkList').innerHTML = items.map((x, i) => {
         const mine = x.uid === u.uid;
-        const prog = Object.entries(x.targets || {}).map(([k, tg]) => { const c2 = (x.counts || {})[k] || 0; return `<div class="dk-prog"><div class="top"><span>${names[k] || escH(k)}</span><span>${c2} / ${tg}</span></div><div class="bar"><i style="width:${Math.min(100, c2 * 100 / tg)}%"></i></div></div>`; }).join('');
+        const prog = Object.entries(x.targets || {}).map(([k, tg]) => { const c2 = (x.counts || {})[k] || 0; return `<div class="dk-prog"><div class="top"><span>${names[k] || escH(k)}</span><span>${c2} / ${tg}</span></div><div class="dk-bar"><i style="width:${Math.min(100, c2 * 100 / tg)}%"></i></div></div>`; }).join('');
         const rs = reads[i]; const who = rs.length ? `<div class="dk-reads"><b>${t('dkWho')}</b><br>${rs.map(r => `${escH(r.nick)} · ${r.n} ${names[r.item] || ''}`).join('<br>')}</div>` : '';
         const acts = Object.keys(x.targets || {}).map(k => `<button type="button" data-dkread="${x.id}" data-item="${k}">${names[k] || escH(k)} ✓</button>`).join('');
         return `<article class="dk-card"><header><span>🤲 ${escH(x.nick)}</span>${mine ? `<span class="tag">${t('dkMine')}</span><button class="flag" type="button" data-dkdel="${x.id}" aria-label="Sil">🗑</button>` : `<button class="flag" type="button" data-dkflag="${x.id}" aria-label="Bildir">⚑</button>`}</header><p class="dk-text">${escH(x.text)}</p>${prog}${who}<div class="dk-act">${acts}</div></article>`;
