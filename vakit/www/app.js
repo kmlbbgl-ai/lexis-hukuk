@@ -445,7 +445,8 @@
   const globalAyah = (s, v) => { let n = 0; for (let i = 0; i < s - 1; i++) n += surahs[i].v; return n + v; };
   // Türkçe meal: telefonun seslendirme motoru (geçici çözüm; izinli insan sesi kaydı gelince değişecek)
   const TTS = window.Capacitor && window.Capacitor.Plugins && window.Capacitor.Plugins.TextToSpeech;
-  const listenMode = () => store.get('listenMode', 'ar');
+  const TR_AUDIO = false; // Türkçe sesli meal geçici olarak kapalı (izinli kayıt gelince true yapılacak)
+  const listenMode = () => (TR_AUDIO ? store.get('listenMode', 'ar') : 'ar');
   async function speakMeal(v) {
     const txt = mealOf(readerSurah, v); if (!txt) return;
     try {
@@ -1357,6 +1358,7 @@
   $('rdReciter').value = store.get('reciter', RECITERS[0][0]);
   $('rdListen').innerHTML = Object.entries(t('listenModes')).map(([k, v]) => `<option value="${k}">${v}</option>`).join('');
   $('rdListen').value = listenMode();
+  $('rdListen').hidden = !TR_AUDIO;
   $('rdListen').addEventListener('change', e => { store.set('listenMode', e.target.value); if (playing) playAyah(playV); });
   $('rdReciter').addEventListener('change', e => { store.set('reciter', e.target.value); if (playing) playAyah(playV); });
   $('rdVerses').addEventListener('dblclick', e => { const el = e.target.closest('.v'); if (el) playAyah(+el.dataset.v); });
