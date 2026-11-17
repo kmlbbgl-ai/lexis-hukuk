@@ -54,7 +54,8 @@
     <p data-i18n="obLocText">Vakitler bulunduğunuz yere göre hesaplanır.</p>
     <button id="obGps" class="btn" type="button" data-i18n="useGps">Konumumu kullan</button>
     <div class="or" data-i18n="or">veya</div>
-    <select id="obCity" class="field" aria-label="Şehir"></select>
+    <select id="obCity" class="field" aria-label="İl"></select>
+    <select id="obIlce" class="field" aria-label="İlçe" style="margin-top:8px" hidden></select>
     <p class="note" id="obLocStatus"></p>
   </div>
   <div class="ob-step" data-step="2" hidden>
@@ -387,8 +388,14 @@
     <!-- Ayarlar -->
     <section class="view" data-view="settings" hidden>
       <div class="card form">
-        <label class="lbl" data-i18n="city">Şehir</label>
+        <label class="lbl" data-i18n="themeLbl">Tema</label>
+        <div class="themes" id="themeBox"></div>
+      </div>
+      <div class="card form">
+        <label class="lbl" data-i18n="province">İl / Şehir</label>
         <select id="citySel" class="field"></select>
+        <label class="lbl" data-i18n="district" id="ilceLbl">İlçe</label>
+        <select id="ilceSel" class="field"></select>
         <button id="gpsBtn" class="btn ghost" type="button" data-i18n="useGps">Konumumu kullan</button>
         <p class="note" data-i18n="privacy">Konumunuz yalnızca bu telefonda kullanılır; hiçbir sunucuya gönderilmez.</p>
       </div>

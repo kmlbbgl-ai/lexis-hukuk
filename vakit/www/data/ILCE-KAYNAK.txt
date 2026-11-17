@@ -1,0 +1,4 @@
+İlçe koordinatları:
+- İlçe sınırları: uyasarkocal/borders-of-turkey (CC0 1.0) — merkez noktaları bu sınırlardan hesaplandı.
+- İl/ilçe listesi ve il merkezleri: memleketim-tr-cities (MIT).
+- Eski veride bulunmayan, il merkezindeki yeni ilçelerde il merkezi koordinatı kullanıldı; birkaç uzak ilçe elle eklendi.

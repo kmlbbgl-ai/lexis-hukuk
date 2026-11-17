@@ -6,11 +6,22 @@
   --r:20px;
 }
 @media (prefers-color-scheme:dark){
-  :root{--bg:#0d1412;--card:#16201d;--ink:#e8eee9;--muted:#93a29c;--line:#24312d;--brand:#5fb79d;--brand-2:#3e9a80;--gold:#d6b25e;--gold-soft:#2a261c;--tint:#1b2b26;--shadow:none}
+  :root:not([data-theme]){--bg:#0d1412;--card:#16201d;--ink:#e8eee9;--muted:#93a29c;--line:#24312d;--brand:#5fb79d;--brand-2:#3e9a80;--gold:#d6b25e;--gold-soft:#2a261c;--tint:#1b2b26;--shadow:none}
 }
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
-html,body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.45 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
-body{min-height:100vh}
+html,body{margin:0;height:100%;overflow:hidden;background:var(--bg);color:var(--ink);font:16px/1.45 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+:root{--grad:linear-gradient(155deg,#13675a 0%,#0d4a3e 55%,#0a3a31 100%);--hero-accent:#f0d79a}
+@media (prefers-color-scheme:dark){:root:not([data-theme]){--grad:linear-gradient(155deg,#1b5a4e,#0e2d27)}}
+/* Temalar */
+:root[data-theme=light]{--bg:#f5f2eb;--card:#fff;--ink:#17231f;--muted:#6b7772;--line:#e8e2d5;--brand:#0d4a3e;--brand-2:#13675a;--gold:#b8913f;--gold-soft:#f3ead6;--tint:#e9f1ee}
+:root[data-theme=dark]{--bg:#0d1412;--card:#16201d;--ink:#e8eee9;--muted:#93a29c;--line:#24312d;--brand:#5fb79d;--brand-2:#3e9a80;--gold:#d6b25e;--gold-soft:#2a261c;--tint:#1b2b26;--shadow:none;--grad:linear-gradient(155deg,#1b5a4e,#0e2d27)}
+:root[data-theme=navy]{--bg:#0f1524;--card:#18203a;--ink:#e7ebf5;--muted:#99a3bd;--line:#26304d;--brand:#8fb1ff;--brand-2:#5b7fd6;--gold:#e0bd6a;--gold-soft:#2b2a22;--tint:#1e2a4a;--shadow:none;--grad:linear-gradient(155deg,#2a3f78,#141d3a)}
+:root[data-theme=rose]{--bg:#fbf1f3;--card:#fff;--ink:#2a1a20;--muted:#86707a;--line:#f0dbe1;--brand:#9c3557;--brand-2:#c0567a;--gold:#b98446;--gold-soft:#f7e8dc;--tint:#fbe5ec;--grad:linear-gradient(155deg,#c0567a,#7d2645)}
+:root[data-theme=sand]{--bg:#f6efe3;--card:#fffaf2;--ink:#2b2218;--muted:#7d6f5d;--line:#eadfcd;--brand:#7a5320;--brand-2:#9c6b2e;--gold:#a8742a;--gold-soft:#f2e3c8;--tint:#f1e6d3;--grad:linear-gradient(155deg,#a8742a,#5e3d14)}
+:root[data-theme=violet]{--bg:#f4f1fb;--card:#fff;--ink:#211a33;--muted:#776f8c;--line:#e4def3;--brand:#5b3fa0;--brand-2:#7a5cc4;--gold:#b88d3e;--gold-soft:#f2ead8;--tint:#ece6fa;--grad:linear-gradient(155deg,#7a5cc4,#3d2775)}
+:root{--sat:var(--safe-area-inset-top,env(safe-area-inset-top,0px));--sab:var(--safe-area-inset-bottom,env(safe-area-inset-bottom,0px))}
+/* Uygulama iskeleti: üst çubuk + kayan içerik + sabit alt menü */
+#app{display:flex;flex-direction:column;height:100%}
 button,select,input{font:inherit;color:inherit}
 button{cursor:pointer}
 svg{width:22px;height:22px;flex:none}
@@ -18,14 +29,14 @@ svg{width:22px;height:22px;flex:none}
 .ar{font-family:"Amiri Quran","Amiri","Noto Naskh Arabic",serif}
 
 /* Üst çubuk */
-.bar{position:sticky;top:0;z-index:5;display:flex;align-items:center;gap:6px;padding:calc(10px + env(safe-area-inset-top)) 16px 10px;background:var(--bg);max-width:560px;margin:0 auto}
+.bar{flex:none;z-index:5;display:flex;align-items:center;gap:6px;padding:calc(10px + var(--sat)) max(16px,calc(50% - 264px)) 10px;background:var(--bg)}
 .bar h1{margin:0;font-size:22px;font-weight:700;letter-spacing:-.2px}
 .bar-gap{flex:1}
 .icon-btn{display:grid;place-items:center;width:40px;height:40px;border:0;border-radius:12px;background:none;color:var(--ink)}
 .icon-btn:active{background:var(--tint)}
 .pill{border:1px solid var(--line);background:var(--card);border-radius:20px;padding:6px 12px;font-size:14px;font-weight:600}
 .link{background:none;border:0;color:var(--brand-2);font-weight:600;padding:6px 0}
-main{max-width:560px;margin:0 auto;padding:0 16px calc(96px + env(safe-area-inset-bottom))}
+main{flex:1;min-height:0;overflow-y:auto;overflow-x:hidden;-webkit-overflow-scrolling:touch;overscroll-behavior:contain;padding:0 max(16px,calc(50% - 264px)) 24px}
 
 .card{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:18px;margin:12px 0;box-shadow:var(--shadow)}
 .btn{display:block;width:100%;background:var(--brand);color:#fff;border:0;border-radius:14px;padding:14px 18px;font-weight:600}
@@ -42,7 +53,7 @@ main{max-width:560px;margin:0 auto;padding:0 16px calc(96px + env(safe-area-inse
 /* Ana sayfa */
 .loc-chip{display:inline-flex;align-items:center;gap:6px;border:0;background:none;padding:2px 0 6px;font-weight:600;color:var(--ink)}
 .loc-chip svg{width:18px;height:18px;color:var(--gold)}
-.hero{position:relative;overflow:hidden;border-radius:24px;padding:18px 18px 14px;color:#fff;background:linear-gradient(155deg,#13675a 0%,#0d4a3e 55%,#0a3a31 100%);box-shadow:0 10px 30px rgba(13,74,62,.25)}
+.hero{position:relative;overflow:hidden;border-radius:24px;padding:18px 18px 14px;color:#fff;background:var(--grad);box-shadow:0 10px 30px rgba(13,74,62,.25)}
 .hero::after{content:"";position:absolute;right:-40px;top:-40px;width:200px;height:200px;border-radius:50%;border:28px solid rgba(255,255,255,.05)}
 .hero-dates{display:flex;justify-content:space-between;gap:8px;font-size:13px;opacity:.85}
 .hero-next{margin-top:14px;font-size:15px;opacity:.9}
@@ -75,7 +86,7 @@ main{max-width:560px;margin:0 auto;padding:0 16px calc(96px + env(safe-area-inse
 .verse-card footer{text-align:center;color:var(--muted);font-size:13px}
 
 /* Sekme çubuğu */
-.tabbar{position:fixed;left:0;right:0;bottom:0;z-index:6;display:flex;background:var(--card);border-top:1px solid var(--line);padding:6px 4px calc(6px + env(safe-area-inset-bottom))}
+.tabbar{flex:none;z-index:6;display:flex;background:var(--card);border-top:1px solid var(--line);padding:6px 4px calc(6px + var(--sab))}
 .tabbar button{flex:1;display:flex;flex-direction:column;align-items:center;gap:3px;border:0;background:none;padding:6px 0;color:var(--muted)}
 .tabbar button b{font-size:11px;font-weight:600}
 .tabbar button.active{color:var(--brand)}
@@ -100,7 +111,7 @@ main{max-width:560px;margin:0 auto;padding:0 16px calc(96px + env(safe-area-inse
 .surah-list .s-body b{display:block;font-size:16px}
 .surah-list .s-body small{color:var(--muted);font-size:13px}
 .surah-list .s-ar{font-family:"Amiri Quran",serif;font-size:24px;color:var(--brand)}
-.reader-head{text-align:center;background:linear-gradient(155deg,#13675a,#0d4a3e);color:#fff;border:0}
+.reader-head{text-align:center;background:var(--grad);color:#fff;border:0}
 .rh-ar{font-family:"Amiri Quran",serif;font-size:34px;line-height:2.4;margin-top:-6px}
 .rh-meta{font-size:13px;opacity:.85}
 .basmala{font-family:"Amiri Quran",serif;font-size:28px;text-align:center;color:var(--brand);margin:18px 0 6px}
@@ -172,12 +183,12 @@ main{max-width:560px;margin:0 auto;padding:0 16px calc(96px + env(safe-area-inse
 .fine select{width:100%;padding:8px;margin-top:4px;border-radius:10px;border:1px solid var(--line);background:var(--card)}
 
 /* Kurulum */
-.onboard{position:fixed;inset:0;z-index:20;display:flex;flex-direction:column;background:var(--bg);padding:calc(12px + env(safe-area-inset-top)) 24px calc(20px + env(safe-area-inset-bottom));overflow-y:auto}
+.onboard{position:fixed;inset:0;z-index:20;display:flex;flex-direction:column;background:var(--bg);padding:calc(12px + var(--sat)) 24px calc(20px + var(--sab));overflow-y:auto}
 .ob-top{display:flex;justify-content:space-between;min-height:40px}
 .ob-step{flex:1;display:flex;flex-direction:column;justify-content:center;max-width:440px;width:100%;margin:0 auto;text-align:center}
 .ob-step h2{font-size:28px;margin:18px 0 8px}
 .ob-step p{color:var(--muted);margin:0 0 18px}
-.ob-logo{display:grid;place-items:center;width:112px;height:112px;margin:0 auto;border-radius:30px;background:linear-gradient(155deg,#13675a,#0a3a31);color:#e2c47d;box-shadow:0 12px 30px rgba(13,74,62,.3)}
+.ob-logo{display:grid;place-items:center;width:112px;height:112px;margin:0 auto;border-radius:30px;background:var(--grad);color:#e2c47d;box-shadow:0 12px 30px rgba(13,74,62,.3)}
 .ob-logo svg{width:72px;height:72px}
 .ob-icon{display:grid;place-items:center;width:72px;height:72px;margin:0 auto;border-radius:22px;background:var(--tint);color:var(--brand-2)}
 .ob-icon svg{width:34px;height:34px}
@@ -246,7 +257,7 @@ main{max-width:560px;margin:0 auto;padding:0 16px calc(96px + env(safe-area-inse
 .week .bar.full i{background:var(--gold)}
 
 /* Kaza takibi */
-.kz-total{display:grid;grid-template-columns:1fr 1fr;text-align:center;background:linear-gradient(155deg,#13675a,#0d4a3e);color:#fff;border:0}
+.kz-total{display:grid;grid-template-columns:1fr 1fr;text-align:center;background:var(--grad);color:#fff;border:0}
 .kz-total b{display:block;font-size:34px;font-weight:700}
 .kz-total small{opacity:.8;font-size:13px}
 .kz-total div+div{border-left:1px solid rgba(255,255,255,.15)}
@@ -292,7 +303,7 @@ main{max-width:560px;margin:0 auto;padding:0 16px calc(96px + env(safe-area-inse
 .text-list li.hl{border-color:var(--gold)}
 
 /* İyilikler, isimler, yarışma */
-.deeds-head{text-align:center;background:linear-gradient(155deg,#13675a,#0d4a3e);color:#fff;border:0}
+.deeds-head{text-align:center;background:var(--grad);color:#fff;border:0}
 .deeds-head b{display:block;font-size:40px}
 .deeds-head small{opacity:.85}
 .deeds-head span{display:block;margin-top:6px;color:#f0d79a;font-weight:600;font-size:14px}
@@ -352,3 +363,10 @@ main{max-width:560px;margin:0 auto;padding:0 16px calc(96px + env(safe-area-inse
 .ilm p{margin:8px 0;line-height:1.55}
 .ilm ol,.ilm ul{margin:6px 0;padding-left:22px}
 .ilm li{margin:5px 0;line-height:1.5}
+
+/* Tema seçici */
+.themes{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+.themes button{display:flex;flex-direction:column;align-items:center;gap:6px;border:0;background:none;font-size:12px;color:var(--muted);padding:0}
+.themes button i{width:52px;height:52px;border-radius:16px;border:2px solid var(--line);display:block}
+.themes button.on i{border-color:var(--brand-2);box-shadow:0 0 0 3px var(--tint)}
+.themes button.on{color:var(--ink);font-weight:600}

@@ -26,7 +26,9 @@ https://github.com/kmlbbgl-ai/lexis-hukuk/releases/download/vakit-latest/vakit.a
 4. Eklendi: namaz takibi, kaza takibi (namaz takibinden kazaya aktarma), Esmâü'l-Hüsnâ (99 isim, kendi anlamlarımız), 30 hadis (kendi sadeleştirilmiş çevirimiz + temel kaynak adı), Kur'an'dan 12 dua; ana sayfada günün hadisi/duası/esması. Ayrıca: günlük iyilikler (21.00 hatırlatma), bebek isimleri (54), bilgi yarışması (36 soru). Ramazan ekranı (geri sayım, iftar/sahur sayacı, imsakiye, oruç takibi, bitince kazaya aktarma, bildirimde İftar vakti) ve nafile oruç eklendi. İlmihal (10 konu, Hanefi özet, kendi metnimiz) eklendi. Sonra: ortak hatim (sunucu gerekiyor: kullanıcının hesabıyla Firebase vb.). Kâbe canlı / Kur'an radyo yayın hakkı gerektirir.
 5. Google Play: kullanıcı geliştirici hesabı açacak (25 $), imzalı sürüm, gizlilik politikası, AdMob.
 
-## Kullanıcı geri bildirimi (telefon testi, bir önceki sürüm) — görüşülüyor, henüz yapılmadı
+## Kullanıcı geri bildirimi (telefon testi)
+YAPILDI: 1 (kaydırma), 4 (açıklama), 5 (212 isim), 6 (alt menü: sabit iskelet + Capacitor --safe-area-inset-*), 10 (il+ilçe: data/ilce.json, kaynak data/ILCE-KAYNAK.txt), 12 (7 tema).
+SIRADA: 11 kart paylaşımı → 9 Kur'an okuyucu (Elmalılı meali lisans kontrolü) → 3/7 sesler → 8 dua kardeşliği + hatim (Firebase) → 13 asistan (sonra, kullanıcı kararı).
 1. Ana sekmeler arasında sağa-sola kaydırarak geçiş (kurulum ekranında da).
 2. Günün ayetine Türkçe meal (meal lisansına bağlı).
 3. Bildirim sesi seçimi; ezan vaktinde ezan okunması (izinli kayıt gerekli).

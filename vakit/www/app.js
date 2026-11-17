@@ -3,6 +3,7 @@
   'use strict';
   const A = window.adhan;
   const $ = id => document.getElementById(id);
+  const scroller = () => document.querySelector('main');
   const store = {
     get(k, d) { try { const v = localStorage.getItem('vakit.' + k); return v === null ? d : JSON.parse(v); } catch { return d; } },
     set(k, v) { try { localStorage.setItem('vakit.' + k, JSON.stringify(v)); } catch { /* yoksay */ } }
@@ -39,6 +40,7 @@
       mHatim: 'Ortak hatim', mEsma: "Esmâü'l-Hüsnâ", mPrayerLog: 'Namaz takibi', mDua: 'Dualar',
       logToday: 'Bugünkü namazlarım', streak: n => `🔥 ${n} gün seri`, prayed: 'Kıldım', notYet: 'Vakti girmedi', mark: 'İşaretle',
       stStreak: 'günlük seri', stBest: 'en uzun seri', stMonth: 'bu ay', last7: 'Son 7 gün', logNote: 'Kayıtlarınız yalnızca bu telefonda tutulur.', today: 'Bugün', tLog: 'Namaz takibi', mPrayerLogSub: 'Kıldığınız vakitler',
+      province: 'İl / Şehir', district: 'İlçe', turkey: 'Türkiye', abroad: 'Yurt dışı', themeLbl: 'Tema', themeNames: { auto: 'Sistem', light: 'Açık', dark: 'Koyu', navy: 'Lacivert', rose: 'Gül', sand: 'Kum', violet: 'Mor' },
       tIlmihal: 'İlmihal', mIlmihal: 'İlmihal', mIlmihalSub: 'Temel dini bilgiler', ilmihalNote: "Hanefi mezhebine göre temel bilgilerin özetidir. Ayrıntı ve özel durumlar için Diyanet İlmihali'ne veya bir din görevlisine başvurun.",
       ramLeft: "Ramazan'a kalan", dayShort: 'gün', sahur: 'Sahur (imsak)', iftar: 'İftar', iftarDua: 'İftar duası', iftarDuaTr: "Allah'ım! Senin rızan için oruç tuttum ve senin rızkınla orucumu açtım.",
       ramNote: "Tarihler Diyanet'in ilan ettiği takvime göredir. Tuttuğunuz günleri tablodan işaretleyebilirsiniz.", tRamazan: 'Ramazan', mRamazan: 'Ramazan', mRamazanSub: 'İmsakiye ve oruç takibi',
@@ -49,7 +51,7 @@
       nfIftar: 'İftar vakti', nfSahurEnd: 'İmsak vakti · sahur sona erdi',
       fType: { mon: 'Pazartesi orucu', thu: 'Perşembe orucu', biyd: 'Eyyâm-ı bîd orucu', ashura: 'Aşure orucu', arafa: 'Arefe orucu', shawwal: 'Şevval orucu' },
       deedsQ: 'Bugün Allah için ne yaptınız?', deedsSub: (n, s) => `Bugün ${n} iyilik${s ? ` · 🔥 ${s} gün` : ''}`, deedsToday: 'bugünkü iyilik', deedAddPh: 'Kendi iyiliğinizi ekleyin', add: 'Ekle',
-      deedRemind: 'Akşam hatırlatması', deedRemindSub: "Her akşam 21.00'de", deedStreak: n => `🔥 ${n} gündür iyilik yapıyorsunuz`, tDeeds: 'Günlük iyilikler', mDeeds: 'Günlük iyilikler', mDeedsSub: 'Bugün Allah için',
+      deedRemind: 'Akşam hatırlatması', deedRemindSub: "Her akşam 21.00'de 'Bugün Allah için ne yaptınız?' diye hatırlatır", deedStreak: n => `🔥 ${n} gündür iyilik yapıyorsunuz`, tDeeds: 'Günlük iyilikler', mDeeds: 'Günlük iyilikler', mDeedsSub: 'Bugün Allah için',
       deedNotifTitle: 'Bugün Allah için ne yaptınız?', deedNotifBody: 'Günün iyiliklerini işaretlemeyi unutmayın.',
       deedList: ["Kur'an okudum", 'Zikir çektim', 'Sadaka verdim', 'Anne babamı aradım veya ziyaret ettim', 'Bir akrabamı aradım', 'Birine yardım ettim', 'Başkası için dua ettim', 'Güzel söz söyledim, gülümsedim', 'Nafile namaz kıldım', 'Faydalı bir şey öğrendim', 'Bir hayvanı veya doğayı gözettim', 'Kimsenin gıybetini yapmadım'],
       dailyNames: 'Günün isimleri', allNames: 'Tümü', searchName: 'İsim veya anlam ara', all: 'Tümü', boy: 'Erkek', girl: 'Kız', unisex: 'Her ikisi', tNames: 'İsimler', mNames: 'İsimler', mNamesSub: 'Anlamlarıyla isimler',
@@ -104,6 +106,7 @@
       mHatim: 'Group khatm', mEsma: '99 Names', mPrayerLog: 'Prayer log', mDua: 'Duas',
       logToday: "Today's prayers", streak: n => `🔥 ${n}-day streak`, prayed: 'Prayed', notYet: 'Not yet', mark: 'Mark',
       stStreak: 'day streak', stBest: 'best streak', stMonth: 'this month', last7: 'Last 7 days', logNote: 'Your records stay on this phone only.', today: 'Today', tLog: 'Prayer log', mPrayerLogSub: 'Prayers you performed',
+      province: 'Province / City', district: 'District', turkey: 'Turkey', abroad: 'Abroad', themeLbl: 'Theme', themeNames: { auto: 'System', light: 'Light', dark: 'Dark', navy: 'Navy', rose: 'Rose', sand: 'Sand', violet: 'Violet' },
       tIlmihal: 'Basics of worship', mIlmihal: 'Basics', mIlmihalSub: 'Worship basics (Turkish)', ilmihalNote: 'A Hanafi summary of the basics (in Turkish). For details, consult a qualified scholar.',
       ramLeft: 'Time to Ramadan', dayShort: 'd', sahur: 'Suhoor (Fajr)', iftar: 'Iftar', iftarDua: 'Iftar dua', iftarDuaTr: 'O Allah, for You I have fasted and with Your provision I break my fast.',
       ramNote: 'Dates follow the announced calendar. Mark the days you fasted in the table.', tRamazan: 'Ramadan', mRamazan: 'Ramadan', mRamazanSub: 'Timetable and fasting log',
@@ -114,7 +117,7 @@
       nfIftar: 'Iftar time', nfSahurEnd: 'Fajr · suhoor has ended',
       fType: { mon: 'Monday fast', thu: 'Thursday fast', biyd: 'White days fast', ashura: 'Ashura fast', arafa: 'Day of Arafah fast', shawwal: 'Shawwal fast' },
       deedsQ: 'What did you do for Allah today?', deedsSub: (n, s) => `${n} good deeds today${s ? ` · 🔥 ${s} days` : ''}`, deedsToday: 'good deeds today', deedAddPh: 'Add your own good deed', add: 'Add',
-      deedRemind: 'Evening reminder', deedRemindSub: 'Every evening at 21:00', deedStreak: n => `🔥 ${n}-day good deed streak`, tDeeds: 'Daily good deeds', mDeeds: 'Good deeds', mDeedsSub: 'For Allah today',
+      deedRemind: 'Evening reminder', deedRemindSub: "Every evening at 21:00 it asks 'What did you do for Allah today?'", deedStreak: n => `🔥 ${n}-day good deed streak`, tDeeds: 'Daily good deeds', mDeeds: 'Good deeds', mDeedsSub: 'For Allah today',
       deedNotifTitle: 'What did you do for Allah today?', deedNotifBody: "Don't forget to mark today's good deeds.",
       deedList: ['I read the Quran', 'I did dhikr', 'I gave charity', 'I called or visited my parents', 'I called a relative', 'I helped someone', 'I prayed for someone else', 'I said a kind word, I smiled', 'I prayed a voluntary prayer', 'I learned something useful', 'I cared for an animal or nature', 'I avoided backbiting'],
       dailyNames: 'Names of the day', allNames: 'All', searchName: 'Search name or meaning', all: 'All', boy: 'Boy', girl: 'Girl', unisex: 'Unisex', tNames: 'Names', mNames: 'Baby names', mNamesSub: 'Names with meanings',
@@ -289,7 +292,7 @@
     if (view === 'nafile') renderNafile();
     if (view === 'names') renderNames();
     if (view === 'quiz') { if (!quiz) newQuiz(); renderQuiz(); }
-    if (view !== 'reader') window.scrollTo(0, 0);
+    if (view !== 'reader') scroller().scrollTop = 0;
   }
   function go(view) { if (cur() !== view) stack.push(view); render(view); }
   function tab(view) { stack = view === 'home' ? ['home'] : ['home', view]; render(view); }
@@ -345,8 +348,8 @@
     try {
       const [a, b] = await Promise.all([fetch('data/surahs.json').then(r => r.json()), fetch('data/quran-ar.json').then(r => r.json())]);
       surahs = a; quran = b;
-      [esmaData, hadisData, duaData, namesData, quizData, ilmihalData] = await Promise.all(['esma', 'hadis', 'dua', 'isimler', 'quiz', 'ilmihal'].map(n => fetch(`data/${n}.json`).then(r => r.json())));
-      renderSurahList(); renderHome();
+      [esmaData, hadisData, duaData, namesData, quizData, ilmihalData, ilceData] = await Promise.all(['esma', 'hadis', 'dua', 'isimler', 'quiz', 'ilmihal', 'ilce'].map(n => fetch(`data/${n}.json`).then(r => r.json())));
+      renderSurahList(); renderHome(); renderSettings(); if (!$('onboard').hidden) obGo(obStep);
     } catch (e) { console.error("Kur'an verisi yüklenemedi", e); }
   }
   const arNum = n => String(n).replace(/\d/g, d => '٠١٢٣٤٥٦٧٨٩'[d]);
@@ -372,7 +375,7 @@
     store.set('lastRead', { s: n, v: verse || 1 });
     requestAnimationFrame(() => {
       if (verse && verse > 1) { const el = $('v' + verse); el.classList.add('hl'); el.scrollIntoView({ block: 'center' }); }
-      else window.scrollTo(0, 0);
+      else scroller().scrollTop = 0;
     });
   }
   function renderVerse(now) {
@@ -386,7 +389,7 @@
   }
   // Okunan ayeti hatırla
   let readTimer = null;
-  window.addEventListener('scroll', () => {
+  scroller().addEventListener('scroll', () => {
     if (cur() !== 'reader') return;
     clearTimeout(readTimer);
     readTimer = setTimeout(() => {
@@ -859,16 +862,56 @@
 
   // ---------------- Ayarlar ----------------
   const methodOptions = sel => Object.entries(METHODS).map(([k, v]) => `<option value="${k}" ${k === sel ? 'selected' : ''}>${v}</option>`).join('');
-  const cityOptions = () => (CITIES.some(c => c[0] === settings.place.name) ? '' : `<option selected>${settings.place.name}</option>`) +
-    CITIES.map(c => `<option ${c[0] === settings.place.name ? 'selected' : ''}>${c[0]}</option>`).join('');
+  // İl / ilçe seçimi (Türkiye) + yurt dışı şehirler
+  let ilceData = null;
+  const trSort = (a, b) => a.localeCompare(b, 'tr');
+  const WORLD = CITIES.filter(c => !/İstanbul|Ankara|İzmir|Bursa|Antalya|Konya|Adana|Gaziantep|Şanlıurfa|Diyarbakır|Erzurum|Trabzon|Samsun|Kayseri|Eskişehir|Malatya|Van|Kocaeli|Sakarya|Denizli/.test(c[0]));
+  function cityOptions() {
+    const sel = settings.place.il || settings.place.name;
+    if (!ilceData) return CITIES.map(c => `<option ${c[0] === sel ? 'selected' : ''}>${c[0]}</option>`).join('');
+    const custom = !settings.place.il && !WORLD.some(c => c[0] === sel) ? `<option selected>${settings.place.name}</option>` : '';
+    return custom + `<optgroup label="${t('turkey')}">` + Object.keys(ilceData).sort(trSort).map(il => `<option value="${il}" ${il === sel ? 'selected' : ''}>${il}</option>`).join('') + '</optgroup>' +
+      `<optgroup label="${t('abroad')}">` + WORLD.map(c => `<option value="${c[0]}" ${c[0] === sel ? 'selected' : ''}>${c[0]}</option>`).join('') + '</optgroup>';
+  }
+  function ilceOptions() {
+    const il = settings.place.il; if (!ilceData || !il || !ilceData[il]) return '';
+    return ilceData[il].d.map(r => r[0]).sort(trSort).map(n => `<option ${n === settings.place.ilce ? 'selected' : ''}>${n}</option>`).join('');
+  }
+  function fillIlce(sel, lbl) { const o = ilceOptions(); sel.innerHTML = o; sel.hidden = !o; if (lbl) lbl.hidden = !o; }
+  // ---------------- Tema ----------------
+  const THEMES = { auto: 'linear-gradient(135deg,#f5f2eb 50%,#0d1412 50%)', light: 'linear-gradient(155deg,#13675a,#f5f2eb)', dark: 'linear-gradient(155deg,#1b5a4e,#0d1412)',
+    navy: 'linear-gradient(155deg,#5b7fd6,#0f1524)', rose: 'linear-gradient(155deg,#c0567a,#fbf1f3)', sand: 'linear-gradient(155deg,#a8742a,#f6efe3)', violet: 'linear-gradient(155deg,#7a5cc4,#f4f1fb)' };
+  function applyTheme() {
+    const th = store.get('theme', 'auto');
+    if (th === 'auto') document.documentElement.removeAttribute('data-theme'); else document.documentElement.setAttribute('data-theme', th);
+    const meta = document.querySelector('meta[name=theme-color]');
+    if (meta) meta.content = getComputedStyle(document.documentElement).getPropertyValue('--bg').trim() || '#f5f2eb';
+  }
+  function renderThemes() {
+    const th = store.get('theme', 'auto');
+    $('themeBox').innerHTML = Object.keys(THEMES).map(k => `<button type="button" data-theme-pick="${k}" class="${k === th ? 'on' : ''}"><i style="background:${THEMES[k]}"></i>${t('themeNames')[k]}</button>`).join('');
+  }
+  applyTheme();
+
   function renderSettings() {
+    renderThemes();
     $('methodSel').innerHTML = methodOptions(settings.method);
     $('madhabSel').value = settings.madhab;
-    $('citySel').innerHTML = cityOptions();
+    $('citySel').innerHTML = cityOptions(); fillIlce($('ilceSel'), $('ilceLbl'));
     const opts = v => Array.from({ length: 21 }, (_, i) => i - 10).map(n => `<option value="${n}" ${n === v ? 'selected' : ''}>${n > 0 ? '+' + n : n}</option>`).join('');
     $('fineBox').innerHTML = PRAYERS.map(p => `<label>${t(p)}<select data-fine="${p}">${opts(+(settings.fine[p] || 0))}</select></label>`).join('');
   }
-  function setCity(name) { const c = CITIES.find(x => x[0] === name); if (c) { settings.place = { name: c[0], lat: c[1], lng: c[2] }; save(); } }
+  function setCity(name) {
+    if (ilceData && ilceData[name]) {
+      const d = ilceData[name].d, merkez = d.find(r => r[0] === 'Merkez') || d.slice().sort((a, b) => Math.hypot(a[1] - ilceData[name].c[0], a[2] - ilceData[name].c[1]) - Math.hypot(b[1] - ilceData[name].c[0], b[2] - ilceData[name].c[1]))[0];
+      setIlce(name, merkez[0]); return;
+    }
+    const c = CITIES.find(x => x[0] === name); if (c) { settings.place = { name: c[0], lat: c[1], lng: c[2] }; save(); }
+  }
+  function setIlce(il, ilce) {
+    const r = ilceData[il].d.find(x => x[0] === ilce); if (!r) return;
+    settings.place = { name: ilce === 'Merkez' ? il : `${ilce}, ${il}`, lat: r[1], lng: r[2], il, ilce }; save();
+  }
   function useGps(onDone) {
     if (!navigator.geolocation) { alert(t('gpsFail')); return; }
     navigator.geolocation.getCurrentPosition(
@@ -886,7 +929,7 @@
     document.querySelectorAll('#obDots i').forEach((d, i) => d.classList.toggle('on', i === n));
     $('obBack').style.visibility = n === 0 ? 'hidden' : 'visible';
     $('obNext').textContent = n === 3 ? t('finish') : t('continue');
-    $('obCity').innerHTML = cityOptions();
+    $('obCity').innerHTML = cityOptions(); fillIlce($('obIlce'));
     $('obMethod').innerHTML = methodOptions(settings.method);
     document.querySelectorAll('#obMadhab button').forEach(b => b.classList.toggle('on', b.dataset.v === settings.madhab));
   }
@@ -925,9 +968,12 @@
   $('methodSel').addEventListener('change', e => { settings.method = e.target.value; save(); });
   $('madhabSel').addEventListener('change', e => { settings.madhab = e.target.value; save(); });
   $('citySel').addEventListener('change', e => setCity(e.target.value));
+  $('ilceSel').addEventListener('change', e => setIlce(settings.place.il, e.target.value));
+  $('obIlce').addEventListener('change', e => { setIlce(settings.place.il, e.target.value); $('obLocStatus').textContent = t('locOk')(settings.place.name); });
   $('gpsBtn').addEventListener('click', () => useGps());
   $('fineBox').addEventListener('change', e => { const k = e.target.dataset.fine; if (k) { settings.fine[k] = +e.target.value; save(); } });
   $('replayOb').addEventListener('click', showOnboarding);
+  $('themeBox').addEventListener('click', e => { const b = e.target.closest('[data-theme-pick]'); if (!b) return; store.set('theme', b.dataset.themePick); applyTheme(); renderThemes(); });
   $('surahSearch').addEventListener('input', renderSurahList);
   $('esmaSearch').addEventListener('input', renderEsma);
   $('rdPrev').addEventListener('click', () => { stack.pop(); openSurah(readerSurah - 1); });
@@ -1012,6 +1058,24 @@
   $('obGps').addEventListener('click', () => { $('obLocStatus').textContent = t('locWait'); useGps(ok => { $('obLocStatus').textContent = ok ? t('locOk')(settings.place.name) : ''; }); });
   $('obMethod').addEventListener('change', e => { settings.method = e.target.value; save(); });
   $('obMadhab').addEventListener('click', e => { const b = e.target.closest('button'); if (!b) return; settings.madhab = b.dataset.v; save(); });
+
+  // Kaydırarak geçiş: ana sekmeler ve kurulum ekranı arasında sağa-sola
+  let sx = null, sy = 0, st = 0;
+  const noSwipe = el => el.closest('.scroll, .seg, .compass, input, select, textarea, .opts, .duo');
+  document.addEventListener('touchstart', e => {
+    if (e.touches.length !== 1 || noSwipe(e.target)) { sx = null; return; }
+    sx = e.touches[0].clientX; sy = e.touches[0].clientY; st = Date.now();
+  }, { passive: true });
+  document.addEventListener('touchend', e => {
+    if (sx === null) return;
+    const dx = e.changedTouches[0].clientX - sx, dy = e.changedTouches[0].clientY - sy; sx = null;
+    if (Math.abs(dx) < 70 || Math.abs(dy) > Math.abs(dx) * 0.6 || Date.now() - st > 700) return;
+    const dir = dx < 0 ? 1 : -1; // sola kaydır = sonraki
+    if (!$('onboard').hidden) { obGo(obStep + dir); return; }
+    if (!ROOTS.includes(cur())) { if (dir === -1) back(); return; }
+    const i = ROOTS.indexOf(cur()) + dir;
+    if (i >= 0 && i < ROOTS.length) tab(ROOTS[i]);
+  }, { passive: true });
 
   // Android geri tuşu
   const CapApp = window.Capacitor && window.Capacitor.Plugins && window.Capacitor.Plugins.App;
