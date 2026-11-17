@@ -132,6 +132,7 @@
       <article class="card verse-card" id="verseCard">
         <header><span data-i18n="dailyVerse">Günün ayeti</span><span><button class="icon-btn sm" type="button" data-share="verse" aria-label="Paylaş"><svg><use href="#i-share"/></svg></button><button class="link" id="verseOpen" type="button" data-i18n="readSurah">Sureyi oku</button></span></header>
         <p class="ar" id="verseAr" dir="rtl" lang="ar"></p>
+        <p class="dua-tr" id="verseTr"></p>
         <footer id="verseRef"></footer>
       </article>
 
@@ -199,7 +200,7 @@
         <svg class="chev"><use href="#i-chev"/></svg>
       </button>
       <ul class="surah-list" id="surahList"></ul>
-      <p class="note src" data-i18n="quranSource">Arapça metin: Kur'an Meâlleri Ansiklopedisi (QuranEnc.com). Ses kayıtları: AlQuran.cloud / Islamic Network. Meal yakında eklenecek.</p>
+      <p class="note src" data-i18n="quranSource">Arapça metin: Kur'an Meâlleri Ansiklopedisi (QuranEnc.com). Meal: Elmalılı Muhammed Hamdi Yazır (1938), Vikikaynak (kamu malı). Ses kayıtları: AlQuran.cloud / Islamic Network.</p>
     </section>
 
     <!-- Kur'an: okuyucu -->
@@ -210,6 +211,7 @@
       </div>
       <div class="rd-tools">
         <div class="seg" id="rdMode"><button type="button" data-m="cards" data-i18n="modeCards">Ayet ayet</button><button type="button" data-m="flow" data-i18n="modeFlow">Mushaf</button></div>
+        <button class="pill" id="rdMeal" type="button" data-i18n="mealBtn">Meal</button>
         <button class="pill" id="rdPlay" type="button" aria-label="Dinle">▶</button>
         <button class="pill" id="rdSmaller" type="button" aria-label="Küçült">A−</button><button class="pill" id="rdBigger" type="button" aria-label="Büyüt">A+</button>
       </div>

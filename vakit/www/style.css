@@ -443,3 +443,6 @@ input[type=range]{width:100%;accent-color:var(--brand-2)}
 .juz-grid button.done small{color:#e9f1ee}
 .ht-item{display:flex;justify-content:space-between;align-items:center;cursor:pointer}
 .ht-item small{color:var(--muted)}
+
+.ay-tr.muted{color:var(--muted);font-size:14px;font-style:italic}
+#rdMeal.on{background:var(--tint);border-color:var(--brand-2);color:var(--brand)}

@@ -40,6 +40,7 @@
       mHatim: 'Ortak hatim', mEsma: "Esmâü'l-Hüsnâ", mPrayerLog: 'Namaz takibi', mDua: 'Dualar',
       logToday: 'Bugünkü namazlarım', streak: n => `🔥 ${n} gün seri`, prayed: 'Kıldım', notYet: 'Vakti girmedi', mark: 'İşaretle',
       stStreak: 'günlük seri', stBest: 'en uzun seri', stMonth: 'bu ay', last7: 'Son 7 gün', logNote: 'Kayıtlarınız yalnızca bu telefonda tutulur.', today: 'Bugün', tLog: 'Namaz takibi', mPrayerLogSub: 'Kıldığınız vakitler',
+      mealBtn: 'Meal', mealMissing: 'Bu ayetin meali kaynak metinde ayrıca yer almıyor.', mealMerged: 'Bu ayetin meali bir önceki ayetle birlikte verilmiştir.', quranSource: "Arapça metin: QuranEnc.com. Meal: Elmalılı Muhammed Hamdi Yazır (1938), Vikikaynak (kamu malı). Ses: AlQuran.cloud / Islamic Network.",
       tDk: 'Dua kardeşliği', mDk: 'Dua kardeşliği', mDkSub: 'Birbirimiz için dua', tHatim: 'Ortak hatim', mHatimSub: 'Cüzleri paylaşarak hatim',
       dkNew: '+ Dua isteği paylaş', dkText: 'Dua isteğiniz', dkTextPh: 'Örneğin: Annem için şifa duası istiyorum.', dkWhat: 'Ne okunsun? (en fazla 5)', cancel: 'Vazgeç', dkSend: 'Paylaş', reload: 'Yenile',
       dkRules: 'Dua isteğinizi herkes görebilir. Ad, telefon, adres gibi kişisel bilgi yazmayın. Uygunsuz paylaşımlar şikâyetle kaldırılır.',
@@ -123,6 +124,7 @@
       mHatim: 'Group khatm', mEsma: '99 Names', mPrayerLog: 'Prayer log', mDua: 'Duas',
       logToday: "Today's prayers", streak: n => `🔥 ${n}-day streak`, prayed: 'Prayed', notYet: 'Not yet', mark: 'Mark',
       stStreak: 'day streak', stBest: 'best streak', stMonth: 'this month', last7: 'Last 7 days', logNote: 'Your records stay on this phone only.', today: 'Today', tLog: 'Prayer log', mPrayerLogSub: 'Prayers you performed',
+      mealBtn: 'Turkish', mealMissing: 'This verse has no separate translation in the source text.', mealMerged: 'Translated together with the previous verse.',
       tDk: 'Prayer circle', mDk: 'Prayer circle', mDkSub: 'Pray for one another', tHatim: 'Group khatm', mHatimSub: 'Share the juz of a khatm',
       dkNew: '+ Share a prayer request', dkText: 'Your request', dkTextPh: 'For example: please pray for my mother’s health.', dkWhat: 'What should be recited? (max 5)', cancel: 'Cancel', dkSend: 'Share', reload: 'Refresh',
       dkRules: 'Everyone can see your request. Do not write names, phone numbers or addresses. Inappropriate posts are removed after reports.',
@@ -382,12 +384,15 @@
   setInterval(() => { if (cur() === 'ramazan') ramTick(); }, 1000);
 
   // ---------------- Kur'an ----------------
-  let surahs = null, quran = null, readerSurah = 1;
+  let surahs = null, quran = null, readerSurah = 1, meal = null;
+  const mealOf = (s, v) => { if (!meal) return ''; const x = meal[s - 1][v - 1]; return x === '^' ? '' : x; };
+  const showMeal = () => store.get('showMeal', true);
   const surahName = s => (lang === 'tr' ? s.tr : s.tl);
   async function loadQuran() {
     try {
       const [a, b] = await Promise.all([fetch('data/surahs.json').then(r => r.json()), fetch('data/quran-ar.json').then(r => r.json())]);
       surahs = a; quran = b; setTimeout(renderFavCount);
+      fetch('data/meal-elmalili.json').then(r => r.json()).then(m => { meal = m; if (cur() === 'reader') renderVerses(); renderHome(); }).catch(() => {});
       [esmaData, hadisData, duaData, namesData, quizData, ilmihalData, ilceData] = await Promise.all(['esma', 'hadis', 'dua', 'isimler', 'quiz', 'ilmihal', 'ilce'].map(n => fetch(`data/${n}.json`).then(r => r.json())));
       renderSurahList(); renderHome(); renderSettings(); if (!$('onboard').hidden) obGo(obStep);
     } catch (e) { console.error("Kur'an verisi yüklenemedi", e); }
@@ -428,8 +433,9 @@
     const n = readerSurah, mode = rdMode(), box = $('rdVerses');
     box.className = mode === 'flow' ? 'flow' : ''; box.style.fontSize = mode === 'flow' ? rdFont() + 'px' : '';
     document.querySelectorAll('#rdMode button').forEach(b => b.classList.toggle('on', b.dataset.m === mode));
+    $('rdMeal').classList.toggle('on', showMeal()); $('rdMeal').hidden = mode === 'flow';
     if (mode === 'flow') { box.innerHTML = quran[n - 1].map((v, i) => `<span class="v" id="v${i + 1}" data-v="${i + 1}">${v}<span class="vn">﴿${arNum(i + 1)}﴾</span></span> `).join(''); return; }
-    box.innerHTML = quran[n - 1].map((v, i) => { const k = `${n}:${i + 1}`; return `<article class="ayah v" id="v${i + 1}" data-v="${i + 1}"><div class="ay-top"><button type="button" class="${favs.has(k) ? 'on' : ''}" data-fav="${k}" aria-label="Favori">${SVG_HEART}</button><button type="button" data-ashare="${k}" aria-label="Paylaş">${SVG_SHARE}</button><span class="ay-no">${i + 1}</span></div><p class="ay-ar" lang="ar" style="font-size:${rdFont()}px">${v}</p></article>`; }).join('');
+    box.innerHTML = quran[n - 1].map((v, i) => { const k = `${n}:${i + 1}`; return `<article class="ayah v" id="v${i + 1}" data-v="${i + 1}"><div class="ay-top"><button type="button" class="${favs.has(k) ? 'on' : ''}" data-fav="${k}" aria-label="Favori">${SVG_HEART}</button><button type="button" data-ashare="${k}" aria-label="Paylaş">${SVG_SHARE}</button><span class="ay-no">${i + 1}</span></div><p class="ay-ar" lang="ar" style="font-size:${rdFont()}px">${v}</p>${meal && showMeal() ? `<p class="ay-tr${mealOf(n, i + 1) ? '' : ' muted'}">${mealOf(n, i + 1) || t('mealMissing')}</p>` : ''}</article>`; }).join('');
   }
   // Sesli okuma (AlQuran.cloud / Islamic Network CDN, internet gerekir)
   const RECITERS = [['ar.alafasy', 'Mişari Râşid el-Afâsî'], ['ar.husary', 'Mahmûd Halîl el-Husarî'], ['ar.minshawi', 'Muhammed Sıddîk el-Minşâvî'], ['ar.abdulbasitmurattal', 'Abdülbâsıt Abdüssamed']];
@@ -461,7 +467,7 @@
   function renderFavs() {
     const list = [...favs].map(k => k.split(':').map(Number)).sort((a, b) => a[0] - b[0] || a[1] - b[1]);
     $('favEmpty').hidden = list.length > 0;
-    $('favList').innerHTML = list.map(([s, v]) => `<article class="ayah fav-item" data-open="${s}:${v}"><div class="ay-top"><button type="button" class="on" data-fav="${s}:${v}" aria-label="Favori">${SVG_HEART}</button><button type="button" data-ashare="${s}:${v}" aria-label="Paylaş">${SVG_SHARE}</button><span class="ay-ref">${ayahRef(s, v)}</span></div><p class="ay-ar" lang="ar" style="font-size:${rdFont() - 4}px">${quran[s - 1][v - 1]}</p></article>`).join('');
+    $('favList').innerHTML = list.map(([s, v]) => `<article class="ayah fav-item" data-open="${s}:${v}"><div class="ay-top"><button type="button" class="on" data-fav="${s}:${v}" aria-label="Favori">${SVG_HEART}</button><button type="button" data-ashare="${s}:${v}" aria-label="Paylaş">${SVG_SHARE}</button><span class="ay-ref">${ayahRef(s, v)}</span></div><p class="ay-ar" lang="ar" style="font-size:${rdFont() - 4}px">${quran[s - 1][v - 1]}</p>${mealOf(s, v) ? `<p class="ay-tr">${mealOf(s, v)}</p>` : ''}</article>`).join('');
   }
 
   function renderVerse(now) {
@@ -470,6 +476,7 @@
     const dayIdx = Math.floor((now - new Date(now.getFullYear(), 0, 1)) / 864e5);
     const [s, v] = DAILY[dayIdx % DAILY.length];
     $('verseAr').textContent = quran[s - 1][v - 1];
+    $('verseTr').textContent = lang === 'tr' ? mealOf(s, v) : '';
     $('verseRef').textContent = `${surahName(surahs[s - 1])} ${t('surah')}, ${v}. ${t('ayah')}`.replace(' ,', ',');
     $('verseOpen').onclick = () => openSurah(s, v);
   }
@@ -845,7 +852,7 @@
   }
   function shareContent(kind) {
     const n = dayOfYear(new Date());
-    if (kind === 'verse') { const [s, v] = DAILY[n % DAILY.length]; return { label: t('lblVerse'), ar: quran[s - 1][v - 1], ref: `${surahName(surahs[s - 1])} ${t('surah')}, ${v}. ${t('ayah')}`.replace(' ,', ',') }; }
+    if (kind === 'verse') { const [s, v] = DAILY[n % DAILY.length]; return { label: t('lblVerse'), ar: quran[s - 1][v - 1], tr: lang === 'tr' ? mealOf(s, v) : '', ref: `${surahName(surahs[s - 1])} ${t('surah')}, ${v}. ${t('ayah')}`.replace(' ,', ',') }; }
     if (kind === 'hadis') { const x = hadisData[n % hadisData.length]; return { label: t('lblHadis'), tr: lang === 'tr' ? x.tr : x.en, ref: x.src }; }
     if (kind === 'dua') { const d = duaData[n % duaData.length]; return { label: t('lblDua'), ar: duaAr(d), tr: lang === 'tr' ? d.tr : d.en, ref: duaRef(d) }; }
     if (kind === 'esma') { const i = n % 99, e = esmaData[i]; return { label: `${t('lblEsma')} · ${i + 1}/99`, ar: e.ar, arSize: 1.8, big: e.tl, tr: lang === 'tr' ? e.tr : e.en, ref: '' }; }
@@ -1323,7 +1330,7 @@
   // Okuyucu olayları
   document.addEventListener('click', e => {
     const f = e.target.closest('[data-fav]'); if (f) { e.stopPropagation(); toggleFav(f.dataset.fav, f); if (cur() === 'favs') renderFavs(); return; }
-    const a = e.target.closest('[data-ashare]'); if (a) { e.stopPropagation(); const [s, v] = a.dataset.ashare.split(':').map(Number); openShare({ label: t('lblVerse'), ar: quran[s - 1][v - 1], ref: ayahRef(s, v) }); return; }
+    const a = e.target.closest('[data-ashare]'); if (a) { e.stopPropagation(); const [s, v] = a.dataset.ashare.split(':').map(Number); openShare({ label: t('lblVerse'), ar: quran[s - 1][v - 1], tr: lang === 'tr' ? mealOf(s, v) : '', ref: ayahRef(s, v) }); return; }
     const o = e.target.closest('[data-open]'); if (o && cur() === 'favs') { const [s, v] = o.dataset.open.split(':').map(Number); openSurah(s, v); }
   }, true);
   $('rdPlay').addEventListener('click', () => { if (playing) stopAudio(); else playAyah(firstVisibleAyah()); });
@@ -1331,6 +1338,7 @@
   $('rdReciter').value = store.get('reciter', RECITERS[0][0]);
   $('rdReciter').addEventListener('change', e => { store.set('reciter', e.target.value); if (playing) playAyah(playV); });
   $('rdVerses').addEventListener('dblclick', e => { const el = e.target.closest('.v'); if (el) playAyah(+el.dataset.v); });
+  $('rdMeal').addEventListener('click', () => { store.set('showMeal', !showMeal()); renderVerses(); });
   $('rdMode').addEventListener('click', e => { const b = e.target.closest('[data-m]'); if (!b) return; store.set('qMode', b.dataset.m); renderVerses(); });
   $('rdSmaller').addEventListener('click', () => { store.set('qFont', Math.max(20, rdFont() - 2)); renderVerses(); });
   $('rdBigger').addEventListener('click', () => { store.set('qFont', Math.min(48, rdFont() + 2)); renderVerses(); });
