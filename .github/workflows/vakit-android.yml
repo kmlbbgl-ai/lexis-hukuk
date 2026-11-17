@@ -7,6 +7,9 @@ on:
       - ".github/workflows/vakit-android.yml"
   workflow_dispatch:
 
+permissions:
+  contents: write
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -29,3 +32,12 @@ jobs:
         with:
           name: vakit-debug-apk
           path: vakit/android/app/build/outputs/apk/debug/app-debug.apk
+      - name: Publish single download link (Releases)
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          cp android/app/build/outputs/apk/debug/app-debug.apk vakit.apk
+          gh release delete vakit-latest --yes --cleanup-tag || true
+          gh release create vakit-latest vakit.apk --prerelease --target "$GITHUB_SHA" \
+            --title "Vakit (deneme sürümü)" \
+            --notes "En son deneme sürümü. Telefondan vakit.apk dosyasına dokunup indirin ve kurun."
