@@ -39,6 +39,14 @@
       mHatim: 'Ortak hatim', mEsma: "Esmâü'l-Hüsnâ", mPrayerLog: 'Namaz takibi', mDua: 'Dualar',
       logToday: 'Bugünkü namazlarım', streak: n => `🔥 ${n} gün seri`, prayed: 'Kıldım', notYet: 'Vakti girmedi', mark: 'İşaretle',
       stStreak: 'günlük seri', stBest: 'en uzun seri', stMonth: 'bu ay', last7: 'Son 7 gün', logNote: 'Kayıtlarınız yalnızca bu telefonda tutulur.', today: 'Bugün', tLog: 'Namaz takibi', mPrayerLogSub: 'Kıldığınız vakitler',
+      fajrPrayer: 'Sabah', dailyHadis: 'Günün hadisi', dailyDua: 'Günün duası', allDuas: 'Tüm dualar', esma: "Esmâü'l-Hüsnâ", searchEsma: 'İsim veya anlam ara',
+      hadisNote: 'Türkçe ifadeler uygulamaya özel sadeleştirilmiş anlamdır; kaynak olarak hadisin geçtiği temel eserler belirtilmiştir.',
+      duaNote: "Dualar Kur'an-ı Kerim'den alınmıştır; Türkçe ifadeler anlamdır.", tHadis: 'Hadisler', tDua: 'Dualar', mHadis: 'Hadisler', mHadisSub: '30 seçme hadis', mEsmaSub: '99 güzel isim', mDuaSub: "Kur'an'dan dualar",
+      kzLeft: 'kalan kaza namazı', kzDone: 'kılınan kaza', kzCalc: 'Borç hesapla', kzCalcText: 'Kılınmayan süreyi girin; her vakit için o kadar gün eklenir.',
+      years: 'Yıl', months: 'Ay', days: 'Gün', kzWitr: 'Vitir de eklensin (Hanefi)', kzAddBtn: 'Kaza borcuna ekle', kzAdded: n => `${n} vakit kaza borcuna eklendi.`,
+      kzNote: 'Kaza borcunuzu bilmiyorsanız en iyi tahmininizi girin. Kesin hüküm için bir din görevlisine danışabilirsiniz.',
+      witr: 'Vitir', fast: 'Oruç', kzPrayed: 'Kıldım', kzFasted: 'Tuttum', kzPrayedSub: n => `${n} kılındı`, kzFastedSub: n => `${n} tutuldu`,
+      toKaza: n => `İşaretlenmemiş ${n} vakti kazaya ekle`, toKazaDone: 'Bu günün eksikleri kazaya eklendi ✓', tKaza: 'Kaza takibi', mKazaSub: 'Namaz ve oruç borcu',
       mMonthlySub: 'Ay ay tüm vakitler', mDaysSub: 'Kandiller ve bayramlar', mSettingsSub: 'Konum ve hesaplama', mNotifSub: 'Vakit hatırlatmaları',
       obNotifTitle: 'Ezan bildirimleri', obNotifText: 'Vakit girdiğinde haber verelim mi? Her vakit için ayrı ayrı açıp kapatabilirsiniz.', obNotifBtn: 'Bildirimleri aç',
       nfWebOnly: 'Bildirimler yalnızca telefondaki uygulamada çalışır.', nfPermTitle: 'Bildirim izni kapalı', nfPermText: 'Ezan vakitlerinde haber verebilmemiz için bildirim izni gerekiyor.',
@@ -81,6 +89,14 @@
       mHatim: 'Group khatm', mEsma: '99 Names', mPrayerLog: 'Prayer log', mDua: 'Duas',
       logToday: "Today's prayers", streak: n => `🔥 ${n}-day streak`, prayed: 'Prayed', notYet: 'Not yet', mark: 'Mark',
       stStreak: 'day streak', stBest: 'best streak', stMonth: 'this month', last7: 'Last 7 days', logNote: 'Your records stay on this phone only.', today: 'Today', tLog: 'Prayer log', mPrayerLogSub: 'Prayers you performed',
+      fajrPrayer: 'Fajr', dailyHadis: 'Hadith of the day', dailyDua: 'Dua of the day', allDuas: 'All duas', esma: '99 Names', searchEsma: 'Search name or meaning',
+      hadisNote: 'English wording is a simplified meaning; the main collections containing each hadith are cited.',
+      duaNote: 'Duas are from the Holy Quran; English wording is the meaning.', tHadis: 'Hadiths', tDua: 'Duas', mHadis: 'Hadiths', mHadisSub: '30 selected hadiths', mEsmaSub: 'Names of Allah', mDuaSub: 'Duas from the Quran',
+      kzLeft: 'missed prayers left', kzDone: 'made up', kzCalc: 'Estimate debt', kzCalcText: 'Enter the period you missed; that many days are added for each prayer.',
+      years: 'Years', months: 'Months', days: 'Days', kzWitr: 'Include Witr (Hanafi)', kzAddBtn: 'Add to missed prayers', kzAdded: n => `${n} prayers added.`,
+      kzNote: 'If you do not know your exact count, enter your best estimate. Ask a scholar for a definitive ruling.',
+      witr: 'Witr', fast: 'Fasting', kzPrayed: 'Prayed', kzFasted: 'Fasted', kzPrayedSub: n => `${n} made up`, kzFastedSub: n => `${n} made up`,
+      toKaza: n => `Add ${n} unmarked prayers to missed list`, toKazaDone: "This day's missed prayers were added ✓", tKaza: 'Missed prayers', mKazaSub: 'Prayers and fasts to make up',
       mMonthlySub: 'All times by month', mDaysSub: 'Holy nights and Eids', mSettingsSub: 'Location and method', mNotifSub: 'Prayer reminders',
       obNotifTitle: 'Adhan alerts', obNotifText: 'Shall we notify you at each prayer time? You can turn each prayer on or off.', obNotifBtn: 'Turn on alerts',
       nfWebOnly: 'Notifications work only in the phone app.', nfPermTitle: 'Notifications are off', nfPermText: 'Allow notifications so we can alert you at prayer times.',
@@ -218,7 +234,7 @@
 
   // ---------------- Görünümler ve gezinme ----------------
   const ROOTS = ['home', 'qibla', 'quran', 'dhikr', 'menu'];
-  const TITLES = { home: 'appName', qibla: 'tabQibla', quran: 'tabQuran', dhikr: 'tabDhikr', menu: 'tabMenu', settings: 'tSettings', monthly: 'tMonthly', days: 'tDays', notif: 'mNotif', log: 'tLog' };
+  const TITLES = { home: 'appName', qibla: 'tabQibla', quran: 'tabQuran', dhikr: 'tabDhikr', menu: 'tabMenu', settings: 'tSettings', monthly: 'tMonthly', days: 'tDays', notif: 'mNotif', log: 'tLog', kaza: 'tKaza', esma: 'mEsma', hadis: 'tHadis', dua: 'tDua' };
   let stack = ['home'];
   const cur = () => stack[stack.length - 1];
   function render(view) {
@@ -233,6 +249,10 @@
     if (view === 'days') renderDays();
     if (view === 'notif') renderNotif();
     if (view === 'log') { logDay = 0; renderLog(); }
+    if (view === 'kaza') renderKaza();
+    if (view === 'esma') renderEsma();
+    if (view === 'hadis') renderTextList('hadis');
+    if (view === 'dua') renderTextList('dua');
     if (view !== 'reader') window.scrollTo(0, 0);
   }
   function go(view) { if (cur() !== view) stack.push(view); render(view); }
@@ -261,6 +281,7 @@
     }
     renderVerse(now);
     renderHomeLog(now);
+    renderDaily(now);
     const last = store.get('lastRead', null);
     $('continueCard').hidden = !last || !surahs;
     if (last && surahs) $('continueName').textContent = `${surahName(surahs[last.s - 1])} · ${last.v}. ${t('ayah')}`;
@@ -284,7 +305,9 @@
   async function loadQuran() {
     try {
       const [a, b] = await Promise.all([fetch('data/surahs.json').then(r => r.json()), fetch('data/quran-ar.json').then(r => r.json())]);
-      surahs = a; quran = b; renderSurahList(); renderHome();
+      surahs = a; quran = b;
+      [esmaData, hadisData, duaData] = await Promise.all(['esma', 'hadis', 'dua'].map(n => fetch(`data/${n}.json`).then(r => r.json())));
+      renderSurahList(); renderHome();
     } catch (e) { console.error("Kur'an verisi yüklenemedi", e); }
   }
   const arNum = n => String(n).replace(/\d/g, d => '٠١٢٣٤٥٦٧٨٩'[d]);
@@ -393,6 +416,7 @@
   const MENU = [
     { go: 'notif', ic: 'i-bell', t: 'mNotif', s: 'mNotifSub' },
     { go: 'log', ic: 'i-check', t: 'mPrayerLog', s: 'mPrayerLogSub' },
+    { go: 'kaza', ic: 'i-cal', t: 'mKaza', s: 'mKazaSub' },
     { go: 'monthly', ic: 'i-table', t: 'mMonthly', s: 'mMonthlySub' },
     { go: 'days', ic: 'i-moon', t: 'mDays', s: 'mDaysSub' },
     { go: 'quran', ic: 'i-book', t: 'tabQuran' },
@@ -400,8 +424,9 @@
     { go: 'dhikr', ic: 'i-beads', t: 'tabDhikr' },
     { go: 'settings', ic: 'i-gear', t: 'mSettings', s: 'mSettingsSub' },
 
-    { soon: 1, ic: 'i-cal', t: 'mKaza' }, { soon: 1, ic: 'i-people', t: 'mHatim' },
-    { soon: 1, ic: 'i-star', t: 'mEsma' }, { soon: 1, ic: 'i-book', t: 'mDua' }
+ { soon: 1, ic: 'i-people', t: 'mHatim' },
+    { go: 'esma', ic: 'i-star', t: 'mEsma', s: 'mEsmaSub' }, { go: 'hadis', ic: 'i-book', t: 'mHadis', s: 'mHadisSub' },
+    { go: 'dua', ic: 'i-moon', t: 'mDua', s: 'mDuaSub' }
   ];
   function renderMenu() {
     $('menuGrid').innerHTML = MENU.map(m => `<button type="button" class="tile${m.soon ? ' soon' : ''}" ${m.go ? `data-go="${m.go}"` : 'disabled'}>${m.soon ? `<span class="badge">${t('soon')}</span>` : ''}<span class="t-ic"><svg><use href="#${m.ic}"/></svg></span><b>${t(m.t)}</b>${m.s ? `<small>${t(m.s)}</small>` : ''}</button>`).join('');
@@ -439,6 +464,7 @@
 
   // ---------------- Namaz takibi ----------------
   const FARZ = ['fajr', 'dhuhr', 'asr', 'maghrib', 'isha'];
+  const pname = p => (p === 'fajr' ? t('fajrPrayer') : t(p)); // namazın adı (imsak vaktinde kılınan: sabah)
   const plog = store.get('plog', {}); // { 'YYYY-MM-DD': bitmask (fajr=1 ... isha=16) }
   const dkey = d => `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
   const dayAt = off => { const n = new Date(); return new Date(n.getFullYear(), n.getMonth(), n.getDate() + off, 12); };
@@ -468,7 +494,7 @@
   }
   function renderHomeLog(now) {
     const d = dayAt(0);
-    $('homeLog').innerHTML = FARZ.map((p, i) => `<button type="button" data-hp="${i}" class="${isOn(d, i) ? 'on' : ''}" ${started(d, p) || isOn(d, i) ? '' : 'disabled'}><i>${isOn(d, i) ? '✓' : ''}</i>${t(p)}</button>`).join('');
+    $('homeLog').innerHTML = FARZ.map((p, i) => `<button type="button" data-hp="${i}" class="${isOn(d, i) ? 'on' : ''}" ${started(d, p) || isOn(d, i) ? '' : 'disabled'}><i>${isOn(d, i) ? '✓' : ''}</i>${pname(p)}</button>`).join('');
     const s = streaks().cur;
     $('logStreak').textContent = s ? t('streak')(s) : `${countDay(d)}/5`;
   }
@@ -480,10 +506,16 @@
     $('logNext').disabled = logDay >= 0;
     $('logList').innerHTML = FARZ.map((p, i) => {
       const on = isOn(d, i), can = logDay < 0 || started(d, p) || on;
-      return `<li><span class="l-name"><b>${t(p)}</b><small>${hm(pt[p])}</small></span><button type="button" data-lp="${i}" class="${on ? 'on' : ''}" ${can ? '' : 'disabled'}>${on ? '✓ ' + t('prayed') : can ? t('mark') : t('notYet')}</button></li>`;
+      return `<li><span class="l-name"><b>${pname(p)}</b><small>${hm(pt[p])}</small></span><button type="button" data-lp="${i}" class="${on ? 'on' : ''}" ${can ? '' : 'disabled'}>${on ? '✓ ' + t('prayed') : can ? t('mark') : t('notYet')}</button></li>`;
     }).join('');
     const s = streaks();
     $('stStreak').textContent = s.cur; $('stBest').textContent = s.best;
+    // Geçmiş günlerde işaretlenmemiş vakitleri kazaya ekleme
+    const missing = FARZ.filter((_, i) => !isOn(d, i)).length;
+    const added = !!kz.fromLog[dkey(d)];
+    $('logToKaza').hidden = logDay >= 0 || (!missing && !added);
+    $('logToKaza').disabled = added;
+    $('logToKaza').textContent = added ? t('toKazaDone') : t('toKaza')(missing);
     // Bu ay: bugüne kadar geçen günlerdeki kılınan / toplam
     const now = new Date(); let done = 0, total = 0;
     for (let i = 1; i <= now.getDate(); i++) {
@@ -495,6 +527,54 @@
       const dd = dayAt(k - 6), c = countDay(dd);
       return `<div><span class="bar${c === 5 ? ' full' : ''}"><i style="height:${c * 20}%"></i></span>${dd.toLocaleDateString(loc(), { weekday: 'short' })}</div>`;
     }).join('');
+  }
+
+  // ---------------- Günlük içerik: hadis, dua, esma ----------------
+  let esmaData = null, hadisData = null, duaData = null;
+  const dayOfYear = now => Math.floor((new Date(now.getFullYear(), now.getMonth(), now.getDate()) - new Date(now.getFullYear(), 0, 1)) / 864e5);
+  const duaAr = d => quran ? quran[d.s - 1].slice(d.a - 1, d.b).join(' ') : '';
+  const duaRef = d => `${surahName(surahs[d.s - 1])} ${t('surah')}, ${d.a}${d.b > d.a ? '-' + d.b : ''}. ${t('ayah')}`.replace(' ,', ',');
+  function renderDaily(now) {
+    if (!esmaData) return;
+    const n = dayOfYear(now);
+    const h = hadisData[n % hadisData.length];
+    $('hadisTr').textContent = lang === 'tr' ? h.tr : h.en; $('hadisSrc').textContent = h.src;
+    const ei = n % 99, e = esmaData[ei];
+    $('esmaNo').textContent = `${ei + 1}/99`; $('esmaAr').textContent = e.ar; $('esmaTl').textContent = e.tl; $('esmaTr').textContent = lang === 'tr' ? e.tr : e.en;
+    const d = duaData[n % duaData.length];
+    $('duaAr').textContent = duaAr(d); $('duaTr').textContent = lang === 'tr' ? d.tr : d.en; $('duaRef').textContent = duaRef(d);
+  }
+  function renderEsma() {
+    if (!esmaData) return;
+    const q = norm(($('esmaSearch').value || '').trim()), today = dayOfYear(new Date()) % 99;
+    $('esmaList').innerHTML = esmaData.map((e, i) => ({ e, i })).filter(({ e }) => !q || norm(e.tl).includes(q) || norm(lang === 'tr' ? e.tr : e.en).includes(q))
+      .map(({ e, i }) => `<div class="${i === today ? 'hl' : ''}"><i>${i + 1}</i><span class="ar" dir="rtl" lang="ar">${e.ar}</span><b>${e.tl}</b><small>${lang === 'tr' ? e.tr : e.en}</small></div>`).join('');
+  }
+  function renderTextList(kind) {
+    if (!esmaData) return;
+    const n = dayOfYear(new Date());
+    if (kind === 'hadis') $('hadisList').innerHTML = hadisData.map((h, i) => `<li class="${i === n % hadisData.length ? 'hl' : ''}"><p>${lang === 'tr' ? h.tr : h.en}</p><small>${h.src}</small></li>`).join('');
+    else $('duaList').innerHTML = duaData.map((d, i) => `<li class="${i === n % duaData.length ? 'hl' : ''}"><p class="ar" dir="rtl" lang="ar">${duaAr(d)}</p><p>${lang === 'tr' ? d.tr : d.en}</p><small>${duaRef(d)}</small></li>`).join('');
+  }
+
+  // ---------------- Kaza takibi ----------------
+  const KZ = ['fajr', 'dhuhr', 'asr', 'maghrib', 'isha', 'witr'];
+  const kz = Object.assign({ left: { fajr: 0, dhuhr: 0, asr: 0, maghrib: 0, isha: 0, witr: 0, fast: 0 }, done: { fajr: 0, dhuhr: 0, asr: 0, maghrib: 0, isha: 0, witr: 0, fast: 0 }, fromLog: {} }, store.get('kaza', {}));
+  const saveKz = () => { store.set('kaza', kz); renderKaza(); };
+  function kzRow(k, isFast) {
+    const name = isFast ? t('fast') : (k === 'witr' ? t('witr') : pname(k));
+    const sub = isFast ? t('kzFastedSub')(kz.done[k]) : t('kzPrayedSub')(kz.done[k]);
+    return `<li><span class="k-name"><b>${name}</b><small>${sub}</small></span>
+      <button class="k-btn" type="button" data-kz="${k}" data-d="-1" aria-label="−">−</button>
+      <span class="k-num">${kz.left[k]}</span>
+      <button class="k-btn" type="button" data-kz="${k}" data-d="1" aria-label="+">+</button>
+      <button class="k-done" type="button" data-kzdone="${k}" ${kz.left[k] ? '' : 'disabled'}>${isFast ? t('kzFasted') : t('kzPrayed')}</button></li>`;
+  }
+  function renderKaza() {
+    $('kzList').innerHTML = KZ.map(k => kzRow(k, false)).join('');
+    $('kzFast').innerHTML = kzRow('fast', true);
+    $('kzLeft').textContent = KZ.reduce((s, k) => s + kz.left[k], 0);
+    $('kzDone').textContent = KZ.reduce((s, k) => s + kz.done[k], 0);
   }
 
   // ---------------- Ezan bildirimleri ----------------
@@ -636,6 +716,7 @@
   $('fineBox').addEventListener('change', e => { const k = e.target.dataset.fine; if (k) { settings.fine[k] = +e.target.value; save(); } });
   $('replayOb').addEventListener('click', showOnboarding);
   $('surahSearch').addEventListener('input', renderSurahList);
+  $('esmaSearch').addEventListener('input', renderEsma);
   $('rdPrev').addEventListener('click', () => { stack.pop(); openSurah(readerSurah - 1); });
   $('rdNext').addEventListener('click', () => { stack.pop(); openSurah(readerSurah + 1); });
   $('mPrev').addEventListener('click', () => { mOffset--; renderMonth(); });
@@ -645,6 +726,27 @@
   $('logList').addEventListener('click', e => { const b = e.target.closest('[data-lp]'); if (!b) return; togglePrayer(dayAt(logDay), +b.dataset.lp); renderLog(); });
   $('logPrev').addEventListener('click', () => { logDay--; renderLog(); });
   $('logNext').addEventListener('click', () => { if (logDay < 0) { logDay++; renderLog(); } });
+  // Kaza olayları
+  document.querySelector('[data-view="kaza"]').addEventListener('click', e => {
+    const b = e.target.closest('[data-kz]'); const dn = e.target.closest('[data-kzdone]');
+    if (b) { const k = b.dataset.kz; kz.left[k] = Math.max(0, kz.left[k] + +b.dataset.d); saveKz(); }
+    if (dn) { const k = dn.dataset.kzdone; if (kz.left[k] > 0) { kz.left[k]--; kz.done[k]++; if (navigator.vibrate) navigator.vibrate(15); saveKz(); } }
+  });
+  $('kzAdd').addEventListener('click', () => {
+    const n = (+$('kzY').value || 0) * 365 + (+$('kzM').value || 0) * 30 + (+$('kzD').value || 0);
+    if (n <= 0) return;
+    KZ.forEach(k => { if (k !== 'witr' || $('kzWitr').checked) kz.left[k] += n; });
+    $('kzMsg').textContent = t('kzAdded')(n * (KZ.length - ($('kzWitr').checked ? 0 : 1)));
+    $('kzY').value = $('kzM').value = $('kzD').value = '';
+    saveKz();
+  });
+  $('logToKaza').addEventListener('click', () => {
+    const d = dayAt(logDay), k = dkey(d);
+    if (kz.fromLog[k]) return;
+    let mask = 0;
+    FARZ.forEach((p, i) => { if (!isOn(d, i)) { kz.left[p]++; mask |= 1 << i; } });
+    kz.fromLog[k] = mask || -1; store.set('kaza', kz); renderLog();
+  });
   // Bildirim olayları
   $('nfOn').addEventListener('change', async e => { if (e.target.checked) await enableNotif(); else { nf.on = false; saveNf(); } });
   $('nfList').addEventListener('change', e => { const el = e.target; if (!el.dataset.nf) return; nf[el.dataset.nf][el.dataset.p] = el.checked; saveNf(); });

@@ -244,3 +244,49 @@ main{max-width:560px;margin:0 auto;padding:0 16px calc(96px + env(safe-area-inse
 .week .bar{width:100%;max-width:32px;height:64px;border-radius:10px;background:var(--tint);position:relative;overflow:hidden}
 .week .bar i{position:absolute;left:0;right:0;bottom:0;background:var(--brand-2);border-radius:10px}
 .week .bar.full i{background:var(--gold)}
+
+/* Kaza takibi */
+.kz-total{display:grid;grid-template-columns:1fr 1fr;text-align:center;background:linear-gradient(155deg,#13675a,#0d4a3e);color:#fff;border:0}
+.kz-total b{display:block;font-size:34px;font-weight:700}
+.kz-total small{opacity:.8;font-size:13px}
+.kz-total div+div{border-left:1px solid rgba(255,255,255,.15)}
+.kz-list{list-style:none;padding:4px 16px}
+.kz-list li{display:flex;align-items:center;gap:10px;padding:12px 0;border-bottom:1px solid var(--line)}
+.kz-list li:last-child{border-bottom:0}
+.kz-list .k-name{flex:1;display:flex;flex-direction:column;min-width:0}
+.kz-list .k-name small{color:var(--muted);font-size:12px}
+.kz-list .k-num{min-width:56px;text-align:center;font-size:22px;font-weight:700;color:var(--brand);font-variant-numeric:tabular-nums}
+.kz-list .k-btn{width:40px;height:40px;border-radius:12px;border:1.5px solid var(--line);background:var(--card);font-size:20px;font-weight:600;color:var(--brand-2)}
+.kz-list .k-done{padding:9px 12px;border-radius:12px;border:0;background:var(--brand-2);color:#fff;font-weight:600;font-size:14px}
+.kz-list .k-done:disabled{opacity:.35}
+.kz-calc summary{cursor:pointer;font-weight:700;color:var(--brand)}
+.kz-calc .row{margin:12px 0}
+.kz-calc .field{padding:10px;text-align:center}
+.kz-witr{margin:4px 0 12px;font-size:15px}
+#logToKaza{margin:4px 0 0}
+
+/* Hadis, dua, esma */
+.duo{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.duo .card{margin:12px 0 0}
+.mini-card{display:flex;flex-direction:column;cursor:pointer;padding:16px}
+.mini-card header{display:flex;justify-content:space-between;font-size:13px;font-weight:700;color:var(--gold)}
+.mini-card p{flex:1;font-size:15px;line-height:1.45;margin:10px 0;display:-webkit-box;-webkit-line-clamp:6;-webkit-box-orient:vertical;overflow:hidden}
+.mini-card footer{color:var(--muted);font-size:12px}
+.esma-mini{text-align:center}
+.esma-mini p.ar{font-size:34px;line-height:1.6;margin:6px 0 2px;color:var(--brand);flex:none}
+.esma-mini b{font-size:16px}
+.verse-card[data-go]{cursor:pointer}
+.dua-tr{text-align:center;margin:0 0 8px;font-size:15px}
+.esma-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.esma-grid div{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:14px 12px;text-align:center;position:relative}
+.esma-grid i{position:absolute;top:8px;left:10px;font-style:normal;font-size:11px;color:var(--gold);font-weight:700}
+.esma-grid .ar{font-size:28px;line-height:1.7;color:var(--brand)}
+.esma-grid b{display:block;font-size:15px}
+.esma-grid small{display:block;color:var(--muted);font-size:12px;margin-top:4px;line-height:1.35}
+.esma-grid div.hl{border-color:var(--gold);box-shadow:0 0 0 2px var(--gold-soft)}
+.text-list{list-style:none;padding:0;margin:0}
+.text-list li{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:16px;margin:10px 0}
+.text-list .ar{font-size:24px;line-height:2;text-align:center;color:var(--brand);margin:0 0 8px}
+.text-list p{margin:0 0 8px;font-size:16px}
+.text-list small{color:var(--muted);font-size:12px}
+.text-list li.hl{border-color:var(--gold)}

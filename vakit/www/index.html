@@ -124,6 +124,26 @@
         <footer id="verseRef"></footer>
       </article>
 
+      <div class="duo">
+        <article class="card mini-card" data-go="hadis">
+          <header data-i18n="dailyHadis">Günün hadisi</header>
+          <p id="hadisTr"></p>
+          <footer id="hadisSrc"></footer>
+        </article>
+        <article class="card mini-card esma-mini" data-go="esma">
+          <header><span data-i18n="esma">Esmâü'l-Hüsnâ</span><span id="esmaNo"></span></header>
+          <p class="ar" id="esmaAr" dir="rtl" lang="ar"></p>
+          <b id="esmaTl"></b><footer id="esmaTr"></footer>
+        </article>
+      </div>
+
+      <article class="card verse-card" data-go="dua">
+        <header><span data-i18n="dailyDua">Günün duası</span><span class="link" data-i18n="allDuas">Tüm dualar</span></header>
+        <p class="ar" id="duaAr" dir="rtl" lang="ar"></p>
+        <p class="dua-tr" id="duaTr"></p>
+        <footer id="duaRef"></footer>
+      </article>
+
       <button class="card row-card" type="button" data-go="quran" id="continueCard" hidden>
         <span class="rc-ic"><svg><use href="#i-book"/></svg></span>
         <span class="rc-body"><small data-i18n="continueReading">Okumaya devam et</small><b id="continueName">—</b></span>
@@ -221,7 +241,45 @@
         <div class="lbl" data-i18n="last7">Son 7 gün</div>
         <div class="week" id="logWeek"></div>
       </div>
+      <button class="btn ghost" id="logToKaza" type="button" hidden></button>
       <p class="note" data-i18n="logNote">Kayıtlarınız yalnızca bu telefonda tutulur.</p>
+    </section>
+
+    <!-- Esmâü'l-Hüsnâ -->
+    <section class="view" data-view="esma" hidden>
+      <input id="esmaSearch" class="field search" type="search" data-i18n-ph="searchEsma" placeholder="İsim veya anlam ara">
+      <div class="esma-grid" id="esmaList"></div>
+    </section>
+
+    <!-- Hadisler -->
+    <section class="view" data-view="hadis" hidden>
+      <ul class="text-list" id="hadisList"></ul>
+      <p class="note src" data-i18n="hadisNote">Türkçe ifadeler uygulamaya özel sadeleştirilmiş anlamdır; kaynak olarak hadisin geçtiği temel eserler belirtilmiştir.</p>
+    </section>
+
+    <!-- Dualar -->
+    <section class="view" data-view="dua" hidden>
+      <ul class="text-list" id="duaList"></ul>
+      <p class="note src" data-i18n="duaNote">Dualar Kur'an-ı Kerim'den alınmıştır; Türkçe ifadeler anlamdır.</p>
+    </section>
+
+    <!-- Kaza takibi -->
+    <section class="view" data-view="kaza" hidden>
+      <div class="card kz-total">
+        <div><b id="kzLeft">0</b><small data-i18n="kzLeft">kalan kaza namazı</small></div>
+        <div><b id="kzDone">0</b><small data-i18n="kzDone">kılınan kaza</small></div>
+      </div>
+      <ul class="card kz-list" id="kzList"></ul>
+      <ul class="card kz-list" id="kzFast"></ul>
+      <details class="card kz-calc">
+        <summary data-i18n="kzCalc">Borç hesapla</summary>
+        <p class="note" data-i18n="kzCalcText">Kılınmayan süreyi girin; her vakit için o kadar gün eklenir.</p>
+        <div class="row"><input id="kzY" class="field" type="number" min="0" inputmode="numeric" data-i18n-ph="years" placeholder="Yıl"><input id="kzM" class="field" type="number" min="0" inputmode="numeric" data-i18n-ph="months" placeholder="Ay"><input id="kzD" class="field" type="number" min="0" inputmode="numeric" data-i18n-ph="days" placeholder="Gün"></div>
+        <label class="switch-row kz-witr"><span data-i18n="kzWitr">Vitir de eklensin (Hanefi)</span><input type="checkbox" id="kzWitr" checked><i></i></label>
+        <button class="btn" id="kzAdd" type="button" data-i18n="kzAddBtn">Kaza borcuna ekle</button>
+        <p class="note" id="kzMsg"></p>
+      </details>
+      <p class="note" data-i18n="kzNote">Kaza borcunuzu bilmiyorsanız, en iyi tahmininizi girin. Kesin hüküm için bir din görevlisine danışabilirsiniz.</p>
     </section>
 
     <!-- Ezan bildirimleri -->
