@@ -389,8 +389,8 @@ input[type=range]{width:100%;accent-color:var(--brand-2)}
 .sh-actions{margin-top:14px}
 
 /* Kur'an okuyucu: ayet kutuları */
-.rd-tools{display:flex;gap:8px;align-items:center;margin:4px 0 6px}
-.rd-tools .seg{flex:1;margin:0}
+.rd-tools{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:4px 0 6px}
+.rd-tools .seg{flex:1 1 100%;margin:0}
 .rd-tools .pill{padding:8px 12px}
 #rdVerses.flow{font-family:"Amiri Quran",serif;line-height:2.3;text-align:justify;direction:rtl;background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:18px 18px 10px;box-shadow:var(--shadow)}
 #rdVerses.flow .vn{display:inline-block;color:var(--gold);margin:0 4px;font-size:.85em}
