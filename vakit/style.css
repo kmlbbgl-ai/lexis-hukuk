@@ -1,0 +1,57 @@
+:root{
+  --bg:#f4f1ea;--card:#fff;--ink:#1d2a26;--muted:#66736e;--brand:#0f5c4d;--brand-2:#c9a24a;--line:#e4dfd3;--active:#e8f2ee;
+}
+@media (prefers-color-scheme:dark){
+  :root{--bg:#0e1513;--card:#17211e;--ink:#e9efe9;--muted:#9aa8a2;--brand:#3fa58b;--brand-2:#d8b45e;--line:#26332f;--active:#1d3029;}
+}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.4 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+body{min-height:100vh;padding-bottom:84px}
+button,select{font:inherit;color:inherit}
+.top{display:flex;justify-content:space-between;align-items:center;padding:16px 16px 8px;max-width:520px;margin:0 auto}
+.top h1{margin:0;font-size:22px;color:var(--brand)}
+.loc{background:none;border:0;padding:0;color:var(--muted);cursor:pointer}
+.lang{border:1px solid var(--line);background:var(--card);border-radius:20px;padding:6px 12px;cursor:pointer}
+main{max-width:520px;margin:0 auto;padding:0 16px}
+.tab{display:none}.tab.active{display:block}
+.card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:18px;margin:12px 0}
+.next{text-align:center;background:linear-gradient(160deg,var(--brand),#0b3f35);color:#fff;border:0}
+.next-label{opacity:.8;font-size:14px}
+.next-name{font-size:28px;font-weight:700;margin-top:4px}
+.next-count{font-size:44px;font-variant-numeric:tabular-nums;font-weight:300;letter-spacing:1px}
+.next-date{opacity:.8;font-size:13px}
+.times{list-style:none;padding:6px}
+.times li{display:flex;justify-content:space-between;padding:12px 14px;border-radius:12px;font-size:18px}
+.times li b{font-variant-numeric:tabular-nums}
+.times li.current{background:var(--active);color:var(--brand);font-weight:700}
+.times li.muted{color:var(--muted);font-size:15px}
+.note{color:var(--muted);font-size:13px;text-align:center}
+.btn{background:var(--brand);color:#fff;border:0;border-radius:12px;padding:12px 18px;cursor:pointer;width:100%}
+.btn.ghost{background:none;color:var(--brand);border:1px solid var(--line)}
+.qibla{text-align:center}
+.compass{position:relative;width:min(78vw,300px);aspect-ratio:1;margin:8px auto}
+.dial{position:absolute;inset:0;border-radius:50%;border:2px solid var(--line);background:radial-gradient(circle,var(--card) 60%,var(--active));transition:transform .15s linear}
+.dial span{position:absolute;font-weight:700;color:var(--muted)}
+.dial .n{top:6px;left:50%;transform:translateX(-50%);color:#c0392b}
+.dial .s{bottom:6px;left:50%;transform:translateX(-50%)}
+.dial .e{right:10px;top:50%;transform:translateY(-50%)}
+.dial .w{left:10px;top:50%;transform:translateY(-50%)}
+.arm{position:absolute;inset:0}
+.arm span{position:absolute;top:14%;left:50%;transform:translate(-50%,-50%);font-size:30px}
+.arm i{position:absolute;left:50%;top:20%;bottom:50%;width:3px;margin-left:-1.5px;background:var(--brand-2);border-radius:2px}
+.needle{position:absolute;left:50%;top:-4px;width:4px;height:28px;margin-left:-2px;background:var(--brand);border-radius:2px}
+.qibla-deg{font-size:26px;font-weight:700;color:var(--brand)}
+.dhikr{text-align:center}
+.dhikr select,.form select{width:100%;padding:10px;border-radius:10px;border:1px solid var(--line);background:var(--card)}
+.counter{display:flex;flex-direction:column;align-items:center;justify-content:center;width:min(70vw,240px);aspect-ratio:1;margin:20px auto;border-radius:50%;border:6px solid var(--brand);background:var(--active);cursor:pointer;user-select:none;-webkit-tap-highlight-color:transparent}
+.counter:active{transform:scale(.97)}
+.counter span{font-size:64px;font-weight:700;color:var(--brand);font-variant-numeric:tabular-nums}
+.counter small{color:var(--muted)}
+.counter.done{border-color:var(--brand-2)}
+.row{display:flex;gap:10px}.row>*{flex:1}
+.form label{display:block;margin-bottom:14px;font-size:14px;color:var(--muted)}
+.form label select{margin-top:6px;color:var(--ink);font-size:16px}
+.bottom{position:fixed;left:0;right:0;bottom:0;display:flex;background:var(--card);border-top:1px solid var(--line);padding-bottom:env(safe-area-inset-bottom)}
+.bottom button{flex:1;background:none;border:0;padding:8px 0 10px;display:flex;flex-direction:column;align-items:center;gap:2px;color:var(--muted);cursor:pointer}
+.bottom button span{font-size:20px}.bottom button b{font-size:12px;font-weight:500}
+.bottom button.active{color:var(--brand)}

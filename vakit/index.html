@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0f5c4d">
+<title>Vakit</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="top">
+  <div>
+    <h1 data-i18n="appName">Vakit</h1>
+    <button id="locBtn" class="loc" type="button"><span id="locName">—</span> ▾</button>
+  </div>
+  <button id="langBtn" class="lang" type="button">EN</button>
+</header>
+
+<main>
+  <!-- Namaz vakitleri -->
+  <section id="tab-times" class="tab active">
+    <div class="next card">
+      <div class="next-label" data-i18n="nextPrayer">Sonraki vakit</div>
+      <div class="next-name" id="nextName">—</div>
+      <div class="next-count" id="nextCount">--:--:--</div>
+      <div class="next-date" id="today"></div>
+    </div>
+    <ul class="times card" id="timesList"></ul>
+    <p class="note" id="methodNote"></p>
+  </section>
+
+  <!-- Kıble -->
+  <section id="tab-qibla" class="tab">
+    <div class="card qibla">
+      <div class="compass" id="compass">
+        <div class="dial" id="dial">
+          <span class="n">N</span><span class="e">E</span><span class="s">S</span><span class="w">W</span>
+          <div class="arm" id="arm"><i></i><span>🕋</span></div>
+        </div>
+        <div class="needle"></div>
+      </div>
+      <div class="qibla-deg" id="qiblaDeg">—</div>
+      <p class="note" id="qiblaHint" data-i18n="qiblaHint">Telefonu düz tutun. Üstteki çizgi Kâbe simgesiyle çakıştığında kıbleye dönmüşsünüz demektir.</p>
+      <button id="compassBtn" class="btn" type="button" data-i18n="enableCompass">Pusulayı başlat</button>
+    </div>
+  </section>
+
+  <!-- Zikirmatik -->
+  <section id="tab-dhikr" class="tab">
+    <div class="card dhikr">
+      <select id="dhikrSel" aria-label="Zikir"></select>
+      <button id="counter" class="counter" type="button" aria-live="polite">
+        <span id="count">0</span>
+        <small id="target">/ 33</small>
+      </button>
+      <div class="row">
+        <button id="resetBtn" class="btn ghost" type="button" data-i18n="reset">Sıfırla</button>
+        <select id="targetSel" aria-label="Hedef">
+          <option value="33">33</option><option value="99">99</option><option value="100">100</option><option value="0">∞</option>
+        </select>
+      </div>
+      <p class="note"><span data-i18n="total">Toplam</span>: <b id="total">0</b></p>
+    </div>
+  </section>
+
+  <!-- Ayarlar -->
+  <section id="tab-settings" class="tab">
+    <div class="card form">
+      <label><span data-i18n="method">Hesaplama yöntemi</span>
+        <select id="methodSel"></select></label>
+      <label><span data-i18n="madhab">İkindi (Asr) hesabı</span>
+        <select id="madhabSel">
+          <option value="Shafi" data-i18n="shafi">Standart (Şafii, Maliki, Hanbeli; Diyanet)</option>
+          <option value="Hanafi" data-i18n="hanafi">Hanefi (asr-ı sani)</option>
+        </select></label>
+      <label><span data-i18n="city">Şehir</span>
+        <select id="citySel"></select></label>
+      <button id="gpsBtn" class="btn" type="button" data-i18n="useGps">Konumumu kullan</button>
+      <p class="note" data-i18n="privacy">Konumunuz yalnızca bu telefonda kullanılır; hiçbir sunucuya gönderilmez.</p>
+    </div>
+  </section>
+</main>
+
+<nav class="bottom">
+  <button data-tab="times" class="active" type="button"><span>🕰️</span><b data-i18n="tabTimes">Vakitler</b></button>
+  <button data-tab="qibla" type="button"><span>🧭</span><b data-i18n="tabQibla">Kıble</b></button>
+  <button data-tab="dhikr" type="button"><span>📿</span><b data-i18n="tabDhikr">Zikirmatik</b></button>
+  <button data-tab="settings" type="button"><span>⚙️</span><b data-i18n="tabSettings">Ayarlar</b></button>
+</nav>
+
+<script src="lib/adhan.umd.min.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
