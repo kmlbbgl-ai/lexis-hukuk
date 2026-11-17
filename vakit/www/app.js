@@ -22,7 +22,7 @@
       privacy: 'Konumunuz yalnızca bu telefonda kullanılır; hiçbir sunucuya gönderilmez.',
       myLocation: 'Konumum', gpsFail: 'Konum alınamadı. Listeden şehir seçebilirsiniz.',
       methodNote: m => `Hesaplama: ${m}. Vakitler Diyanet takviminden 1–2 dakika farklı olabilir.`,
-      tomorrow: 'yarın'
+      tomorrow: 'yarın', monthly: 'Aylık vakitler (imsakiye)', day: 'Gün'
     },
     en: {
       appName: 'Vakit', nextPrayer: 'Next prayer', tabTimes: 'Times', tabQibla: 'Qibla', tabDhikr: 'Tasbih', tabSettings: 'Settings',
@@ -35,7 +35,7 @@
       privacy: 'Your location is used only on this phone and is never sent to any server.',
       myLocation: 'My location', gpsFail: 'Could not get your location. Please pick a city from the list.',
       methodNote: m => `Method: ${m}. Times may differ by 1–2 minutes from your local mosque calendar.`,
-      tomorrow: 'tomorrow'
+      tomorrow: 'tomorrow', monthly: 'Monthly timetable', day: 'Day'
     }
   };
   let lang = store.get('lang', (navigator.language || 'tr').startsWith('tr') ? 'tr' : 'en');
@@ -92,6 +92,24 @@
     $('today').textContent = now.toLocaleDateString(lang === 'tr' ? 'tr-TR' : 'en-GB', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' });
     $('methodNote').textContent = t('methodNote')(METHODS[settings.method]);
     $('locName').textContent = settings.place.name;
+    try {
+      $('hijri').textContent = new Intl.DateTimeFormat((lang === 'tr' ? 'tr-TR' : 'en-GB') + '-u-ca-islamic-umalqura',
+        { day: 'numeric', month: 'long', year: 'numeric' }).format(now);
+    } catch { $('hijri').textContent = ''; }
+    renderMonth(now);
+  }
+
+  function renderMonth(now) {
+    const loc = lang === 'tr' ? 'tr-TR' : 'en-GB';
+    const y = now.getFullYear(), m = now.getMonth();
+    const days = new Date(y, m + 1, 0).getDate();
+    let rows = `<tr><th>${t('day')}</th>${PRAYERS.map(p => `<th>${t(p)}</th>`).join('')}</tr>`;
+    for (let d = 1; d <= days; d++) {
+      const date = new Date(y, m, d, 12);
+      const pt = timesFor(date);
+      rows += `<tr class="${d === now.getDate() ? 'today' : ''}"><td>${date.toLocaleDateString(loc, { day: '2-digit', month: '2-digit' })}</td>${PRAYERS.map(p => `<td>${fmt(pt[p])}</td>`).join('')}</tr>`;
+    }
+    $('monthTable').innerHTML = rows;
   }
 
   function tick() {
