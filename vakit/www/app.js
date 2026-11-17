@@ -37,6 +37,8 @@
       day: 'Gün', soon: 'YAKINDA', inDays: n => n === 0 ? 'Bugün' : n === 1 ? 'Yarın' : `${n} gün`, evening: 'akşamı',
       mMonthly: 'Aylık vakitler', mDays: 'Mübarek günler', mSettings: 'Ayarlar', mNotif: 'Ezan bildirimi', mKaza: 'Kaza takibi',
       mHatim: 'Ortak hatim', mEsma: "Esmâü'l-Hüsnâ", mPrayerLog: 'Namaz takibi', mDua: 'Dualar',
+      logToday: 'Bugünkü namazlarım', streak: n => `🔥 ${n} gün seri`, prayed: 'Kıldım', notYet: 'Vakti girmedi', mark: 'İşaretle',
+      stStreak: 'günlük seri', stBest: 'en uzun seri', stMonth: 'bu ay', last7: 'Son 7 gün', logNote: 'Kayıtlarınız yalnızca bu telefonda tutulur.', today: 'Bugün', tLog: 'Namaz takibi', mPrayerLogSub: 'Kıldığınız vakitler',
       mMonthlySub: 'Ay ay tüm vakitler', mDaysSub: 'Kandiller ve bayramlar', mSettingsSub: 'Konum ve hesaplama', mNotifSub: 'Vakit hatırlatmaları',
       obNotifTitle: 'Ezan bildirimleri', obNotifText: 'Vakit girdiğinde haber verelim mi? Her vakit için ayrı ayrı açıp kapatabilirsiniz.', obNotifBtn: 'Bildirimleri aç',
       nfWebOnly: 'Bildirimler yalnızca telefondaki uygulamada çalışır.', nfPermTitle: 'Bildirim izni kapalı', nfPermText: 'Ezan vakitlerinde haber verebilmemiz için bildirim izni gerekiyor.',
@@ -77,6 +79,8 @@
       day: 'Day', soon: 'SOON', inDays: n => n === 0 ? 'Today' : n === 1 ? 'Tomorrow' : `${n} days`, evening: 'evening',
       mMonthly: 'Monthly times', mDays: 'Islamic days', mSettings: 'Settings', mNotif: 'Adhan alerts', mKaza: 'Missed prayers',
       mHatim: 'Group khatm', mEsma: '99 Names', mPrayerLog: 'Prayer log', mDua: 'Duas',
+      logToday: "Today's prayers", streak: n => `🔥 ${n}-day streak`, prayed: 'Prayed', notYet: 'Not yet', mark: 'Mark',
+      stStreak: 'day streak', stBest: 'best streak', stMonth: 'this month', last7: 'Last 7 days', logNote: 'Your records stay on this phone only.', today: 'Today', tLog: 'Prayer log', mPrayerLogSub: 'Prayers you performed',
       mMonthlySub: 'All times by month', mDaysSub: 'Holy nights and Eids', mSettingsSub: 'Location and method', mNotifSub: 'Prayer reminders',
       obNotifTitle: 'Adhan alerts', obNotifText: 'Shall we notify you at each prayer time? You can turn each prayer on or off.', obNotifBtn: 'Turn on alerts',
       nfWebOnly: 'Notifications work only in the phone app.', nfPermTitle: 'Notifications are off', nfPermText: 'Allow notifications so we can alert you at prayer times.',
@@ -214,7 +218,7 @@
 
   // ---------------- Görünümler ve gezinme ----------------
   const ROOTS = ['home', 'qibla', 'quran', 'dhikr', 'menu'];
-  const TITLES = { home: 'appName', qibla: 'tabQibla', quran: 'tabQuran', dhikr: 'tabDhikr', menu: 'tabMenu', settings: 'tSettings', monthly: 'tMonthly', days: 'tDays', notif: 'mNotif' };
+  const TITLES = { home: 'appName', qibla: 'tabQibla', quran: 'tabQuran', dhikr: 'tabDhikr', menu: 'tabMenu', settings: 'tSettings', monthly: 'tMonthly', days: 'tDays', notif: 'mNotif', log: 'tLog' };
   let stack = ['home'];
   const cur = () => stack[stack.length - 1];
   function render(view) {
@@ -228,6 +232,7 @@
     if (view === 'monthly') renderMonth();
     if (view === 'days') renderDays();
     if (view === 'notif') renderNotif();
+    if (view === 'log') { logDay = 0; renderLog(); }
     if (view !== 'reader') window.scrollTo(0, 0);
   }
   function go(view) { if (cur() !== view) stack.push(view); render(view); }
@@ -255,6 +260,7 @@
       $('nextDayDate').textContent = `${next.date.toLocaleDateString(loc(), { day: 'numeric', month: 'long', weekday: 'long' })}${next.night ? ' ' + t('evening') : ''} · ${t('inDays')(days)}`;
     }
     renderVerse(now);
+    renderHomeLog(now);
     const last = store.get('lastRead', null);
     $('continueCard').hidden = !last || !surahs;
     if (last && surahs) $('continueName').textContent = `${surahName(surahs[last.s - 1])} · ${last.v}. ${t('ayah')}`;
@@ -386,13 +392,14 @@
   // ---------------- Menü ----------------
   const MENU = [
     { go: 'notif', ic: 'i-bell', t: 'mNotif', s: 'mNotifSub' },
+    { go: 'log', ic: 'i-check', t: 'mPrayerLog', s: 'mPrayerLogSub' },
     { go: 'monthly', ic: 'i-table', t: 'mMonthly', s: 'mMonthlySub' },
     { go: 'days', ic: 'i-moon', t: 'mDays', s: 'mDaysSub' },
     { go: 'quran', ic: 'i-book', t: 'tabQuran' },
     { go: 'qibla', ic: 'i-qibla', t: 'tabQibla' },
     { go: 'dhikr', ic: 'i-beads', t: 'tabDhikr' },
     { go: 'settings', ic: 'i-gear', t: 'mSettings', s: 'mSettingsSub' },
-    { soon: 1, ic: 'i-check', t: 'mPrayerLog' },
+
     { soon: 1, ic: 'i-cal', t: 'mKaza' }, { soon: 1, ic: 'i-people', t: 'mHatim' },
     { soon: 1, ic: 'i-star', t: 'mEsma' }, { soon: 1, ic: 'i-book', t: 'mDua' }
   ];
@@ -427,6 +434,66 @@
     $('daysList').innerHTML = holyDays(now, 14).map(e => {
       const n = Math.round((new Date(e.date.getFullYear(), e.date.getMonth(), e.date.getDate()) - today0) / 864e5);
       return `<li><span class="d-date"><b>${e.date.getDate()}</b><small>${e.date.toLocaleDateString(loc(), { month: 'short' })}</small></span><span class="d-body"><b>${t('ev')[e.key]}</b><small>${e.h ? `${e.h.d} ${t('hijriMonths')[e.h.m - 1]} ${e.h.y}` : ''} · ${e.date.toLocaleDateString(loc(), { weekday: 'long' })}${e.night ? ' ' + t('evening') : ''}</small></span><span class="d-left">${t('inDays')(n)}</span></li>`;
+    }).join('');
+  }
+
+  // ---------------- Namaz takibi ----------------
+  const FARZ = ['fajr', 'dhuhr', 'asr', 'maghrib', 'isha'];
+  const plog = store.get('plog', {}); // { 'YYYY-MM-DD': bitmask (fajr=1 ... isha=16) }
+  const dkey = d => `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
+  const dayAt = off => { const n = new Date(); return new Date(n.getFullYear(), n.getMonth(), n.getDate() + off, 12); };
+  const isOn = (d, i) => !!((plog[dkey(d)] || 0) & (1 << i));
+  const countDay = d => FARZ.reduce((s, _, i) => s + (isOn(d, i) ? 1 : 0), 0);
+  function togglePrayer(d, i) {
+    const k = dkey(d); plog[k] = (plog[k] || 0) ^ (1 << i);
+    if (!plog[k]) delete plog[k];
+    store.set('plog', plog);
+    if (navigator.vibrate && plog[k] & (1 << i)) navigator.vibrate(15);
+  }
+  // Vakti girmiş mi? (bugün için)
+  const started = (d, p) => timesFor(d)[p] <= new Date();
+  function streaks() {
+    // Bugün henüz tamamlanmadıysa seri dünden sayılır
+    let cur = 0, off = countDay(dayAt(0)) === 5 ? 0 : -1;
+    while (countDay(dayAt(off)) === 5) { cur++; off--; }
+    let best = 0, run = 0;
+    const keys = Object.keys(plog).sort();
+    if (keys.length) {
+      const [y, m, d] = keys[0].split('-').map(Number);
+      for (let t0 = new Date(y, m - 1, d, 12); t0 <= dayAt(0); t0.setDate(t0.getDate() + 1)) {
+        run = countDay(t0) === 5 ? run + 1 : 0; best = Math.max(best, run);
+      }
+    }
+    return { cur, best: Math.max(best, cur) };
+  }
+  function renderHomeLog(now) {
+    const d = dayAt(0);
+    $('homeLog').innerHTML = FARZ.map((p, i) => `<button type="button" data-hp="${i}" class="${isOn(d, i) ? 'on' : ''}" ${started(d, p) || isOn(d, i) ? '' : 'disabled'}><i>${isOn(d, i) ? '✓' : ''}</i>${t(p)}</button>`).join('');
+    const s = streaks().cur;
+    $('logStreak').textContent = s ? t('streak')(s) : `${countDay(d)}/5`;
+  }
+  let logDay = 0;
+  function renderLog() {
+    const d = dayAt(logDay), pt = timesFor(d);
+    $('logDate').textContent = logDay === 0 ? `${t('today')} · ${d.toLocaleDateString(loc(), { day: 'numeric', month: 'long' })}` : d.toLocaleDateString(loc(), { weekday: 'long', day: 'numeric', month: 'long' });
+    $('logHijri').textContent = hijriText(d);
+    $('logNext').disabled = logDay >= 0;
+    $('logList').innerHTML = FARZ.map((p, i) => {
+      const on = isOn(d, i), can = logDay < 0 || started(d, p) || on;
+      return `<li><span class="l-name"><b>${t(p)}</b><small>${hm(pt[p])}</small></span><button type="button" data-lp="${i}" class="${on ? 'on' : ''}" ${can ? '' : 'disabled'}>${on ? '✓ ' + t('prayed') : can ? t('mark') : t('notYet')}</button></li>`;
+    }).join('');
+    const s = streaks();
+    $('stStreak').textContent = s.cur; $('stBest').textContent = s.best;
+    // Bu ay: bugüne kadar geçen günlerdeki kılınan / toplam
+    const now = new Date(); let done = 0, total = 0;
+    for (let i = 1; i <= now.getDate(); i++) {
+      const dd = new Date(now.getFullYear(), now.getMonth(), i, 12);
+      FARZ.forEach((p, k) => { if (i < now.getDate() || started(dd, p)) { total++; if (isOn(dd, k)) done++; } });
+    }
+    $('stMonth').textContent = total ? Math.round(done * 100 / total) + '%' : '0%';
+    $('logWeek').innerHTML = Array.from({ length: 7 }, (_, k) => {
+      const dd = dayAt(k - 6), c = countDay(dd);
+      return `<div><span class="bar${c === 5 ? ' full' : ''}"><i style="height:${c * 20}%"></i></span>${dd.toLocaleDateString(loc(), { weekday: 'short' })}</div>`;
     }).join('');
   }
 
@@ -573,6 +640,11 @@
   $('rdNext').addEventListener('click', () => { stack.pop(); openSurah(readerSurah + 1); });
   $('mPrev').addEventListener('click', () => { mOffset--; renderMonth(); });
   $('mNext').addEventListener('click', () => { mOffset++; renderMonth(); });
+  // Namaz takibi olayları
+  $('homeLog').addEventListener('click', e => { const b = e.target.closest('[data-hp]'); if (!b) return; togglePrayer(dayAt(0), +b.dataset.hp); renderHomeLog(new Date()); });
+  $('logList').addEventListener('click', e => { const b = e.target.closest('[data-lp]'); if (!b) return; togglePrayer(dayAt(logDay), +b.dataset.lp); renderLog(); });
+  $('logPrev').addEventListener('click', () => { logDay--; renderLog(); });
+  $('logNext').addEventListener('click', () => { if (logDay < 0) { logDay++; renderLog(); } });
   // Bildirim olayları
   $('nfOn').addEventListener('change', async e => { if (e.target.checked) await enableNotif(); else { nf.on = false; saveNf(); } });
   $('nfList').addEventListener('change', e => { const el = e.target; if (!el.dataset.nf) return; nf[el.dataset.nf][el.dataset.p] = el.checked; saveNf(); });

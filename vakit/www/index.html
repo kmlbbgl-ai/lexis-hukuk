@@ -107,6 +107,11 @@
         <button type="button" data-go="monthly"><span><svg><use href="#i-table"/></svg></span><b data-i18n="monthlyShort">Aylık</b></button>
       </div>
 
+      <div class="card log-card" id="logCard">
+        <header><span data-i18n="logToday">Bugünkü namazlarım</span><button class="link" type="button" data-go="log" id="logStreak"></button></header>
+        <div class="log-dots" id="homeLog"></div>
+      </div>
+
       <button class="card row-card" id="nextDayCard" type="button" data-go="days">
         <span class="rc-ic gold"><svg><use href="#i-moon"/></svg></span>
         <span class="rc-body"><small data-i18n="upcoming">Yaklaşan mübarek gün</small><b id="nextDayName">—</b><em id="nextDayDate"></em></span>
@@ -197,6 +202,26 @@
       <div class="card hijri-today"><b id="hijriBig"></b><span id="gregBig"></span></div>
       <ul class="days" id="daysList"></ul>
       <p class="note" data-i18n="daysNote">Tarihler astronomik hesapla bulunur; Diyanet'in ilan ettiği tarihle 1 gün farklı olabilir.</p>
+    </section>
+
+    <!-- Namaz takibi -->
+    <section class="view" data-view="log" hidden>
+      <div class="card log-head">
+        <button class="icon-btn" id="logPrev" type="button" aria-label="Önceki gün"><svg><use href="#i-back"/></svg></button>
+        <div><b id="logDate"></b><small id="logHijri"></small></div>
+        <button class="icon-btn" id="logNext" type="button" aria-label="Sonraki gün"><svg><use href="#i-chev"/></svg></button>
+      </div>
+      <ul class="card log-list" id="logList"></ul>
+      <div class="stats">
+        <div class="card stat"><b id="stStreak">0</b><small data-i18n="stStreak">günlük seri</small></div>
+        <div class="card stat"><b id="stBest">0</b><small data-i18n="stBest">en uzun seri</small></div>
+        <div class="card stat"><b id="stMonth">0%</b><small data-i18n="stMonth">bu ay</small></div>
+      </div>
+      <div class="card">
+        <div class="lbl" data-i18n="last7">Son 7 gün</div>
+        <div class="week" id="logWeek"></div>
+      </div>
+      <p class="note" data-i18n="logNote">Kayıtlarınız yalnızca bu telefonda tutulur.</p>
     </section>
 
     <!-- Ezan bildirimleri -->

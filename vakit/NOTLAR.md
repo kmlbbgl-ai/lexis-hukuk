@@ -23,5 +23,5 @@ https://github.com/kmlbbgl-ai/lexis-hukuk/releases/download/vakit-latest/vakit.a
 1. Telefonda test: deneme bildirimi, kıble pusulası (son düzeltmeden sonra), geri tuşu.
 2. Ezan sesi: telifsiz/izinli gerçek ezan kaydı bulunacak (kullanıcı müezzin kaydı getirebilir). Tam ezan için arka plan servisi.
 3. Meal: beklemede. Seçenekler: QuranEnc Türkçe meali (şartlı ücretsiz, teyit e-postası) veya yayınevinden ücretli lisans. Diyanet meali izinsiz kullanılmayacak.
-4. Menüde "Yakında": namaz takibi, kaza takibi, ortak hatim, Esmâü'l-Hüsnâ, dualar.
+4. Namaz takibi eklendi. Sıradaki: kaza takibi, sonra Esmâü'l-Hüsnâ. Menüde "Yakında": kaza takibi, ortak hatim, Esmâü'l-Hüsnâ, dualar.
 5. Google Play: kullanıcı geliştirici hesabı açacak (25 $), imzalı sürüm, gizlilik politikası, AdMob.
