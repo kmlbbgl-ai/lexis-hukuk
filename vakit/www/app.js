@@ -322,7 +322,7 @@
     if (view === 'monthly') renderMonth();
     if (view === 'days') renderDays();
     if (view === 'notif') renderNotif();
-    if (view === 'log') { logDay = 0; renderLog(); }
+    if (view === 'log') { logDay = prayerDayOff(); renderLog(); }
     if (view === 'kaza') renderKaza();
     if (view === 'esma') renderEsma();
     if (view === 'hadis') renderTextList('hadis');
@@ -656,9 +656,11 @@
     }
     return { cur, best: Math.max(best, cur) };
   }
+  // Namaz günü imsakla başlar: gece yarısından imsaka kadar önceki günün namazları gösterilir
+  const prayerDayOff = () => (new Date() < timesFor(dayAt(0)).fajr ? -1 : 0);
   function renderHomeLog(now) {
-    const d = dayAt(0);
-    $('homeLog').innerHTML = FARZ.map((p, i) => `<button type="button" data-hp="${i}" class="${isOn(d, i) ? 'on' : ''}" ${started(d, p) || isOn(d, i) ? '' : 'disabled'}><i class="tick"></i>${pname(p)}</button>`).join('');
+    const d = dayAt(prayerDayOff());
+    $('homeLog').innerHTML = FARZ.map((p, i) => `<button type="button" data-hp="${i}" class="${isOn(d, i) ? 'on' : ''}"><i class="tick"></i>${pname(p)}</button>`).join('');
     const s = streaks().cur;
     $('logStreak').textContent = s ? t('streak')(s) : `${countDay(d)}/5`;
   }
@@ -669,7 +671,7 @@
     $('logHijri').textContent = hijriText(d);
     $('logNext').disabled = logDay >= 0;
     $('logList').innerHTML = FARZ.map((p, i) => {
-      const on = isOn(d, i), can = logDay < 0 || started(d, p) || on;
+      const on = isOn(d, i), can = true;
       return `<li><span class="l-name"><b>${pname(p)}</b><small>${hm(pt[p])}</small></span><button type="button" data-lp="${i}" class="${on ? 'on' : ''}" ${can ? '' : 'disabled'}>${on ? '✓ ' + t('prayed') : can ? t('mark') : t('notYet')}</button></li>`;
     }).join('');
     const s = streaks();
@@ -1324,7 +1326,7 @@
   $('mPrev').addEventListener('click', () => { mOffset--; renderMonth(); });
   $('mNext').addEventListener('click', () => { mOffset++; renderMonth(); });
   // Namaz takibi olayları
-  $('homeLog').addEventListener('click', e => { const b = e.target.closest('[data-hp]'); if (!b) return; togglePrayer(dayAt(0), +b.dataset.hp); renderHomeLog(new Date()); });
+  $('homeLog').addEventListener('click', e => { const b = e.target.closest('[data-hp]'); if (!b) return; togglePrayer(dayAt(prayerDayOff()), +b.dataset.hp); renderHomeLog(new Date()); });
   $('logList').addEventListener('click', e => { const b = e.target.closest('[data-lp]'); if (!b) return; togglePrayer(dayAt(logDay), +b.dataset.lp); renderLog(); });
   $('logPrev').addEventListener('click', () => { logDay--; renderLog(); });
   $('logNext').addEventListener('click', () => { if (logDay < 0) { logDay++; renderLog(); } });
