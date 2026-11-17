@@ -323,6 +323,46 @@
       <p class="note" data-i18n="nafileNote">Hicrî ay başları astronomik hesapla bulunur; 1 gün farklı olabilir.</p>
     </section>
 
+    <!-- Dua kardeşliği -->
+    <section class="view" data-view="dk" hidden>
+      <p class="note dk-me" id="dkMe"></p>
+      <button class="btn" id="dkNewBtn" type="button" data-i18n="dkNew">+ Dua isteği paylaş</button>
+      <div class="card form" id="dkForm" hidden>
+        <label class="lbl" for="dkText" data-i18n="dkText">Dua isteğiniz</label>
+        <textarea id="dkText" class="field" rows="4" maxlength="400" data-i18n-ph="dkTextPh" placeholder="Örneğin: Annem için şifa duası istiyorum."></textarea>
+        <label class="lbl" data-i18n="dkWhat">Ne okunsun? (en fazla 5)</label>
+        <div id="dkItems" class="dk-items"></div>
+        <div class="row" style="margin-top:12px"><button class="btn ghost" id="dkCancel" type="button" data-i18n="cancel">Vazgeç</button><button class="btn" id="dkSend" type="button" data-i18n="dkSend">Paylaş</button></div>
+        <p class="note" data-i18n="dkRules">Dua isteğinizi herkes görebilir. Ad, telefon, adres gibi kişisel bilgi yazmayın. Uygunsuz paylaşımlar şikâyetle kaldırılır.</p>
+      </div>
+      <p class="note" id="dkMsg"></p>
+      <div id="dkList"></div>
+      <button class="btn ghost" id="dkReload" type="button" data-i18n="reload">Yenile</button>
+    </section>
+
+    <!-- Ortak hatim -->
+    <section class="view" data-view="hatim" hidden>
+      <div id="htHome">
+        <p class="note dk-me" id="htMe"></p>
+        <div class="card form">
+          <label class="lbl" for="htTitle" data-i18n="htNewLbl">Yeni hatim başlat</label>
+          <div class="row"><input id="htTitle" class="field" maxlength="80" data-i18n-ph="htTitlePh" placeholder="Örneğin: Babam için hatim"><button class="btn" id="htCreate" type="button" style="flex:0 0 auto;width:auto" data-i18n="start">Başlat</button></div>
+          <label class="lbl" for="htCode" data-i18n="htJoinLbl">Koda katıl</label>
+          <div class="row"><input id="htCode" class="field" maxlength="8" data-i18n-ph="htCodePh" placeholder="Hatim kodu" style="text-transform:uppercase"><button class="btn ghost" id="htJoin" type="button" style="flex:0 0 auto;width:auto" data-i18n="join">Katıl</button></div>
+        </div>
+        <p class="note" id="htMsg"></p>
+        <div id="htMine"></div>
+      </div>
+      <div id="htDetail" hidden>
+        <div class="card ht-head"><b id="htDTitle"></b><span id="htDInfo"></span>
+          <div class="row" style="margin-top:12px"><button class="btn ghost" id="htShare" type="button" data-i18n="htShare">Kodu paylaş</button><button class="btn ghost" id="htRefresh" type="button" data-i18n="reload">Yenile</button></div>
+        </div>
+        <p class="note" data-i18n="htHelp">Boş bir cüze dokunarak alın. Aldığınız cüzü okuyunca tekrar dokunup "okundu" yapın.</p>
+        <div class="juz-grid" id="htGrid"></div>
+        <p class="note" id="htDMsg"></p>
+      </div>
+    </section>
+
     <!-- Favori ayetler -->
     <section class="view" data-view="favs" hidden>
       <div id="favList"></div>
@@ -468,6 +508,7 @@
 
 <script src="lib/adhan.umd.min.js"></script>
 <script src="lib/declination.min.js"></script>
+<script src="lib/cloud.min.js"></script>
 <script src="app.js"></script>
 </body>
 </html>

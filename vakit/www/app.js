@@ -40,6 +40,17 @@
       mHatim: 'Ortak hatim', mEsma: "Esmâü'l-Hüsnâ", mPrayerLog: 'Namaz takibi', mDua: 'Dualar',
       logToday: 'Bugünkü namazlarım', streak: n => `🔥 ${n} gün seri`, prayed: 'Kıldım', notYet: 'Vakti girmedi', mark: 'İşaretle',
       stStreak: 'günlük seri', stBest: 'en uzun seri', stMonth: 'bu ay', last7: 'Son 7 gün', logNote: 'Kayıtlarınız yalnızca bu telefonda tutulur.', today: 'Bugün', tLog: 'Namaz takibi', mPrayerLogSub: 'Kıldığınız vakitler',
+      tDk: 'Dua kardeşliği', mDk: 'Dua kardeşliği', mDkSub: 'Birbirimiz için dua', tHatim: 'Ortak hatim', mHatimSub: 'Cüzleri paylaşarak hatim',
+      dkNew: '+ Dua isteği paylaş', dkText: 'Dua isteğiniz', dkTextPh: 'Örneğin: Annem için şifa duası istiyorum.', dkWhat: 'Ne okunsun? (en fazla 5)', cancel: 'Vazgeç', dkSend: 'Paylaş', reload: 'Yenile',
+      dkRules: 'Dua isteğinizi herkes görebilir. Ad, telefon, adres gibi kişisel bilgi yazmayın. Uygunsuz paylaşımlar şikâyetle kaldırılır.',
+      dkMe: n => `Rumuzunuz: ${n}`, dkWho: 'Kim ne okudu', dkThanks: 'Allah kabul etsin 🤲',
+      dkEmpty: 'Henüz dua isteği yok. İlk isteği siz paylaşın.', dkSent: 'Dua isteğiniz paylaşıldı.', dkBad: 'Metinde uygunsuz ifade, bağlantı veya telefon numarası olmamalı.', dkShort: 'Lütfen biraz daha açık yazın ve en az bir okuma seçin.',
+      dkReport: 'Bildirmek için bayrağa tekrar dokunun.', dkReported: 'Bildiriminiz alındı. Teşekkürler.', dkLoading: 'Yükleniyor…', netErr: 'Bağlantı kurulamadı. İnternetinizi kontrol edip tekrar deneyin.', permErr: 'İzin hatası: sunucu güvenlik kuralları henüz yüklenmemiş olabilir.', dkMine: 'Sizin paylaşımınız',
+      htNewLbl: 'Yeni hatim başlat', htTitlePh: 'Örneğin: Babam için hatim', start: 'Başlat', htJoinLbl: 'Koda katıl', htCodePh: 'Hatim kodu', join: 'Katıl', htShare: 'Kodu paylaş',
+      htHelp: 'Boş bir cüze dokunarak alın. Aldığınız cüzü okuyunca tekrar dokunup "okundu" yapın.', htInfo: (c, d, tk) => `Kod: ${c} · ${d}/30 okundu · ${tk} alındı`, htNotFound: 'Bu kodla bir hatim bulunamadı.',
+      htShareText: (t2, c) => `"${t2}" için ortak hatim başlattım. Vakit uygulamasında Menü → Ortak hatim → "Koda katıl" bölümüne şu kodu yazarak bir cüz alabilirsin: ${c}`,
+      htCopied: 'Paylaşım metni kopyalandı.', htEmptyTitle: 'Hatim', htComplete: 'Hatim tamamlandı. Allah kabul etsin!',
+      dkItemNames: { fatiha: 'Fâtiha', ihlas: 'İhlâs', felak: 'Felak', nas: 'Nâs', kursi: 'Âyetel Kürsî', yasin: 'Yâsîn', salavat: 'Salavât', tebareke: 'Tebâreke' },
       reciters: 'Kâri', audioErr: 'Ses yüklenemedi. İnternet bağlantınızı kontrol edin.', audioLoad: 'Yükleniyor…',
       nfSound: 'Bildirim sesi', listen: 'Dinle', nfSoundNote: 'Ezan sesi, izinli bir kayıt bulunduğunda eklenecek.', sounds: { def: 'Telefonun sesi', can: 'Çan', zil: 'Zil', nota: 'Nota', sessiz: 'Sadece titreşim' },
       modeCards: 'Ayet ayet', modeFlow: 'Mushaf', favs: 'Favori ayetler', favEmpty: 'Henüz favori ayetiniz yok. Okurken ayetin üstündeki kalbe dokunun.', favN: n => `${n} ayet`, tFavs: 'Favori ayetler',
@@ -112,6 +123,17 @@
       mHatim: 'Group khatm', mEsma: '99 Names', mPrayerLog: 'Prayer log', mDua: 'Duas',
       logToday: "Today's prayers", streak: n => `🔥 ${n}-day streak`, prayed: 'Prayed', notYet: 'Not yet', mark: 'Mark',
       stStreak: 'day streak', stBest: 'best streak', stMonth: 'this month', last7: 'Last 7 days', logNote: 'Your records stay on this phone only.', today: 'Today', tLog: 'Prayer log', mPrayerLogSub: 'Prayers you performed',
+      tDk: 'Prayer circle', mDk: 'Prayer circle', mDkSub: 'Pray for one another', tHatim: 'Group khatm', mHatimSub: 'Share the juz of a khatm',
+      dkNew: '+ Share a prayer request', dkText: 'Your request', dkTextPh: 'For example: please pray for my mother’s health.', dkWhat: 'What should be recited? (max 5)', cancel: 'Cancel', dkSend: 'Share', reload: 'Refresh',
+      dkRules: 'Everyone can see your request. Do not write names, phone numbers or addresses. Inappropriate posts are removed after reports.',
+      dkMe: n => `Your nickname: ${n}`, dkWho: 'Who recited', dkThanks: 'May Allah accept it 🤲',
+      dkEmpty: 'No requests yet. Be the first to share one.', dkSent: 'Your request was shared.', dkBad: 'Please remove inappropriate words, links or phone numbers.', dkShort: 'Please write a bit more and choose at least one recitation.',
+      dkReport: 'Tap the flag again to report.', dkReported: 'Thank you, your report was received.', dkLoading: 'Loading…', netErr: 'Could not connect. Check your internet and try again.', permErr: 'Permission error: server security rules may not be installed yet.', dkMine: 'Your post',
+      htNewLbl: 'Start a new khatm', htTitlePh: 'For example: khatm for my father', start: 'Start', htJoinLbl: 'Join with a code', htCodePh: 'Khatm code', join: 'Join', htShare: 'Share code',
+      htHelp: 'Tap a free juz to take it. When you finish reading it, tap it again and mark it done.', htInfo: (c, d, tk) => `Code: ${c} · ${d}/30 done · ${tk} taken`, htNotFound: 'No khatm found with this code.',
+      htShareText: (t2, c) => `I started a group khatm: "${t2}". In the Vakit app, open Menu → Group khatm → "Join with a code" and enter: ${c}`,
+      htCopied: 'Share text copied.', htEmptyTitle: 'Khatm', htComplete: 'The khatm is complete. May Allah accept it!',
+      dkItemNames: { fatiha: 'Al-Fatiha', ihlas: 'Al-Ikhlas', felak: 'Al-Falaq', nas: 'An-Nas', kursi: 'Ayat al-Kursi', yasin: 'Ya-Sin', salavat: 'Salawat', tebareke: 'Al-Mulk' },
       reciters: 'Reciter', audioErr: 'Audio could not load. Check your internet connection.', audioLoad: 'Loading…',
       nfSound: 'Notification sound', listen: 'Play', nfSoundNote: 'An adhan sound will be added once a licensed recording is available.', sounds: { def: 'Phone default', can: 'Bell', zil: 'Chime', nota: 'Notes', sessiz: 'Vibrate only' },
       modeCards: 'Verse by verse', modeFlow: 'Mushaf', favs: 'Favorite verses', favEmpty: 'No favorites yet. Tap the heart above a verse while reading.', favN: n => `${n} verses`, tFavs: 'Favorite verses',
@@ -279,7 +301,7 @@
 
   // ---------------- Görünümler ve gezinme ----------------
   const ROOTS = ['home', 'qibla', 'quran', 'dhikr', 'menu'];
-  const TITLES = { home: 'appName', qibla: 'tabQibla', quran: 'tabQuran', dhikr: 'tabDhikr', menu: 'tabMenu', settings: 'tSettings', monthly: 'tMonthly', days: 'tDays', notif: 'mNotif', log: 'tLog', kaza: 'tKaza', esma: 'mEsma', hadis: 'tHadis', dua: 'tDua', deeds: 'tDeeds', names: 'tNames', quiz: 'tQuiz', ramazan: 'tRamazan', nafile: 'tNafile', ilmihal: 'tIlmihal', share: 'tShare', favs: 'tFavs' };
+  const TITLES = { home: 'appName', qibla: 'tabQibla', quran: 'tabQuran', dhikr: 'tabDhikr', menu: 'tabMenu', settings: 'tSettings', monthly: 'tMonthly', days: 'tDays', notif: 'mNotif', log: 'tLog', kaza: 'tKaza', esma: 'mEsma', hadis: 'tHadis', dua: 'tDua', deeds: 'tDeeds', names: 'tNames', quiz: 'tQuiz', ramazan: 'tRamazan', nafile: 'tNafile', ilmihal: 'tIlmihal', share: 'tShare', favs: 'tFavs', dk: 'tDk', hatim: 'tHatim' };
   let stack = ['home'];
   const cur = () => stack[stack.length - 1];
   function render(view) {
@@ -303,6 +325,8 @@
     if (view === 'ramazan') renderRamazan();
     if (view === 'ilmihal') renderIlmihal();
     if (view === 'favs') renderFavs();
+    if (view === 'dk') loadDuas();
+    if (view === 'hatim' && !htOpen) renderHatimHome();
     if (view === 'nafile') renderNafile();
     if (view === 'names') renderNames();
     if (view === 'quiz') { if (!quiz) newQuiz(); renderQuiz(); }
@@ -311,6 +335,7 @@
   function go(view) { if (cur() !== view) stack.push(view); render(view); }
   function tab(view) { stack = view === 'home' ? ['home'] : ['home', view]; render(view); }
   function back() {
+    if (cur() === 'hatim' && htOpen) { htOpen = null; renderHatimHome(); return true; }
     if (cur() === 'reader' && playing) stopAudio();
     if (!$('onboard').hidden) { if (obStep > 0) obGo(obStep - 1); return true; }
     if (stack.length > 1) { stack.pop(); render(cur()); return true; }
@@ -517,6 +542,7 @@
 
   // ---------------- Menü ----------------
   const MENU = [
+    { go: 'dk', ic: 'i-heart', t: 'mDk', s: 'mDkSub' }, { go: 'hatim', ic: 'i-people', t: 'mHatim', s: 'mHatimSub' },
     { go: 'notif', ic: 'i-bell', t: 'mNotif', s: 'mNotifSub' },
     { go: 'log', ic: 'i-check', t: 'mPrayerLog', s: 'mPrayerLogSub' },
     { go: 'kaza', ic: 'i-cal', t: 'mKaza', s: 'mKazaSub' },
@@ -527,7 +553,7 @@
     { go: 'dhikr', ic: 'i-beads', t: 'tabDhikr' },
     { go: 'settings', ic: 'i-gear', t: 'mSettings', s: 'mSettingsSub' },
 
- { soon: 1, ic: 'i-people', t: 'mHatim' },
+
     { go: 'esma', ic: 'i-star', t: 'mEsma', s: 'mEsmaSub' }, { go: 'hadis', ic: 'i-book', t: 'mHadis', s: 'mHadisSub' },
     { go: 'dua', ic: 'i-moon', t: 'mDua', s: 'mDuaSub' },
     { go: 'ilmihal', ic: 'i-book', t: 'mIlmihal', s: 'mIlmihalSub' },
@@ -848,6 +874,118 @@
     const blob = await (await fetch(data)).blob(), file = new File([blob], name, { type: 'image/png' });
     if (mode === 'share' && navigator.canShare && navigator.canShare({ files: [file] })) { await navigator.share({ files: [file] }); return; }
     const a = document.createElement('a'); a.href = data; a.download = name; a.click(); $('shMsg').textContent = t('shSaved')(name);
+  }
+
+  // ---------------- Bulut: Dua kardeşliği ve ortak hatim (Firebase) ----------------
+  const C = window.VakitCloud;
+  const escH = s => String(s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+  const NICK_A = ['Sabır', 'Huzur', 'Şükür', 'Vefa', 'Merhamet', 'Umut', 'Hilm', 'Nur', 'Selam', 'Sükûn', 'Rıza', 'Muhabbet', 'İhlas', 'Tevekkül', 'Hikmet', 'Kanaat'];
+  const NICK_B = ['Yolcusu', 'Dostu', 'Ehli', 'Bahçesi', 'Kapısı', 'Pınarı', 'Gülü', 'Çınarı', 'Damlası', 'Yıldızı', 'Kandili', 'Seheri'];
+  function myNick() { let n = store.get('nick', null); if (!n) { const r = a => a[Math.floor(Math.random() * a.length)]; n = `${r(NICK_A)} ${r(NICK_B)} ${10 + Math.floor(Math.random() * 990)}`; store.set('nick', n); } return n; }
+  const DK_ITEMS = ['fatiha', 'ihlas', 'kursi', 'yasin', 'salavat', 'felak', 'nas', 'tebareke'];
+  const BAD = /(https?:|www\.|\.com\b|\d{3}[\s.-]?\d{3}[\s.-]?\d{2}[\s.-]?\d{2}|@|\bamk\b|siktir|orospu|piç|yavşak|şerefsiz|\bibne\b|\bgöt\b|\bsik\b|\baq\b)/i;
+  const fmtErr = e => (e && /permission/i.test(String(e.code || e.message || '')) ? t('permErr') : t('netErr'));
+  function renderDkForm() {
+    $('dkItems').innerHTML = DK_ITEMS.map(k => `<label data-dk="${k}">${t('dkItemNames')[k]} <select aria-label="Hedef">${[10, 33, 41, 100].map(n => `<option>${n}</option>`).join('')}</select></label>`).join('');
+  }
+  async function loadDuas() {
+    $('dkMe').textContent = t('dkMe')(myNick()); if (!$('dkItems').childElementCount) renderDkForm();
+    if (!C) { $('dkMsg').textContent = t('netErr'); return; }
+    $('dkMsg').textContent = t('dkLoading');
+    try {
+      const u = await C.user(), F = C.fs;
+      const snap = await F.getDocs(F.query(F.collection(C.db, 'duas'), F.orderBy('createdAt', 'desc'), F.limit(40)));
+      const items = [];
+      for (const d of snap.docs) { const x = d.data(); if ((x.reports || 0) >= 3 && x.uid !== u.uid) continue; items.push({ id: d.id, ...x }); }
+      const reads = await Promise.all(items.map(x => F.getDocs(F.query(F.collection(C.db, 'duas', x.id, 'reads'), F.orderBy('at', 'desc'), F.limit(8))).then(s => s.docs.map(r => r.data())).catch(() => [])));
+      $('dkMsg').textContent = items.length ? '' : t('dkEmpty');
+      const names = t('dkItemNames');
+      $('dkList').innerHTML = items.map((x, i) => {
+        const mine = x.uid === u.uid;
+        const prog = Object.entries(x.targets || {}).map(([k, tg]) => { const c2 = (x.counts || {})[k] || 0; return `<div class="dk-prog"><div class="top"><span>${names[k] || escH(k)}</span><span>${c2} / ${tg}</span></div><div class="bar"><i style="width:${Math.min(100, c2 * 100 / tg)}%"></i></div></div>`; }).join('');
+        const rs = reads[i]; const who = rs.length ? `<div class="dk-reads"><b>${t('dkWho')}</b><br>${rs.map(r => `${escH(r.nick)} · ${r.n} ${names[r.item] || ''}`).join('<br>')}</div>` : '';
+        const acts = Object.keys(x.targets || {}).map(k => `<button type="button" data-dkread="${x.id}" data-item="${k}">${names[k] || escH(k)} ✓</button>`).join('');
+        return `<article class="dk-card"><header><span>🤲 ${escH(x.nick)}</span>${mine ? `<span class="tag">${t('dkMine')}</span><button class="flag" type="button" data-dkdel="${x.id}" aria-label="Sil">🗑</button>` : `<button class="flag" type="button" data-dkflag="${x.id}" aria-label="Bildir">⚑</button>`}</header><p class="dk-text">${escH(x.text)}</p>${prog}${who}<div class="dk-act">${acts}</div></article>`;
+      }).join('');
+    } catch (e) { console.error(e); $('dkMsg').textContent = fmtErr(e); }
+  }
+  async function sendDua() {
+    const text = $('dkText').value.trim(), targets = {};
+    document.querySelectorAll('#dkItems label.on').forEach(l => { targets[l.dataset.dk] = +l.querySelector('select').value; });
+    if (text.length < 10 || !Object.keys(targets).length) { $('dkMsg').textContent = t('dkShort'); return; }
+    if (BAD.test(text)) { $('dkMsg').textContent = t('dkBad'); return; }
+    try {
+      const u = await C.user(), F = C.fs;
+      await F.addDoc(F.collection(C.db, 'duas'), { uid: u.uid, nick: myNick(), text, targets, counts: {}, createdAt: F.serverTimestamp(), reports: 0 });
+      $('dkText').value = ''; document.querySelectorAll('#dkItems label.on').forEach(l => l.classList.remove('on'));
+      $('dkForm').hidden = true; $('dkNewBtn').hidden = false; await loadDuas(); $('dkMsg').textContent = t('dkSent');
+    } catch (e) { console.error(e); $('dkMsg').textContent = fmtErr(e); }
+  }
+  async function readDua(id, item, btn) {
+    try {
+      const u = await C.user(), F = C.fs;
+      await F.updateDoc(F.doc(C.db, 'duas', id), { ['counts.' + item]: F.increment(1) });
+      await F.addDoc(F.collection(C.db, 'duas', id, 'reads'), { uid: u.uid, nick: myNick(), item, n: 1, at: F.serverTimestamp() });
+      if (navigator.vibrate) navigator.vibrate(20);
+      btn.classList.add('done'); btn.textContent = t('dkThanks'); setTimeout(loadDuas, 1200);
+    } catch (e) { console.error(e); $('dkMsg').textContent = fmtErr(e); }
+  }
+  let htOpen = null;
+  const myHatims = () => store.get('hatims', []);
+  const code6 = () => Array.from({ length: 6 }, () => 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789'[Math.floor(Math.random() * 32)]).join('');
+  function renderHatimHome() {
+    $('htHome').hidden = false; $('htDetail').hidden = true; $('htMe').textContent = t('dkMe')(myNick());
+    $('htMine').innerHTML = myHatims().map(h2 => `<div class="card ht-item" data-ht="${h2.c}"><span><b>${escH(h2.t)}</b><br><small>${h2.c}</small></span><svg class="chev"><use href="#i-chev"/></svg></div>`).join('');
+  }
+  async function createHatim() {
+    const title = $('htTitle').value.trim() || t('htEmptyTitle');
+    try {
+      const u = await C.user(), F = C.fs, c = code6();
+      await F.setDoc(F.doc(C.db, 'hatims', c), { uid: u.uid, nick: myNick(), title, juz: {}, createdAt: F.serverTimestamp() });
+      store.set('hatims', [{ c, t: title }, ...myHatims()]); $('htTitle').value = ''; openHatim(c);
+    } catch (e) { console.error(e); $('htMsg').textContent = fmtErr(e); }
+  }
+  async function joinHatim() {
+    const c = $('htCode').value.trim().toUpperCase(); if (!c) return;
+    try {
+      await C.user(); const F = C.fs, s = await F.getDoc(F.doc(C.db, 'hatims', c));
+      if (!s.exists()) { $('htMsg').textContent = t('htNotFound'); return; }
+      if (!myHatims().some(h2 => h2.c === c)) store.set('hatims', [{ c, t: s.data().title }, ...myHatims()]);
+      $('htCode').value = ''; openHatim(c);
+    } catch (e) { console.error(e); $('htMsg').textContent = fmtErr(e); }
+  }
+  async function openHatim(c) {
+    htOpen = c; $('htHome').hidden = true; $('htDetail').hidden = false; $('htDMsg').textContent = t('dkLoading');
+    try {
+      const u = await C.user(), F = C.fs, s = await F.getDoc(F.doc(C.db, 'hatims', c));
+      if (!s.exists()) { $('htDMsg').textContent = t('htNotFound'); return; }
+      const h2 = s.data(), juz = h2.juz || {}; let done = 0, taken = 0;
+      $('htDTitle').textContent = h2.title;
+      $('htGrid').innerHTML = Array.from({ length: 30 }, (_, i) => { const k = String(i + 1), j2 = juz[k]; if (j2) { taken++; if (j2.s === 'done') done++; }
+        const cls = !j2 ? '' : j2.s === 'done' ? 'done' : 'taken', mine = j2 && j2.uid === u.uid ? ' mine' : '';
+        return `<button type="button" class="${cls}${mine}" data-juz="${k}">${k}<small>${j2 ? escH(j2.nick) : ''}</small></button>`; }).join('');
+      $('htDInfo').textContent = t('htInfo')(c, done, taken);
+      $('htDMsg').textContent = done === 30 ? t('htComplete') : '';
+    } catch (e) { console.error(e); $('htDMsg').textContent = fmtErr(e); }
+  }
+  async function tapJuz(k) {
+    try {
+      const u = await C.user(), F = C.fs, ref = F.doc(C.db, 'hatims', htOpen);
+      await F.runTransaction(C.db, async tx => {
+        const s = await tx.get(ref); const juz = Object.assign({}, s.data().juz || {}); const j2 = juz[k];
+        if (!j2) juz[k] = { uid: u.uid, nick: myNick(), s: 'taken' };
+        else if (j2.uid === u.uid && j2.s === 'taken') juz[k] = Object.assign({}, j2, { s: 'done' });
+        else if (j2.uid === u.uid && j2.s === 'done') delete juz[k];
+        else return;
+        tx.update(ref, { juz });
+      });
+      if (navigator.vibrate) navigator.vibrate(15); openHatim(htOpen);
+    } catch (e) { console.error(e); $('htDMsg').textContent = fmtErr(e); }
+  }
+  async function shareHatim() {
+    const text = t('htShareText')($('htDTitle').textContent, htOpen), SH = window.Capacitor && window.Capacitor.Plugins && window.Capacitor.Plugins.Share;
+    try { if (SH) { await SH.share({ text, dialogTitle: t('htShare') }); return; } await navigator.clipboard.writeText(text); $('htDMsg').textContent = t('htCopied'); }
+    catch { $('htDMsg').textContent = text; }
   }
 
   // ---------------- İlmihal ----------------
@@ -1196,6 +1334,27 @@
   $('rdMode').addEventListener('click', e => { const b = e.target.closest('[data-m]'); if (!b) return; store.set('qMode', b.dataset.m); renderVerses(); });
   $('rdSmaller').addEventListener('click', () => { store.set('qFont', Math.max(20, rdFont() - 2)); renderVerses(); });
   $('rdBigger').addEventListener('click', () => { store.set('qFont', Math.min(48, rdFont() + 2)); renderVerses(); });
+  // Dua kardeşliği ve hatim olayları
+  $('dkNewBtn').addEventListener('click', () => { $('dkForm').hidden = false; $('dkNewBtn').hidden = true; });
+  $('dkCancel').addEventListener('click', () => { $('dkForm').hidden = true; $('dkNewBtn').hidden = false; });
+  $('dkItems').addEventListener('click', e => { if (e.target.tagName === 'SELECT' || e.target.tagName === 'OPTION') return; const l = e.target.closest('label'); if (!l) return; e.preventDefault(); if (!l.classList.contains('on') && document.querySelectorAll('#dkItems label.on').length >= 5) return; l.classList.toggle('on'); });
+  $('dkSend').addEventListener('click', sendDua);
+  $('dkReload').addEventListener('click', loadDuas);
+  $('dkList').addEventListener('click', async e => {
+    const r = e.target.closest('[data-dkread]'); if (r) { if (!r.classList.contains('done')) readDua(r.dataset.dkread, r.dataset.item, r); return; }
+    const f = e.target.closest('[data-dkflag]');
+    if (f) { if (f.dataset.confirm !== '1') { f.dataset.confirm = '1'; f.textContent = '⚑?'; $('dkMsg').textContent = t('dkReport'); return; }
+      try { await C.user(); const F = C.fs; await F.updateDoc(F.doc(C.db, 'duas', f.dataset.dkflag), { reports: F.increment(1) }); f.disabled = true; $('dkMsg').textContent = t('dkReported'); } catch (err) { $('dkMsg').textContent = fmtErr(err); } return; }
+    const d = e.target.closest('[data-dkdel]');
+    if (d) { if (d.dataset.confirm !== '1') { d.dataset.confirm = '1'; d.textContent = '🗑?'; return; }
+      try { await C.user(); const F = C.fs; await F.deleteDoc(F.doc(C.db, 'duas', d.dataset.dkdel)); } catch (err) { $('dkMsg').textContent = fmtErr(err); } loadDuas(); }
+  });
+  $('htCreate').addEventListener('click', createHatim);
+  $('htJoin').addEventListener('click', joinHatim);
+  $('htMine').addEventListener('click', e => { const it = e.target.closest('[data-ht]'); if (it) openHatim(it.dataset.ht); });
+  $('htGrid').addEventListener('click', e => { const b = e.target.closest('[data-juz]'); if (b) tapJuz(b.dataset.juz); });
+  $('htShare').addEventListener('click', shareHatim);
+  $('htRefresh').addEventListener('click', () => openHatim(htOpen));
   // Kart paylaşım olayları
   document.addEventListener('click', e => { const b = e.target.closest('[data-share]'); if (b) { e.stopPropagation(); openShare(b.dataset.share); } }, true);
   $('shSizes').addEventListener('click', e => { const b = e.target.closest('[data-size]'); if (!b) return; sh.size = b.dataset.size; shSave(); renderShare(); });
