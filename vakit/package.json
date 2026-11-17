@@ -1,0 +1,14 @@
+{
+  "name": "vakit",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Namaz vakitleri, kıble ve zikirmatik",
+  "scripts": {
+    "sync": "cap sync android"
+  },
+  "dependencies": {
+    "@capacitor/android": "8.6.0",
+    "@capacitor/cli": "8.6.0",
+    "@capacitor/core": "8.6.0"
+  }
+}
