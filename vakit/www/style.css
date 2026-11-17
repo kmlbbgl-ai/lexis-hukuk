@@ -340,3 +340,15 @@ main{max-width:560px;margin:0 auto;padding:0 16px calc(96px + env(safe-area-inse
 .days li .fchk{margin-left:auto;padding:8px 12px;border-radius:12px;border:1.5px solid var(--line);background:var(--card);font-weight:600;font-size:13px;white-space:nowrap}
 .days li .fchk.on{background:var(--brand-2);border-color:var(--brand-2);color:#fff}
 #ramToKaza{margin-top:4px}
+
+/* İlmihal */
+.ilm{background:var(--card);border:1px solid var(--line);border-radius:16px;margin:10px 0;box-shadow:var(--shadow)}
+.ilm summary{list-style:none;cursor:pointer;padding:16px;font-weight:700;display:flex;justify-content:space-between;align-items:center}
+.ilm summary::-webkit-details-marker{display:none}
+.ilm summary::after{content:"+";color:var(--gold);font-size:22px;font-weight:400}
+.ilm[open] summary::after{content:"−"}
+.ilm .ilm-body{padding:0 16px 14px}
+.ilm h4{margin:12px 0 6px;color:var(--brand-2);font-size:15px}
+.ilm p{margin:8px 0;line-height:1.55}
+.ilm ol,.ilm ul{margin:6px 0;padding-left:22px}
+.ilm li{margin:5px 0;line-height:1.5}

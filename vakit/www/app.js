@@ -39,6 +39,7 @@
       mHatim: 'Ortak hatim', mEsma: "Esmâü'l-Hüsnâ", mPrayerLog: 'Namaz takibi', mDua: 'Dualar',
       logToday: 'Bugünkü namazlarım', streak: n => `🔥 ${n} gün seri`, prayed: 'Kıldım', notYet: 'Vakti girmedi', mark: 'İşaretle',
       stStreak: 'günlük seri', stBest: 'en uzun seri', stMonth: 'bu ay', last7: 'Son 7 gün', logNote: 'Kayıtlarınız yalnızca bu telefonda tutulur.', today: 'Bugün', tLog: 'Namaz takibi', mPrayerLogSub: 'Kıldığınız vakitler',
+      tIlmihal: 'İlmihal', mIlmihal: 'İlmihal', mIlmihalSub: 'Temel dini bilgiler', ilmihalNote: "Hanefi mezhebine göre temel bilgilerin özetidir. Ayrıntı ve özel durumlar için Diyanet İlmihali'ne veya bir din görevlisine başvurun.",
       ramLeft: "Ramazan'a kalan", dayShort: 'gün', sahur: 'Sahur (imsak)', iftar: 'İftar', iftarDua: 'İftar duası', iftarDuaTr: "Allah'ım! Senin rızan için oruç tuttum ve senin rızkınla orucumu açtım.",
       ramNote: "Tarihler Diyanet'in ilan ettiği takvime göredir. Tuttuğunuz günleri tablodan işaretleyebilirsiniz.", tRamazan: 'Ramazan', mRamazan: 'Ramazan', mRamazanSub: 'İmsakiye ve oruç takibi',
       ramTo: n => `Ramazan'a ${n} gün`, ramStarts: d => `1 Ramazan: ${d}`, ramDay: n => `Ramazan'ın ${n}. günü`, toIftar: 'İftara kalan', toSahur: 'Sahura kalan', ramEnded: 'Ramazan sona erdi. Bayramınız mübarek olsun!',
@@ -103,6 +104,7 @@
       mHatim: 'Group khatm', mEsma: '99 Names', mPrayerLog: 'Prayer log', mDua: 'Duas',
       logToday: "Today's prayers", streak: n => `🔥 ${n}-day streak`, prayed: 'Prayed', notYet: 'Not yet', mark: 'Mark',
       stStreak: 'day streak', stBest: 'best streak', stMonth: 'this month', last7: 'Last 7 days', logNote: 'Your records stay on this phone only.', today: 'Today', tLog: 'Prayer log', mPrayerLogSub: 'Prayers you performed',
+      tIlmihal: 'Basics of worship', mIlmihal: 'Basics', mIlmihalSub: 'Worship basics (Turkish)', ilmihalNote: 'A Hanafi summary of the basics (in Turkish). For details, consult a qualified scholar.',
       ramLeft: 'Time to Ramadan', dayShort: 'd', sahur: 'Suhoor (Fajr)', iftar: 'Iftar', iftarDua: 'Iftar dua', iftarDuaTr: 'O Allah, for You I have fasted and with Your provision I break my fast.',
       ramNote: 'Dates follow the announced calendar. Mark the days you fasted in the table.', tRamazan: 'Ramadan', mRamazan: 'Ramadan', mRamazanSub: 'Timetable and fasting log',
       ramTo: n => `${n} days to Ramadan`, ramStarts: d => `1 Ramadan: ${d}`, ramDay: n => `Day ${n} of Ramadan`, toIftar: 'Time to iftar', toSahur: 'Time to suhoor ends', ramEnded: 'Ramadan has ended. Eid Mubarak!',
@@ -262,7 +264,7 @@
 
   // ---------------- Görünümler ve gezinme ----------------
   const ROOTS = ['home', 'qibla', 'quran', 'dhikr', 'menu'];
-  const TITLES = { home: 'appName', qibla: 'tabQibla', quran: 'tabQuran', dhikr: 'tabDhikr', menu: 'tabMenu', settings: 'tSettings', monthly: 'tMonthly', days: 'tDays', notif: 'mNotif', log: 'tLog', kaza: 'tKaza', esma: 'mEsma', hadis: 'tHadis', dua: 'tDua', deeds: 'tDeeds', names: 'tNames', quiz: 'tQuiz', ramazan: 'tRamazan', nafile: 'tNafile' };
+  const TITLES = { home: 'appName', qibla: 'tabQibla', quran: 'tabQuran', dhikr: 'tabDhikr', menu: 'tabMenu', settings: 'tSettings', monthly: 'tMonthly', days: 'tDays', notif: 'mNotif', log: 'tLog', kaza: 'tKaza', esma: 'mEsma', hadis: 'tHadis', dua: 'tDua', deeds: 'tDeeds', names: 'tNames', quiz: 'tQuiz', ramazan: 'tRamazan', nafile: 'tNafile', ilmihal: 'tIlmihal' };
   let stack = ['home'];
   const cur = () => stack[stack.length - 1];
   function render(view) {
@@ -283,6 +285,7 @@
     if (view === 'dua') renderTextList('dua');
     if (view === 'deeds') renderDeeds();
     if (view === 'ramazan') renderRamazan();
+    if (view === 'ilmihal') renderIlmihal();
     if (view === 'nafile') renderNafile();
     if (view === 'names') renderNames();
     if (view === 'quiz') { if (!quiz) newQuiz(); renderQuiz(); }
@@ -342,7 +345,7 @@
     try {
       const [a, b] = await Promise.all([fetch('data/surahs.json').then(r => r.json()), fetch('data/quran-ar.json').then(r => r.json())]);
       surahs = a; quran = b;
-      [esmaData, hadisData, duaData, namesData, quizData] = await Promise.all(['esma', 'hadis', 'dua', 'isimler', 'quiz'].map(n => fetch(`data/${n}.json`).then(r => r.json())));
+      [esmaData, hadisData, duaData, namesData, quizData, ilmihalData] = await Promise.all(['esma', 'hadis', 'dua', 'isimler', 'quiz', 'ilmihal'].map(n => fetch(`data/${n}.json`).then(r => r.json())));
       renderSurahList(); renderHome();
     } catch (e) { console.error("Kur'an verisi yüklenemedi", e); }
   }
@@ -463,10 +466,13 @@
  { soon: 1, ic: 'i-people', t: 'mHatim' },
     { go: 'esma', ic: 'i-star', t: 'mEsma', s: 'mEsmaSub' }, { go: 'hadis', ic: 'i-book', t: 'mHadis', s: 'mHadisSub' },
     { go: 'dua', ic: 'i-moon', t: 'mDua', s: 'mDuaSub' },
+    { go: 'ilmihal', ic: 'i-book', t: 'mIlmihal', s: 'mIlmihalSub' },
     { go: 'ramazan', ic: 'i-moon', t: 'mRamazan', s: 'mRamazanSub' }, { go: 'nafile', ic: 'i-cal', t: 'mNafile', s: 'mNafileSub' },
     { go: 'deeds', ic: 'i-heart', t: 'mDeeds', s: 'mDeedsSub' }, { go: 'quiz', ic: 'i-quiz', t: 'mQuiz', s: 'mQuizSub' },
     { go: 'names', ic: 'i-baby', t: 'mNames', s: 'mNamesSub' }
   ];
+  // Sıra: içerik → ayarlar → yakında
+  MENU.sort((x, y) => (x.soon ? 2 : x.go === 'settings' ? 1 : 0) - (y.soon ? 2 : y.go === 'settings' ? 1 : 0));
   function renderMenu() {
     $('menuGrid').innerHTML = MENU.map(m => `<button type="button" class="tile${m.soon ? ' soon' : ''}" ${m.go ? `data-go="${m.go}"` : 'disabled'}>${m.soon ? `<span class="badge">${t('soon')}</span>` : ''}<span class="t-ic"><svg><use href="#${m.ic}"/></svg></span><b>${t(m.t)}</b>${m.s ? `<small>${t(m.s)}</small>` : ''}</button>`).join('');
   }
@@ -666,6 +672,15 @@
     $('ramToKaza').disabled = done;
     $('ramToKaza').textContent = done ? t('ramToKazaDone') : t('ramToKaza')(missed);
     ramTick();
+  }
+
+  // ---------------- İlmihal ----------------
+  let ilmihalData = null;
+  function renderIlmihal() {
+    if (!ilmihalData || $('ilmihalList').childElementCount) return;
+    const esc = s => s.replace(/[&<>]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;' }[c]));
+    $('ilmihalList').innerHTML = ilmihalData.map((s, i) => `<details class="ilm"${i === 0 ? ' open' : ''}><summary>${esc(s.t)}</summary><div class="ilm-body">${s.b.map(([k, v]) =>
+      k === 'h' ? `<h4>${esc(v)}</h4>` : k === 'p' ? `<p>${esc(v)}</p>` : `<${k}>${v.map(x => `<li>${esc(x)}</li>`).join('')}</${k}>`).join('')}</div></details>`).join('');
   }
 
   // ---------------- Nafile oruç ----------------
