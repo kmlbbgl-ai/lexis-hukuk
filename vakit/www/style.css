@@ -387,3 +387,22 @@ main{flex:1;min-height:0;overflow-y:auto;overflow-x:hidden;-webkit-overflow-scro
 .sh-swatches button.on{border-color:var(--brand-2)}
 input[type=range]{width:100%;accent-color:var(--brand-2)}
 .sh-actions{margin-top:14px}
+
+/* Kur'an okuyucu: ayet kutuları */
+.rd-tools{display:flex;gap:8px;align-items:center;margin:4px 0 6px}
+.rd-tools .seg{flex:1;margin:0}
+.rd-tools .pill{padding:8px 12px}
+#rdVerses.flow{font-family:"Amiri Quran",serif;line-height:2.3;text-align:justify;direction:rtl;background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:18px 18px 10px;box-shadow:var(--shadow)}
+#rdVerses.flow .vn{display:inline-block;color:var(--gold);margin:0 4px;font-size:.85em}
+#rdVerses .v.hl{background:var(--gold-soft);border-radius:8px}
+.ayah{background:var(--card);border:1.5px solid var(--gold-soft);border-radius:20px;padding:12px 16px 14px;margin:12px 0;box-shadow:var(--shadow);scroll-margin-top:12px}
+.ayah.hl{border-color:var(--gold)}
+.ay-top{display:flex;align-items:center;gap:4px}
+.ay-top button{width:38px;height:38px;display:grid;place-items:center;border:0;background:none;color:var(--muted);border-radius:12px}
+.ay-top button.on{color:#c0392b}
+.ay-top button.on svg path{fill:currentColor}
+.ay-no{margin-left:auto;display:grid;place-items:center;min-width:34px;height:34px;padding:0 6px;border-radius:17px;border:1.5px solid var(--gold);color:var(--gold);font-weight:700;font-size:14px}
+.ay-ar{font-family:"Amiri Quran",serif;direction:rtl;text-align:right;line-height:2.2;margin:6px 0 2px}
+.ay-tr{margin:8px 0 0;line-height:1.55;font-size:16px}
+.fav-item{cursor:pointer}
+.fav-item .ay-ref{color:var(--muted);font-size:13px}

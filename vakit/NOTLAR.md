@@ -29,7 +29,8 @@ https://github.com/kmlbbgl-ai/lexis-hukuk/releases/download/vakit-latest/vakit.a
 ## Kullanıcı geri bildirimi (telefon testi)
 YAPILDI: 1 (kaydırma), 4 (açıklama), 5 (212 isim), 6 (alt menü: sabit iskelet + Capacitor --safe-area-inset-*), 10 (il+ilçe: data/ilce.json, kaynak data/ILCE-KAYNAK.txt), 12 (7 tema).
 YAPILDI ayrıca: 11 kart paylaşımı (4 boyut, 6 kodla çizilmiş arka plan, 12 renk, karartma, yazı boyutu; @capacitor/share + filesystem). İlçe: 67 yeni ilçe il merkezi koordinatında, ileride kullanıcının bilgisayarı bağlanınca GeoNames ile güncellenecek.
-SIRADA: 9 Kur'an okuyucu (Elmalılı meali lisans kontrolü) → 3/7 sesler → 8 dua kardeşliği + hatim (Firebase) → 13 asistan (sonra, kullanıcı kararı).
+YAPILDI: 9 Kur'an okuyucu (ayet kutuları, favori, ayet paylaşma, A−/A+, Mushaf modu). Meal: Elmalılı (ö. 1942) asıl metni muhtemelen kamu malı, ama Tanzil'in dijital kopyası 'ticari olmayan' şartlı — Tanzil'den izin veya hukukçu teyidi bekleniyor.
+SIRADA: → 3/7 sesler → 8 dua kardeşliği + hatim (Firebase) → 13 asistan (sonra, kullanıcı kararı).
 1. Ana sekmeler arasında sağa-sola kaydırarak geçiş (kurulum ekranında da).
 2. Günün ayetine Türkçe meal (meal lisansına bağlı).
 3. Bildirim sesi seçimi; ezan vaktinde ezan okunması (izinli kayıt gerekli).

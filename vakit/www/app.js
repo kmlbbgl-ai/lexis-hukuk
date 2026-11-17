@@ -40,6 +40,7 @@
       mHatim: 'Ortak hatim', mEsma: "Esmâü'l-Hüsnâ", mPrayerLog: 'Namaz takibi', mDua: 'Dualar',
       logToday: 'Bugünkü namazlarım', streak: n => `🔥 ${n} gün seri`, prayed: 'Kıldım', notYet: 'Vakti girmedi', mark: 'İşaretle',
       stStreak: 'günlük seri', stBest: 'en uzun seri', stMonth: 'bu ay', last7: 'Son 7 gün', logNote: 'Kayıtlarınız yalnızca bu telefonda tutulur.', today: 'Bugün', tLog: 'Namaz takibi', mPrayerLogSub: 'Kıldığınız vakitler',
+      modeCards: 'Ayet ayet', modeFlow: 'Mushaf', favs: 'Favori ayetler', favEmpty: 'Henüz favori ayetiniz yok. Okurken ayetin üstündeki kalbe dokunun.', favN: n => `${n} ayet`, tFavs: 'Favori ayetler',
       tShare: 'Kart olarak paylaş', shBg: 'Görseller', shColor: 'Renkler', shText: 'Yazı', shSize: 'Yazı boyutu', shShowTr: 'Türkçe anlamı göster', shDim: 'Karartma',
       shSave: 'Kaydet', shShare: 'Paylaş', shSaved: p => `Kaydedildi: ${p}`, shFail: 'Kaydedilemedi, Paylaş ile devam edebilirsiniz.', shWatermark: 'Vakit uygulaması',
       lblVerse: 'Âyet', lblHadis: 'Hadis', lblDua: 'Dua', lblEsma: "Esmâü'l-Hüsnâ",
@@ -109,6 +110,7 @@
       mHatim: 'Group khatm', mEsma: '99 Names', mPrayerLog: 'Prayer log', mDua: 'Duas',
       logToday: "Today's prayers", streak: n => `🔥 ${n}-day streak`, prayed: 'Prayed', notYet: 'Not yet', mark: 'Mark',
       stStreak: 'day streak', stBest: 'best streak', stMonth: 'this month', last7: 'Last 7 days', logNote: 'Your records stay on this phone only.', today: 'Today', tLog: 'Prayer log', mPrayerLogSub: 'Prayers you performed',
+      modeCards: 'Verse by verse', modeFlow: 'Mushaf', favs: 'Favorite verses', favEmpty: 'No favorites yet. Tap the heart above a verse while reading.', favN: n => `${n} verses`, tFavs: 'Favorite verses',
       tShare: 'Share as card', shBg: 'Images', shColor: 'Colors', shText: 'Text', shSize: 'Text size', shShowTr: 'Show translation', shDim: 'Darken',
       shSave: 'Save', shShare: 'Share', shSaved: p => `Saved: ${p}`, shFail: 'Could not save; you can still share.', shWatermark: 'Vakit app',
       lblVerse: 'Verse', lblHadis: 'Hadith', lblDua: 'Dua', lblEsma: 'Names of Allah',
@@ -273,7 +275,7 @@
 
   // ---------------- Görünümler ve gezinme ----------------
   const ROOTS = ['home', 'qibla', 'quran', 'dhikr', 'menu'];
-  const TITLES = { home: 'appName', qibla: 'tabQibla', quran: 'tabQuran', dhikr: 'tabDhikr', menu: 'tabMenu', settings: 'tSettings', monthly: 'tMonthly', days: 'tDays', notif: 'mNotif', log: 'tLog', kaza: 'tKaza', esma: 'mEsma', hadis: 'tHadis', dua: 'tDua', deeds: 'tDeeds', names: 'tNames', quiz: 'tQuiz', ramazan: 'tRamazan', nafile: 'tNafile', ilmihal: 'tIlmihal', share: 'tShare' };
+  const TITLES = { home: 'appName', qibla: 'tabQibla', quran: 'tabQuran', dhikr: 'tabDhikr', menu: 'tabMenu', settings: 'tSettings', monthly: 'tMonthly', days: 'tDays', notif: 'mNotif', log: 'tLog', kaza: 'tKaza', esma: 'mEsma', hadis: 'tHadis', dua: 'tDua', deeds: 'tDeeds', names: 'tNames', quiz: 'tQuiz', ramazan: 'tRamazan', nafile: 'tNafile', ilmihal: 'tIlmihal', share: 'tShare', favs: 'tFavs' };
   let stack = ['home'];
   const cur = () => stack[stack.length - 1];
   function render(view) {
@@ -295,6 +297,7 @@
     if (view === 'deeds') renderDeeds();
     if (view === 'ramazan') renderRamazan();
     if (view === 'ilmihal') renderIlmihal();
+    if (view === 'favs') renderFavs();
     if (view === 'nafile') renderNafile();
     if (view === 'names') renderNames();
     if (view === 'quiz') { if (!quiz) newQuiz(); renderQuiz(); }
@@ -353,7 +356,7 @@
   async function loadQuran() {
     try {
       const [a, b] = await Promise.all([fetch('data/surahs.json').then(r => r.json()), fetch('data/quran-ar.json').then(r => r.json())]);
-      surahs = a; quran = b;
+      surahs = a; quran = b; setTimeout(renderFavCount);
       [esmaData, hadisData, duaData, namesData, quizData, ilmihalData, ilceData] = await Promise.all(['esma', 'hadis', 'dua', 'isimler', 'quiz', 'ilmihal', 'ilce'].map(n => fetch(`data/${n}.json`).then(r => r.json())));
       renderSurahList(); renderHome(); renderSettings(); if (!$('onboard').hidden) obGo(obStep);
     } catch (e) { console.error("Kur'an verisi yüklenemedi", e); }
@@ -375,15 +378,36 @@
     $('rdAr').textContent = 'سورة ' + s.ar;
     $('rdMeta').textContent = `${surahName(s)} ${t('surah')} · ${s.mk ? t('meccan') : t('medinan')} · ${s.v} ${t('verses')}`.replace(/\s+·/, ' ·');
     $('rdBasmala').hidden = n === 1 || n === 9;
-    $('rdVerses').innerHTML = quran[n - 1].map((v, i) => `<span class="v" id="v${i + 1}" data-v="${i + 1}">${v}<span class="vn">﴿${arNum(i + 1)}﴾</span></span> `).join('');
+    renderVerses();
     $('rdPrev').disabled = n === 1; $('rdNext').disabled = n === 114;
     go('reader');
     store.set('lastRead', { s: n, v: verse || 1 });
     requestAnimationFrame(() => {
-      if (verse && verse > 1) { const el = $('v' + verse); el.classList.add('hl'); el.scrollIntoView({ block: 'center' }); }
+      if (verse && verse > 1) { const el = $('v' + verse); el.classList.add('hl'); el.scrollIntoView({ block: rdMode() === 'cards' ? 'start' : 'center' }); }
       else scroller().scrollTop = 0;
     });
   }
+  // Okuyucu görünümü: ayet ayet kutular veya sürekli mushaf
+  const rdMode = () => store.get('qMode', 'cards');
+  const rdFont = () => store.get('qFont', 30);
+  const favs = new Set(store.get('favs', []));
+  const SVG_HEART = '<svg><use href="#i-heart"/></svg>', SVG_SHARE = '<svg><use href="#i-share"/></svg>';
+  function renderVerses() {
+    const n = readerSurah, mode = rdMode(), box = $('rdVerses');
+    box.className = mode === 'flow' ? 'flow' : ''; box.style.fontSize = mode === 'flow' ? rdFont() + 'px' : '';
+    document.querySelectorAll('#rdMode button').forEach(b => b.classList.toggle('on', b.dataset.m === mode));
+    if (mode === 'flow') { box.innerHTML = quran[n - 1].map((v, i) => `<span class="v" id="v${i + 1}" data-v="${i + 1}">${v}<span class="vn">﴿${arNum(i + 1)}﴾</span></span> `).join(''); return; }
+    box.innerHTML = quran[n - 1].map((v, i) => { const k = `${n}:${i + 1}`; return `<article class="ayah v" id="v${i + 1}" data-v="${i + 1}"><div class="ay-top"><button type="button" class="${favs.has(k) ? 'on' : ''}" data-fav="${k}" aria-label="Favori">${SVG_HEART}</button><button type="button" data-ashare="${k}" aria-label="Paylaş">${SVG_SHARE}</button><span class="ay-no">${i + 1}</span></div><p class="ay-ar" lang="ar" style="font-size:${rdFont()}px">${v}</p></article>`; }).join('');
+  }
+  function toggleFav(k, btn) { if (favs.has(k)) favs.delete(k); else favs.add(k); store.set('favs', [...favs]); if (btn) btn.classList.toggle('on', favs.has(k)); renderFavCount(); }
+  const renderFavCount = () => { if ($('favCount')) $('favCount').textContent = t('favN')(favs.size); };
+  const ayahRef = (s, v) => `${surahName(surahs[s - 1])} ${t('surah')}, ${v}. ${t('ayah')}`.replace(' ,', ',');
+  function renderFavs() {
+    const list = [...favs].map(k => k.split(':').map(Number)).sort((a, b) => a[0] - b[0] || a[1] - b[1]);
+    $('favEmpty').hidden = list.length > 0;
+    $('favList').innerHTML = list.map(([s, v]) => `<article class="ayah fav-item" data-open="${s}:${v}"><div class="ay-top"><button type="button" class="on" data-fav="${s}:${v}" aria-label="Favori">${SVG_HEART}</button><button type="button" data-ashare="${s}:${v}" aria-label="Paylaş">${SVG_SHARE}</button><span class="ay-ref">${ayahRef(s, v)}</span></div><p class="ay-ar" lang="ar" style="font-size:${rdFont() - 4}px">${quran[s - 1][v - 1]}</p></article>`).join('');
+  }
+
   function renderVerse(now) {
     $('verseCard').hidden = !quran;
     if (!quran) return;
@@ -778,7 +802,7 @@
     $('shColors').innerHTML = SH_COLORS.map(c => `<button type="button" data-color="${c}" class="${sh.color === c ? 'on' : ''}" style="background:${c}"></button>`).join('');
     $('shFont').value = sh.font; $('shDim').value = sh.dim; $('shTr').checked = sh.tr;
   }
-  function openShare(kind) { shContent = shareContent(kind); if (!shContent) return; $('shMsg').textContent = ''; go('share'); renderShare(); }
+  function openShare(kind) { shContent = typeof kind === 'object' ? kind : shareContent(kind); if (!shContent) return; $('shMsg').textContent = ''; go('share'); renderShare(); }
   const shSave = () => store.set('shareStyle', { size: sh.size, bg: sh.bg, color: sh.color, font: sh.font, dim: sh.dim, tr: sh.tr });
   async function exportCard(mode) {
     const data = $('shCanvas').toDataURL('image/png'), b64 = data.split(',')[1], name = `vakit-${Date.now()}.png`;
@@ -1124,6 +1148,15 @@
     if (e.target.id === 'qNext') { quiz.i++; quiz.picked = null; if (quiz.i >= quiz.qs.length && quiz.score > store.get('quizBest', 0)) store.set('quizBest', quiz.score); renderQuiz(); return; }
     if (e.target.id === 'qAgain') { newQuiz(); renderQuiz(); }
   });
+  // Okuyucu olayları
+  document.addEventListener('click', e => {
+    const f = e.target.closest('[data-fav]'); if (f) { e.stopPropagation(); toggleFav(f.dataset.fav, f); if (cur() === 'favs') renderFavs(); return; }
+    const a = e.target.closest('[data-ashare]'); if (a) { e.stopPropagation(); const [s, v] = a.dataset.ashare.split(':').map(Number); openShare({ label: t('lblVerse'), ar: quran[s - 1][v - 1], ref: ayahRef(s, v) }); return; }
+    const o = e.target.closest('[data-open]'); if (o && cur() === 'favs') { const [s, v] = o.dataset.open.split(':').map(Number); openSurah(s, v); }
+  }, true);
+  $('rdMode').addEventListener('click', e => { const b = e.target.closest('[data-m]'); if (!b) return; store.set('qMode', b.dataset.m); renderVerses(); });
+  $('rdSmaller').addEventListener('click', () => { store.set('qFont', Math.max(20, rdFont() - 2)); renderVerses(); });
+  $('rdBigger').addEventListener('click', () => { store.set('qFont', Math.min(48, rdFont() + 2)); renderVerses(); });
   // Kart paylaşım olayları
   document.addEventListener('click', e => { const b = e.target.closest('[data-share]'); if (b) { e.stopPropagation(); openShare(b.dataset.share); } }, true);
   $('shSizes').addEventListener('click', e => { const b = e.target.closest('[data-size]'); if (!b) return; sh.size = b.dataset.size; shSave(); renderShare(); });

@@ -193,6 +193,11 @@
     <!-- Kur'an: sure listesi -->
     <section class="view" data-view="quran" hidden>
       <input id="surahSearch" class="field search" type="search" data-i18n-ph="searchSurah" placeholder="Sure ara (ör. Yâsîn, 36)">
+      <button class="card row-card" type="button" data-go="favs">
+        <span class="rc-ic gold"><svg><use href="#i-heart"/></svg></span>
+        <span class="rc-body"><b data-i18n="favs">Favori ayetler</b><em id="favCount"></em></span>
+        <svg class="chev"><use href="#i-chev"/></svg>
+      </button>
       <ul class="surah-list" id="surahList"></ul>
       <p class="note src" data-i18n="quranSource">Arapça metin: Kur'an Meâlleri Ansiklopedisi (QuranEnc.com). Meal yakında eklenecek.</p>
     </section>
@@ -203,8 +208,12 @@
         <div class="rh-ar" id="rdAr" dir="rtl" lang="ar"></div>
         <div class="rh-meta" id="rdMeta"></div>
       </div>
+      <div class="rd-tools">
+        <div class="seg" id="rdMode"><button type="button" data-m="cards" data-i18n="modeCards">Ayet ayet</button><button type="button" data-m="flow" data-i18n="modeFlow">Mushaf</button></div>
+        <button class="pill" id="rdSmaller" type="button" aria-label="Küçült">A−</button><button class="pill" id="rdBigger" type="button" aria-label="Büyüt">A+</button>
+      </div>
       <p class="basmala" id="rdBasmala" dir="rtl" lang="ar">بِسۡمِ ٱللَّهِ ٱلرَّحۡمَٰنِ ٱلرَّحِيمِ</p>
-      <div class="verses" id="rdVerses" dir="rtl" lang="ar"></div>
+      <div id="rdVerses"></div>
       <div class="reader-nav">
         <button class="btn ghost" id="rdPrev" type="button" data-i18n="prevSurah">Önceki sure</button>
         <button class="btn ghost" id="rdNext" type="button" data-i18n="nextSurah">Sonraki sure</button>
@@ -310,6 +319,12 @@
       <ul class="days" id="nafileList"></ul>
       <div class="card warn"><b data-i18n="forbiddenTitle">Oruç tutulmayan günler</b><p data-i18n="forbiddenText">Ramazan Bayramı'nın 1. günü ile Kurban Bayramı'nın 4 gününde oruç tutulmaz.</p></div>
       <p class="note" data-i18n="nafileNote">Hicrî ay başları astronomik hesapla bulunur; 1 gün farklı olabilir.</p>
+    </section>
+
+    <!-- Favori ayetler -->
+    <section class="view" data-view="favs" hidden>
+      <div id="favList"></div>
+      <p class="note" id="favEmpty" data-i18n="favEmpty">Henüz favori ayetiniz yok. Okurken ayetin üstündeki kalbe dokunun.</p>
     </section>
 
     <!-- Kart olarak paylaş -->
