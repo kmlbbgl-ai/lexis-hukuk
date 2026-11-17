@@ -14,20 +14,23 @@
     tr: {
       appName: 'Vakit', nextPrayer: 'Sonraki vakit', tabTimes: 'Vakitler', tabQibla: 'Kıble', tabDhikr: 'Zikirmatik', tabSettings: 'Ayarlar',
       fajr: 'İmsak', sunrise: 'Güneş', dhuhr: 'Öğle', asr: 'İkindi', maghrib: 'Akşam', isha: 'Yatsı',
-      qiblaHint: 'Telefonu düz tutun. Üstteki çizgi Kâbe simgesiyle çakıştığında kıbleye dönmüşsünüz demektir.',
+      qiblaHint: 'Telefonu düz tutun ve kendi etrafınızda yavaşça dönün. Üstteki ok Kâbe simgesinin üzerine gelince kıbleye dönmüşsünüz demektir.',
       enableCompass: 'Pusulayı başlat', compassNA: 'Bu cihazda pusula yok. Kıble, kuzeyden saat yönünde gösterilen açıdadır.',
       qiblaFromNorth: 'Kuzeyden', reset: 'Sıfırla', total: 'Toplam',
       method: 'Hesaplama yöntemi', madhab: 'İkindi (Asr) hesabı', city: 'Şehir', useGps: 'Konumumu kullan',
-      shafi: 'Standart (Şafii, Maliki, Hanbeli; Diyanet)', hanafi: 'Hanefi (asr-ı sani)',
+      shafi: 'Standart (Diyanet)', hanafi: 'Hanefi (asr-ı sani)',
       privacy: 'Konumunuz yalnızca bu telefonda kullanılır; hiçbir sunucuya gönderilmez.',
       myLocation: 'Konumum', gpsFail: 'Konum alınamadı. Listeden şehir seçebilirsiniz.',
       methodNote: m => `Hesaplama: ${m}. Vakitler Diyanet takviminden 1–2 dakika farklı olabilir.`,
-      tomorrow: 'yarın', monthly: 'Aylık vakitler (imsakiye)', day: 'Gün'
+      tomorrow: 'yarın', monthly: 'Aylık namaz vakitleri', day: 'Gün',
+      fineTune: 'İnce ayar (dakika) — vakitleri camiinizin takvimine eşitlemek için',
+      turnRight: d => `${d}° sağa dönün`, turnLeft: d => `${d}° sola dönün`, aligned: 'Kıbleye döndünüz ✓',
+      hijriMonths: ['Muharrem','Safer','Rebiülevvel','Rebiülahir','Cemaziyelevvel','Cemaziyelahir','Recep','Şaban','Ramazan','Şevval','Zilkade','Zilhicce'], hijriSuffix: 'Hicri'
     },
     en: {
       appName: 'Vakit', nextPrayer: 'Next prayer', tabTimes: 'Times', tabQibla: 'Qibla', tabDhikr: 'Tasbih', tabSettings: 'Settings',
       fajr: 'Fajr', sunrise: 'Sunrise', dhuhr: 'Dhuhr', asr: 'Asr', maghrib: 'Maghrib', isha: 'Isha',
-      qiblaHint: 'Hold the phone flat. When the top marker lines up with the Kaaba icon, you are facing the qibla.',
+      qiblaHint: 'Hold the phone flat and turn slowly. When the top arrow is over the Kaaba icon, you are facing the qibla.',
       enableCompass: 'Start compass', compassNA: 'No compass on this device. The qibla is at the angle shown, clockwise from north.',
       qiblaFromNorth: 'From north', reset: 'Reset', total: 'Total',
       method: 'Calculation method', madhab: 'Asr calculation', city: 'City', useGps: 'Use my location',
@@ -35,7 +38,10 @@
       privacy: 'Your location is used only on this phone and is never sent to any server.',
       myLocation: 'My location', gpsFail: 'Could not get your location. Please pick a city from the list.',
       methodNote: m => `Method: ${m}. Times may differ by 1–2 minutes from your local mosque calendar.`,
-      tomorrow: 'tomorrow', monthly: 'Monthly timetable', day: 'Day'
+      tomorrow: 'tomorrow', monthly: 'Monthly prayer times', day: 'Day',
+      fineTune: 'Fine-tune (minutes) — to match your local mosque calendar',
+      turnRight: d => `Turn ${d}° right`, turnLeft: d => `Turn ${d}° left`, aligned: 'You are facing the qibla ✓',
+      hijriMonths: ['Muharram','Safar','Rabi al-Awwal','Rabi al-Thani','Jumada al-Ula','Jumada al-Akhirah','Rajab','Shaban','Ramadan','Shawwal','Dhu al-Qadah','Dhu al-Hijjah'], hijriSuffix: 'AH'
     }
   };
   let lang = store.get('lang', (navigator.language || 'tr').startsWith('tr') ? 'tr' : 'en');
@@ -62,13 +68,18 @@
   ];
   const PRAYERS = ['fajr', 'sunrise', 'dhuhr', 'asr', 'maghrib', 'isha'];
 
-  let settings = Object.assign({ method: 'Turkey', madhab: 'Shafi', place: { name: 'İstanbul', lat: 41.0082, lng: 28.9784 } }, store.get('settings', {}));
+  let settings = Object.assign({ method: 'Turkey', madhab: 'Shafi', place: { name: 'İstanbul', lat: 41.0082, lng: 28.9784 }, fine: {} }, store.get('settings', {}));
+  settings.fine = settings.fine || {};
   const $ = id => document.getElementById(id);
 
   // ---------- Namaz vakitleri ----------
   function params() {
     const p = A.CalculationMethod[settings.method]();
     p.madhab = A.Madhab[settings.madhab];
+    // Diyanet'in yayımladığı ikindi vakitleri, kütüphanenin Diyanet ayarından ~1 dk sonra
+    // (İstanbul ve Ankara, 17.11.2026 karşılaştırması). Bu yüzden ikindiye 1 dk eklenir.
+    if (settings.method === 'Turkey') p.methodAdjustments = Object.assign({}, p.methodAdjustments, { asr: p.methodAdjustments.asr + 1 });
+    for (const k of PRAYERS) p.adjustments[k] = +(settings.fine[k] || 0);
     return p;
   }
   function timesFor(date) {
@@ -92,11 +103,21 @@
     $('today').textContent = now.toLocaleDateString(lang === 'tr' ? 'tr-TR' : 'en-GB', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' });
     $('methodNote').textContent = t('methodNote')(METHODS[settings.method]);
     $('locName').textContent = settings.place.name;
-    try {
-      $('hijri').textContent = new Intl.DateTimeFormat((lang === 'tr' ? 'tr-TR' : 'en-GB') + '-u-ca-islamic-umalqura',
-        { day: 'numeric', month: 'long', year: 'numeric' }).format(now);
-    } catch { $('hijri').textContent = ''; }
+    $('hijri').textContent = hijriText(now);
     renderMonth(now);
+  }
+
+  // Hicri tarih: sayıları cihazdan alıp ay adlarını kendimiz yazıyoruz (bazı telefonlar "MÖ" gibi yanlış ekler gösteriyor).
+  // Türkiye için astronomik takvim (Diyanet ile uyumlu), diğer yöntemlerde Ümmü'l-Kurâ.
+  function hijriText(date) {
+    try {
+      const cal = settings.method === 'Turkey' ? 'islamic' : 'islamic-umalqura';
+      const parts = new Intl.DateTimeFormat('en-u-ca-' + cal + '-nu-latn', { day: 'numeric', month: 'numeric', year: 'numeric' }).formatToParts(date);
+      const get = type => parseInt((parts.find(p => p.type === type) || {}).value, 10);
+      const d = get('day'), m = get('month'), y = get('year');
+      if (!(y > 1300 && y < 1700 && m >= 1 && m <= 12)) return '';
+      return `${d} ${t('hijriMonths')[m - 1]} ${y} ${t('hijriSuffix')}`;
+    } catch { return ''; }
   }
 
   function renderMonth(now) {
@@ -131,12 +152,25 @@
     $('arm').style.transform = `rotate(${qibla}deg)`;
     $('qiblaDeg').textContent = `${t('qiblaFromNorth')} ${Math.round(qibla)}°`;
   }
+  // Pusula: titremeyi yumuşatır ve 359°→0° geçişinde kadranın bir tur dönmesini engeller.
+  let shown = null, wasAligned = false;
+  const wrap = a => ((a % 360) + 540) % 360 - 180; // -180..180
   function onOrientation(e) {
     let heading = null;
     if (typeof e.webkitCompassHeading === 'number') heading = e.webkitCompassHeading; // iOS
     else if (e.absolute && typeof e.alpha === 'number') heading = 360 - e.alpha;      // Android
     if (heading === null) return;
-    $('dial').style.transform = `rotate(${-heading}deg)`;
+    const so = (screen.orientation && screen.orientation.angle) || 0;
+    heading = (heading + so + 360) % 360;
+    if (shown === null) shown = heading;
+    else shown += wrap(heading - shown) * 0.2; // yumuşatma
+    $('dial').style.transform = `rotate(${-shown}deg)`;
+    const diff = wrap(qibla - shown); // + ise sağa dönülmeli
+    const aligned = Math.abs(diff) <= 3;
+    $('compass').classList.toggle('aligned', aligned);
+    $('turnHint').textContent = aligned ? t('aligned') : (diff > 0 ? t('turnRight')(Math.round(diff)) : t('turnLeft')(Math.round(-diff)));
+    if (aligned && !wasAligned && navigator.vibrate) navigator.vibrate(60);
+    wasAligned = aligned;
   }
   async function startCompass() {
     try {
@@ -176,6 +210,10 @@
     $('citySel').innerHTML = (inList ? '' : `<option selected>${settings.place.name}</option>`) +
       CITIES.map(c => `<option ${c[0] === settings.place.name ? 'selected' : ''}>${c[0]}</option>`).join('');
   }
+  function renderFine() {
+    const opts = v => Array.from({ length: 21 }, (_, i) => i - 10).map(n => `<option value="${n}" ${n === v ? 'selected' : ''}>${n > 0 ? '+' + n : n}</option>`).join('');
+    $('fineBox').innerHTML = PRAYERS.map(p => `<label>${t(p)}<select data-fine="${p}">${opts(+(settings.fine[p] || 0))}</select></label>`).join('');
+  }
   function save() { store.set('settings', settings); renderAll(); }
   function useGps() {
     if (!navigator.geolocation) return alert(t('gpsFail'));
@@ -190,8 +228,13 @@
     document.querySelectorAll('[data-i18n]').forEach(el => { const v = T[lang][el.dataset.i18n]; if (typeof v === 'string') el.textContent = v; });
     $('langBtn').textContent = lang === 'tr' ? 'EN' : 'TR';
   }
-  function renderAll() { applyLang(); renderTimes(); tick(); renderQibla(); renderDhikr(); renderSettings(); }
-  function showTab(name) {
+  function renderAll() { applyLang(); renderTimes(); tick(); renderQibla(); renderDhikr(); renderSettings(); renderFine(); }
+  const tabHistory = [];
+  let currentTab = 'times';
+  function showTab(name, fromBack) {
+    if (name === currentTab) return;
+    if (!fromBack) tabHistory.push(currentTab);
+    currentTab = name;
     document.querySelectorAll('.tab').forEach(s => s.classList.toggle('active', s.id === 'tab-' + name));
     document.querySelectorAll('.bottom button').forEach(b => b.classList.toggle('active', b.dataset.tab === name));
   }
@@ -208,6 +251,17 @@
   $('madhabSel').addEventListener('change', e => { settings.madhab = e.target.value; save(); });
   $('citySel').addEventListener('change', e => { const c = CITIES.find(x => x[0] === e.target.value); if (c) { settings.place = { name: c[0], lat: c[1], lng: c[2] }; save(); } });
   $('gpsBtn').addEventListener('click', useGps);
+  $('fineBox').addEventListener('change', e => { const k = e.target.dataset.fine; if (k) { settings.fine[k] = +e.target.value; save(); } });
+
+  // Android geri tuşu: önce bir önceki sekmeye döner, ana ekrandayken uygulamadan çıkar.
+  const CapApp = window.Capacitor && window.Capacitor.Plugins && window.Capacitor.Plugins.App;
+  if (CapApp) {
+    CapApp.addListener('backButton', () => {
+      if (tabHistory.length) showTab(tabHistory.pop(), true);
+      else if (currentTab !== 'times') showTab('times', true);
+      else CapApp.exitApp();
+    });
+  }
 
   renderAll();
   setInterval(tick, 1000);

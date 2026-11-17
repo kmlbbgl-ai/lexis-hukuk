@@ -29,7 +29,7 @@
     <ul class="times card" id="timesList"></ul>
     <p class="note" id="methodNote"></p>
     <details class="card month">
-      <summary data-i18n="monthly">Aylık vakitler (imsakiye)</summary>
+      <summary data-i18n="monthly">Aylık namaz vakitleri</summary>
       <div class="scroll"><table id="monthTable"></table></div>
     </details>
   </section>
@@ -45,7 +45,8 @@
         <div class="needle"></div>
       </div>
       <div class="qibla-deg" id="qiblaDeg">—</div>
-      <p class="note" id="qiblaHint" data-i18n="qiblaHint">Telefonu düz tutun. Üstteki çizgi Kâbe simgesiyle çakıştığında kıbleye dönmüşsünüz demektir.</p>
+      <div class="turn" id="turnHint"></div>
+      <p class="note" id="qiblaHint" data-i18n="qiblaHint">Telefonu düz tutun ve kendi etrafınızda yavaşça dönün. Üstteki ok Kâbe simgesinin üzerine gelince kıbleye dönmüşsünüz demektir.</p>
       <button id="compassBtn" class="btn" type="button" data-i18n="enableCompass">Pusulayı başlat</button>
     </div>
   </section>
@@ -75,9 +76,11 @@
         <select id="methodSel"></select></label>
       <label><span data-i18n="madhab">İkindi (Asr) hesabı</span>
         <select id="madhabSel">
-          <option value="Shafi" data-i18n="shafi">Standart (Şafii, Maliki, Hanbeli; Diyanet)</option>
+          <option value="Shafi" data-i18n="shafi">Standart (Diyanet)</option>
           <option value="Hanafi" data-i18n="hanafi">Hanefi (asr-ı sani)</option>
         </select></label>
+      <div><span class="note" data-i18n="fineTune">İnce ayar (dakika) — vakitleri camiinizin takvimine eşitlemek için</span>
+        <div class="fine" id="fineBox"></div></div>
       <label><span data-i18n="city">Şehir</span>
         <select id="citySel"></select></label>
       <button id="gpsBtn" class="btn" type="button" data-i18n="useGps">Konumumu kullan</button>
