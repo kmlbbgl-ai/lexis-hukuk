@@ -406,3 +406,9 @@ input[type=range]{width:100%;accent-color:var(--brand-2)}
 .ay-tr{margin:8px 0 0;line-height:1.55;font-size:16px}
 .fav-item{cursor:pointer}
 .fav-item .ay-ref{color:var(--muted);font-size:13px}
+
+.rd-audio{display:flex;gap:8px;align-items:center;margin:4px 0}
+.rd-audio select{flex:1;padding:8px 10px}
+.rd-audio span{font-size:12px;color:var(--muted)}
+.ayah.playing{border-color:var(--brand-2);box-shadow:0 0 0 3px var(--tint)}
+#rdVerses.flow .v.playing{background:var(--tint);border-radius:8px}

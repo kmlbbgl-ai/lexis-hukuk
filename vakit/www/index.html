@@ -199,7 +199,7 @@
         <svg class="chev"><use href="#i-chev"/></svg>
       </button>
       <ul class="surah-list" id="surahList"></ul>
-      <p class="note src" data-i18n="quranSource">Arapça metin: Kur'an Meâlleri Ansiklopedisi (QuranEnc.com). Meal yakında eklenecek.</p>
+      <p class="note src" data-i18n="quranSource">Arapça metin: Kur'an Meâlleri Ansiklopedisi (QuranEnc.com). Ses kayıtları: AlQuran.cloud / Islamic Network. Meal yakında eklenecek.</p>
     </section>
 
     <!-- Kur'an: okuyucu -->
@@ -210,8 +210,10 @@
       </div>
       <div class="rd-tools">
         <div class="seg" id="rdMode"><button type="button" data-m="cards" data-i18n="modeCards">Ayet ayet</button><button type="button" data-m="flow" data-i18n="modeFlow">Mushaf</button></div>
+        <button class="pill" id="rdPlay" type="button" aria-label="Dinle">▶</button>
         <button class="pill" id="rdSmaller" type="button" aria-label="Küçült">A−</button><button class="pill" id="rdBigger" type="button" aria-label="Büyüt">A+</button>
       </div>
+      <div class="rd-audio" id="rdAudioBar" hidden><select id="rdReciter" class="field"></select><span id="rdAudioMsg"></span></div>
       <p class="basmala" id="rdBasmala" dir="rtl" lang="ar">بِسۡمِ ٱللَّهِ ٱلرَّحۡمَٰنِ ٱلرَّحِيمِ</p>
       <div id="rdVerses"></div>
       <div class="reader-nav">

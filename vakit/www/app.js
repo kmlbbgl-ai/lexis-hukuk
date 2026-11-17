@@ -40,6 +40,7 @@
       mHatim: 'Ortak hatim', mEsma: "Esmâü'l-Hüsnâ", mPrayerLog: 'Namaz takibi', mDua: 'Dualar',
       logToday: 'Bugünkü namazlarım', streak: n => `🔥 ${n} gün seri`, prayed: 'Kıldım', notYet: 'Vakti girmedi', mark: 'İşaretle',
       stStreak: 'günlük seri', stBest: 'en uzun seri', stMonth: 'bu ay', last7: 'Son 7 gün', logNote: 'Kayıtlarınız yalnızca bu telefonda tutulur.', today: 'Bugün', tLog: 'Namaz takibi', mPrayerLogSub: 'Kıldığınız vakitler',
+      reciters: 'Kâri', audioErr: 'Ses yüklenemedi. İnternet bağlantınızı kontrol edin.', audioLoad: 'Yükleniyor…',
       nfSound: 'Bildirim sesi', listen: 'Dinle', nfSoundNote: 'Ezan sesi, izinli bir kayıt bulunduğunda eklenecek.', sounds: { def: 'Telefonun sesi', can: 'Çan', zil: 'Zil', nota: 'Nota', sessiz: 'Sadece titreşim' },
       modeCards: 'Ayet ayet', modeFlow: 'Mushaf', favs: 'Favori ayetler', favEmpty: 'Henüz favori ayetiniz yok. Okurken ayetin üstündeki kalbe dokunun.', favN: n => `${n} ayet`, tFavs: 'Favori ayetler',
       tShare: 'Kart olarak paylaş', shBg: 'Görseller', shColor: 'Renkler', shText: 'Yazı', shSize: 'Yazı boyutu', shShowTr: 'Türkçe anlamı göster', shDim: 'Karartma',
@@ -111,6 +112,7 @@
       mHatim: 'Group khatm', mEsma: '99 Names', mPrayerLog: 'Prayer log', mDua: 'Duas',
       logToday: "Today's prayers", streak: n => `🔥 ${n}-day streak`, prayed: 'Prayed', notYet: 'Not yet', mark: 'Mark',
       stStreak: 'day streak', stBest: 'best streak', stMonth: 'this month', last7: 'Last 7 days', logNote: 'Your records stay on this phone only.', today: 'Today', tLog: 'Prayer log', mPrayerLogSub: 'Prayers you performed',
+      reciters: 'Reciter', audioErr: 'Audio could not load. Check your internet connection.', audioLoad: 'Loading…',
       nfSound: 'Notification sound', listen: 'Play', nfSoundNote: 'An adhan sound will be added once a licensed recording is available.', sounds: { def: 'Phone default', can: 'Bell', zil: 'Chime', nota: 'Notes', sessiz: 'Vibrate only' },
       modeCards: 'Verse by verse', modeFlow: 'Mushaf', favs: 'Favorite verses', favEmpty: 'No favorites yet. Tap the heart above a verse while reading.', favN: n => `${n} verses`, tFavs: 'Favorite verses',
       tShare: 'Share as card', shBg: 'Images', shColor: 'Colors', shText: 'Text', shSize: 'Text size', shShowTr: 'Show translation', shDim: 'Darken',
@@ -287,6 +289,7 @@
     document.querySelectorAll('.tabbar button').forEach(b => b.classList.toggle('active', b.dataset.tab === root));
     $('barBack').hidden = stack.length <= 1 || ROOTS.includes(view);
     $('barTitle').textContent = view === 'reader' ? readerTitle() : t(TITLES[view] || 'appName');
+    if (view !== 'reader' && view !== 'share' && typeof playing !== 'undefined' && playing) stopAudio();
     if (view === 'home') renderHome();
     if (view === 'monthly') renderMonth();
     if (view === 'days') renderDays();
@@ -308,6 +311,7 @@
   function go(view) { if (cur() !== view) stack.push(view); render(view); }
   function tab(view) { stack = view === 'home' ? ['home'] : ['home', view]; render(view); }
   function back() {
+    if (cur() === 'reader' && playing) stopAudio();
     if (!$('onboard').hidden) { if (obStep > 0) obGo(obStep - 1); return true; }
     if (stack.length > 1) { stack.pop(); render(cur()); return true; }
     return false;
@@ -375,6 +379,7 @@
   function readerTitle() { return surahs ? surahName(surahs[readerSurah - 1]) : ''; }
   function openSurah(n, verse) {
     if (!quran) return;
+    if (typeof stopAudio === 'function' && playing) stopAudio();
     readerSurah = n;
     const s = surahs[n - 1];
     $('rdAr').textContent = 'سورة ' + s.ar;
@@ -401,6 +406,30 @@
     if (mode === 'flow') { box.innerHTML = quran[n - 1].map((v, i) => `<span class="v" id="v${i + 1}" data-v="${i + 1}">${v}<span class="vn">﴿${arNum(i + 1)}﴾</span></span> `).join(''); return; }
     box.innerHTML = quran[n - 1].map((v, i) => { const k = `${n}:${i + 1}`; return `<article class="ayah v" id="v${i + 1}" data-v="${i + 1}"><div class="ay-top"><button type="button" class="${favs.has(k) ? 'on' : ''}" data-fav="${k}" aria-label="Favori">${SVG_HEART}</button><button type="button" data-ashare="${k}" aria-label="Paylaş">${SVG_SHARE}</button><span class="ay-no">${i + 1}</span></div><p class="ay-ar" lang="ar" style="font-size:${rdFont()}px">${v}</p></article>`; }).join('');
   }
+  // Sesli okuma (AlQuran.cloud / Islamic Network CDN, internet gerekir)
+  const RECITERS = [['ar.alafasy', 'Mişari Râşid el-Afâsî'], ['ar.husary', 'Mahmûd Halîl el-Husarî'], ['ar.minshawi', 'Muhammed Sıddîk el-Minşâvî'], ['ar.abdulbasitmurattal', 'Abdülbâsıt Abdüssamed']];
+  const audio = new Audio(); let playV = 0, playing = false;
+  const globalAyah = (s, v) => { let n = 0; for (let i = 0; i < s - 1; i++) n += surahs[i].v; return n + v; };
+  function playAyah(v) {
+    if (v > surahs[readerSurah - 1].v) { stopAudio(); return; }
+    playV = v; playing = true; $('rdPlay').textContent = '⏸'; $('rdAudioBar').hidden = false; $('rdAudioMsg').textContent = t('audioLoad');
+    document.querySelectorAll('#rdVerses .playing').forEach(e => e.classList.remove('playing'));
+    const el = $('v' + v); if (el) { el.classList.add('playing'); el.scrollIntoView({ block: 'center', behavior: 'smooth' }); }
+    const r = store.get('reciter', RECITERS[0][0]), g = globalAyah(readerSurah, v);
+    audio.dataset.try = '128'; audio.src = `https://cdn.islamic.network/quran/audio/128/${r}/${g}.mp3`;
+    audio.play().catch(() => {});
+  }
+  function stopAudio() { audio.pause(); playing = false; $('rdPlay').textContent = '▶'; $('rdAudioMsg').textContent = ''; document.querySelectorAll('#rdVerses .playing').forEach(e => e.classList.remove('playing')); }
+  audio.addEventListener('playing', () => { $('rdAudioMsg').textContent = ''; });
+  audio.addEventListener('ended', () => { if (playing) playAyah(playV + 1); });
+  audio.addEventListener('error', () => {
+    if (!playing) return;
+    if (audio.dataset.try === '128') { audio.dataset.try = '64'; audio.src = audio.src.replace('/128/', '/64/'); audio.play().catch(() => {}); return; }
+    if (audio.dataset.try === '64') { audio.dataset.try = '192'; audio.src = audio.src.replace('/64/', '/192/'); audio.play().catch(() => {}); return; }
+    $('rdAudioMsg').textContent = t('audioErr'); playing = false; $('rdPlay').textContent = '▶';
+  });
+  function firstVisibleAyah() { for (const el of $('rdVerses').querySelectorAll('.v')) if (el.getBoundingClientRect().bottom > 140) return +el.dataset.v; return 1; }
+
   function toggleFav(k, btn) { if (favs.has(k)) favs.delete(k); else favs.add(k); store.set('favs', [...favs]); if (btn) btn.classList.toggle('on', favs.has(k)); renderFavCount(); }
   const renderFavCount = () => { if ($('favCount')) $('favCount').textContent = t('favN')(favs.size); };
   const ayahRef = (s, v) => `${surahName(surahs[s - 1])} ${t('surah')}, ${v}. ${t('ayah')}`.replace(' ,', ',');
@@ -1159,6 +1188,11 @@
     const a = e.target.closest('[data-ashare]'); if (a) { e.stopPropagation(); const [s, v] = a.dataset.ashare.split(':').map(Number); openShare({ label: t('lblVerse'), ar: quran[s - 1][v - 1], ref: ayahRef(s, v) }); return; }
     const o = e.target.closest('[data-open]'); if (o && cur() === 'favs') { const [s, v] = o.dataset.open.split(':').map(Number); openSurah(s, v); }
   }, true);
+  $('rdPlay').addEventListener('click', () => { if (playing) stopAudio(); else playAyah(firstVisibleAyah()); });
+  $('rdReciter').innerHTML = RECITERS.map(([k, n]) => `<option value="${k}">${n}</option>`).join('');
+  $('rdReciter').value = store.get('reciter', RECITERS[0][0]);
+  $('rdReciter').addEventListener('change', e => { store.set('reciter', e.target.value); if (playing) playAyah(playV); });
+  $('rdVerses').addEventListener('dblclick', e => { const el = e.target.closest('.v'); if (el) playAyah(+el.dataset.v); });
   $('rdMode').addEventListener('click', e => { const b = e.target.closest('[data-m]'); if (!b) return; store.set('qMode', b.dataset.m); renderVerses(); });
   $('rdSmaller').addEventListener('click', () => { store.set('qFont', Math.max(20, rdFont() - 2)); renderVerses(); });
   $('rdBigger').addEventListener('click', () => { store.set('qFont', Math.min(48, rdFont() + 2)); renderVerses(); });
