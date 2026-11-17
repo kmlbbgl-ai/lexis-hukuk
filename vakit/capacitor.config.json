@@ -1,5 +1,11 @@
 {
   "appId": "app.vakit.prototype",
   "appName": "Vakit",
-  "webDir": "www"
+  "webDir": "www",
+  "plugins": {
+    "LocalNotifications": {
+      "smallIcon": "ic_stat_vakit",
+      "iconColor": "#0D4A3E"
+    }
+  }
 }

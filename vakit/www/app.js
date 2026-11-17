@@ -37,7 +37,16 @@
       day: 'Gün', soon: 'YAKINDA', inDays: n => n === 0 ? 'Bugün' : n === 1 ? 'Yarın' : `${n} gün`, evening: 'akşamı',
       mMonthly: 'Aylık vakitler', mDays: 'Mübarek günler', mSettings: 'Ayarlar', mNotif: 'Ezan bildirimi', mKaza: 'Kaza takibi',
       mHatim: 'Ortak hatim', mEsma: "Esmâü'l-Hüsnâ", mPrayerLog: 'Namaz takibi', mDua: 'Dualar',
-      mMonthlySub: 'Ay ay tüm vakitler', mDaysSub: 'Kandiller ve bayramlar', mSettingsSub: 'Konum ve hesaplama',
+      mMonthlySub: 'Ay ay tüm vakitler', mDaysSub: 'Kandiller ve bayramlar', mSettingsSub: 'Konum ve hesaplama', mNotifSub: 'Vakit hatırlatmaları',
+      obNotifTitle: 'Ezan bildirimleri', obNotifText: 'Vakit girdiğinde haber verelim mi? Her vakit için ayrı ayrı açıp kapatabilirsiniz.', obNotifBtn: 'Bildirimleri aç',
+      nfWebOnly: 'Bildirimler yalnızca telefondaki uygulamada çalışır.', nfPermTitle: 'Bildirim izni kapalı', nfPermText: 'Ezan vakitlerinde haber verebilmemiz için bildirim izni gerekiyor.',
+      nfExactTitle: 'Tam zamanlı alarm izni', nfExactText: 'Bu izin olmadan telefon bildirimi birkaç dakika geciktirebilir.', allow: 'İzin ver',
+      nfMaster: 'Ezan bildirimleri', nfMasterSub: 'Vakit girdiğinde bildirim gelir', nfBefore: 'Vakit öncesi hatırlatma süresi (dakika)',
+      nfTest: 'Deneme bildirimi gönder', nfBattery: 'Bazı telefonlar pil tasarrufu için bildirimleri durdurabilir. Bildirim gelmezse telefon ayarlarından Vakit için pil kısıtlamasını kaldırın.',
+      nfAt: 'Vaktinde', nfPre: m => `${m} dk önce`, nfOk: n => `${n} bildirim kuruldu (önümüzdeki 10 gün).`, nfOff: 'Bildirimler kapalı.', nfDenied: 'Bildirim izni verilmedi.',
+      nfTestSent: '5 saniye içinde deneme bildirimi gelecek.', nfOnOk: 'Bildirimler açıldı ✓',
+      nfTitle: p => `${p} vakti`, nfPreTitle: (p, m) => `${p} vaktine ${m} dakika`, nfSunTitle: 'Güneş doğdu', nfSunPre: m => `Güneşin doğmasına ${m} dakika`,
+      nfKeepTitle: 'Bildirimleriniz devam etsin', nfKeepBody: 'Ezan bildirimlerinin sürmesi için Vakit uygulamasını açın.', nfTestTitle: 'Vakit · deneme', nfTestBody: 'Ezan bildirimleri çalışıyor.',
       hijriMonths: ['Muharrem', 'Safer', 'Rebîülevvel', 'Rebîülâhir', 'Cemâziyelevvel', 'Cemâziyelâhir', 'Receb', 'Şâban', 'Ramazan', 'Şevvâl', 'Zilkade', 'Zilhicce'],
       ev: { hijriNY: 'Hicrî yılbaşı', ashura: 'Aşure günü', mawlid: 'Mevlid Kandili', ragaib: 'Regaib Kandili', miraj: 'Mirac Kandili', barat: 'Berat Kandili', ramadan: 'Ramazan başlangıcı', qadr: 'Kadir Gecesi', arafaF: 'Ramazan Bayramı arifesi', eidF: 'Ramazan Bayramı', arafa: 'Kurban Bayramı arifesi', eidA: 'Kurban Bayramı' }
     },
@@ -68,7 +77,16 @@
       day: 'Day', soon: 'SOON', inDays: n => n === 0 ? 'Today' : n === 1 ? 'Tomorrow' : `${n} days`, evening: 'evening',
       mMonthly: 'Monthly times', mDays: 'Islamic days', mSettings: 'Settings', mNotif: 'Adhan alerts', mKaza: 'Missed prayers',
       mHatim: 'Group khatm', mEsma: '99 Names', mPrayerLog: 'Prayer log', mDua: 'Duas',
-      mMonthlySub: 'All times by month', mDaysSub: 'Holy nights and Eids', mSettingsSub: 'Location and method',
+      mMonthlySub: 'All times by month', mDaysSub: 'Holy nights and Eids', mSettingsSub: 'Location and method', mNotifSub: 'Prayer reminders',
+      obNotifTitle: 'Adhan alerts', obNotifText: 'Shall we notify you at each prayer time? You can turn each prayer on or off.', obNotifBtn: 'Turn on alerts',
+      nfWebOnly: 'Notifications work only in the phone app.', nfPermTitle: 'Notifications are off', nfPermText: 'Allow notifications so we can alert you at prayer times.',
+      nfExactTitle: 'Exact alarm permission', nfExactText: 'Without it the phone may delay alerts by a few minutes.', allow: 'Allow',
+      nfMaster: 'Adhan alerts', nfMasterSub: 'Get notified when a prayer time begins', nfBefore: 'Reminder before prayer (minutes)',
+      nfTest: 'Send test notification', nfBattery: 'Some phones stop notifications to save battery. If alerts do not arrive, remove battery restrictions for Vakit in phone settings.',
+      nfAt: 'At prayer time', nfPre: m => `${m} min before`, nfOk: n => `${n} alerts scheduled (next 10 days).`, nfOff: 'Alerts are off.', nfDenied: 'Notification permission was not granted.',
+      nfTestSent: 'A test notification will arrive in 5 seconds.', nfOnOk: 'Alerts are on ✓',
+      nfTitle: p => `${p} time`, nfPreTitle: (p, m) => `${m} minutes to ${p}`, nfSunTitle: 'Sunrise', nfSunPre: m => `${m} minutes to sunrise`,
+      nfKeepTitle: 'Keep your alerts running', nfKeepBody: 'Open Vakit so your adhan alerts continue.', nfTestTitle: 'Vakit · test', nfTestBody: 'Adhan alerts are working.',
       hijriMonths: ['Muharram', 'Safar', 'Rabi al-Awwal', 'Rabi al-Thani', 'Jumada al-Ula', 'Jumada al-Akhirah', 'Rajab', 'Shaban', 'Ramadan', 'Shawwal', 'Dhu al-Qadah', 'Dhu al-Hijjah'],
       ev: { hijriNY: 'Islamic New Year', ashura: 'Day of Ashura', mawlid: 'Mawlid', ragaib: 'Laylat al-Raghaib', miraj: "Isra and Mi'raj", barat: 'Laylat al-Baraat', ramadan: 'Start of Ramadan', qadr: 'Laylat al-Qadr', arafaF: 'Eve of Eid al-Fitr', eidF: 'Eid al-Fitr', arafa: 'Day of Arafah', eidA: 'Eid al-Adha' }
     }
@@ -105,7 +123,7 @@
 
   let settings = Object.assign({ method: 'Turkey', madhab: 'Shafi', place: { name: 'İstanbul', lat: 41.0082, lng: 28.9784 }, fine: {} }, store.get('settings', {}));
   settings.fine = settings.fine || {};
-  const save = () => { store.set('settings', settings); refresh(); };
+  const save = () => { store.set('settings', settings); refresh(); queueReschedule(); };
 
   // ---------------- Vakit hesabı ----------------
   function params() {
@@ -196,7 +214,7 @@
 
   // ---------------- Görünümler ve gezinme ----------------
   const ROOTS = ['home', 'qibla', 'quran', 'dhikr', 'menu'];
-  const TITLES = { home: 'appName', qibla: 'tabQibla', quran: 'tabQuran', dhikr: 'tabDhikr', menu: 'tabMenu', settings: 'tSettings', monthly: 'tMonthly', days: 'tDays' };
+  const TITLES = { home: 'appName', qibla: 'tabQibla', quran: 'tabQuran', dhikr: 'tabDhikr', menu: 'tabMenu', settings: 'tSettings', monthly: 'tMonthly', days: 'tDays', notif: 'mNotif' };
   let stack = ['home'];
   const cur = () => stack[stack.length - 1];
   function render(view) {
@@ -209,6 +227,7 @@
     if (view === 'home') renderHome();
     if (view === 'monthly') renderMonth();
     if (view === 'days') renderDays();
+    if (view === 'notif') renderNotif();
     if (view !== 'reader') window.scrollTo(0, 0);
   }
   function go(view) { if (cur() !== view) stack.push(view); render(view); }
@@ -364,13 +383,14 @@
 
   // ---------------- Menü ----------------
   const MENU = [
+    { go: 'notif', ic: 'i-bell', t: 'mNotif', s: 'mNotifSub' },
     { go: 'monthly', ic: 'i-table', t: 'mMonthly', s: 'mMonthlySub' },
     { go: 'days', ic: 'i-moon', t: 'mDays', s: 'mDaysSub' },
     { go: 'quran', ic: 'i-book', t: 'tabQuran' },
     { go: 'qibla', ic: 'i-qibla', t: 'tabQibla' },
     { go: 'dhikr', ic: 'i-beads', t: 'tabDhikr' },
     { go: 'settings', ic: 'i-gear', t: 'mSettings', s: 'mSettingsSub' },
-    { soon: 1, ic: 'i-bell', t: 'mNotif' }, { soon: 1, ic: 'i-check', t: 'mPrayerLog' },
+    { soon: 1, ic: 'i-check', t: 'mPrayerLog' },
     { soon: 1, ic: 'i-cal', t: 'mKaza' }, { soon: 1, ic: 'i-people', t: 'mHatim' },
     { soon: 1, ic: 'i-star', t: 'mEsma' }, { soon: 1, ic: 'i-book', t: 'mDua' }
   ];
@@ -408,6 +428,73 @@
     }).join('');
   }
 
+  // ---------------- Ezan bildirimleri ----------------
+  const LN = window.Capacitor && window.Capacitor.Plugins && window.Capacitor.Plugins.LocalNotifications;
+  const nf = Object.assign({ on: false, mins: 15,
+    at: { fajr: true, sunrise: false, dhuhr: true, asr: true, maghrib: true, isha: true },
+    pre: { fajr: false, sunrise: false, dhuhr: false, asr: false, maghrib: false, isha: false } }, store.get('notif', {}));
+  const saveNf = () => { store.set('notif', nf); queueReschedule(); renderNotif(); };
+  let channelsReady = false, rsTimer = null;
+  const queueReschedule = () => { clearTimeout(rsTimer); rsTimer = setTimeout(reschedule, 400); };
+  async function ensureChannels() {
+    if (!LN || channelsReady) return;
+    try {
+      await LN.createChannel({ id: 'ezan', name: lang === 'tr' ? 'Ezan vakitleri' : 'Prayer times', importance: 5, visibility: 1, vibration: true });
+      await LN.createChannel({ id: 'hatirlatma', name: lang === 'tr' ? 'Vakit öncesi hatırlatma' : 'Reminders', importance: 4, visibility: 1, vibration: true });
+      channelsReady = true;
+    } catch (e) { console.error('channel', e); }
+  }
+  async function exactGranted() { try { return (await LN.checkExactNotificationSetting()).exact_alarm === 'granted'; } catch { return true; } }
+  async function enableNotif() {
+    if (!LN) { nf.on = true; saveNf(); return false; }
+    let p = await LN.checkPermissions();
+    if (p.display !== 'granted') p = await LN.requestPermissions();
+    nf.on = p.display === 'granted';
+    store.set('notif', nf); await reschedule(); renderNotif();
+    return nf.on;
+  }
+  async function reschedule() {
+    if (!LN) return 0;
+    try {
+      const pending = await LN.getPending();
+      if (pending.notifications.length) await LN.cancel({ notifications: pending.notifications.map(n => ({ id: n.id })) });
+      if (!nf.on || (await LN.checkPermissions()).display !== 'granted') { $('nfStatus').textContent = t('nfOff'); return 0; }
+      await ensureChannels();
+      const exact = await exactGranted();
+      const now = new Date(), DAYS = 10, list = [];
+      for (let d = 0; d < DAYS; d++) {
+        const pt = timesFor(new Date(now.getFullYear(), now.getMonth(), now.getDate() + d, 12));
+        PRAYERS.forEach((p, i) => {
+          const at = pt[p], sun = p === 'sunrise';
+          if (nf.at[p] && at > now) list.push({ id: d * 20 + i * 2 + 1, title: sun ? t('nfSunTitle') : t('nfTitle')(t(p)), body: `${settings.place.name} · ${hm(at)}`,
+            schedule: { at, allowWhileIdle: true }, channelId: 'ezan', isExactNotification: exact });
+          const b = new Date(at - nf.mins * 60000);
+          if (nf.pre[p] && b > now) list.push({ id: d * 20 + i * 2 + 2, title: sun ? t('nfSunPre')(nf.mins) : t('nfPreTitle')(t(p), nf.mins), body: `${t(p)} ${hm(at)} · ${settings.place.name}`,
+            schedule: { at: b, allowWhileIdle: true }, channelId: 'hatirlatma', isExactNotification: exact });
+        });
+      }
+      // Uygulama uzun süre açılmazsa hatırlat (bildirimler 10 gün ileriye kurulur)
+      list.push({ id: 9000, title: t('nfKeepTitle'), body: t('nfKeepBody'), schedule: { at: new Date(now.getTime() + (DAYS - 1) * 864e5), allowWhileIdle: true }, channelId: 'hatirlatma', isExactNotification: false });
+      await LN.schedule({ notifications: list });
+      $('nfStatus').textContent = t('nfOk')(list.length - 1);
+      return list.length - 1;
+    } catch (e) { console.error('reschedule', e); $('nfStatus').textContent = String(e && e.message || e); return 0; }
+  }
+  async function renderNotif() {
+    $('nfOn').checked = nf.on;
+    $('nfMins').value = String(nf.mins);
+    const pt = timesFor(new Date());
+    $('nfList').classList.toggle('off', !nf.on);
+    $('nfList').innerHTML = PRAYERS.map(p => `<li><div class="nf-name"><span>${t(p)}</span><em>${hm(pt[p])}</em></div>
+      <label class="switch-row"><span>${t('nfAt')}</span><input type="checkbox" data-nf="at" data-p="${p}" ${nf.at[p] ? 'checked' : ''}><i></i></label>
+      <label class="switch-row"><span>${t('nfPre')(nf.mins)}</span><input type="checkbox" data-nf="pre" data-p="${p}" ${nf.pre[p] ? 'checked' : ''}><i></i></label></li>`).join('');
+    $('nfWeb').hidden = !!LN;
+    if (!LN) { $('nfPerm').hidden = true; $('nfExact').hidden = true; return; }
+    const perm = await LN.checkPermissions();
+    $('nfPerm').hidden = !nf.on || perm.display === 'granted';
+    $('nfExact').hidden = !nf.on || perm.display !== 'granted' || await exactGranted();
+  }
+
   // ---------------- Ayarlar ----------------
   const methodOptions = sel => Object.entries(METHODS).map(([k, v]) => `<option value="${k}" ${k === sel ? 'selected' : ''}>${v}</option>`).join('');
   const cityOptions = () => (CITIES.some(c => c[0] === settings.place.name) ? '' : `<option selected>${settings.place.name}</option>`) +
@@ -431,12 +518,12 @@
   let obStep = 0;
   function obGo(n) {
     if (n < 0) return;
-    if (n > 2) { store.set('onboarded', true); $('onboard').hidden = true; refresh(); return; }
+    if (n > 3) { store.set('onboarded', true); $('onboard').hidden = true; refresh(); return; }
     obStep = n;
     document.querySelectorAll('.ob-step').forEach(s => { s.hidden = +s.dataset.step !== n; });
     document.querySelectorAll('#obDots i').forEach((d, i) => d.classList.toggle('on', i === n));
     $('obBack').style.visibility = n === 0 ? 'hidden' : 'visible';
-    $('obNext').textContent = n === 2 ? t('finish') : t('continue');
+    $('obNext').textContent = n === 3 ? t('finish') : t('continue');
     $('obCity').innerHTML = cityOptions();
     $('obMethod').innerHTML = methodOptions(settings.method);
     document.querySelectorAll('#obMadhab button').forEach(b => b.classList.toggle('on', b.dataset.v === settings.madhab));
@@ -484,10 +571,24 @@
   $('rdNext').addEventListener('click', () => { stack.pop(); openSurah(readerSurah + 1); });
   $('mPrev').addEventListener('click', () => { mOffset--; renderMonth(); });
   $('mNext').addEventListener('click', () => { mOffset++; renderMonth(); });
+  // Bildirim olayları
+  $('nfOn').addEventListener('change', async e => { if (e.target.checked) await enableNotif(); else { nf.on = false; saveNf(); } });
+  $('nfList').addEventListener('change', e => { const el = e.target; if (!el.dataset.nf) return; nf[el.dataset.nf][el.dataset.p] = el.checked; saveNf(); });
+  $('nfMins').addEventListener('change', e => { nf.mins = +e.target.value; saveNf(); });
+  $('nfPermBtn').addEventListener('click', enableNotif);
+  $('nfExactBtn').addEventListener('click', async () => { try { await LN.changeExactNotificationSetting(); } catch { /* yoksay */ } await reschedule(); renderNotif(); });
+  $('nfTest').addEventListener('click', async () => {
+    if (!LN) { $('nfStatus').textContent = t('nfWebOnly'); return; }
+    if (!(await enableNotif())) { $('nfStatus').textContent = t('nfDenied'); return; }
+    await ensureChannels();
+    await LN.schedule({ notifications: [{ id: 9999, title: t('nfTestTitle'), body: t('nfTestBody'), schedule: { at: new Date(Date.now() + 5000), allowWhileIdle: true }, channelId: 'ezan', isExactNotification: await exactGranted() }] });
+    $('nfStatus').textContent = t('nfTestSent');
+  });
   // Kurulum olayları
   $('obNext').addEventListener('click', () => obGo(obStep + 1));
   $('obBack').addEventListener('click', () => obGo(obStep - 1));
-  $('obSkip').addEventListener('click', () => obGo(3));
+  $('obSkip').addEventListener('click', () => obGo(4));
+  $('obNotif').addEventListener('click', async () => { const ok = await enableNotif(); $('obNotifStatus').textContent = ok ? t('nfOnOk') : t('nfDenied'); });
   $('obCity').addEventListener('change', e => { setCity(e.target.value); $('obLocStatus').textContent = t('locOk')(settings.place.name); });
   $('obGps').addEventListener('click', () => { $('obLocStatus').textContent = t('locWait'); useGps(ok => { $('obLocStatus').textContent = ok ? t('locOk')(settings.place.name) : ''; }); });
   $('obMethod').addEventListener('change', e => { settings.method = e.target.value; save(); });
@@ -495,11 +596,15 @@
 
   // Android geri tuşu
   const CapApp = window.Capacitor && window.Capacitor.Plugins && window.Capacitor.Plugins.App;
-  if (CapApp) CapApp.addListener('backButton', () => { if (!back()) CapApp.exitApp(); });
+  if (CapApp) {
+    CapApp.addListener('backButton', () => { if (!back()) CapApp.exitApp(); });
+    CapApp.addListener('resume', () => { refresh(); if (cur() === 'notif') renderNotif(); queueReschedule(); });
+  }
 
   refresh();
   render('home');
   loadQuran();
   if (!store.get('onboarded', false)) showOnboarding();
+  queueReschedule();
   setInterval(() => { if (cur() === 'home') tick(); }, 1000);
 })();

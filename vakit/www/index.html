@@ -66,8 +66,15 @@
       <button type="button" data-v="Hanafi"><b data-i18n="asrHan">Hanefi</b><small data-i18n="asrHanSub">Asr-ı sani (daha geç)</small></button>
     </div>
   </div>
+  <div class="ob-step" data-step="3" hidden>
+    <div class="ob-icon"><svg><use href="#i-bell"/></svg></div>
+    <h2 data-i18n="obNotifTitle">Ezan bildirimleri</h2>
+    <p data-i18n="obNotifText">Vakit girdiğinde haber verelim mi? Her vakit için ayrı ayrı açıp kapatabilirsiniz.</p>
+    <button id="obNotif" class="btn" type="button" data-i18n="obNotifBtn">Bildirimleri aç</button>
+    <p class="note" id="obNotifStatus"></p>
+  </div>
   <div class="ob-foot">
-    <div class="dots" id="obDots"><i></i><i></i><i></i></div>
+    <div class="dots" id="obDots"><i></i><i></i><i></i><i></i></div>
     <button id="obNext" class="btn big" type="button" data-i18n="continue">Devam et</button>
   </div>
 </div>
@@ -190,6 +197,32 @@
       <div class="card hijri-today"><b id="hijriBig"></b><span id="gregBig"></span></div>
       <ul class="days" id="daysList"></ul>
       <p class="note" data-i18n="daysNote">Tarihler astronomik hesapla bulunur; Diyanet'in ilan ettiği tarihle 1 gün farklı olabilir.</p>
+    </section>
+
+    <!-- Ezan bildirimleri -->
+    <section class="view" data-view="notif" hidden>
+      <div class="card warn" id="nfWeb" hidden><p data-i18n="nfWebOnly">Bildirimler yalnızca telefondaki uygulamada çalışır.</p></div>
+      <div class="card warn" id="nfPerm" hidden>
+        <b data-i18n="nfPermTitle">Bildirim izni kapalı</b>
+        <p data-i18n="nfPermText">Ezan vakitlerinde haber verebilmemiz için bildirim izni gerekiyor.</p>
+        <button class="btn" id="nfPermBtn" type="button" data-i18n="allow">İzin ver</button>
+      </div>
+      <div class="card warn" id="nfExact" hidden>
+        <b data-i18n="nfExactTitle">Tam zamanlı alarm izni</b>
+        <p data-i18n="nfExactText">Bu izin olmadan telefon bildirimi birkaç dakika geciktirebilir.</p>
+        <button class="btn" id="nfExactBtn" type="button" data-i18n="allow">İzin ver</button>
+      </div>
+      <div class="card">
+        <label class="switch-row"><span><b data-i18n="nfMaster">Ezan bildirimleri</b><small data-i18n="nfMasterSub">Vakit girdiğinde bildirim gelir</small></span><input type="checkbox" id="nfOn"><i></i></label>
+      </div>
+      <ul class="card nf-list" id="nfList"></ul>
+      <div class="card form">
+        <label class="lbl" data-i18n="nfBefore">Vakit öncesi hatırlatma süresi</label>
+        <select id="nfMins" class="field"><option value="5">5</option><option value="10">10</option><option value="15">15</option><option value="20">20</option><option value="30">30</option><option value="45">45</option><option value="60">60</option></select>
+        <button class="btn ghost" id="nfTest" type="button" data-i18n="nfTest">Deneme bildirimi gönder</button>
+        <p class="note" id="nfStatus"></p>
+        <p class="note" data-i18n="nfBattery">Bazı telefonlar pil tasarrufu için bildirimleri durdurabilir. Bildirim gelmezse telefon ayarlarından Vakit için pil kısıtlamasını kaldırın.</p>
+      </div>
     </section>
 
     <!-- Ayarlar -->

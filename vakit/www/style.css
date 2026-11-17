@@ -194,3 +194,23 @@ main{max-width:560px;margin:0 auto;padding:0 16px calc(96px + env(safe-area-inse
 .dots{display:flex;justify-content:center;gap:6px;margin:16px 0}
 .dots i{width:8px;height:8px;border-radius:4px;background:var(--line);transition:width .2s}
 .dots i.on{width:24px;background:var(--brand-2)}
+
+/* Bildirimler */
+.warn{background:var(--gold-soft);border-color:transparent}
+.warn p{margin:6px 0 12px;color:var(--ink);font-size:14px}
+.switch-row{display:flex;align-items:center;gap:12px;cursor:pointer;position:relative}
+.switch-row>span{flex:1;display:flex;flex-direction:column}
+.switch-row small{color:var(--muted);font-size:13px}
+.switch-row input{position:absolute;opacity:0;pointer-events:none}
+.switch-row i{flex:none;width:50px;height:30px;border-radius:15px;background:var(--line);position:relative;transition:background .2s}
+.switch-row i::after{content:"";position:absolute;top:3px;left:3px;width:24px;height:24px;border-radius:50%;background:#fff;box-shadow:0 1px 3px rgba(0,0,0,.2);transition:transform .2s}
+.switch-row input:checked+i{background:var(--brand-2)}
+.switch-row input:checked+i::after{transform:translateX(20px)}
+.switch-row input:disabled+i{opacity:.4}
+.nf-list{list-style:none;padding:6px 18px}
+.nf-list li{padding:12px 0;border-bottom:1px solid var(--line)}
+.nf-list li:last-child{border-bottom:0}
+.nf-list .nf-name{display:flex;justify-content:space-between;font-weight:700;margin-bottom:6px}
+.nf-list .nf-name em{font-style:normal;color:var(--muted);font-weight:500;font-variant-numeric:tabular-nums}
+.nf-list .switch-row{padding:6px 0;font-size:15px}
+.nf-list.off{opacity:.5;pointer-events:none}
