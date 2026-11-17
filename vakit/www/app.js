@@ -40,6 +40,7 @@
       mHatim: 'Ortak hatim', mEsma: "Esmâü'l-Hüsnâ", mPrayerLog: 'Namaz takibi', mDua: 'Dualar',
       logToday: 'Bugünkü namazlarım', streak: n => `🔥 ${n} gün seri`, prayed: 'Kıldım', notYet: 'Vakti girmedi', mark: 'İşaretle',
       stStreak: 'günlük seri', stBest: 'en uzun seri', stMonth: 'bu ay', last7: 'Son 7 gün', logNote: 'Kayıtlarınız yalnızca bu telefonda tutulur.', today: 'Bugün', tLog: 'Namaz takibi', mPrayerLogSub: 'Kıldığınız vakitler',
+      listenModes: { ar: 'Arapça', ar_tr: 'Arapça + meal', tr: 'Sadece meal' },
       mealBtn: 'Meal', mealMissing: 'Bu ayetin meali kaynak metinde ayrıca yer almıyor.', mealMerged: 'Bu ayetin meali bir önceki ayetle birlikte verilmiştir.', quranSource: "Arapça metin: QuranEnc.com. Meal: Elmalılı Muhammed Hamdi Yazır (1938), Vikikaynak (kamu malı). Ses: AlQuran.cloud / Islamic Network.",
       tDk: 'Dua kardeşliği', mDk: 'Dua kardeşliği', mDkSub: 'Birbirimiz için dua', tHatim: 'Ortak hatim', mHatimSub: 'Cüzleri paylaşarak hatim',
       dkNew: '+ Dua isteği paylaş', dkText: 'Dua isteğiniz', dkTextPh: 'Örneğin: Annem için şifa duası istiyorum.', dkWhat: 'Ne okunsun? (en fazla 5)', cancel: 'Vazgeç', dkSend: 'Paylaş', reload: 'Yenile',
@@ -124,6 +125,7 @@
       mHatim: 'Group khatm', mEsma: '99 Names', mPrayerLog: 'Prayer log', mDua: 'Duas',
       logToday: "Today's prayers", streak: n => `🔥 ${n}-day streak`, prayed: 'Prayed', notYet: 'Not yet', mark: 'Mark',
       stStreak: 'day streak', stBest: 'best streak', stMonth: 'this month', last7: 'Last 7 days', logNote: 'Your records stay on this phone only.', today: 'Today', tLog: 'Prayer log', mPrayerLogSub: 'Prayers you performed',
+      listenModes: { ar: 'Arabic', ar_tr: 'Arabic + Turkish', tr: 'Turkish only' },
       mealBtn: 'Turkish', mealMissing: 'This verse has no separate translation in the source text.', mealMerged: 'Translated together with the previous verse.',
       tDk: 'Prayer circle', mDk: 'Prayer circle', mDkSub: 'Pray for one another', tHatim: 'Group khatm', mHatimSub: 'Share the juz of a khatm',
       dkNew: '+ Share a prayer request', dkText: 'Your request', dkTextPh: 'For example: please pray for my mother’s health.', dkWhat: 'What should be recited? (max 5)', cancel: 'Cancel', dkSend: 'Share', reload: 'Refresh',
@@ -415,7 +417,7 @@
     $('rdAr').textContent = 'سورة ' + s.ar;
     $('rdMeta').textContent = `${surahName(s)} ${t('surah')} · ${s.mk ? t('meccan') : t('medinan')} · ${s.v} ${t('verses')}`.replace(/\s+·/, ' ·');
     $('rdBasmala').hidden = n === 1 || n === 9;
-    renderVerses();
+    renderVerses(); $('rdAudioBar').hidden = false;
     $('rdPrev').disabled = n === 1; $('rdNext').disabled = n === 114;
     go('reader');
     store.set('lastRead', { s: n, v: verse || 1 });
@@ -441,8 +443,25 @@
   const RECITERS = [['ar.alafasy', 'Mişari Râşid el-Afâsî'], ['ar.husary', 'Mahmûd Halîl el-Husarî'], ['ar.minshawi', 'Muhammed Sıddîk el-Minşâvî'], ['ar.abdulbasitmurattal', 'Abdülbâsıt Abdüssamed']];
   const audio = new Audio(); let playV = 0, playing = false;
   const globalAyah = (s, v) => { let n = 0; for (let i = 0; i < s - 1; i++) n += surahs[i].v; return n + v; };
+  // Türkçe meal: telefonun seslendirme motoru (geçici çözüm; izinli insan sesi kaydı gelince değişecek)
+  const TTS = window.Capacitor && window.Capacitor.Plugins && window.Capacitor.Plugins.TextToSpeech;
+  const listenMode = () => store.get('listenMode', 'ar');
+  async function speakMeal(v) {
+    const txt = mealOf(readerSurah, v); if (!txt) return;
+    try {
+      if (TTS) { await TTS.speak({ text: txt, lang: 'tr-TR', rate: 0.95 }); return; }
+      if (window.speechSynthesis) await new Promise(res => { const u = new SpeechSynthesisUtterance(txt); u.lang = 'tr-TR'; u.rate = 0.95; u.onend = u.onerror = res; speechSynthesis.speak(u); });
+    } catch { /* yoksay */ }
+  }
+  async function afterAyah() { if (!playing) return; if (listenMode() === 'ar_tr') { await speakMeal(playV); } if (playing) playAyah(playV + 1); }
   function playAyah(v) {
     if (v > surahs[readerSurah - 1].v) { stopAudio(); return; }
+    if (listenMode() === 'tr') {
+      playV = v; playing = true; $('rdPlay').textContent = '⏸'; $('rdAudioBar').hidden = false; $('rdAudioMsg').textContent = '';
+      document.querySelectorAll('#rdVerses .playing').forEach(e => e.classList.remove('playing'));
+      const el = $('v' + v); if (el) { el.classList.add('playing'); el.scrollIntoView({ block: 'center', behavior: 'smooth' }); }
+      speakMeal(v).then(() => { if (playing && playV === v) playAyah(v + 1); }); return;
+    }
     playV = v; playing = true; $('rdPlay').textContent = '⏸'; $('rdAudioBar').hidden = false; $('rdAudioMsg').textContent = t('audioLoad');
     document.querySelectorAll('#rdVerses .playing').forEach(e => e.classList.remove('playing'));
     const el = $('v' + v); if (el) { el.classList.add('playing'); el.scrollIntoView({ block: 'center', behavior: 'smooth' }); }
@@ -450,9 +469,9 @@
     audio.dataset.try = '128'; audio.src = `https://cdn.islamic.network/quran/audio/128/${r}/${g}.mp3`;
     audio.play().catch(() => {});
   }
-  function stopAudio() { audio.pause(); playing = false; $('rdPlay').textContent = '▶'; $('rdAudioMsg').textContent = ''; document.querySelectorAll('#rdVerses .playing').forEach(e => e.classList.remove('playing')); }
+  function stopAudio() { audio.pause(); try { if (TTS) TTS.stop(); else if (window.speechSynthesis) speechSynthesis.cancel(); } catch { /* yoksay */ } playing = false; $('rdPlay').textContent = '▶'; $('rdAudioMsg').textContent = ''; document.querySelectorAll('#rdVerses .playing').forEach(e => e.classList.remove('playing')); }
   audio.addEventListener('playing', () => { $('rdAudioMsg').textContent = ''; });
-  audio.addEventListener('ended', () => { if (playing) playAyah(playV + 1); });
+  audio.addEventListener('ended', afterAyah);
   audio.addEventListener('error', () => {
     if (!playing) return;
     if (audio.dataset.try === '128') { audio.dataset.try = '64'; audio.src = audio.src.replace('/128/', '/64/'); audio.play().catch(() => {}); return; }
@@ -1336,6 +1355,9 @@
   $('rdPlay').addEventListener('click', () => { if (playing) stopAudio(); else playAyah(firstVisibleAyah()); });
   $('rdReciter').innerHTML = RECITERS.map(([k, n]) => `<option value="${k}">${n}</option>`).join('');
   $('rdReciter').value = store.get('reciter', RECITERS[0][0]);
+  $('rdListen').innerHTML = Object.entries(t('listenModes')).map(([k, v]) => `<option value="${k}">${v}</option>`).join('');
+  $('rdListen').value = listenMode();
+  $('rdListen').addEventListener('change', e => { store.set('listenMode', e.target.value); if (playing) playAyah(playV); });
   $('rdReciter').addEventListener('change', e => { store.set('reciter', e.target.value); if (playing) playAyah(playV); });
   $('rdVerses').addEventListener('dblclick', e => { const el = e.target.closest('.v'); if (el) playAyah(+el.dataset.v); });
   $('rdMeal').addEventListener('click', () => { store.set('showMeal', !showMeal()); renderVerses(); });
