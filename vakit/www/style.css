@@ -370,3 +370,20 @@ main{flex:1;min-height:0;overflow-y:auto;overflow-x:hidden;-webkit-overflow-scro
 .themes button i{width:52px;height:52px;border-radius:16px;border:2px solid var(--line);display:block}
 .themes button.on i{border-color:var(--brand-2);box-shadow:0 0 0 3px var(--tint)}
 .themes button.on{color:var(--ink);font-weight:600}
+
+/* Kart paylaşımı */
+.icon-btn.sm{width:32px;height:32px;display:inline-grid;vertical-align:middle;color:var(--gold)}
+.icon-btn.sm svg{width:19px;height:19px}
+.sh-preview{display:flex;justify-content:center;align-items:center;height:46vh;margin:4px 0 12px}
+.sh-preview canvas{max-width:100%;max-height:100%;border-radius:18px;box-shadow:0 8px 24px rgba(0,0,0,.18)}
+.chips{display:flex;gap:8px;margin-bottom:10px}
+.chips button{flex:1;padding:9px 0;border-radius:20px;border:1.5px solid var(--line);background:var(--card);font-weight:700;font-size:14px}
+.chips button.on{background:var(--tint);border-color:var(--brand-2);color:var(--brand)}
+.sh-thumbs{display:flex;gap:10px;overflow-x:auto;padding:4px 2px 8px}
+.sh-thumbs canvas{flex:none;width:64px;height:96px;border-radius:12px;border:3px solid transparent;cursor:pointer}
+.sh-thumbs canvas.on{border-color:var(--brand-2)}
+.sh-swatches{display:grid;grid-template-columns:repeat(6,1fr);gap:10px;padding:4px 0 8px}
+.sh-swatches button{aspect-ratio:1;border-radius:14px;border:3px solid transparent}
+.sh-swatches button.on{border-color:var(--brand-2)}
+input[type=range]{width:100%;accent-color:var(--brand-2)}
+.sh-actions{margin-top:14px}

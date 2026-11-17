@@ -40,6 +40,9 @@
       mHatim: 'Ortak hatim', mEsma: "Esmâü'l-Hüsnâ", mPrayerLog: 'Namaz takibi', mDua: 'Dualar',
       logToday: 'Bugünkü namazlarım', streak: n => `🔥 ${n} gün seri`, prayed: 'Kıldım', notYet: 'Vakti girmedi', mark: 'İşaretle',
       stStreak: 'günlük seri', stBest: 'en uzun seri', stMonth: 'bu ay', last7: 'Son 7 gün', logNote: 'Kayıtlarınız yalnızca bu telefonda tutulur.', today: 'Bugün', tLog: 'Namaz takibi', mPrayerLogSub: 'Kıldığınız vakitler',
+      tShare: 'Kart olarak paylaş', shBg: 'Görseller', shColor: 'Renkler', shText: 'Yazı', shSize: 'Yazı boyutu', shShowTr: 'Türkçe anlamı göster', shDim: 'Karartma',
+      shSave: 'Kaydet', shShare: 'Paylaş', shSaved: p => `Kaydedildi: ${p}`, shFail: 'Kaydedilemedi, Paylaş ile devam edebilirsiniz.', shWatermark: 'Vakit uygulaması',
+      lblVerse: 'Âyet', lblHadis: 'Hadis', lblDua: 'Dua', lblEsma: "Esmâü'l-Hüsnâ",
       province: 'İl / Şehir', district: 'İlçe', turkey: 'Türkiye', abroad: 'Yurt dışı', themeLbl: 'Tema', themeNames: { auto: 'Sistem', light: 'Açık', dark: 'Koyu', navy: 'Lacivert', rose: 'Gül', sand: 'Kum', violet: 'Mor' },
       tIlmihal: 'İlmihal', mIlmihal: 'İlmihal', mIlmihalSub: 'Temel dini bilgiler', ilmihalNote: "Hanefi mezhebine göre temel bilgilerin özetidir. Ayrıntı ve özel durumlar için Diyanet İlmihali'ne veya bir din görevlisine başvurun.",
       ramLeft: "Ramazan'a kalan", dayShort: 'gün', sahur: 'Sahur (imsak)', iftar: 'İftar', iftarDua: 'İftar duası', iftarDuaTr: "Allah'ım! Senin rızan için oruç tuttum ve senin rızkınla orucumu açtım.",
@@ -106,6 +109,9 @@
       mHatim: 'Group khatm', mEsma: '99 Names', mPrayerLog: 'Prayer log', mDua: 'Duas',
       logToday: "Today's prayers", streak: n => `🔥 ${n}-day streak`, prayed: 'Prayed', notYet: 'Not yet', mark: 'Mark',
       stStreak: 'day streak', stBest: 'best streak', stMonth: 'this month', last7: 'Last 7 days', logNote: 'Your records stay on this phone only.', today: 'Today', tLog: 'Prayer log', mPrayerLogSub: 'Prayers you performed',
+      tShare: 'Share as card', shBg: 'Images', shColor: 'Colors', shText: 'Text', shSize: 'Text size', shShowTr: 'Show translation', shDim: 'Darken',
+      shSave: 'Save', shShare: 'Share', shSaved: p => `Saved: ${p}`, shFail: 'Could not save; you can still share.', shWatermark: 'Vakit app',
+      lblVerse: 'Verse', lblHadis: 'Hadith', lblDua: 'Dua', lblEsma: 'Names of Allah',
       province: 'Province / City', district: 'District', turkey: 'Turkey', abroad: 'Abroad', themeLbl: 'Theme', themeNames: { auto: 'System', light: 'Light', dark: 'Dark', navy: 'Navy', rose: 'Rose', sand: 'Sand', violet: 'Violet' },
       tIlmihal: 'Basics of worship', mIlmihal: 'Basics', mIlmihalSub: 'Worship basics (Turkish)', ilmihalNote: 'A Hanafi summary of the basics (in Turkish). For details, consult a qualified scholar.',
       ramLeft: 'Time to Ramadan', dayShort: 'd', sahur: 'Suhoor (Fajr)', iftar: 'Iftar', iftarDua: 'Iftar dua', iftarDuaTr: 'O Allah, for You I have fasted and with Your provision I break my fast.',
@@ -267,7 +273,7 @@
 
   // ---------------- Görünümler ve gezinme ----------------
   const ROOTS = ['home', 'qibla', 'quran', 'dhikr', 'menu'];
-  const TITLES = { home: 'appName', qibla: 'tabQibla', quran: 'tabQuran', dhikr: 'tabDhikr', menu: 'tabMenu', settings: 'tSettings', monthly: 'tMonthly', days: 'tDays', notif: 'mNotif', log: 'tLog', kaza: 'tKaza', esma: 'mEsma', hadis: 'tHadis', dua: 'tDua', deeds: 'tDeeds', names: 'tNames', quiz: 'tQuiz', ramazan: 'tRamazan', nafile: 'tNafile', ilmihal: 'tIlmihal' };
+  const TITLES = { home: 'appName', qibla: 'tabQibla', quran: 'tabQuran', dhikr: 'tabDhikr', menu: 'tabMenu', settings: 'tSettings', monthly: 'tMonthly', days: 'tDays', notif: 'mNotif', log: 'tLog', kaza: 'tKaza', esma: 'mEsma', hadis: 'tHadis', dua: 'tDua', deeds: 'tDeeds', names: 'tNames', quiz: 'tQuiz', ramazan: 'tRamazan', nafile: 'tNafile', ilmihal: 'tIlmihal', share: 'tShare' };
   let stack = ['home'];
   const cur = () => stack[stack.length - 1];
   function render(view) {
@@ -677,6 +683,118 @@
     ramTick();
   }
 
+  // ---------------- Kart olarak paylaş ----------------
+  const SH_SIZES = { 916: [1080, 1920], 11: [1080, 1080], 45: [1080, 1350], 169: [1920, 1080] };
+  const SH_COLORS = ['#0d4a3e', '#13283f', '#3b1f4a', '#7d2645', '#5e3d14', '#1e1e1e', '#f5efe2', '#e9f1ee', '#fbe5ec', '#eaf0fb', '#fff8e1', '#ffffff'];
+  const sh = Object.assign({ size: '916', bg: 'emerald', color: null, font: 100, dim: 15, tr: true }, store.get('shareStyle', {}));
+  let shContent = null;
+  const rnd = seed => () => { seed = (seed * 16807) % 2147483647; return (seed - 1) / 2147483646; };
+  function grad(ctx, w, h, stops) { const g = ctx.createLinearGradient(0, 0, w * 0.3, h); stops.forEach((c, i) => g.addColorStop(i / (stops.length - 1), c)); ctx.fillStyle = g; ctx.fillRect(0, 0, w, h); }
+  function star8(ctx, x, y, r) { for (const a of [0, Math.PI / 4]) { ctx.save(); ctx.translate(x, y); ctx.rotate(a); ctx.strokeRect(-r, -r, 2 * r, 2 * r); ctx.restore(); } }
+  const BGS = {
+    emerald(ctx, w, h) { grad(ctx, w, h, ['#145a4c', '#0b3a31', '#061f1a']); ctx.strokeStyle = 'rgba(226,196,125,.13)'; ctx.lineWidth = 2; const s = 150; for (let y = s / 2; y < h + s; y += s) for (let x = (Math.round(y / s) % 2 ? s / 2 : 0); x < w + s; x += s) star8(ctx, x, y, 38); },
+    navy(ctx, w, h) { grad(ctx, w, h, ['#22336a', '#121c40', '#080d22']); ctx.strokeStyle = 'rgba(160,185,255,.12)'; ctx.lineWidth = 2; const s = 110; for (let y = 0; y < h + s; y += s) for (let x = 0; x < w + s; x += s) { ctx.beginPath(); ctx.arc(x, y, s / 2, 0, 7); ctx.stroke(); } },
+    night(ctx, w, h) {
+      grad(ctx, w, h, ['#0a0f26', '#14204a', '#24356e']); const r = rnd(7);
+      for (let i = 0; i < (w * h) / 9000; i++) { ctx.fillStyle = `rgba(255,255,255,${0.3 + r() * 0.7})`; ctx.beginPath(); ctx.arc(r() * w, r() * h, r() * 2.2 + 0.4, 0, 7); ctx.fill(); }
+      const mx = w * 0.78, my = Math.min(w, h) * 0.17, mr = Math.min(w, h) * 0.07;
+      // Hilal: ayrı katmanda daire çizilip içinden kaydırılmış daire oyulur
+      const m = document.createElement('canvas'); m.width = m.height = Math.ceil(mr * 4); const mc = m.getContext('2d'), o = mr * 2;
+      mc.fillStyle = '#f6e7b5'; mc.beginPath(); mc.arc(o, o, mr, 0, 7); mc.fill();
+      mc.globalCompositeOperation = 'destination-out'; mc.beginPath(); mc.arc(o + mr * 0.42, o - mr * 0.22, mr * 0.88, 0, 7); mc.fill();
+      ctx.shadowColor = 'rgba(255,240,190,.75)'; ctx.shadowBlur = 36 * (mr / 75); ctx.drawImage(m, mx - o, my - o); ctx.shadowBlur = 0;
+    },
+    sunset(ctx, w, h) {
+      grad(ctx, w, h, ['#2e2352', '#6c3a6b', '#c4625a', '#f0a35e']);
+      const base = h * 0.86, u = Math.min(w, h) / 1080, cx = w / 2; ctx.fillStyle = '#1b1024';
+      ctx.fillRect(0, base, w, h - base);
+      ctx.fillRect(cx - 300 * u, base - 140 * u, 600 * u, 140 * u);
+      ctx.beginPath(); ctx.arc(cx, base - 140 * u, 170 * u, Math.PI, 0); ctx.fill();
+      ctx.fillRect(cx - 4 * u, base - 140 * u - 230 * u, 8 * u, 60 * u);
+      for (const d of [-1, 1]) { ctx.beginPath(); ctx.arc(cx + d * 220 * u, base - 140 * u, 70 * u, Math.PI, 0); ctx.fill(); ctx.fillRect(cx + d * 400 * u - 16 * u, base - 470 * u, 32 * u, 470 * u); ctx.beginPath(); ctx.moveTo(cx + d * 400 * u - 20 * u, base - 470 * u); ctx.lineTo(cx + d * 400 * u, base - 560 * u); ctx.lineTo(cx + d * 400 * u + 20 * u, base - 470 * u); ctx.fill(); ctx.fillRect(cx + d * 400 * u - 26 * u, base - 330 * u, 52 * u, 14 * u); }
+    },
+    dawn(ctx, w, h) {
+      grad(ctx, w, h, ['#f7d9b0', '#f0b088', '#c98a9a', '#6e5a8e']);
+      const sx = w / 2, sy = h * 0.62, sr = Math.min(w, h) * 0.12; const g = ctx.createRadialGradient(sx, sy, 0, sx, sy, sr * 3.5); g.addColorStop(0, 'rgba(255,240,200,.95)'); g.addColorStop(0.3, 'rgba(255,215,160,.5)'); g.addColorStop(1, 'rgba(255,215,160,0)'); ctx.fillStyle = g; ctx.fillRect(0, 0, w, h);
+      [['#9a7aa6', 0.66], ['#7d6194', 0.74], ['#5b4678', 0.83], ['#3e2f5a', 0.92]].forEach(([c, f], k) => { ctx.fillStyle = c; ctx.beginPath(); ctx.moveTo(0, h); const r = rnd(k + 3); for (let x = 0; x <= w + 60; x += 60) ctx.lineTo(x, h * f - r() * h * 0.06 - Math.sin(x / w * 6 + k) * h * 0.03); ctx.lineTo(w, h); ctx.fill(); });
+    },
+    sand(ctx, w, h) { grad(ctx, w, h, ['#f1e2c2', '#d9b77c', '#a77a3d']); ctx.strokeStyle = 'rgba(90,60,20,.12)'; ctx.lineWidth = 2; const s = 90; for (let y = 0; y < h + s; y += s) for (let x = 0; x < w + s; x += s) { ctx.beginPath(); ctx.moveTo(x, y - s / 2); ctx.lineTo(x + s / 2, y); ctx.lineTo(x, y + s / 2); ctx.lineTo(x - s / 2, y); ctx.closePath(); ctx.stroke(); } }
+  };
+  const LIGHT_BG = ['dawn', 'sand'];
+  const lum = hex => { const n = parseInt(hex.slice(1), 16); return (0.299 * (n >> 16) + 0.587 * (n >> 8 & 255) + 0.114 * (n & 255)) / 255; };
+  function wrapText(ctx, text, maxW) {
+    const words = String(text).split(/\s+/), lines = []; let line = '';
+    for (const w of words) { const t2 = line ? line + ' ' + w : w; if (ctx.measureText(t2).width > maxW && line) { lines.push(line); line = w; } else line = t2; }
+    if (line) lines.push(line); return lines;
+  }
+  function drawCard(cv, opts, content, preview) {
+    const [W, H] = SH_SIZES[opts.size]; cv.width = W; cv.height = H; const ctx = cv.getContext('2d');
+    if (opts.color) { ctx.fillStyle = opts.color; ctx.fillRect(0, 0, W, H); } else BGS[opts.bg](ctx, W, H);
+    const light = opts.color ? lum(opts.color) > 0.6 : LIGHT_BG.includes(opts.bg);
+    if (opts.dim) { ctx.fillStyle = `rgba(0,0,0,${opts.dim / 100})`; ctx.fillRect(0, 0, W, H); }
+    const dark = light && opts.dim < 35;
+    const ink = dark ? '#1f1a14' : '#ffffff', sub = dark ? '#5c4a2a' : '#f0d79a';
+    if (!content) return;
+    const u = Math.min(W, H) / 1080, f = opts.font / 100, arF = (content.arSize || 1) * 66, trF = content.ar ? 40 : 54, boxW = Math.min(W * 0.84, 980 * u * 1.3), pad = 56 * u;
+    // ölçüm
+    const parts = [];
+    ctx.direction = 'rtl'; ctx.font = `${Math.round(arF * u * f)}px "Amiri Quran", serif`;
+    const arLines = content.ar ? wrapText(ctx, content.ar, boxW - pad * 2) : [];
+    ctx.direction = 'ltr'; ctx.font = `500 ${Math.round(trF * u * f)}px system-ui, sans-serif`;
+    const trLines = content.tr && opts.tr ? wrapText(ctx, content.tr, boxW - pad * 2) : [];
+    const big = content.big ? Math.round(56 * u * f) : 0;
+    const arLH = arF * u * f * 1.9, trLH = trF * u * f * 1.45, arGap = arLines.length ? arF * u * f * 0.35 : 0;
+    let boxH = pad * 2 + 40 * u + arGap + arLines.length * arLH + (big ? big * 1.5 : 0) + (trLines.length ? 20 * u + trLines.length * trLH : 0) + 60 * u;
+    const scale = Math.min(1, (H * 0.8) / boxH);
+    if (scale < 1 && !opts._shrunk) return drawCard(cv, Object.assign({}, opts, { font: opts.font * scale * 0.97, _shrunk: 1 }), content, preview);
+    const bx = (W - boxW) / 2, cy = !opts.color && opts.bg === 'sunset' ? Math.max(boxH / 2 + 40 * u, H * 0.86 - 600 * u - boxH / 2 - 30 * u) : H / 2, by = Math.max(30 * u, cy - boxH / 2 - 20 * u);
+    ctx.fillStyle = dark ? 'rgba(255,255,255,.55)' : 'rgba(0,0,0,.28)'; ctx.strokeStyle = dark ? 'rgba(120,90,40,.45)' : 'rgba(226,196,125,.55)'; ctx.lineWidth = 2.5 * u;
+    ctx.beginPath(); ctx.roundRect(bx, by, boxW, boxH, 36 * u); ctx.fill(); ctx.stroke();
+    let y = by + pad; ctx.textAlign = 'center'; ctx.textBaseline = 'top';
+    ctx.fillStyle = sub; ctx.font = `700 ${Math.round(30 * u)}px system-ui, sans-serif`; ctx.fillText(content.label, W / 2, y); y += 40 * u + 16 * u + arGap;
+    ctx.fillStyle = ink; ctx.direction = 'rtl'; ctx.font = `${Math.round(arF * u * f)}px "Amiri Quran", serif`;
+    for (const l of arLines) { ctx.fillText(l, W / 2, y); y += arLH; }
+    ctx.direction = 'ltr';
+    if (big) { ctx.font = `700 ${big}px system-ui, sans-serif`; ctx.fillText(content.big, W / 2, y); y += big * 1.5; }
+    if (trLines.length) { y += 20 * u; ctx.font = `500 ${Math.round(trF * u * f)}px system-ui, sans-serif`; for (const l of trLines) { ctx.fillText(l, W / 2, y); y += trLH; } }
+    ctx.fillStyle = sub; ctx.font = `600 ${Math.round(30 * u)}px system-ui, sans-serif`; ctx.fillText(content.ref || '', W / 2, y + 18 * u);
+    // filigran
+    ctx.textAlign = 'right'; ctx.textBaseline = 'alphabetic'; ctx.fillStyle = dark ? 'rgba(30,25,20,.75)' : 'rgba(255,255,255,.85)'; ctx.font = `700 ${Math.round(28 * u)}px system-ui, sans-serif`;
+    ctx.fillText('🕌 ' + t('shWatermark'), W - 48 * u, H - 48 * u);
+  }
+  function shareContent(kind) {
+    const n = dayOfYear(new Date());
+    if (kind === 'verse') { const [s, v] = DAILY[n % DAILY.length]; return { label: t('lblVerse'), ar: quran[s - 1][v - 1], ref: `${surahName(surahs[s - 1])} ${t('surah')}, ${v}. ${t('ayah')}`.replace(' ,', ',') }; }
+    if (kind === 'hadis') { const x = hadisData[n % hadisData.length]; return { label: t('lblHadis'), tr: lang === 'tr' ? x.tr : x.en, ref: x.src }; }
+    if (kind === 'dua') { const d = duaData[n % duaData.length]; return { label: t('lblDua'), ar: duaAr(d), tr: lang === 'tr' ? d.tr : d.en, ref: duaRef(d) }; }
+    if (kind === 'esma') { const i = n % 99, e = esmaData[i]; return { label: `${t('lblEsma')} · ${i + 1}/99`, ar: e.ar, arSize: 1.8, big: e.tl, tr: lang === 'tr' ? e.tr : e.en, ref: '' }; }
+    return null;
+  }
+  async function renderShare() {
+    try { await document.fonts.load('60px "Amiri Quran"'); } catch { /* yoksay */ }
+    drawCard($('shCanvas'), sh, shContent, true);
+    document.querySelectorAll('#shSizes button').forEach(b => b.classList.toggle('on', b.dataset.size === sh.size));
+    $('shBgs').innerHTML = ''; Object.keys(BGS).forEach(k => { const c = document.createElement('canvas'); c.dataset.bg = k; c.className = !sh.color && sh.bg === k ? 'on' : ''; drawCard(c, { size: '916', bg: k, dim: 0, font: 100, tr: true }, null); $('shBgs').appendChild(c); });
+    $('shColors').innerHTML = SH_COLORS.map(c => `<button type="button" data-color="${c}" class="${sh.color === c ? 'on' : ''}" style="background:${c}"></button>`).join('');
+    $('shFont').value = sh.font; $('shDim').value = sh.dim; $('shTr').checked = sh.tr;
+  }
+  function openShare(kind) { shContent = shareContent(kind); if (!shContent) return; $('shMsg').textContent = ''; go('share'); renderShare(); }
+  const shSave = () => store.set('shareStyle', { size: sh.size, bg: sh.bg, color: sh.color, font: sh.font, dim: sh.dim, tr: sh.tr });
+  async function exportCard(mode) {
+    const data = $('shCanvas').toDataURL('image/png'), b64 = data.split(',')[1], name = `vakit-${Date.now()}.png`;
+    const P = window.Capacitor && window.Capacitor.Plugins, FS = P && P.Filesystem, SH = P && P.Share;
+    if (FS && SH) {
+      if (mode === 'share') { const r = await FS.writeFile({ path: name, data: b64, directory: 'CACHE' }); await SH.share({ files: [r.uri], dialogTitle: t('shShare') }); return; }
+      for (const [dir, path] of [['EXTERNAL_STORAGE', `Pictures/Vakit/${name}`], ['DOCUMENTS', `Vakit/${name}`]]) {
+        try { await FS.writeFile({ path, data: b64, directory: dir, recursive: true }); $('shMsg').textContent = t('shSaved')(path); return; } catch (e) { console.warn('save', dir, e); }
+      }
+      $('shMsg').textContent = t('shFail'); return;
+    }
+    const blob = await (await fetch(data)).blob(), file = new File([blob], name, { type: 'image/png' });
+    if (mode === 'share' && navigator.canShare && navigator.canShare({ files: [file] })) { await navigator.share({ files: [file] }); return; }
+    const a = document.createElement('a'); a.href = data; a.download = name; a.click(); $('shMsg').textContent = t('shSaved')(name);
+  }
+
   // ---------------- İlmihal ----------------
   let ilmihalData = null;
   function renderIlmihal() {
@@ -1006,6 +1124,17 @@
     if (e.target.id === 'qNext') { quiz.i++; quiz.picked = null; if (quiz.i >= quiz.qs.length && quiz.score > store.get('quizBest', 0)) store.set('quizBest', quiz.score); renderQuiz(); return; }
     if (e.target.id === 'qAgain') { newQuiz(); renderQuiz(); }
   });
+  // Kart paylaşım olayları
+  document.addEventListener('click', e => { const b = e.target.closest('[data-share]'); if (b) { e.stopPropagation(); openShare(b.dataset.share); } }, true);
+  $('shSizes').addEventListener('click', e => { const b = e.target.closest('[data-size]'); if (!b) return; sh.size = b.dataset.size; shSave(); renderShare(); });
+  $('shTabs').addEventListener('click', e => { const b = e.target.closest('[data-t]'); if (!b) return; document.querySelectorAll('#shTabs button').forEach(x => x.classList.toggle('on', x === b)); $('shPaneBg').hidden = b.dataset.t !== 'bg'; $('shPaneColor').hidden = b.dataset.t !== 'color'; $('shPaneText').hidden = b.dataset.t !== 'text'; });
+  $('shBgs').addEventListener('click', e => { const c = e.target.closest('[data-bg]'); if (!c) return; sh.bg = c.dataset.bg; sh.color = null; shSave(); renderShare(); });
+  $('shColors').addEventListener('click', e => { const c = e.target.closest('[data-color]'); if (!c) return; sh.color = c.dataset.color; shSave(); renderShare(); });
+  $('shFont').addEventListener('input', e => { sh.font = +e.target.value; shSave(); drawCard($('shCanvas'), sh, shContent, true); });
+  $('shDim').addEventListener('input', e => { sh.dim = +e.target.value; shSave(); drawCard($('shCanvas'), sh, shContent, true); });
+  $('shTr').addEventListener('change', e => { sh.tr = e.target.checked; shSave(); drawCard($('shCanvas'), sh, shContent, true); });
+  $('shShare').addEventListener('click', () => exportCard('share').catch(err => { $('shMsg').textContent = String(err && err.message || err); }));
+  $('shSave').addEventListener('click', () => exportCard('save').catch(err => { $('shMsg').textContent = String(err && err.message || err); }));
   // Ramazan ve nafile olayları
   $('ramTable').addEventListener('click', e => { const td = e.target.closest('[data-rd]'); if (!td || !td.dataset.rd) return; const k = td.dataset.rd; if (fasts.ram[k]) delete fasts.ram[k]; else fasts.ram[k] = 1; saveFasts(); renderRamazan(); });
   $('ramToKaza').addEventListener('click', () => {
@@ -1061,7 +1190,7 @@
 
   // Kaydırarak geçiş: ana sekmeler ve kurulum ekranı arasında sağa-sola
   let sx = null, sy = 0, st = 0;
-  const noSwipe = el => el.closest('.scroll, .seg, .compass, input, select, textarea, .opts, .duo');
+  const noSwipe = el => el.closest('.scroll, .seg, .compass, input, select, textarea, .opts, .duo, .sh-thumbs, .sh-preview');
   document.addEventListener('touchstart', e => {
     if (e.touches.length !== 1 || noSwipe(e.target)) { sx = null; return; }
     sx = e.touches[0].clientX; sy = e.touches[0].clientY; st = Date.now();
