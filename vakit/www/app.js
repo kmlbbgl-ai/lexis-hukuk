@@ -42,7 +42,7 @@
       stStreak: 'günlük seri', stBest: 'en uzun seri', stMonth: 'bu ay', last7: 'Son 7 gün', logNote: 'Kayıtlarınız yalnızca bu telefonda tutulur.', today: 'Bugün', tLog: 'Namaz takibi', mPrayerLogSub: 'Kıldığınız vakitler',
       listenModes: { ar: 'Arapça', ar_tr: 'Arapça + meal', tr: 'Sadece meal' },
       mealBtn: 'Meal', mealMissing: 'Bu ayetin meali kaynak metinde ayrıca yer almıyor.', mealMerged: 'Bu ayetin meali bir önceki ayetle birlikte verilmiştir.', quranSource: "Arapça metin: QuranEnc.com. Meal: Elmalılı Muhammed Hamdi Yazır (1938), Vikikaynak (kamu malı). Ses: AlQuran.cloud / Islamic Network.",
-      dkHowMany: 'kaç kez okudunuz?', dkOther: 'Diğer', dkOk: 'Tamam',
+      listenAyah: 'Bu ayetten dinle', dkHowMany: 'kaç kez okudunuz?', dkOther: 'Diğer', dkOk: 'Tamam',
       tDk: 'Dua kardeşliği', mDk: 'Dua kardeşliği', mDkSub: 'Birbirimiz için dua', tHatim: 'Ortak hatim', mHatimSub: 'Cüzleri paylaşarak hatim',
       dkNew: '+ Dua isteği paylaş', dkText: 'Dua isteğiniz', dkTextPh: 'Örneğin: Annem için şifa duası istiyorum.', dkWhat: 'Ne okunsun? (en fazla 5)', cancel: 'Vazgeç', dkSend: 'Paylaş', reload: 'Yenile',
       dkRules: 'Dua isteğinizi herkes görebilir. Ad, telefon, adres gibi kişisel bilgi yazmayın. Uygunsuz paylaşımlar şikâyetle kaldırılır.',
@@ -128,7 +128,7 @@
       stStreak: 'day streak', stBest: 'best streak', stMonth: 'this month', last7: 'Last 7 days', logNote: 'Your records stay on this phone only.', today: 'Today', tLog: 'Prayer log', mPrayerLogSub: 'Prayers you performed',
       listenModes: { ar: 'Arabic', ar_tr: 'Arabic + Turkish', tr: 'Turkish only' },
       mealBtn: 'Turkish', mealMissing: 'This verse has no separate translation in the source text.', mealMerged: 'Translated together with the previous verse.',
-      dkHowMany: 'how many times did you recite?', dkOther: 'Other', dkOk: 'OK',
+      listenAyah: 'Listen from this verse', dkHowMany: 'how many times did you recite?', dkOther: 'Other', dkOk: 'OK',
       tDk: 'Prayer circle', mDk: 'Prayer circle', mDkSub: 'Pray for one another', tHatim: 'Group khatm', mHatimSub: 'Share the juz of a khatm',
       dkNew: '+ Share a prayer request', dkText: 'Your request', dkTextPh: 'For example: please pray for my mother’s health.', dkWhat: 'What should be recited? (max 5)', cancel: 'Cancel', dkSend: 'Share', reload: 'Refresh',
       dkRules: 'Everyone can see your request. Do not write names, phone numbers or addresses. Inappropriate posts are removed after reports.',
@@ -439,7 +439,7 @@
     document.querySelectorAll('#rdMode button').forEach(b => b.classList.toggle('on', b.dataset.m === mode));
     $('rdMeal').classList.toggle('on', showMeal()); $('rdMeal').hidden = mode === 'flow';
     if (mode === 'flow') { box.innerHTML = quran[n - 1].map((v, i) => `<span class="v" id="v${i + 1}" data-v="${i + 1}">${v}<span class="vn">﴿${arNum(i + 1)}﴾</span></span> `).join(''); return; }
-    box.innerHTML = quran[n - 1].map((v, i) => { const k = `${n}:${i + 1}`; return `<article class="ayah v" id="v${i + 1}" data-v="${i + 1}"><div class="ay-top"><button type="button" class="${favs.has(k) ? 'on' : ''}" data-fav="${k}" aria-label="Favori">${SVG_HEART}</button><button type="button" data-ashare="${k}" aria-label="Paylaş">${SVG_SHARE}</button><span class="ay-no">${i + 1}</span></div><p class="ay-ar" lang="ar" style="font-size:${rdFont()}px">${v}</p>${meal && showMeal() ? `<p class="ay-tr${mealOf(n, i + 1) ? '' : ' muted'}">${mealOf(n, i + 1) || t('mealMissing')}</p>` : ''}</article>`; }).join('');
+    box.innerHTML = quran[n - 1].map((v, i) => { const k = `${n}:${i + 1}`; return `<article class="ayah v" id="v${i + 1}" data-v="${i + 1}"><div class="ay-top"><button type="button" class="${favs.has(k) ? 'on' : ''}" data-fav="${k}" aria-label="Favori">${SVG_HEART}</button><button type="button" data-ashare="${k}" aria-label="Paylaş">${SVG_SHARE}</button><button type="button" class="ay-play" data-aplay="${i + 1}" aria-label="${t('listenAyah')}">▶</button><span class="ay-no">${i + 1}</span></div><p class="ay-ar" lang="ar" style="font-size:${rdFont()}px">${v}</p>${meal && showMeal() ? `<p class="ay-tr${mealOf(n, i + 1) ? '' : ' muted'}">${mealOf(n, i + 1) || t('mealMissing')}</p>` : ''}</article>`; }).join('');
   }
   // Sesli okuma (AlQuran.cloud / Islamic Network CDN, internet gerekir)
   const RECITERS = [['ar.alafasy', 'Mişari Râşid el-Afâsî'], ['ar.husary', 'Mahmûd Halîl el-Husarî'], ['ar.minshawi', 'Muhammed Sıddîk el-Minşâvî'], ['ar.abdulbasitmurattal', 'Abdülbâsıt Abdüssamed']];
@@ -467,12 +467,13 @@
     }
     playV = v; playing = true; $('rdPlay').textContent = '⏸'; $('rdAudioBar').hidden = false; $('rdAudioMsg').textContent = t('audioLoad');
     document.querySelectorAll('#rdVerses .playing').forEach(e => e.classList.remove('playing'));
-    const el = $('v' + v); if (el) { el.classList.add('playing'); el.scrollIntoView({ block: 'center', behavior: 'smooth' }); }
+    document.querySelectorAll('#rdVerses .ay-play').forEach(b => { b.textContent = '▶'; });
+    const el = $('v' + v); if (el) { el.classList.add('playing'); const pb = el.querySelector('.ay-play'); if (pb) pb.textContent = '⏸'; el.scrollIntoView({ block: 'center', behavior: 'smooth' }); }
     const r = store.get('reciter', RECITERS[0][0]), g = globalAyah(readerSurah, v);
     audio.dataset.try = '128'; audio.src = `https://cdn.islamic.network/quran/audio/128/${r}/${g}.mp3`;
     audio.play().catch(() => {});
   }
-  function stopAudio() { audio.pause(); try { if (TTS) TTS.stop(); else if (window.speechSynthesis) speechSynthesis.cancel(); } catch { /* yoksay */ } playing = false; $('rdPlay').textContent = '▶'; $('rdAudioMsg').textContent = ''; document.querySelectorAll('#rdVerses .playing').forEach(e => e.classList.remove('playing')); }
+  function stopAudio() { audio.pause(); try { if (TTS) TTS.stop(); else if (window.speechSynthesis) speechSynthesis.cancel(); } catch { /* yoksay */ } playing = false; document.querySelectorAll('#rdVerses .ay-play').forEach(b => { b.textContent = '▶'; }); $('rdPlay').textContent = '▶'; $('rdAudioMsg').textContent = ''; document.querySelectorAll('#rdVerses .playing').forEach(e => e.classList.remove('playing')); }
   audio.addEventListener('playing', () => { $('rdAudioMsg').textContent = ''; });
   audio.addEventListener('ended', afterAyah);
   audio.addEventListener('error', () => {
@@ -1354,6 +1355,7 @@
   // Okuyucu olayları
   document.addEventListener('click', e => {
     const f = e.target.closest('[data-fav]'); if (f) { e.stopPropagation(); toggleFav(f.dataset.fav, f); if (cur() === 'favs') renderFavs(); return; }
+    const ap = e.target.closest('[data-aplay]'); if (ap) { e.stopPropagation(); const v = +ap.dataset.aplay; if (playing && playV === v) stopAudio(); else playAyah(v); return; }
     const a = e.target.closest('[data-ashare]'); if (a) { e.stopPropagation(); const [s, v] = a.dataset.ashare.split(':').map(Number); openShare({ label: t('lblVerse'), ar: quran[s - 1][v - 1], tr: lang === 'tr' ? mealOf(s, v) : '', ref: ayahRef(s, v) }); return; }
     const o = e.target.closest('[data-open]'); if (o && cur() === 'favs') { const [s, v] = o.dataset.open.split(':').map(Number); openSurah(s, v); }
   }, true);

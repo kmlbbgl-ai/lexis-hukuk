@@ -463,3 +463,6 @@ input[type=range]{width:100%;accent-color:var(--brand-2)}
 .dk-nums button{min-width:46px;padding:9px 12px;border-radius:12px;border:1.5px solid var(--brand-2);background:var(--card);color:var(--brand);font-weight:700}
 .dk-nums button.ok{background:var(--brand-2);color:#fff}
 .dk-nums input{width:80px;padding:9px;border-radius:12px;border:1.5px solid var(--line);background:var(--card);font-size:15px}
+
+.ay-top .ay-play{color:var(--brand-2);font-size:16px;border:1.5px solid var(--line);border-radius:50%;width:36px;height:36px}
+.ayah.playing .ay-play{background:var(--brand-2);color:#fff;border-color:var(--brand-2)}
