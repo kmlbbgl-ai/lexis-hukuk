@@ -40,6 +40,7 @@
       mHatim: 'Ortak hatim', mEsma: "Esmâü'l-Hüsnâ", mPrayerLog: 'Namaz takibi', mDua: 'Dualar',
       logToday: 'Bugünkü namazlarım', streak: n => `🔥 ${n} gün seri`, prayed: 'Kıldım', notYet: 'Vakti girmedi', mark: 'İşaretle',
       stStreak: 'günlük seri', stBest: 'en uzun seri', stMonth: 'bu ay', last7: 'Son 7 gün', logNote: 'Kayıtlarınız yalnızca bu telefonda tutulur.', today: 'Bugün', tLog: 'Namaz takibi', mPrayerLogSub: 'Kıldığınız vakitler',
+      nfSound: 'Bildirim sesi', listen: 'Dinle', nfSoundNote: 'Ezan sesi, izinli bir kayıt bulunduğunda eklenecek.', sounds: { def: 'Telefonun sesi', can: 'Çan', zil: 'Zil', nota: 'Nota', sessiz: 'Sadece titreşim' },
       modeCards: 'Ayet ayet', modeFlow: 'Mushaf', favs: 'Favori ayetler', favEmpty: 'Henüz favori ayetiniz yok. Okurken ayetin üstündeki kalbe dokunun.', favN: n => `${n} ayet`, tFavs: 'Favori ayetler',
       tShare: 'Kart olarak paylaş', shBg: 'Görseller', shColor: 'Renkler', shText: 'Yazı', shSize: 'Yazı boyutu', shShowTr: 'Türkçe anlamı göster', shDim: 'Karartma',
       shSave: 'Kaydet', shShare: 'Paylaş', shSaved: p => `Kaydedildi: ${p}`, shFail: 'Kaydedilemedi, Paylaş ile devam edebilirsiniz.', shWatermark: 'Vakit uygulaması',
@@ -110,6 +111,7 @@
       mHatim: 'Group khatm', mEsma: '99 Names', mPrayerLog: 'Prayer log', mDua: 'Duas',
       logToday: "Today's prayers", streak: n => `🔥 ${n}-day streak`, prayed: 'Prayed', notYet: 'Not yet', mark: 'Mark',
       stStreak: 'day streak', stBest: 'best streak', stMonth: 'this month', last7: 'Last 7 days', logNote: 'Your records stay on this phone only.', today: 'Today', tLog: 'Prayer log', mPrayerLogSub: 'Prayers you performed',
+      nfSound: 'Notification sound', listen: 'Play', nfSoundNote: 'An adhan sound will be added once a licensed recording is available.', sounds: { def: 'Phone default', can: 'Bell', zil: 'Chime', nota: 'Notes', sessiz: 'Vibrate only' },
       modeCards: 'Verse by verse', modeFlow: 'Mushaf', favs: 'Favorite verses', favEmpty: 'No favorites yet. Tap the heart above a verse while reading.', favN: n => `${n} verses`, tFavs: 'Favorite verses',
       tShare: 'Share as card', shBg: 'Images', shColor: 'Colors', shText: 'Text', shSize: 'Text size', shShowTr: 'Show translation', shDim: 'Darken',
       shSave: 'Save', shShare: 'Share', shSaved: p => `Saved: ${p}`, shFail: 'Could not save; you can still share.', shWatermark: 'Vakit app',
@@ -938,6 +940,7 @@
     if (!LN || channelsReady) return;
     try {
       await LN.createChannel({ id: 'ezan', name: lang === 'tr' ? 'Ezan vakitleri' : 'Prayer times', importance: 5, visibility: 1, vibration: true });
+      for (const s of ['can', 'zil', 'nota', 'sessiz']) await LN.createChannel({ id: 'ezan_' + s, name: (lang === 'tr' ? 'Ezan vakitleri · ' : 'Prayer times · ') + t('sounds')[s], importance: 5, visibility: 1, vibration: true, sound: `vakit_${s}.wav` });
       await LN.createChannel({ id: 'hatirlatma', name: lang === 'tr' ? 'Vakit öncesi hatırlatma' : 'Reminders', importance: 4, visibility: 1, vibration: true });
       channelsReady = true;
     } catch (e) { console.error('channel', e); }
@@ -974,7 +977,7 @@
           const rr = ramadanRange(at), inRam = rr && ramIndex(rr, at) >= 0 && ramIndex(rr, at) < rr.days;
           const title = sun ? t('nfSunTitle') : inRam && p === 'maghrib' ? t('nfIftar') : inRam && p === 'fajr' ? t('nfSahurEnd') : t('nfTitle')(t(p));
           if (nf.at[p] && at > now) list.push({ id: d * 20 + i * 2 + 1, title, body: `${settings.place.name} · ${hm(at)}`,
-            schedule: { at, allowWhileIdle: true }, channelId: 'ezan', isExactNotification: exact });
+            schedule: { at, allowWhileIdle: true }, channelId: nf.sound && nf.sound !== 'def' ? 'ezan_' + nf.sound : 'ezan', isExactNotification: exact });
           const b = new Date(at - nf.mins * 60000);
           if (nf.pre[p] && b > now) list.push({ id: d * 20 + i * 2 + 2, title: sun ? t('nfSunPre')(nf.mins) : t('nfPreTitle')(t(p), nf.mins), body: `${t(p)} ${hm(at)} · ${settings.place.name}`,
             schedule: { at: b, allowWhileIdle: true }, channelId: 'hatirlatma', isExactNotification: exact });
@@ -987,7 +990,9 @@
       return list.length - 1;
     } catch (e) { console.error('reschedule', e); $('nfStatus').textContent = String(e && e.message || e); return 0; }
   }
+  function renderSoundSel() { $('nfSoundSel').innerHTML = Object.entries(t('sounds')).map(([k, v]) => `<option value="${k}" ${k === (nf.sound || 'def') ? 'selected' : ''}>${v}</option>`).join(''); }
   async function renderNotif() {
+    renderSoundSel();
     $('nfOn').checked = nf.on;
     $('nfMins').value = String(nf.mins);
     const pt = timesFor(new Date());
@@ -1201,6 +1206,8 @@
   // Bildirim olayları
   $('nfOn').addEventListener('change', async e => { if (e.target.checked) await enableNotif(); else { nf.on = false; saveNf(); } });
   $('nfList').addEventListener('change', e => { const el = e.target; if (!el.dataset.nf) return; nf[el.dataset.nf][el.dataset.p] = el.checked; saveNf(); });
+  $('nfSoundSel').addEventListener('change', e => { nf.sound = e.target.value; saveNf(); });
+  $('nfSoundPlay').addEventListener('click', () => { const s = $('nfSoundSel').value; if (s === 'def' || s === 'sessiz') { if (navigator.vibrate) navigator.vibrate([200, 100, 200]); return; } try { new Audio(`sounds/vakit_${s}.wav`).play(); } catch { /* yoksay */ } });
   $('nfMins').addEventListener('change', e => { nf.mins = +e.target.value; saveNf(); });
   $('nfPermBtn').addEventListener('click', enableNotif);
   $('nfExactBtn').addEventListener('click', async () => { try { await LN.changeExactNotificationSetting(); } catch { /* yoksay */ } await reschedule(); renderNotif(); });
@@ -1208,7 +1215,7 @@
     if (!LN) { $('nfStatus').textContent = t('nfWebOnly'); return; }
     if (!(await enableNotif())) { $('nfStatus').textContent = t('nfDenied'); return; }
     await ensureChannels();
-    await LN.schedule({ notifications: [{ id: 9999, title: t('nfTestTitle'), body: t('nfTestBody'), schedule: { at: new Date(Date.now() + 5000), allowWhileIdle: true }, channelId: 'ezan', isExactNotification: await exactGranted() }] });
+    await LN.schedule({ notifications: [{ id: 9999, title: t('nfTestTitle'), body: t('nfTestBody'), schedule: { at: new Date(Date.now() + 5000), allowWhileIdle: true }, channelId: nf.sound && nf.sound !== 'def' ? 'ezan_' + nf.sound : 'ezan', isExactNotification: await exactGranted() }] });
     $('nfStatus').textContent = t('nfTestSent');
   });
   // Kurulum olayları
