@@ -33,4 +33,24 @@ public class WidgetPlugin extends Plugin {
         r.put("ok", ok);
         call.resolve(r);
     }
+
+    @PluginMethod
+    public void scheduleAdhan(PluginCall call) {
+        JSObject r = new JSObject();
+        r.put("count", AdhanReceiver.schedule(getContext(), call.getString("items", "[]")));
+        call.resolve(r);
+    }
+
+    @PluginMethod
+    public void playAdhan(PluginCall call) {
+        android.content.Intent s = new android.content.Intent(getContext(), AdhanService.class).putExtra("title", call.getString("title", "Ezan")).putExtra("body", call.getString("body", ""));
+        if (Build.VERSION.SDK_INT >= 26) getContext().startForegroundService(s); else getContext().startService(s);
+        call.resolve();
+    }
+
+    @PluginMethod
+    public void stopAdhan(PluginCall call) {
+        getContext().startService(new android.content.Intent(getContext(), AdhanService.class).setAction(AdhanService.STOP));
+        call.resolve();
+    }
 }

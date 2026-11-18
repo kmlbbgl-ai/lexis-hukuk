@@ -53,7 +53,7 @@ Kural: kullanıcıya sormadan ücretli bir şey (API, görsel üretimi vb.) kull
 - Paket adı + iletişim e-postası kararı, imzalı sürüm, gizlilik sayfasını herkese açık yapma.
 
 ## EKSİKLER LİSTESİ (kullanıcı madde madde soracak; yapılınca [x] işaretle)
-- [ ] 1. Telefonda test: ezan bildirimi (deneme bildirimi, kaydırınca susma)
+- [ ] 1. Telefonda test: ezan — bildirim sesi çalmadı; alarm sesiyle okuyan servis eklendi (AdhanService), test bekleniyor
 - [ ] 2. Telefonda test: kıble, sekme kaydırma, ayet ▶ düğmesi
 - [ ] 3. Kur'an sesi lisansı (Islamic Network "ticari olmayan") — izin al veya sesi kapat
 - [x] 4. Dua kardeşliği: şikâyet sebebi, engelleme, yönetici (admins/{uid}) — 18.11.2026; kullanıcı yeni firestore.rules'u yüklemeli

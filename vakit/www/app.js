@@ -55,7 +55,7 @@
       htCopied: 'Paylaşım metni kopyalandı.', htEmptyTitle: 'Hatim', htComplete: 'Hatim tamamlandı. Allah kabul etsin!',
       dkItemNames: { fatiha: 'Fâtiha', ihlas: 'İhlâs', felak: 'Felak', nas: 'Nâs', kursi: 'Âyetel Kürsî', yasin: 'Yâsîn', salavat: 'Salavât', tebareke: 'Tebâreke' },
       reciters: 'Kâri', audioErr: 'Ses yüklenemedi. İnternet bağlantınızı kontrol edin.', audioLoad: 'Yükleniyor…',
-      nfSound: 'Bildirim sesi', listen: 'Dinle', nfSoundNote: 'Ezan seçiliyken bildirim geldiğinde ezan okunur; bildirime dokununca veya kaydırınca susar.', sounds: { def: 'Telefonun sesi', ezan: 'Ezan', can: 'Çan', zil: 'Zil', nota: 'Nota', sessiz: 'Sadece titreşim' },
+      nfSound: 'Bildirim sesi', listen: 'Dinle', nfSoundNote: 'Ezan seçiliyken vakit girince ezan alarm sesiyle okunur: ekran kapalıyken ve sessiz moddayken de duyulur (ses düzeyi = alarm sesi). Durdurmak için bildirimdeki "Durdur"a basın veya bildirimi kaydırın.', nfTestAdhan: 'Ezan 10 saniye sonra okunacak. Ekranı kapatıp bekleyebilirsiniz.', sounds: { def: 'Telefonun sesi', ezan: 'Ezan', can: 'Çan', zil: 'Zil', nota: 'Nota', sessiz: 'Sadece titreşim' },
       modeCards: 'Ayet ayet', modeFlow: 'Mushaf', favs: 'Favori ayetler', favEmpty: 'Henüz favori ayetiniz yok. Okurken ayetin üstündeki kalbe dokunun.', favN: n => `${n} ayet`, tFavs: 'Favori ayetler',
       tShare: 'Kart olarak paylaş', wTitle: 'Ana ekran widget\'ı', wNote: 'Sonraki vakti ve geri sayımı telefonunuzun ana ekranında gösterir.', wPin: 'Ana ekrana widget ekle', wAsk: 'Açılan pencerede "Ekle"ye dokunun.', wManual: 'Telefonunuz otomatik eklemeyi desteklemiyor. Ana ekranda boş bir yere basılı tutun → Widget\'lar → Vakit → Namaz vakitleri.', wHave: n => `Ana ekranınızda ${n} Vakit widget\'ı var.`, bkTitle: 'Yedekleme', bkSave: 'Yedek al', bkLoad: 'Yedeği geri yükle', bkNote: 'Namaz, kaza, oruç, iyilik kayıtlarınız, favorileriniz ve ayarlarınız yalnızca bu telefonda durur. Telefon değiştirmeden önce yedek alın; dosyayı Drive\'a, e-postanıza veya WhatsApp\'ta kendinize gönderin.', bkSaved: p => `Yedek kaydedildi: ${p}`, bkBad: 'Bu dosya bir Vakit yedeği değil.', bkAsk: d => `${d} tarihli yedek yüklensin mi? Bu telefondaki mevcut kayıtların yerine geçecek.`, bkDone: 'Yedek yüklendi, uygulama yeniden açılıyor…', dkWhy: 'Neden bildiriyorsunuz?', dkReasons: { uygunsuz: 'Uygunsuz içerik', hakaret: 'Hakaret / nefret', reklam: 'Reklam / dolandırıcılık', kisisel: 'Kişisel bilgi', diger: 'Diğer' }, dkBlock: '🚫 Bu kişiyi engelle', dkBlocked: 'Kişi engellendi; paylaşımlarını artık görmeyeceksiniz.', dkAlready: 'Bu paylaşımı zaten bildirdiniz.', dkUnblock: 'Engellenenleri kaldır', dkUid: id => `Kullanıcı no: ${id}`, dkAdmin: 'Yönetici', dkRules: 'Kurallar: Hakaret, siyaset, reklam, telefon numarası ve kişisel bilgi paylaşmayın. 3 şikâyet alan paylaşım gizlenir; yönetici kontrol eder.', wLeft: '%s vaktine', mDesign: 'Kartını tasarla', mDesignSub: 'Cuma, bayram, kandil mesajı', shGallery: 'Galeriden seç', catAyah: 'Ayet', shTextPh: 'Ya da kendi yazınızı yazın', shRefPh: 'Alt satır (isteğe bağlı), ör. Ahmet ve ailesi', greetCuma: 'Cuma mesajı gönder', greetSub: 'Hazır söz ve fotoğrafla kart hazırlayın', photoBy: 'Fotoğraf', shBg: 'Görseller', shColor: 'Renkler', shText: 'Yazı', shSize: 'Yazı boyutu', shShowTr: 'Türkçe anlamı göster', shDim: 'Karartma',
       shSave: 'Kaydet', shShare: 'Paylaş', shSaved: p => `Kaydedildi: ${p}`, shFail: 'Kaydedilemedi, Paylaş ile devam edebilirsiniz.', shWatermark: 'Vakit uygulaması',
@@ -141,7 +141,7 @@
       htCopied: 'Share text copied.', htEmptyTitle: 'Khatm', htComplete: 'The khatm is complete. May Allah accept it!',
       dkItemNames: { fatiha: 'Al-Fatiha', ihlas: 'Al-Ikhlas', felak: 'Al-Falaq', nas: 'An-Nas', kursi: 'Ayat al-Kursi', yasin: 'Ya-Sin', salavat: 'Salawat', tebareke: 'Al-Mulk' },
       reciters: 'Reciter', audioErr: 'Audio could not load. Check your internet connection.', audioLoad: 'Loading…',
-      nfSound: 'Notification sound', listen: 'Play', nfSoundNote: 'With Adhan selected, the adhan plays when the alert arrives; tap or swipe the alert to stop it.', sounds: { def: 'Phone default', ezan: 'Adhan', can: 'Bell', zil: 'Chime', nota: 'Notes', sessiz: 'Vibrate only' },
+      nfSound: 'Notification sound', listen: 'Play', nfSoundNote: 'With Adhan selected, the adhan plays at alarm volume, even with the screen off or in silent mode. Tap "Stop" or swipe the notification to stop it.', nfTestAdhan: 'The adhan will play in 10 seconds. You can turn the screen off.', sounds: { def: 'Phone default', ezan: 'Adhan', can: 'Bell', zil: 'Chime', nota: 'Notes', sessiz: 'Vibrate only' },
       modeCards: 'Verse by verse', modeFlow: 'Mushaf', favs: 'Favorite verses', favEmpty: 'No favorites yet. Tap the heart above a verse while reading.', favN: n => `${n} verses`, tFavs: 'Favorite verses',
       tShare: 'Share as card', wTitle: 'Home screen widget', wNote: 'Shows the next prayer and countdown on your home screen.', wPin: 'Add widget to home screen', wAsk: 'Tap "Add" in the window that opens.', wManual: 'Your phone does not support adding automatically. Long-press an empty spot on the home screen → Widgets → Vakit → Prayer times.', wHave: n => `You have ${n} Vakit widget(s) on your home screen.`, bkTitle: 'Backup', bkSave: 'Back up', bkLoad: 'Restore backup', bkNote: 'Your prayer, qada, fasting and good-deed logs, favourites and settings stay only on this phone. Back up before changing phones and send the file to Drive, email or yourself.', bkSaved: p => `Backup saved: ${p}`, bkBad: 'This file is not a Vakit backup.', bkAsk: d => `Restore the backup from ${d}? It will replace the records on this phone.`, bkDone: 'Backup restored, reloading…', dkWhy: 'Why are you reporting this?', dkReasons: { uygunsuz: 'Inappropriate', hakaret: 'Insult / hate', reklam: 'Spam / scam', kisisel: 'Personal info', diger: 'Other' }, dkBlock: '🚫 Block this person', dkBlocked: 'Blocked. You will no longer see their posts.', dkAlready: 'You have already reported this post.', dkUnblock: 'Unblock all', dkUid: id => `User ID: ${id}`, dkAdmin: 'Admin', dkRules: 'Rules: no insults, politics, ads, phone numbers or personal info. Posts with 3 reports are hidden and reviewed by an admin.', wLeft: 'until %s', mDesign: 'Design a card', mDesignSub: 'Friday, Eid, holy night greetings', shGallery: 'From gallery', catAyah: 'Verse', shTextPh: 'Or write your own text', shRefPh: 'Signature line (optional)', greetCuma: 'Send a Jumuah greeting', greetSub: 'Make a card with a photo and ready text', photoBy: 'Photo', shBg: 'Images', shColor: 'Colors', shText: 'Text', shSize: 'Text size', shShowTr: 'Show translation', shDim: 'Darken',
       shSave: 'Save', shShare: 'Share', shSaved: p => `Saved: ${p}`, shFail: 'Could not save; you can still share.', shWatermark: 'Vakit app',
@@ -1202,6 +1202,8 @@
       W.save({ data: JSON.stringify({ city: settings.place.name, left: t('wLeft'), names: PRAYERS.map(k => t(k)), days }) }).catch(() => {});
     } catch (e) { console.warn('widget', e); }
   }
+  let lastAdhan = [];
+  const VW = () => window.Capacitor && window.Capacitor.Plugins && window.Capacitor.Plugins.VakitWidget;
   async function reschedule() {
     pushWidget();
     if (!LN) return 0;
@@ -1215,17 +1217,18 @@
         for (let d = 0; d < 10; d++) { const at = new Date(now0.getFullYear(), now0.getMonth(), now0.getDate() + d, 21, 0); if (at > now0) dl.push({ id: 800 + d, title: t('deedNotifTitle'), body: t('deedNotifBody'), schedule: { at, allowWhileIdle: true }, channelId: 'hatirlatma', isExactNotification: false }); }
         if (dl.length) await LN.schedule({ notifications: dl });
       }
-      if (!nf.on || !granted) { $('nfStatus').textContent = t('nfOff'); return 0; }
+      if (!nf.on || !granted) { lastAdhan = []; if (VW()) VW().scheduleAdhan({ items: '[]' }).catch(() => {}); $('nfStatus').textContent = t('nfOff'); return 0; }
       await ensureChannels();
       const exact = await exactGranted();
-      const now = new Date(), DAYS = 10, list = [];
+      const now = new Date(), DAYS = 10, list = [], adhan = [], useAdhan = nf.sound === 'ezan' && !!VW();
       for (let d = 0; d < DAYS; d++) {
         const pt = timesFor(new Date(now.getFullYear(), now.getMonth(), now.getDate() + d, 12));
         PRAYERS.forEach((p, i) => {
           const at = pt[p], sun = p === 'sunrise';
           const rr = ramadanRange(at), inRam = rr && ramIndex(rr, at) >= 0 && ramIndex(rr, at) < rr.days;
           const title = sun ? t('nfSunTitle') : inRam && p === 'maghrib' ? t('nfIftar') : inRam && p === 'fajr' ? t('nfSahurEnd') : t('nfTitle')(t(p));
-          if (nf.at[p] && at > now) list.push({ id: d * 20 + i * 2 + 1, title, body: `${settings.place.name} · ${hm(at)}`,
+          if (nf.at[p] && at > now && useAdhan && !sun) adhan.push({ at: at.getTime(), title, body: `${settings.place.name} · ${hm(at)}` });
+          else if (nf.at[p] && at > now) list.push({ id: d * 20 + i * 2 + 1, title, body: `${settings.place.name} · ${hm(at)}`,
             schedule: { at, allowWhileIdle: true }, channelId: nf.sound && nf.sound !== 'def' ? 'ezan_' + nf.sound : 'ezan', isExactNotification: exact });
           const b = new Date(at - nf.mins * 60000);
           if (nf.pre[p] && b > now) list.push({ id: d * 20 + i * 2 + 2, title: sun ? t('nfSunPre')(nf.mins) : t('nfPreTitle')(t(p), nf.mins), body: `${t(p)} ${hm(at)} · ${settings.place.name}`,
@@ -1235,6 +1238,7 @@
       // Uygulama uzun süre açılmazsa hatırlat (bildirimler 10 gün ileriye kurulur)
       list.push({ id: 9000, title: t('nfKeepTitle'), body: t('nfKeepBody'), schedule: { at: new Date(now.getTime() + (DAYS - 1) * 864e5), allowWhileIdle: true }, channelId: 'hatirlatma', isExactNotification: false });
       await LN.schedule({ notifications: list });
+      lastAdhan = adhan; if (VW()) { try { await VW().scheduleAdhan({ items: JSON.stringify(adhan) }); } catch (e) { console.warn('adhan', e); } }
       $('nfStatus').textContent = t('nfOk')(list.length - 1);
       return list.length - 1;
     } catch (e) { console.error('reschedule', e); $('nfStatus').textContent = String(e && e.message || e); return 0; }
@@ -1556,6 +1560,7 @@
     if (!LN) { $('nfStatus').textContent = t('nfWebOnly'); return; }
     if (!(await enableNotif())) { $('nfStatus').textContent = t('nfDenied'); return; }
     await ensureChannels();
+    if (nf.sound === 'ezan' && VW()) { await VW().scheduleAdhan({ items: JSON.stringify([...lastAdhan, { at: Date.now() + 10000, title: t('nfTestTitle'), body: t('nfTestBody') }].sort((a, b) => a.at - b.at)) }); $('nfStatus').textContent = t('nfTestAdhan'); return; }
     await LN.schedule({ notifications: [{ id: 9999, title: t('nfTestTitle'), body: t('nfTestBody'), schedule: { at: new Date(Date.now() + 5000), allowWhileIdle: true }, channelId: nf.sound && nf.sound !== 'def' ? 'ezan_' + nf.sound : 'ezan', isExactNotification: await exactGranted() }] });
     $('nfStatus').textContent = t('nfTestSent');
   });
