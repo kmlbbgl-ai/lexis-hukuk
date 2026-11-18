@@ -51,3 +51,22 @@ Kural: kullanıcıya sormadan ücretli bir şey (API, görsel üretimi vb.) kull
 ## YAYINDAN ÖNCE MUTLAKA
 - Kur'an ses kayıtları (Islamic Network CDN) şartları "ticari olmayan" diyor: reklam/Pro varsa izin alınmalı veya sesli dinleme kapatılmalı (www/app.js RECITERS/playAyah).
 - Paket adı + iletişim e-postası kararı, imzalı sürüm, gizlilik sayfasını herkese açık yapma.
+
+## EKSİKLER LİSTESİ (kullanıcı madde madde soracak; yapılınca [x] işaretle)
+- [ ] 1. Telefonda test: ezan bildirimi (deneme bildirimi, kaydırınca susma)
+- [ ] 2. Telefonda test: kıble, sekme kaydırma, ayet ▶ düğmesi
+- [ ] 3. Kur'an sesi lisansı (Islamic Network "ticari olmayan") — izin al veya sesi kapat
+- [ ] 4. Dua kardeşliği: şikâyet/engelle düğmesi + yönetici onayı
+- [ ] 5. Kayıt yedekleme/geri yükleme (namaz, kaza, iyilik kayıtları)
+- [ ] 6. Ana ekran widget'ı (sonraki vakit + geri sayım)
+- [ ] 7. Vakit doğruluğu: daha çok şehirde Diyanet ile karşılaştırma
+- [ ] 8. 67 ilçenin gerçek koordinatları
+- [ ] 9. 2027-08 sonrası kandil/bayram tarihleri (Diyanet açıklayınca)
+- [ ] 10. Kart fotoğrafları (kullanıcı gönderecek veya Wikimedia; Unsplash izni reddedildi)
+- [ ] 11. İngilizce meal
+- [ ] 12. Elmalılı eski kelimeler sözlüğü
+- [ ] 13. AdMob + Pro abonelik
+- [ ] 14. Yapay zekâ "Soru sor" (kullanıcı kararı)
+- [ ] 15. Kâbe canlı / Kur'an radyo (yayın hakkı)
+- [ ] 16. Yarım mesaj: "Burada Gazi Nas girebildiğini görebilsin…" — açıklama bekleniyor
+Yapıldı ayrıca (18.11.2026): ezan bildirim sesi (kullanıcının kaydı, baştaki sessizlik kesildi), Kartını tasarla (hazır sözler, galeriden foto, Cuma kartı), ayet ▶, üstte önceki/sonraki sure.
