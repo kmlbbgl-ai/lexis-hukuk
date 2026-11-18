@@ -53,11 +53,12 @@ Kural: kullanıcıya sormadan ücretli bir şey (API, görsel üretimi vb.) kull
 - Paket adı + iletişim e-postası kararı, imzalı sürüm, gizlilik sayfasını herkese açık yapma.
 
 ## EKSİKLER LİSTESİ (kullanıcı madde madde soracak; yapılınca [x] işaretle)
+Not: Kullanıcı isteği — hiçbir madde kullanıcı telefonda kontrol etmeden "yapıldı" işaretlenmeyecek. Kodlananlar "kodlandı, kontrol bekliyor" diye not edilir.
 - [ ] 1. Telefonda test: ezan — bildirim sesi çalmadı; alarm sesiyle okuyan servis eklendi (AdhanService), test bekleniyor
 - [ ] 2. Telefonda test: kıble, sekme kaydırma, ayet ▶ düğmesi
 - [ ] 3. Kur'an sesi lisansı (Islamic Network "ticari olmayan") — izin al veya sesi kapat
-- [x] 4. Dua kardeşliği: şikâyet sebebi, engelleme, yönetici (admins/{uid}) — 18.11.2026; kullanıcı yeni firestore.rules'u yüklemeli
-- [x] 5. Kayıt yedekleme/geri yükleme — 18.11.2026 (Ayarlar)
+- [ ] 4. Dua kardeşliği: şikâyet sebebi, engelleme, yönetici (admins/{uid}) — kodlandı, kontrol bekliyor; kullanıcı yeni firestore.rules'u yüklemeli
+- [ ] 5. Kayıt yedekleme/geri yükleme (Ayarlar) — kodlandı, kontrol bekliyor
 - [ ] 6. Ana ekran widget'ı — kullanıcı ekleyemedi; Ayarlar'a 'Ana ekrana widget ekle' düğmesi + önizleme eklendi, test bekleniyor
 - [ ] 7. Vakit doğruluğu: daha çok şehirde Diyanet ile karşılaştırma
 - [ ] 8. 67 ilçenin gerçek koordinatları
