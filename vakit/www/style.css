@@ -464,6 +464,17 @@ input[type=range]{width:100%;accent-color:var(--brand-2)}
 .dk-nums button.ok{background:var(--brand-2);color:#fff}
 .dk-nums input{width:80px;padding:9px;border-radius:12px;border:1.5px solid var(--line);background:var(--card);font-size:15px}
 
+.sh-thumbs img{width:100%;aspect-ratio:9/16;object-fit:cover;border-radius:10px;border:3px solid transparent;cursor:pointer}
+.sh-thumbs img.on{border-color:var(--brand-2)}
+.sh-thumbs .sh-gal{aspect-ratio:9/16;border:2px dashed var(--line);border-radius:10px;background:var(--card);color:var(--brand-2);font:inherit;font-weight:600;font-size:13px;padding:6px}
+#shInput{resize:vertical;min-height:84px;font:inherit}
+#shCustom{margin:10px 0}
+.sh-cats button{flex:none;padding:8px 14px}
+.sh-cats{flex-wrap:nowrap;overflow-x:auto}
+#shSozList{margin:10px 0;max-height:230px;overflow:auto}
+#shSozList button.on{border-color:var(--brand-2);background:var(--brand-soft,var(--bg))}
+#shRefIn{margin-top:8px}
+#shSozList button{display:block;width:100%;text-align:left;background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:9px 12px;margin-bottom:6px;font:inherit;font-size:14px;color:var(--ink)}
 .ay-top .ay-play{color:var(--brand-2);font-size:16px;border:1.5px solid var(--line);border-radius:50%;width:36px;height:36px}
 .ayah.playing .ay-play{background:var(--brand-2);color:#fff;border-color:var(--brand-2)}
 

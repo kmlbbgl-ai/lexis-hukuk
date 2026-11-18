@@ -105,6 +105,11 @@
         <ol class="hero-times" id="heroTimes"></ol>
       </div>
 
+      <button class="card row-card" type="button" data-share="design:Cuma" id="greetCard" hidden>
+        <span class="rc-ic gold"><svg><use href="#i-share"/></svg></span>
+        <span class="rc-body"><b id="greetBig"></b><em data-i18n="greetSub">Hazır söz ve fotoğrafla kart hazırlayın</em></span>
+        <svg class="chev"><use href="#i-chev"/></svg>
+      </button>
       <button class="card row-card ram-card" type="button" data-go="ramazan" id="ramCard" hidden>
         <span class="rc-ic gold"><svg><use href="#i-moon"/></svg></span>
         <span class="rc-body"><small id="ramCardSmall"></small><b id="ramCardBig"></b><em id="ramCardSub"></em></span>
@@ -379,8 +384,14 @@
       <div class="chips" id="shSizes">
         <button type="button" data-size="916" class="on">9:16</button><button type="button" data-size="11">1:1</button><button type="button" data-size="45">4:5</button><button type="button" data-size="169">16:9</button>
       </div>
+            <div id="shCustom" class="card" hidden>
+        <div class="chips sh-cats" id="shCats"></div>
+        <div id="shSozList"></div>
+        <textarea id="shInput" class="field" rows="3" maxlength="400" data-i18n-ph="shTextPh" placeholder="Ya da kendi yazınızı yazın"></textarea>
+        <input id="shRefIn" class="field" type="text" maxlength="60" data-i18n-ph="shRefPh" placeholder="Alt satır (isteğe bağlı), ör. Ahmet ve ailesi">
+      </div>
       <div class="seg" id="shTabs"><button type="button" data-t="bg" class="on" data-i18n="shBg">Görseller</button><button type="button" data-t="color" data-i18n="shColor">Renkler</button><button type="button" data-t="text" data-i18n="shText">Yazı</button></div>
-      <div class="sh-pane" id="shPaneBg"><div class="sh-thumbs" id="shBgs"></div></div>
+      <div class="sh-pane" id="shPaneBg"><div class="sh-thumbs" id="shBgs"></div><p class="note src" id="shCredit"></p><input type="file" id="shFile" accept="image/*" hidden></div>
       <div class="sh-pane" id="shPaneColor" hidden><div class="sh-swatches" id="shColors"></div></div>
       <div class="sh-pane card" id="shPaneText" hidden>
         <label class="lbl" data-i18n="shSize">Yazı boyutu</label><input type="range" id="shFont" min="70" max="140" value="100">
@@ -459,7 +470,7 @@
       <div class="card form">
         <label class="lbl" data-i18n="nfSound">Bildirim sesi</label>
         <div class="row"><select id="nfSoundSel" class="field"></select><button class="btn ghost" id="nfSoundPlay" type="button" style="flex:0 0 auto;width:auto" data-i18n="listen">Dinle</button></div>
-        <p class="note" data-i18n="nfSoundNote">Ezan sesi, izinli bir kayıt bulunduğunda eklenecek.</p>
+        <p class="note" data-i18n="nfSoundNote">Ezan seçiliyken bildirim geldiğinde ezan okunur; bildirime dokununca veya kaydırınca susar.</p>
         <label class="lbl" data-i18n="nfBefore">Vakit öncesi hatırlatma süresi</label>
         <select id="nfMins" class="field"><option value="5">5</option><option value="10">10</option><option value="15">15</option><option value="20">20</option><option value="30">30</option><option value="45">45</option><option value="60">60</option></select>
         <button class="btn ghost" id="nfTest" type="button" data-i18n="nfTest">Deneme bildirimi gönder</button>

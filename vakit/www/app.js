@@ -55,9 +55,9 @@
       htCopied: 'Paylaşım metni kopyalandı.', htEmptyTitle: 'Hatim', htComplete: 'Hatim tamamlandı. Allah kabul etsin!',
       dkItemNames: { fatiha: 'Fâtiha', ihlas: 'İhlâs', felak: 'Felak', nas: 'Nâs', kursi: 'Âyetel Kürsî', yasin: 'Yâsîn', salavat: 'Salavât', tebareke: 'Tebâreke' },
       reciters: 'Kâri', audioErr: 'Ses yüklenemedi. İnternet bağlantınızı kontrol edin.', audioLoad: 'Yükleniyor…',
-      nfSound: 'Bildirim sesi', listen: 'Dinle', nfSoundNote: 'Ezan sesi, izinli bir kayıt bulunduğunda eklenecek.', sounds: { def: 'Telefonun sesi', can: 'Çan', zil: 'Zil', nota: 'Nota', sessiz: 'Sadece titreşim' },
+      nfSound: 'Bildirim sesi', listen: 'Dinle', nfSoundNote: 'Ezan seçiliyken bildirim geldiğinde ezan okunur; bildirime dokununca veya kaydırınca susar.', sounds: { def: 'Telefonun sesi', ezan: 'Ezan', can: 'Çan', zil: 'Zil', nota: 'Nota', sessiz: 'Sadece titreşim' },
       modeCards: 'Ayet ayet', modeFlow: 'Mushaf', favs: 'Favori ayetler', favEmpty: 'Henüz favori ayetiniz yok. Okurken ayetin üstündeki kalbe dokunun.', favN: n => `${n} ayet`, tFavs: 'Favori ayetler',
-      tShare: 'Kart olarak paylaş', shBg: 'Görseller', shColor: 'Renkler', shText: 'Yazı', shSize: 'Yazı boyutu', shShowTr: 'Türkçe anlamı göster', shDim: 'Karartma',
+      tShare: 'Kart olarak paylaş', mDesign: 'Kartını tasarla', mDesignSub: 'Cuma, bayram, kandil mesajı', shGallery: 'Galeriden seç', catAyah: 'Ayet', shTextPh: 'Ya da kendi yazınızı yazın', shRefPh: 'Alt satır (isteğe bağlı), ör. Ahmet ve ailesi', greetCuma: 'Cuma mesajı gönder', greetSub: 'Hazır söz ve fotoğrafla kart hazırlayın', photoBy: 'Fotoğraf', shBg: 'Görseller', shColor: 'Renkler', shText: 'Yazı', shSize: 'Yazı boyutu', shShowTr: 'Türkçe anlamı göster', shDim: 'Karartma',
       shSave: 'Kaydet', shShare: 'Paylaş', shSaved: p => `Kaydedildi: ${p}`, shFail: 'Kaydedilemedi, Paylaş ile devam edebilirsiniz.', shWatermark: 'Vakit uygulaması',
       lblVerse: 'Âyet', lblHadis: 'Hadis', lblDua: 'Dua', lblEsma: "Esmâü'l-Hüsnâ",
       province: 'İl / Şehir', district: 'İlçe', turkey: 'Türkiye', abroad: 'Yurt dışı', themeLbl: 'Tema', themeNames: { auto: 'Sistem', light: 'Açık', dark: 'Koyu', navy: 'Lacivert', rose: 'Gül', sand: 'Kum', violet: 'Mor' },
@@ -141,9 +141,9 @@
       htCopied: 'Share text copied.', htEmptyTitle: 'Khatm', htComplete: 'The khatm is complete. May Allah accept it!',
       dkItemNames: { fatiha: 'Al-Fatiha', ihlas: 'Al-Ikhlas', felak: 'Al-Falaq', nas: 'An-Nas', kursi: 'Ayat al-Kursi', yasin: 'Ya-Sin', salavat: 'Salawat', tebareke: 'Al-Mulk' },
       reciters: 'Reciter', audioErr: 'Audio could not load. Check your internet connection.', audioLoad: 'Loading…',
-      nfSound: 'Notification sound', listen: 'Play', nfSoundNote: 'An adhan sound will be added once a licensed recording is available.', sounds: { def: 'Phone default', can: 'Bell', zil: 'Chime', nota: 'Notes', sessiz: 'Vibrate only' },
+      nfSound: 'Notification sound', listen: 'Play', nfSoundNote: 'With Adhan selected, the adhan plays when the alert arrives; tap or swipe the alert to stop it.', sounds: { def: 'Phone default', ezan: 'Adhan', can: 'Bell', zil: 'Chime', nota: 'Notes', sessiz: 'Vibrate only' },
       modeCards: 'Verse by verse', modeFlow: 'Mushaf', favs: 'Favorite verses', favEmpty: 'No favorites yet. Tap the heart above a verse while reading.', favN: n => `${n} verses`, tFavs: 'Favorite verses',
-      tShare: 'Share as card', shBg: 'Images', shColor: 'Colors', shText: 'Text', shSize: 'Text size', shShowTr: 'Show translation', shDim: 'Darken',
+      tShare: 'Share as card', mDesign: 'Design a card', mDesignSub: 'Friday, Eid, holy night greetings', shGallery: 'From gallery', catAyah: 'Verse', shTextPh: 'Or write your own text', shRefPh: 'Signature line (optional)', greetCuma: 'Send a Jumuah greeting', greetSub: 'Make a card with a photo and ready text', photoBy: 'Photo', shBg: 'Images', shColor: 'Colors', shText: 'Text', shSize: 'Text size', shShowTr: 'Show translation', shDim: 'Darken',
       shSave: 'Save', shShare: 'Share', shSaved: p => `Saved: ${p}`, shFail: 'Could not save; you can still share.', shWatermark: 'Vakit app',
       lblVerse: 'Verse', lblHadis: 'Hadith', lblDua: 'Dua', lblEsma: 'Names of Allah',
       province: 'Province / City', district: 'District', turkey: 'Turkey', abroad: 'Abroad', themeLbl: 'Theme', themeNames: { auto: 'System', light: 'Light', dark: 'Dark', navy: 'Navy', rose: 'Rose', sand: 'Sand', violet: 'Violet' },
@@ -369,6 +369,7 @@
     renderDaily(now);
     renderHomeDeeds();
     renderRamCard(now);
+    { const wd = now.getDay(); $('greetCard').hidden = !(wd === 5 || (wd === 4 && now.getHours() >= 17)); $('greetBig').textContent = t('greetCuma'); }
     const last = store.get('lastRead', null);
     $('continueCard').hidden = !last || !surahs;
     if (last && surahs) $('continueName').textContent = `${surahName(surahs[last.s - 1])} · ${last.v}. ${t('ayah')}`;
@@ -573,6 +574,7 @@
   // ---------------- Menü ----------------
   const MENU = [
     { go: 'dk', ic: 'i-heart', t: 'mDk', s: 'mDkSub' }, { go: 'hatim', ic: 'i-people', t: 'mHatim', s: 'mHatimSub' },
+    { share: 'design', ic: 'i-share', t: 'mDesign', s: 'mDesignSub' },
     { go: 'notif', ic: 'i-bell', t: 'mNotif', s: 'mNotifSub' },
     { go: 'log', ic: 'i-check', t: 'mPrayerLog', s: 'mPrayerLogSub' },
     { go: 'kaza', ic: 'i-cal', t: 'mKaza', s: 'mKazaSub' },
@@ -594,7 +596,7 @@
   // Sıra: içerik → ayarlar → yakında
   MENU.sort((x, y) => (x.soon ? 2 : x.go === 'settings' ? 1 : 0) - (y.soon ? 2 : y.go === 'settings' ? 1 : 0));
   function renderMenu() {
-    $('menuGrid').innerHTML = MENU.map(m => `<button type="button" class="tile${m.soon ? ' soon' : ''}" ${m.go ? `data-go="${m.go}"` : 'disabled'}>${m.soon ? `<span class="badge">${t('soon')}</span>` : ''}<span class="t-ic"><svg><use href="#${m.ic}"/></svg></span><b>${t(m.t)}</b>${m.s ? `<small>${t(m.s)}</small>` : ''}</button>`).join('');
+    $('menuGrid').innerHTML = MENU.map(m => `<button type="button" class="tile${m.soon ? ' soon' : ''}" ${m.share ? `data-share="${m.share}"` : m.go ? `data-go="${m.go}"` : 'disabled'}>${m.soon ? `<span class="badge">${t('soon')}</span>` : ''}<span class="t-ic"><svg><use href="#${m.ic}"/></svg></span><b>${t(m.t)}</b>${m.s ? `<small>${t(m.s)}</small>` : ''}</button>`).join('');
   }
 
   // ---------------- Aylık vakitler ----------------
@@ -842,7 +844,7 @@
   }
   function drawCard(cv, opts, content, preview) {
     const [W, H] = SH_SIZES[opts.size]; cv.width = W; cv.height = H; const ctx = cv.getContext('2d');
-    if (opts.color) { ctx.fillStyle = opts.color; ctx.fillRect(0, 0, W, H); } else BGS[opts.bg](ctx, W, H);
+    if (opts.color) { ctx.fillStyle = opts.color; ctx.fillRect(0, 0, W, H); } else drawBgAny(ctx, W, H, opts.bg);
     const light = opts.color ? lum(opts.color) > 0.6 : LIGHT_BG.includes(opts.bg);
     if (opts.dim) { ctx.fillStyle = `rgba(0,0,0,${opts.dim / 100})`; ctx.fillRect(0, 0, W, H); }
     const dark = light && opts.dim < 35;
@@ -854,7 +856,7 @@
     ctx.direction = 'rtl'; ctx.font = `${Math.round(arF * u * f)}px "Amiri Quran", serif`;
     const arLines = content.ar ? wrapText(ctx, content.ar, boxW - pad * 2) : [];
     ctx.direction = 'ltr'; ctx.font = `500 ${Math.round(trF * u * f)}px system-ui, sans-serif`;
-    const trLines = content.tr && opts.tr ? wrapText(ctx, content.tr, boxW - pad * 2) : [];
+    const trLines = content.tr && (opts.tr || content.custom) ? wrapText(ctx, content.tr, boxW - pad * 2) : [];
     const big = content.big ? Math.round(56 * u * f) : 0;
     const arLH = arF * u * f * 1.9, trLH = trF * u * f * 1.45, arGap = arLines.length ? arF * u * f * 0.35 : 0;
     let boxH = pad * 2 + 40 * u + arGap + arLines.length * arLH + (big ? big * 1.5 : 0) + (trLines.length ? 20 * u + trLines.length * trLH : 0) + 60 * u;
@@ -887,11 +889,46 @@
     try { await document.fonts.load('60px "Amiri Quran"'); } catch { /* yoksay */ }
     drawCard($('shCanvas'), sh, shContent, true);
     document.querySelectorAll('#shSizes button').forEach(b => b.classList.toggle('on', b.dataset.size === sh.size));
-    $('shBgs').innerHTML = ''; Object.keys(BGS).forEach(k => { const c = document.createElement('canvas'); c.dataset.bg = k; c.className = !sh.color && sh.bg === k ? 'on' : ''; drawCard(c, { size: '916', bg: k, dim: 0, font: 100, tr: true }, null); $('shBgs').appendChild(c); });
+    $('shCustom').hidden = !(shContent && shContent.custom); if (shContent && shContent.custom) renderSoz();
+    $('shBgs').innerHTML = `<button type="button" class="sh-gal" id="shGal">${t('shGallery')}</button>`;
+    const cat = shContent && shContent.cat, ph = PHOTOS.slice().sort((a, b) => (b.tags || []).includes(cat) - (a.tags || []).includes(cat));
+    ph.forEach(p => { const im = document.createElement('img'); im.loading = 'lazy'; im.src = 'data/bg/' + p.f; im.dataset.bg = 'p:' + p.f; im.className = !sh.color && sh.bg === 'p:' + p.f ? 'on' : ''; $('shBgs').appendChild(im); });
+    const pc = !sh.color && sh.bg && sh.bg.startsWith('p:') && PHOTOS.find(p => 'p:' + p.f === sh.bg);
+    $('shCredit').textContent = pc ? `${t('photoBy')}: ${pc.a || '—'} · ${pc.l} · Wikimedia Commons` : '';
+    Object.keys(BGS).forEach(k => { const c = document.createElement('canvas'); c.dataset.bg = k; c.className = !sh.color && sh.bg === k ? 'on' : ''; drawCard(c, { size: '916', bg: k, dim: 0, font: 100, tr: true }, null); $('shBgs').appendChild(c); });
     $('shColors').innerHTML = SH_COLORS.map(c => `<button type="button" data-color="${c}" class="${sh.color === c ? 'on' : ''}" style="background:${c}"></button>`).join('');
     $('shFont').value = sh.font; $('shDim').value = sh.dim; $('shTr').checked = sh.tr;
   }
-  function openShare(kind) { shContent = typeof kind === 'object' ? kind : shareContent(kind); if (!shContent) return; $('shMsg').textContent = ''; go('share'); renderShare(); }
+  let PHOTOS = [], SOZ = null, userImg = null; const photoCache = {};
+  fetch('data/bg/bg.json').then(r => r.json()).then(j => { PHOTOS = j; }).catch(() => {});
+  function drawBgAny(ctx, W, H, bg) {
+    let img = null;
+    if (bg === 'u') img = userImg;
+    else if (bg && bg.startsWith('p:')) { const f = bg.slice(2); img = photoCache[f]; if (!img) { img = photoCache[f] = new Image(); img.onload = () => { if (cur() === 'share') drawCard($('shCanvas'), sh, shContent, true); }; img.src = 'data/bg/' + f; } }
+    if (img && img.complete && img.naturalWidth) { const s = Math.max(W / img.naturalWidth, H / img.naturalHeight), w = img.naturalWidth * s, h = img.naturalHeight * s; ctx.drawImage(img, (W - w) / 2, (H - h) / 2, w, h); return; }
+    (BGS[bg] || BGS.emerald)(ctx, W, H);
+  }
+  function catItems(cat) {
+    if (cat === 'ayah') return DAILY.map(([s, v]) => ({ text: lang === 'tr' ? mealOf(s, v) : '', ar: quran[s - 1][v - 1], ref: ayahRef(s, v) }));
+    return (SOZ[cat] || []).map(x => ({ text: x }));
+  }
+  function renderSoz() {
+    if (!SOZ) { fetch('data/sozler.json').then(r => r.json()).then(j => { SOZ = j; renderSoz(); }); return; }
+    const cats = [...Object.keys(SOZ), 'ayah'], c = shContent.cat;
+    $('shCats').innerHTML = cats.map(k => `<button type="button" data-cat="${k}" class="${k === c ? 'on' : ''}">${k === 'ayah' ? t('catAyah') : escH(k)}</button>`).join('');
+    $('shSozList').innerHTML = c ? catItems(c).map((x, i) => `<button type="button" data-soz="${i}" class="${shContent.pick === i ? 'on' : ''}">${escH(x.text || x.ref)}</button>`).join('') : '';
+  }
+  function setSoz(i) {
+    const x = catItems(shContent.cat)[i]; if (!x) return;
+    Object.assign(shContent, { pick: i, tr: x.text, ar: x.ar || '', ref: x.ref || $('shRefIn').value, label: x.ar ? t('lblVerse') : '' });
+    $('shInput').value = ''; renderShare();
+  }
+  function openDesign(cat) {
+    shContent = { custom: true, cat: cat || 'Cuma', label: '', tr: '', ar: '', ref: '' };
+    $('shInput').value = ''; $('shRefIn').value = ''; $('shMsg').textContent = ''; TITLES.share = 'mDesign'; go('share');
+    const go2 = () => (SOZ ? setSoz(0) : setTimeout(go2, 100)); if (!SOZ) renderSoz(); go2();
+  }
+  function openShare(kind) { if (typeof kind === 'string' && kind.startsWith('design')) { openDesign(kind.split(':')[1]); return; } TITLES.share = 'tShare'; shContent = typeof kind === 'object' ? kind : shareContent(kind); if (!shContent) return; $('shMsg').textContent = ''; go('share'); renderShare(); }
   const shSave = () => store.set('shareStyle', { size: sh.size, bg: sh.bg, color: sh.color, font: sh.font, dim: sh.dim, tr: sh.tr });
   async function exportCard(mode) {
     const data = $('shCanvas').toDataURL('image/png'), b64 = data.split(',')[1], name = `vakit-${Date.now()}.png`;
@@ -1139,7 +1176,7 @@
     if (!LN || channelsReady) return;
     try {
       await LN.createChannel({ id: 'ezan', name: lang === 'tr' ? 'Ezan vakitleri' : 'Prayer times', importance: 5, visibility: 1, vibration: true });
-      for (const s of ['can', 'zil', 'nota', 'sessiz']) await LN.createChannel({ id: 'ezan_' + s, name: (lang === 'tr' ? 'Ezan vakitleri · ' : 'Prayer times · ') + t('sounds')[s], importance: 5, visibility: 1, vibration: true, sound: `vakit_${s}.wav` });
+      for (const s of ['ezan', 'can', 'zil', 'nota', 'sessiz']) await LN.createChannel({ id: 'ezan_' + s, name: (lang === 'tr' ? 'Ezan vakitleri · ' : 'Prayer times · ') + t('sounds')[s], importance: 5, visibility: 1, vibration: true, sound: s === 'ezan' ? 'vakit_ezan.ogg' : `vakit_${s}.wav` });
       await LN.createChannel({ id: 'hatirlatma', name: lang === 'tr' ? 'Vakit öncesi hatırlatma' : 'Reminders', importance: 4, visibility: 1, vibration: true });
       channelsReady = true;
     } catch (e) { console.error('channel', e); }
@@ -1409,6 +1446,12 @@
   document.addEventListener('click', e => { const b = e.target.closest('[data-share]'); if (b) { e.stopPropagation(); openShare(b.dataset.share); } }, true);
   $('shSizes').addEventListener('click', e => { const b = e.target.closest('[data-size]'); if (!b) return; sh.size = b.dataset.size; shSave(); renderShare(); });
   $('shTabs').addEventListener('click', e => { const b = e.target.closest('[data-t]'); if (!b) return; document.querySelectorAll('#shTabs button').forEach(x => x.classList.toggle('on', x === b)); $('shPaneBg').hidden = b.dataset.t !== 'bg'; $('shPaneColor').hidden = b.dataset.t !== 'color'; $('shPaneText').hidden = b.dataset.t !== 'text'; });
+  $('shCats').addEventListener('click', e => { const b = e.target.closest('[data-cat]'); if (!b) return; shContent.cat = b.dataset.cat; renderSoz(); setSoz(0); });
+  $('shSozList').addEventListener('click', e => { const b = e.target.closest('[data-soz]'); if (b) setSoz(+b.dataset.soz); });
+  $('shInput').addEventListener('input', () => { Object.assign(shContent, { tr: $('shInput').value, ar: '', label: '', pick: -1 }); renderSoz(); drawCard($('shCanvas'), sh, shContent, true); });
+  $('shRefIn').addEventListener('input', () => { shContent.ref = $('shRefIn').value; drawCard($('shCanvas'), sh, shContent, true); });
+  $('shFile').addEventListener('change', () => { const f = $('shFile').files[0]; if (!f) return; const im = new Image(); im.onload = () => { userImg = im; sh.bg = 'u'; sh.color = null; renderShare(); }; im.src = URL.createObjectURL(f); $('shFile').value = ''; });
+  $('shBgs').addEventListener('click', e => { if (e.target.closest('#shGal')) $('shFile').click(); });
   $('shBgs').addEventListener('click', e => { const c = e.target.closest('[data-bg]'); if (!c) return; sh.bg = c.dataset.bg; sh.color = null; shSave(); renderShare(); });
   $('shColors').addEventListener('click', e => { const c = e.target.closest('[data-color]'); if (!c) return; sh.color = c.dataset.color; shSave(); renderShare(); });
   $('shFont').addEventListener('input', e => { sh.font = +e.target.value; shSave(); drawCard($('shCanvas'), sh, shContent, true); });
@@ -1450,7 +1493,7 @@
   $('nfOn').addEventListener('change', async e => { if (e.target.checked) await enableNotif(); else { nf.on = false; saveNf(); } });
   $('nfList').addEventListener('change', e => { const el = e.target; if (!el.dataset.nf) return; nf[el.dataset.nf][el.dataset.p] = el.checked; saveNf(); });
   $('nfSoundSel').addEventListener('change', e => { nf.sound = e.target.value; saveNf(); });
-  $('nfSoundPlay').addEventListener('click', () => { const s = $('nfSoundSel').value; if (s === 'def' || s === 'sessiz') { if (navigator.vibrate) navigator.vibrate([200, 100, 200]); return; } try { new Audio(`sounds/vakit_${s}.wav`).play(); } catch { /* yoksay */ } });
+  $('nfSoundPlay').addEventListener('click', () => { const s = $('nfSoundSel').value; if (s === 'def' || s === 'sessiz') { if (navigator.vibrate) navigator.vibrate([200, 100, 200]); return; } try { if (window._pv) { window._pv.pause(); const same = window._pv._s === s; window._pv = null; if (same) return; } const a = new Audio(s === 'ezan' ? 'sounds/vakit_ezan.ogg' : `sounds/vakit_${s}.wav`); a._s = s; window._pv = a; a.play(); } catch { /* yoksay */ } });
   $('nfMins').addEventListener('change', e => { nf.mins = +e.target.value; saveNf(); });
   $('nfPermBtn').addEventListener('click', enableNotif);
   $('nfExactBtn').addEventListener('click', async () => { try { await LN.changeExactNotificationSetting(); } catch { /* yoksay */ } await reschedule(); renderNotif(); });
