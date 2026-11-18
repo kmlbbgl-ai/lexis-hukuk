@@ -3,6 +3,8 @@ service cloud.firestore {
   match /databases/{database}/documents {
     function signedIn() { return request.auth != null; }
     function okNick(n) { return n is string && n.size() > 0 && n.size() <= 40; }
+    function isAdmin() { return signedIn() && exists(/databases/$(database)/documents/admins/$(request.auth.uid)); }
+    function repPath(id) { return /databases/$(database)/documents/reports/$(id + '_' + request.auth.uid); }
 
     // Dua kardeşliği
     match /duas/{id} {
@@ -23,8 +25,9 @@ service cloud.firestore {
         && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['counts', 'reports'])
         && request.resource.data.counts.size() <= 5
         && (request.resource.data.reports == resource.data.reports
-            || request.resource.data.reports == resource.data.reports + 1);
-      allow delete: if signedIn() && resource.data.uid == request.auth.uid;
+            || (request.resource.data.reports == resource.data.reports + 1
+                && !exists(repPath(id)) && existsAfter(repPath(id))));
+      allow delete: if signedIn() && (resource.data.uid == request.auth.uid || isAdmin());
 
       match /reads/{readId} {
         allow read: if signedIn();
@@ -35,6 +38,21 @@ service cloud.firestore {
           && request.resource.data.item is string && request.resource.data.item.size() <= 20
           && request.resource.data.n is int && request.resource.data.n >= 1 && request.resource.data.n <= 100;
       }
+    }
+
+    // Şikâyetler: herkes kendi adına bir kez yazar, yalnızca yönetici okur/siler
+    match /reports/{rid} {
+      allow create: if signedIn()
+        && rid == request.resource.data.duaId + '_' + request.auth.uid
+        && request.resource.data.keys().hasOnly(['duaId', 'uid', 'reason', 'author', 'text', 'at'])
+        && request.resource.data.uid == request.auth.uid
+        && request.resource.data.reason is string && request.resource.data.reason.size() <= 20
+        && request.resource.data.text is string && request.resource.data.text.size() <= 400;
+      allow read, delete: if isAdmin();
+    }
+    // Yöneticiler: Firebase konsolundan admins/{uid} belgesi eklenerek atanır
+    match /admins/{uid} {
+      allow read: if signedIn() && request.auth.uid == uid;
     }
 
     // Ortak hatim
@@ -49,7 +67,7 @@ service cloud.firestore {
       allow update: if signedIn()
         && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['juz'])
         && request.resource.data.juz.size() <= 30;
-      allow delete: if signedIn() && resource.data.uid == request.auth.uid;
+      allow delete: if signedIn() && (resource.data.uid == request.auth.uid || isAdmin());
     }
   }
 }

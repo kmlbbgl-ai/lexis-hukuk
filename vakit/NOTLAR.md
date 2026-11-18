@@ -56,9 +56,9 @@ Kural: kullanıcıya sormadan ücretli bir şey (API, görsel üretimi vb.) kull
 - [ ] 1. Telefonda test: ezan bildirimi (deneme bildirimi, kaydırınca susma)
 - [ ] 2. Telefonda test: kıble, sekme kaydırma, ayet ▶ düğmesi
 - [ ] 3. Kur'an sesi lisansı (Islamic Network "ticari olmayan") — izin al veya sesi kapat
-- [ ] 4. Dua kardeşliği: şikâyet/engelle düğmesi + yönetici onayı
-- [ ] 5. Kayıt yedekleme/geri yükleme (namaz, kaza, iyilik kayıtları)
-- [x] 6. Ana ekran widget'ı (sonraki vakit + geri sayım) — 18.11.2026, telefonda test bekleniyor
+- [x] 4. Dua kardeşliği: şikâyet sebebi, engelleme, yönetici (admins/{uid}) — 18.11.2026; kullanıcı yeni firestore.rules'u yüklemeli
+- [x] 5. Kayıt yedekleme/geri yükleme — 18.11.2026 (Ayarlar)
+- [ ] 6. Ana ekran widget'ı — kullanıcı ekleyemedi; Ayarlar'a 'Ana ekrana widget ekle' düğmesi + önizleme eklendi, test bekleniyor
 - [ ] 7. Vakit doğruluğu: daha çok şehirde Diyanet ile karşılaştırma
 - [ ] 8. 67 ilçenin gerçek koordinatları
 - [ ] 9. 2027-08 sonrası kandil/bayram tarihleri (Diyanet açıklayınca)

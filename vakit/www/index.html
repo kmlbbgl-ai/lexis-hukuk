@@ -336,6 +336,7 @@
     <section class="view" data-view="dk" hidden>
       <p class="note dk-me" id="dkMe"></p>
       <button class="btn" id="dkNewBtn" type="button" data-i18n="dkNew">+ Dua isteği paylaş</button>
+      <p class="note" data-i18n="dkRules">Kurallar: Hakaret, siyaset, reklam, telefon numarası ve kişisel bilgi paylaşmayın. 3 şikâyet alan paylaşım gizlenir; yönetici kontrol eder.</p>
       <div class="card form" id="dkForm" hidden>
         <label class="lbl" for="dkText" data-i18n="dkText">Dua isteğiniz</label>
         <textarea id="dkText" class="field" rows="4" maxlength="400" data-i18n-ph="dkTextPh" placeholder="Örneğin: Annem için şifa duası istiyorum."></textarea>
@@ -346,6 +347,7 @@
       </div>
       <p class="note" id="dkMsg"></p>
       <div id="dkList"></div>
+      <p class="note src"><span id="dkUid"></span> <button class="link" id="dkUnblock" type="button" data-i18n="dkUnblock" hidden>Engellenenleri kaldır</button></p>
       <button class="btn ghost" id="dkReload" type="button" data-i18n="reload">Yenile</button>
     </section>
 
@@ -504,6 +506,19 @@
         <label class="lbl" data-i18n="fineTune">İnce ayar (dakika)</label>
         <div class="fine" id="fineBox"></div>
         <p class="note" data-i18n="fineNote">Vakitleri camiinizin takvimine birebir eşitlemek için kullanın.</p>
+      </div>
+      <div class="card form">
+        <label class="lbl" data-i18n="wTitle">Ana ekran widget'ı</label>
+        <p class="note" data-i18n="wNote">Sonraki vakti ve geri sayımı telefonunuzun ana ekranında gösterir.</p>
+        <button class="btn" id="wPin" type="button" data-i18n="wPin">Ana ekrana widget ekle</button>
+        <p class="note" id="wMsg"></p>
+      </div>
+      <div class="card form">
+        <label class="lbl" data-i18n="bkTitle">Yedekleme</label>
+        <p class="note" data-i18n="bkNote">Namaz, kaza, oruç, iyilik kayıtlarınız, favorileriniz ve ayarlarınız yalnızca bu telefonda durur. Telefon değiştirmeden önce yedek alın; dosyayı Drive'a, e-postanıza veya WhatsApp'ta kendinize gönderin.</p>
+        <div class="row"><button class="btn" id="bkSave" type="button" data-i18n="bkSave">Yedek al</button><button class="btn ghost" id="bkLoad" type="button" data-i18n="bkLoad">Yedeği geri yükle</button></div>
+        <input type="file" id="bkFile" accept="application/json,.json,text/plain" hidden>
+        <p class="note" id="bkMsg"></p>
       </div>
       <div class="card form">
         <button id="replayOb" class="btn ghost" type="button" data-i18n="replayOb">Kurulumu yeniden başlat</button>

@@ -57,7 +57,7 @@
       reciters: 'Kâri', audioErr: 'Ses yüklenemedi. İnternet bağlantınızı kontrol edin.', audioLoad: 'Yükleniyor…',
       nfSound: 'Bildirim sesi', listen: 'Dinle', nfSoundNote: 'Ezan seçiliyken bildirim geldiğinde ezan okunur; bildirime dokununca veya kaydırınca susar.', sounds: { def: 'Telefonun sesi', ezan: 'Ezan', can: 'Çan', zil: 'Zil', nota: 'Nota', sessiz: 'Sadece titreşim' },
       modeCards: 'Ayet ayet', modeFlow: 'Mushaf', favs: 'Favori ayetler', favEmpty: 'Henüz favori ayetiniz yok. Okurken ayetin üstündeki kalbe dokunun.', favN: n => `${n} ayet`, tFavs: 'Favori ayetler',
-      tShare: 'Kart olarak paylaş', wLeft: '%s vaktine', mDesign: 'Kartını tasarla', mDesignSub: 'Cuma, bayram, kandil mesajı', shGallery: 'Galeriden seç', catAyah: 'Ayet', shTextPh: 'Ya da kendi yazınızı yazın', shRefPh: 'Alt satır (isteğe bağlı), ör. Ahmet ve ailesi', greetCuma: 'Cuma mesajı gönder', greetSub: 'Hazır söz ve fotoğrafla kart hazırlayın', photoBy: 'Fotoğraf', shBg: 'Görseller', shColor: 'Renkler', shText: 'Yazı', shSize: 'Yazı boyutu', shShowTr: 'Türkçe anlamı göster', shDim: 'Karartma',
+      tShare: 'Kart olarak paylaş', wTitle: 'Ana ekran widget\'ı', wNote: 'Sonraki vakti ve geri sayımı telefonunuzun ana ekranında gösterir.', wPin: 'Ana ekrana widget ekle', wAsk: 'Açılan pencerede "Ekle"ye dokunun.', wManual: 'Telefonunuz otomatik eklemeyi desteklemiyor. Ana ekranda boş bir yere basılı tutun → Widget\'lar → Vakit → Namaz vakitleri.', wHave: n => `Ana ekranınızda ${n} Vakit widget\'ı var.`, bkTitle: 'Yedekleme', bkSave: 'Yedek al', bkLoad: 'Yedeği geri yükle', bkNote: 'Namaz, kaza, oruç, iyilik kayıtlarınız, favorileriniz ve ayarlarınız yalnızca bu telefonda durur. Telefon değiştirmeden önce yedek alın; dosyayı Drive\'a, e-postanıza veya WhatsApp\'ta kendinize gönderin.', bkSaved: p => `Yedek kaydedildi: ${p}`, bkBad: 'Bu dosya bir Vakit yedeği değil.', bkAsk: d => `${d} tarihli yedek yüklensin mi? Bu telefondaki mevcut kayıtların yerine geçecek.`, bkDone: 'Yedek yüklendi, uygulama yeniden açılıyor…', dkWhy: 'Neden bildiriyorsunuz?', dkReasons: { uygunsuz: 'Uygunsuz içerik', hakaret: 'Hakaret / nefret', reklam: 'Reklam / dolandırıcılık', kisisel: 'Kişisel bilgi', diger: 'Diğer' }, dkBlock: '🚫 Bu kişiyi engelle', dkBlocked: 'Kişi engellendi; paylaşımlarını artık görmeyeceksiniz.', dkAlready: 'Bu paylaşımı zaten bildirdiniz.', dkUnblock: 'Engellenenleri kaldır', dkUid: id => `Kullanıcı no: ${id}`, dkAdmin: 'Yönetici', dkRules: 'Kurallar: Hakaret, siyaset, reklam, telefon numarası ve kişisel bilgi paylaşmayın. 3 şikâyet alan paylaşım gizlenir; yönetici kontrol eder.', wLeft: '%s vaktine', mDesign: 'Kartını tasarla', mDesignSub: 'Cuma, bayram, kandil mesajı', shGallery: 'Galeriden seç', catAyah: 'Ayet', shTextPh: 'Ya da kendi yazınızı yazın', shRefPh: 'Alt satır (isteğe bağlı), ör. Ahmet ve ailesi', greetCuma: 'Cuma mesajı gönder', greetSub: 'Hazır söz ve fotoğrafla kart hazırlayın', photoBy: 'Fotoğraf', shBg: 'Görseller', shColor: 'Renkler', shText: 'Yazı', shSize: 'Yazı boyutu', shShowTr: 'Türkçe anlamı göster', shDim: 'Karartma',
       shSave: 'Kaydet', shShare: 'Paylaş', shSaved: p => `Kaydedildi: ${p}`, shFail: 'Kaydedilemedi, Paylaş ile devam edebilirsiniz.', shWatermark: 'Vakit uygulaması',
       lblVerse: 'Âyet', lblHadis: 'Hadis', lblDua: 'Dua', lblEsma: "Esmâü'l-Hüsnâ",
       province: 'İl / Şehir', district: 'İlçe', turkey: 'Türkiye', abroad: 'Yurt dışı', themeLbl: 'Tema', themeNames: { auto: 'Sistem', light: 'Açık', dark: 'Koyu', navy: 'Lacivert', rose: 'Gül', sand: 'Kum', violet: 'Mor' },
@@ -143,7 +143,7 @@
       reciters: 'Reciter', audioErr: 'Audio could not load. Check your internet connection.', audioLoad: 'Loading…',
       nfSound: 'Notification sound', listen: 'Play', nfSoundNote: 'With Adhan selected, the adhan plays when the alert arrives; tap or swipe the alert to stop it.', sounds: { def: 'Phone default', ezan: 'Adhan', can: 'Bell', zil: 'Chime', nota: 'Notes', sessiz: 'Vibrate only' },
       modeCards: 'Verse by verse', modeFlow: 'Mushaf', favs: 'Favorite verses', favEmpty: 'No favorites yet. Tap the heart above a verse while reading.', favN: n => `${n} verses`, tFavs: 'Favorite verses',
-      tShare: 'Share as card', wLeft: 'until %s', mDesign: 'Design a card', mDesignSub: 'Friday, Eid, holy night greetings', shGallery: 'From gallery', catAyah: 'Verse', shTextPh: 'Or write your own text', shRefPh: 'Signature line (optional)', greetCuma: 'Send a Jumuah greeting', greetSub: 'Make a card with a photo and ready text', photoBy: 'Photo', shBg: 'Images', shColor: 'Colors', shText: 'Text', shSize: 'Text size', shShowTr: 'Show translation', shDim: 'Darken',
+      tShare: 'Share as card', wTitle: 'Home screen widget', wNote: 'Shows the next prayer and countdown on your home screen.', wPin: 'Add widget to home screen', wAsk: 'Tap "Add" in the window that opens.', wManual: 'Your phone does not support adding automatically. Long-press an empty spot on the home screen → Widgets → Vakit → Prayer times.', wHave: n => `You have ${n} Vakit widget(s) on your home screen.`, bkTitle: 'Backup', bkSave: 'Back up', bkLoad: 'Restore backup', bkNote: 'Your prayer, qada, fasting and good-deed logs, favourites and settings stay only on this phone. Back up before changing phones and send the file to Drive, email or yourself.', bkSaved: p => `Backup saved: ${p}`, bkBad: 'This file is not a Vakit backup.', bkAsk: d => `Restore the backup from ${d}? It will replace the records on this phone.`, bkDone: 'Backup restored, reloading…', dkWhy: 'Why are you reporting this?', dkReasons: { uygunsuz: 'Inappropriate', hakaret: 'Insult / hate', reklam: 'Spam / scam', kisisel: 'Personal info', diger: 'Other' }, dkBlock: '🚫 Block this person', dkBlocked: 'Blocked. You will no longer see their posts.', dkAlready: 'You have already reported this post.', dkUnblock: 'Unblock all', dkUid: id => `User ID: ${id}`, dkAdmin: 'Admin', dkRules: 'Rules: no insults, politics, ads, phone numbers or personal info. Posts with 3 reports are hidden and reviewed by an admin.', wLeft: 'until %s', mDesign: 'Design a card', mDesignSub: 'Friday, Eid, holy night greetings', shGallery: 'From gallery', catAyah: 'Verse', shTextPh: 'Or write your own text', shRefPh: 'Signature line (optional)', greetCuma: 'Send a Jumuah greeting', greetSub: 'Make a card with a photo and ready text', photoBy: 'Photo', shBg: 'Images', shColor: 'Colors', shText: 'Text', shSize: 'Text size', shShowTr: 'Show translation', shDim: 'Darken',
       shSave: 'Save', shShare: 'Share', shSaved: p => `Saved: ${p}`, shFail: 'Could not save; you can still share.', shWatermark: 'Vakit app',
       lblVerse: 'Verse', lblHadis: 'Hadith', lblDua: 'Dua', lblEsma: 'Names of Allah',
       province: 'Province / City', district: 'District', turkey: 'Turkey', abroad: 'Abroad', themeLbl: 'Theme', themeNames: { auto: 'System', light: 'Light', dark: 'Dark', navy: 'Navy', rose: 'Rose', sand: 'Sand', violet: 'Violet' },
@@ -957,6 +957,7 @@
   function renderDkForm() {
     $('dkItems').innerHTML = DK_ITEMS.map(k => `<label data-dk="${k}">${t('dkItemNames')[k]} <select aria-label="Hedef">${[10, 33, 41, 100].map(n => `<option>${n}</option>`).join('')}</select></label>`).join('');
   }
+  let dkAdmin = null, dkCache = {};
   async function loadDuas() {
     $('dkMe').textContent = t('dkMe')(myNick()); if (!$('dkItems').childElementCount) renderDkForm();
     if (!C) { $('dkMsg').textContent = t('netErr'); return; }
@@ -965,7 +966,11 @@
       const u = await C.user(), F = C.fs;
       const snap = await F.getDocs(F.query(F.collection(C.db, 'duas'), F.orderBy('createdAt', 'desc'), F.limit(40)));
       const items = [];
-      for (const d of snap.docs) { const x = d.data(); if ((x.reports || 0) >= 3 && x.uid !== u.uid) continue; items.push({ id: d.id, ...x }); }
+      if (dkAdmin === null) { try { dkAdmin = (await F.getDoc(F.doc(C.db, 'admins', u.uid))).exists(); } catch { dkAdmin = false; } }
+      const blocked = store.get('dkBlocked', []);
+      for (const d of snap.docs) { const x = d.data(); if (!dkAdmin && (((x.reports || 0) >= 3 && x.uid !== u.uid) || blocked.includes(x.uid))) continue; items.push({ id: d.id, ...x }); }
+      dkCache = Object.fromEntries(items.map(x => [x.id, x]));
+      $('dkUid').textContent = t('dkUid')(u.uid) + (dkAdmin ? ' · ' + t('dkAdmin') : ''); $('dkUnblock').hidden = !blocked.length;
       const reads = await Promise.all(items.map(x => F.getDocs(F.query(F.collection(C.db, 'duas', x.id, 'reads'), F.orderBy('at', 'desc'), F.limit(8))).then(s => s.docs.map(r => r.data())).catch(() => [])));
       $('dkMsg').textContent = items.length ? '' : t('dkEmpty');
       const names = t('dkItemNames');
@@ -974,7 +979,7 @@
         const prog = Object.entries(x.targets || {}).map(([k, tg]) => { const c2 = (x.counts || {})[k] || 0; return `<div class="dk-prog"><div class="top"><span>${names[k] || escH(k)}</span><span>${c2} / ${tg}</span></div><div class="dk-bar"><i style="width:${Math.min(100, c2 * 100 / tg)}%"></i></div></div>`; }).join('');
         const rs = reads[i]; const who = rs.length ? `<div class="dk-reads"><b>${t('dkWho')}</b><br>${rs.map(r => `${escH(r.nick)} · ${r.n} ${names[r.item] || ''}`).join('<br>')}</div>` : '';
         const acts = Object.keys(x.targets || {}).map(k => `<button type="button" data-dkread="${x.id}" data-item="${k}">${names[k] || escH(k)} ✓</button>`).join('');
-        return `<article class="dk-card"><header><span>🤲 ${escH(x.nick)}</span>${mine ? `<span class="tag">${t('dkMine')}</span><button class="flag" type="button" data-dkdel="${x.id}" aria-label="Sil">🗑</button>` : `<button class="flag" type="button" data-dkflag="${x.id}" aria-label="Bildir">⚑</button>`}</header><p class="dk-text">${escH(x.text)}</p>${prog}${who}<div class="dk-act">${acts}</div><div class="dk-count" hidden></div></article>`;
+        return `<article class="dk-card"><header><span>🤲 ${escH(x.nick)}</span>${dkAdmin && x.reports ? `<span class="tag warn">⚑ ${x.reports}</span>` : ''}${mine ? `<span class="tag">${t('dkMine')}</span>` : ''}${mine || dkAdmin ? `<button class="flag" type="button" data-dkdel="${x.id}" aria-label="Sil">🗑</button>` : ''}${!mine ? `<button class="flag" type="button" data-dkflag="${x.id}" aria-label="Bildir">⚑</button>` : ''}</header><div class="dk-flagbox" hidden></div><p class="dk-text">${escH(x.text)}</p>${prog}${who}<div class="dk-act">${acts}</div><div class="dk-count" hidden></div></article>`;
       }).join('');
     } catch (e) { console.error(e); $('dkMsg').textContent = fmtErr(e); }
   }
@@ -1438,8 +1443,17 @@
       if (!(n >= 1 && n <= 100)) { box.querySelector('input').focus(); return; }
       box.innerHTML = `<b>${t('dkLoading')}</b>`; readDua(box.dataset.id, box.dataset.item, box, n); return; }
     const f = e.target.closest('[data-dkflag]');
-    if (f) { if (f.dataset.confirm !== '1') { f.dataset.confirm = '1'; f.textContent = '⚑?'; $('dkMsg').textContent = t('dkReport'); return; }
-      try { await C.user(); const F = C.fs; await F.updateDoc(F.doc(C.db, 'duas', f.dataset.dkflag), { reports: F.increment(1) }); f.disabled = true; $('dkMsg').textContent = t('dkReported'); } catch (err) { $('dkMsg').textContent = fmtErr(err); } return; }
+    if (f) { const box = f.closest('.dk-card').querySelector('.dk-flagbox'); box.hidden = !box.hidden;
+      box.innerHTML = `<b>${t('dkWhy')}</b>` + Object.entries(t('dkReasons')).map(([k, v]) => `<button type="button" data-dkrep="${f.dataset.dkflag}" data-r="${k}">${v}</button>`).join('') + `<button type="button" class="block" data-dkblock="${f.dataset.dkflag}">${t('dkBlock')}</button>`; return; }
+    const rp = e.target.closest('[data-dkrep]');
+    if (rp) { const id = rp.dataset.dkrep, x = dkCache[id] || {}; rp.closest('.dk-flagbox').innerHTML = `<b>${t('dkLoading')}</b>`;
+      try { const u = await C.user(), F = C.fs;
+        await F.runTransaction(C.db, async b => { b.set(F.doc(C.db, 'reports', id + '_' + u.uid), { duaId: id, uid: u.uid, reason: rp.dataset.r, author: String(x.uid || ''), text: String(x.text || '').slice(0, 400), at: F.serverTimestamp() });
+          b.update(F.doc(C.db, 'duas', id), { reports: F.increment(1) }); }); $('dkMsg').textContent = t('dkReported');
+      } catch (err) { $('dkMsg').textContent = /permission/i.test(String(err && (err.code || err.message))) ? t('dkAlready') : fmtErr(err); }
+      loadDuas(); return; }
+    const bl = e.target.closest('[data-dkblock]');
+    if (bl) { const x = dkCache[bl.dataset.dkblock]; if (x) { const L = store.get('dkBlocked', []); if (!L.includes(x.uid)) L.push(x.uid); store.set('dkBlocked', L); } $('dkMsg').textContent = t('dkBlocked'); loadDuas(); return; }
     const d = e.target.closest('[data-dkdel]');
     if (d) { if (d.dataset.confirm !== '1') { d.dataset.confirm = '1'; d.textContent = '🗑?'; return; }
       try { await C.user(); const F = C.fs; await F.deleteDoc(F.doc(C.db, 'duas', d.dataset.dkdel)); } catch (err) { $('dkMsg').textContent = fmtErr(err); } loadDuas(); }
@@ -1454,6 +1468,39 @@
   document.addEventListener('click', e => { const b = e.target.closest('[data-share]'); if (b) { e.stopPropagation(); openShare(b.dataset.share); } }, true);
   $('shSizes').addEventListener('click', e => { const b = e.target.closest('[data-size]'); if (!b) return; sh.size = b.dataset.size; shSave(); renderShare(); });
   $('shTabs').addEventListener('click', e => { const b = e.target.closest('[data-t]'); if (!b) return; document.querySelectorAll('#shTabs button').forEach(x => x.classList.toggle('on', x === b)); $('shPaneBg').hidden = b.dataset.t !== 'bg'; $('shPaneColor').hidden = b.dataset.t !== 'color'; $('shPaneText').hidden = b.dataset.t !== 'text'; });
+  async function backupSave() {
+    const data = {}; for (let i = 0; i < localStorage.length; i++) { const k = localStorage.key(i); if (k.startsWith('vakit.')) data[k] = localStorage.getItem(k); }
+    const d = new Date(), stamp = `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
+    const json = JSON.stringify({ app: 'vakit', v: 1, at: d.toISOString(), data }), name = `vakit-yedek-${stamp}.json`;
+    const P = window.Capacitor && window.Capacitor.Plugins, FS = P && P.Filesystem, SH = P && P.Share;
+    if (FS) {
+      let saved = '';
+      for (const [dir, path] of [['DOCUMENTS', `Vakit/${name}`], ['EXTERNAL_STORAGE', `Download/${name}`]]) { try { await FS.writeFile({ path, data: json, directory: dir, encoding: 'utf8', recursive: true }); saved = path; break; } catch (e) { console.warn('bk', dir, e); } }
+      if (saved) $('bkMsg').textContent = t('bkSaved')(saved);
+      if (SH) { try { const r2 = await FS.writeFile({ path: name, data: json, directory: 'CACHE', encoding: 'utf8' }); await SH.share({ files: [r2.uri], dialogTitle: t('bkSave') }); } catch (e) { console.warn(e); } }
+      return;
+    }
+    const a = document.createElement('a'); a.href = URL.createObjectURL(new Blob([json], { type: 'application/json' })); a.download = name; a.click(); $('bkMsg').textContent = t('bkSaved')(name);
+  }
+  async function backupLoad(file) {
+    try {
+      const j = JSON.parse(await file.text());
+      if (!j || j.app !== 'vakit' || typeof j.data !== 'object') throw 0;
+      if (!confirm(t('bkAsk')(new Date(j.at).toLocaleDateString(loc())))) return;
+      Object.keys(localStorage).filter(k => k.startsWith('vakit.')).forEach(k => localStorage.removeItem(k));
+      for (const [k, v] of Object.entries(j.data)) if (k.startsWith('vakit.') && typeof v === 'string') localStorage.setItem(k, v);
+      $('bkMsg').textContent = t('bkDone'); setTimeout(() => location.reload(), 800);
+    } catch { $('bkMsg').textContent = t('bkBad'); }
+  }
+  $('wPin').addEventListener('click', async () => {
+    const W = window.Capacitor && window.Capacitor.Plugins && window.Capacitor.Plugins.VakitWidget; pushWidget();
+    if (!W) { $('wMsg').textContent = t('wManual'); return; }
+    try { const r = await W.pin(); $('wMsg').textContent = (r.count ? t('wHave')(r.count) + ' ' : '') + (r.ok ? t('wAsk') : t('wManual')); } catch { $('wMsg').textContent = t('wManual'); }
+  });
+  $('bkSave').addEventListener('click', () => backupSave().catch(e => { $('bkMsg').textContent = String(e && e.message || e); }));
+  $('bkLoad').addEventListener('click', () => $('bkFile').click());
+  $('bkFile').addEventListener('change', () => { const f = $('bkFile').files[0]; if (f) backupLoad(f); $('bkFile').value = ''; });
+  $('dkUnblock').addEventListener('click', () => { store.set('dkBlocked', []); loadDuas(); });
   $('shCats').addEventListener('click', e => { const b = e.target.closest('[data-cat]'); if (!b) return; shContent.cat = b.dataset.cat; renderSoz(); setSoz(0); });
   $('shSozList').addEventListener('click', e => { const b = e.target.closest('[data-soz]'); if (b) setSoz(+b.dataset.soz); });
   $('shInput').addEventListener('input', () => { Object.assign(shContent, { tr: $('shInput').value, ar: '', label: '', pick: -1 }); renderSoz(); drawCard($('shCanvas'), sh, shContent, true); });
