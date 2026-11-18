@@ -58,7 +58,7 @@ Kural: kullanıcıya sormadan ücretli bir şey (API, görsel üretimi vb.) kull
 - [ ] 3. Kur'an sesi lisansı (Islamic Network "ticari olmayan") — izin al veya sesi kapat
 - [ ] 4. Dua kardeşliği: şikâyet/engelle düğmesi + yönetici onayı
 - [ ] 5. Kayıt yedekleme/geri yükleme (namaz, kaza, iyilik kayıtları)
-- [ ] 6. Ana ekran widget'ı (sonraki vakit + geri sayım)
+- [x] 6. Ana ekran widget'ı (sonraki vakit + geri sayım) — 18.11.2026, telefonda test bekleniyor
 - [ ] 7. Vakit doğruluğu: daha çok şehirde Diyanet ile karşılaştırma
 - [ ] 8. 67 ilçenin gerçek koordinatları
 - [ ] 9. 2027-08 sonrası kandil/bayram tarihleri (Diyanet açıklayınca)

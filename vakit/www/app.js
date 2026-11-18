@@ -57,7 +57,7 @@
       reciters: 'Kâri', audioErr: 'Ses yüklenemedi. İnternet bağlantınızı kontrol edin.', audioLoad: 'Yükleniyor…',
       nfSound: 'Bildirim sesi', listen: 'Dinle', nfSoundNote: 'Ezan seçiliyken bildirim geldiğinde ezan okunur; bildirime dokununca veya kaydırınca susar.', sounds: { def: 'Telefonun sesi', ezan: 'Ezan', can: 'Çan', zil: 'Zil', nota: 'Nota', sessiz: 'Sadece titreşim' },
       modeCards: 'Ayet ayet', modeFlow: 'Mushaf', favs: 'Favori ayetler', favEmpty: 'Henüz favori ayetiniz yok. Okurken ayetin üstündeki kalbe dokunun.', favN: n => `${n} ayet`, tFavs: 'Favori ayetler',
-      tShare: 'Kart olarak paylaş', mDesign: 'Kartını tasarla', mDesignSub: 'Cuma, bayram, kandil mesajı', shGallery: 'Galeriden seç', catAyah: 'Ayet', shTextPh: 'Ya da kendi yazınızı yazın', shRefPh: 'Alt satır (isteğe bağlı), ör. Ahmet ve ailesi', greetCuma: 'Cuma mesajı gönder', greetSub: 'Hazır söz ve fotoğrafla kart hazırlayın', photoBy: 'Fotoğraf', shBg: 'Görseller', shColor: 'Renkler', shText: 'Yazı', shSize: 'Yazı boyutu', shShowTr: 'Türkçe anlamı göster', shDim: 'Karartma',
+      tShare: 'Kart olarak paylaş', wLeft: '%s vaktine', mDesign: 'Kartını tasarla', mDesignSub: 'Cuma, bayram, kandil mesajı', shGallery: 'Galeriden seç', catAyah: 'Ayet', shTextPh: 'Ya da kendi yazınızı yazın', shRefPh: 'Alt satır (isteğe bağlı), ör. Ahmet ve ailesi', greetCuma: 'Cuma mesajı gönder', greetSub: 'Hazır söz ve fotoğrafla kart hazırlayın', photoBy: 'Fotoğraf', shBg: 'Görseller', shColor: 'Renkler', shText: 'Yazı', shSize: 'Yazı boyutu', shShowTr: 'Türkçe anlamı göster', shDim: 'Karartma',
       shSave: 'Kaydet', shShare: 'Paylaş', shSaved: p => `Kaydedildi: ${p}`, shFail: 'Kaydedilemedi, Paylaş ile devam edebilirsiniz.', shWatermark: 'Vakit uygulaması',
       lblVerse: 'Âyet', lblHadis: 'Hadis', lblDua: 'Dua', lblEsma: "Esmâü'l-Hüsnâ",
       province: 'İl / Şehir', district: 'İlçe', turkey: 'Türkiye', abroad: 'Yurt dışı', themeLbl: 'Tema', themeNames: { auto: 'Sistem', light: 'Açık', dark: 'Koyu', navy: 'Lacivert', rose: 'Gül', sand: 'Kum', violet: 'Mor' },
@@ -143,7 +143,7 @@
       reciters: 'Reciter', audioErr: 'Audio could not load. Check your internet connection.', audioLoad: 'Loading…',
       nfSound: 'Notification sound', listen: 'Play', nfSoundNote: 'With Adhan selected, the adhan plays when the alert arrives; tap or swipe the alert to stop it.', sounds: { def: 'Phone default', ezan: 'Adhan', can: 'Bell', zil: 'Chime', nota: 'Notes', sessiz: 'Vibrate only' },
       modeCards: 'Verse by verse', modeFlow: 'Mushaf', favs: 'Favorite verses', favEmpty: 'No favorites yet. Tap the heart above a verse while reading.', favN: n => `${n} verses`, tFavs: 'Favorite verses',
-      tShare: 'Share as card', mDesign: 'Design a card', mDesignSub: 'Friday, Eid, holy night greetings', shGallery: 'From gallery', catAyah: 'Verse', shTextPh: 'Or write your own text', shRefPh: 'Signature line (optional)', greetCuma: 'Send a Jumuah greeting', greetSub: 'Make a card with a photo and ready text', photoBy: 'Photo', shBg: 'Images', shColor: 'Colors', shText: 'Text', shSize: 'Text size', shShowTr: 'Show translation', shDim: 'Darken',
+      tShare: 'Share as card', wLeft: 'until %s', mDesign: 'Design a card', mDesignSub: 'Friday, Eid, holy night greetings', shGallery: 'From gallery', catAyah: 'Verse', shTextPh: 'Or write your own text', shRefPh: 'Signature line (optional)', greetCuma: 'Send a Jumuah greeting', greetSub: 'Make a card with a photo and ready text', photoBy: 'Photo', shBg: 'Images', shColor: 'Colors', shText: 'Text', shSize: 'Text size', shShowTr: 'Show translation', shDim: 'Darken',
       shSave: 'Save', shShare: 'Share', shSaved: p => `Saved: ${p}`, shFail: 'Could not save; you can still share.', shWatermark: 'Vakit app',
       lblVerse: 'Verse', lblHadis: 'Hadith', lblDua: 'Dua', lblEsma: 'Names of Allah',
       province: 'Province / City', district: 'District', turkey: 'Turkey', abroad: 'Abroad', themeLbl: 'Theme', themeNames: { auto: 'System', light: 'Light', dark: 'Dark', navy: 'Navy', rose: 'Rose', sand: 'Sand', violet: 'Violet' },
@@ -1190,7 +1190,15 @@
     store.set('notif', nf); await reschedule(); renderNotif();
     return nf.on;
   }
+  function pushWidget() {
+    const W = window.Capacitor && window.Capacitor.Plugins && window.Capacitor.Plugins.VakitWidget; if (!W || !settings.place) return;
+    try {
+      const days = []; for (let d = -1; d < 14; d++) { const tt = timesFor(dayAt(d)); days.push(PRAYERS.map(k => tt[k].getTime())); }
+      W.save({ data: JSON.stringify({ city: settings.place.name, left: t('wLeft'), names: PRAYERS.map(k => t(k)), days }) }).catch(() => {});
+    } catch (e) { console.warn('widget', e); }
+  }
   async function reschedule() {
+    pushWidget();
     if (!LN) return 0;
     try {
       const pending = await LN.getPending();

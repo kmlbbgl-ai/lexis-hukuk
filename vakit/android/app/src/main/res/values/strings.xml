@@ -4,4 +4,6 @@
     <string name="title_activity_main">Vakit</string>
     <string name="package_name">app.vakit.prototype</string>
     <string name="custom_url_scheme">app.vakit.prototype</string>
+    <string name="widget_label">Namaz vakitleri</string>
+    <string name="widget_desc">Sonraki vakit ve geri sayım</string>
 </resources>
