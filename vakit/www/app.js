@@ -227,8 +227,8 @@
   }
   // Diyanet uyumu: adhan'ın Diyanet hesabı ile Diyanet'in yayımladığı takvim arasında mevsime göre değişen
   // ±1-2 dk fark var (12 il × 365 gün, 2026). Fark, günün yıl içindeki açısına göre 3 harmonikli bir eğriyle
-  // düzeltilir; ham saniye + düzeltme aşağı yuvarlanır. Doğrulama: tam eşleşme ~%88, ±1 dk ~%99,5 (21.11.2026).
-  const DIY_FIX = { fajr: [34.8, 0.7, 7.4, -1.9, 2.2, -1.6, 1], sunrise: [34.4, -0.1, 11.8, -1.5, 4.4, -0.3, 0.9], dhuhr: [33.4, -3.6, 0.4, -7.5, 2.8, -0.2, -0.1], asr: [35.8, -17.2, -65.5, -16.5, -8.5, -1.7, -4.7], maghrib: [34.3, -14.7, -54.7, -11.3, 6.7, -2.8, -4.5], isha: [35.2, -19.3, -70.4, -7.7, 19.7, -4.5, -8.1] };
+  // düzeltilir; ham saniye + düzeltme aşağı yuvarlanır. Doğrulama (869 ilçe × yıl, ilçe koordinatları Diyanet takviminden): tam eşleşme %94-98, ±1 dk %99,8+ (22.11.2026).
+  const DIY_FIX = { fajr: [35, -0.2, 7.4, -1.4, 2.6, -1, 0.5], sunrise: [34.6, 0.3, 12.3, -2.3, 3.8, -0.5, 1.4], dhuhr: [33.3, -3.1, -0.4, -7.8, 3.1, -0.5, 0.1], asr: [35.6, -16.3, -64.4, -15.7, -8.2, -1.8, -4.9], maghrib: [34.4, -14.7, -53.9, -11.1, 6, -2.2, -4.1], isha: [34.3, -18.5, -69.7, -7.7, 19.4, -4.5, -7.4] };
   const timesFor = date => {
     const p = params(), diy = settings.method === 'Turkey';
     if (diy) { p.rounding = A.Rounding.None; p.methodAdjustments = A.CalculationMethod.Turkey().methodAdjustments; }

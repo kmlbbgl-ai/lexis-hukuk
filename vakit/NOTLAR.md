@@ -68,8 +68,8 @@ Not: Kullanıcı isteği — hiçbir madde kullanıcı telefonda kontrol etmeden
 - [ ] 4. Dua kardeşliği: şikâyet sebebi, engelleme, yönetici (admins/{uid}) — kodlandı, kontrol bekliyor; kullanıcı yeni firestore.rules'u yüklemeli
 - [ ] 5. Kayıt yedekleme/geri yükleme (Ayarlar) — kodlandı, kontrol bekliyor
 - [ ] 6. Ana ekran widget'ı — kullanıcı ekleyemedi; Ayarlar'a 'Ana ekrana widget ekle' düğmesi + önizleme eklendi, test bekleniyor
-- [ ] 7. Vakit doğruluğu: daha çok şehirde Diyanet ile karşılaştırma
-- [ ] 8. 67 ilçenin gerçek koordinatları
+- [ ] 7. Vakit doğruluğu — kodlandı, kontrol bekliyor (22.11.2026): 869 Diyanet ilçesi × 2026 takvimiyle mevsimsel düzeltme (DIY_FIX); tam %94-98, ±1 dk %99,8+. Araç: araclar/diyanet. Her yıl yeni takvimle tekrar
+- [ ] 8. İlçe koordinatları — kodlandı, kontrol bekliyor (22.11.2026): 81 il + 788 ilçe koordinatı Diyanet takviminden geri hesaplandı
 - [ ] 9. 2027-08 sonrası kandil/bayram tarihleri (Diyanet açıklayınca)
 - [ ] 10. Kart fotoğrafları (kullanıcı gönderecek veya Wikimedia; Unsplash izni reddedildi)
 - [ ] 11. İngilizce meal
