@@ -2,8 +2,8 @@
 
 Kod: `vakit/www` (index.html, style.css, app.js) · Android: `vakit/android` (Capacitor 8)
 Geliştirme dalı: `ccr-a4378f93-x1qu3v` · APK linki (her push'ta otomatik):
-Drive yedeği: GOOGLE PLAY → "ezan programı" (devam notu, Play adımları, mağaza metinleri, gizlilik, görseller). İmza anahtarı oluşturulunca oraya "İmza anahtarı (GİZLİ)" kilitli alt klasöre konacak; asla GitHub'a konmaz.
 https://github.com/kmlbbgl-ai/lexis-hukuk/releases/download/vakit-latest/vakit.apk
+Drive yedeği: GOOGLE PLAY → "ezan programı" (devam notu, Play adımları, mağaza metinleri, gizlilik, görseller). İmza anahtarı oluşturulunca oraya "İmza anahtarı (GİZLİ)" kilitli alt klasöre konacak; asla GitHub'a konmaz.
 
 ## Alınan kararlar
 - Hedef: milyonlara hitap eden, çok dilli (önce TR/EN) dini uygulama. Reklam + ileride Pro abonelik.
