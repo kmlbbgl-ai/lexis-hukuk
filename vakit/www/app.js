@@ -222,12 +222,24 @@
   function params() {
     const p = A.CalculationMethod[settings.method]();
     p.madhab = A.Madhab[settings.madhab];
-    // Diyanet'in yayımladığı ikindi vakti, kütüphanenin Diyanet ayarından ~1 dk sonra (İstanbul ve Ankara, 17.11.2026).
-    if (settings.method === 'Turkey') p.methodAdjustments = Object.assign({}, p.methodAdjustments, { asr: p.methodAdjustments.asr + 1 });
     for (const k of PRAYERS) p.adjustments[k] = +(settings.fine[k] || 0);
     return p;
   }
-  const timesFor = date => new A.PrayerTimes(new A.Coordinates(settings.place.lat, settings.place.lng), date, params());
+  // Diyanet uyumu: adhan'ın Diyanet hesabı ile Diyanet'in yayımladığı takvim arasında mevsime göre değişen
+  // ±1-2 dk fark var (12 il × 365 gün, 2026). Fark, günün yıl içindeki açısına göre 3 harmonikli bir eğriyle
+  // düzeltilir; ham saniye + düzeltme aşağı yuvarlanır. Doğrulama: tam eşleşme ~%88, ±1 dk ~%99,5 (21.11.2026).
+  const DIY_FIX = { fajr: [34.8, 0.7, 7.4, -1.9, 2.2, -1.6, 1], sunrise: [34.4, -0.1, 11.8, -1.5, 4.4, -0.3, 0.9], dhuhr: [33.4, -3.6, 0.4, -7.5, 2.8, -0.2, -0.1], asr: [35.8, -17.2, -65.5, -16.5, -8.5, -1.7, -4.7], maghrib: [34.3, -14.7, -54.7, -11.3, 6.7, -2.8, -4.5], isha: [35.2, -19.3, -70.4, -7.7, 19.7, -4.5, -8.1] };
+  const timesFor = date => {
+    const p = params(), diy = settings.method === 'Turkey';
+    if (diy) { p.rounding = A.Rounding.None; p.methodAdjustments = A.CalculationMethod.Turkey().methodAdjustments; }
+    const pt = new A.PrayerTimes(new A.Coordinates(settings.place.lat, settings.place.lng), date, p);
+    if (diy) {
+      const a = 2 * Math.PI * ((Date.UTC(date.getFullYear(), date.getMonth(), date.getDate()) - Date.UTC(date.getFullYear(), 0, 1)) / 864e5) / 365.25;
+      const f = [1, Math.cos(a), Math.sin(a), Math.cos(2 * a), Math.sin(2 * a), Math.cos(3 * a), Math.sin(3 * a)];
+      for (const k of PRAYERS) { const c = DIY_FIX[k].reduce((s, v, i) => s + v * f[i], 0); pt[k] = new Date(Math.floor((pt[k].getTime() + c * 1000) / 60000) * 60000); }
+    }
+    return pt;
+  };
   const hm = d => d.toLocaleTimeString(loc(), { hour: '2-digit', minute: '2-digit' });
 
   function nextPrayer(now) {
