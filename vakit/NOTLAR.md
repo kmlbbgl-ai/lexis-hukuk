@@ -49,9 +49,16 @@ SIRADA: → 3/7 sesler → 8 dua kardeşliği + hatim (Firebase) → 13 asistan 
 13. "Soru sor" yapay zekâ bölümü — maliyet ve dini risk değerlendirilecek.
 Kural: kullanıcıya sormadan ücretli bir şey (API, görsel üretimi vb.) kullanılmayacak.
 
+## İMZALI SÜRÜM (21.11.2026)
+- Paket adı: com.mihrap.vakit (ilk Play yüklemesinden önce değiştirilebilir; sonra kalıcı). İletişim: nokokidstv@gmail.com
+- versionName 1.0, versionCode 1 → sonraki güncelleme versionCode 2.
+- İmza anahtarı: vakit-upload.jks (alias vakit), SHA-256 AF:74:CA:4A:72:E6:1C:16:91:39:98:B2:ED:20:F2:81:8B:25:9F:6E:6D:04:7C:90:EC:8D:D6:49:FE:3D:F8:DD.
+  Kullanıcıda ve Drive'da "ezan programı/İmza anahtarı (GİZLİ)" klasöründe (kullanıcı kendisi koyacak). ASLA depoya konmaz.
+- Derleme: keystore.properties'i depo dışında oluştur (storeFile, storePassword, keyAlias, keyPassword), KEYSTORE_PROPS=<yol> gradle bundleRelease assembleRelease.
+
 ## YAYINDAN ÖNCE MUTLAKA
 - Kur'an ses kayıtları (Islamic Network CDN) şartları "ticari olmayan" diyor: reklam/Pro varsa izin alınmalı veya sesli dinleme kapatılmalı (www/app.js RECITERS/playAyah).
-- Paket adı + iletişim e-postası kararı, imzalı sürüm, gizlilik sayfasını herkese açık yapma.
+- Gizlilik sayfasını herkese açık yapma (paket adı, e-posta, imzalı sürüm tamam).
 
 ## EKSİKLER LİSTESİ (kullanıcı madde madde soracak; yapılınca [x] işaretle)
 Not: Kullanıcı isteği — hiçbir madde kullanıcı telefonda kontrol etmeden "yapıldı" işaretlenmeyecek. Kodlananlar "kodlandı, kontrol bekliyor" diye not edilir.

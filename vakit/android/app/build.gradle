@@ -4,7 +4,7 @@ android {
     namespace = "app.vakit.prototype"
     compileSdk = rootProject.ext.compileSdkVersion
     defaultConfig {
-        applicationId "app.vakit.prototype"
+        applicationId "com.mihrap.vakit"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1
@@ -16,8 +16,20 @@ android {
             ignoreAssetsPattern = '!.svn:!.git:!.ds_store:!*.scc:.*:!CVS:!thumbs.db:!picasa.ini:!*~'
         }
     }
+    // İmza: anahtar bilgisi depo dışındaki keystore.properties dosyasından okunur (yolu KEYSTORE_PROPS ortam değişkeni).
+    def ksPropsFile = file(System.getenv('KEYSTORE_PROPS') ?: '/nonexistent')
+    signingConfigs {
+        if (ksPropsFile.exists()) {
+            def ks = new Properties(); ks.load(new FileInputStream(ksPropsFile))
+            release {
+                storeFile file(ks['storeFile']); storePassword ks['storePassword']
+                keyAlias ks['keyAlias']; keyPassword ks['keyPassword']
+            }
+        }
+    }
     buildTypes {
         release {
+            if (ksPropsFile.exists()) signingConfig signingConfigs.release
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
