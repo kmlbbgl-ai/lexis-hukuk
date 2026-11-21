@@ -58,7 +58,7 @@ Kural: kullanıcıya sormadan ücretli bir şey (API, görsel üretimi vb.) kull
 
 ## YAYINDAN ÖNCE MUTLAKA
 - Kur'an ses kayıtları (Islamic Network CDN) şartları "ticari olmayan" diyor: reklam/Pro varsa izin alınmalı veya sesli dinleme kapatılmalı (www/app.js RECITERS/playAyah).
-- Gizlilik sayfasını herkese açık yapma (paket adı, e-posta, imzalı sürüm tamam).
+- Gizlilik sayfası herkese açık (21.11.2026): https://claude.ai/artifact/NGa7QpMCVPR4jaAMiKcmpU
 
 ## EKSİKLER LİSTESİ (kullanıcı madde madde soracak; yapılınca [x] işaretle)
 Not: Kullanıcı isteği — hiçbir madde kullanıcı telefonda kontrol etmeden "yapıldı" işaretlenmeyecek. Kodlananlar "kodlandı, kontrol bekliyor" diye not edilir.
