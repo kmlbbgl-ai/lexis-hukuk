@@ -71,7 +71,7 @@ Not: Kullanıcı isteği — hiçbir madde kullanıcı telefonda kontrol etmeden
 - [ ] 7. Vakit doğruluğu — kodlandı, kontrol bekliyor (22.11.2026): 869 Diyanet ilçesi × 2026 takvimiyle mevsimsel düzeltme (DIY_FIX); tam %94-98, ±1 dk %99,8+. Araç: araclar/diyanet. Her yıl yeni takvimle tekrar
 - [ ] 8. İlçe koordinatları — kodlandı, kontrol bekliyor (22.11.2026): 81 il + 788 ilçe koordinatı Diyanet takviminden geri hesaplandı
 - [ ] 9. 2027-08 sonrası kandil/bayram tarihleri (Diyanet açıklayınca)
-- [ ] 10. Kart fotoğrafları (kullanıcı gönderecek veya Wikimedia; Unsplash izni reddedildi)
+- [ ] 10. Kart fotoğrafları — DURAKLATILDI (22.11.2026): Wikimedia araması (araclar/f2.py, yalnızca CC0/PD/CC BY) ~127 aday buldu ama hız sınırı yüzünden yavaş; sonra araclar/dl.py ile indir, elle seç, data/bg/bg.json ({f,tags,a,l}) olarak ekle. Uygulama tarafı (PHOTOS, kredi satırı) hazır. Unsplash izni reddedildi; kullanıcı kendi fotoğraflarını da gönderebilir
 - [ ] 11. İngilizce meal
 - [ ] 12. Elmalılı eski kelimeler sözlüğü
 - [ ] 13. AdMob + Pro abonelik
