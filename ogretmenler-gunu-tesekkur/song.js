@@ -70,7 +70,7 @@ wet.mixInto(music, 0.8);
 MIX.duck([music], vo, { depth: 0.55 });
 
 const out = path.join(__dirname, 'out');
-const mix = MIX.mixdown({ music, fx, vo }, { music: 1, fx: 0.9, vo: 1.6 }, { stemDir: process.env.STEMS ? out : null });
+const mix = MIX.mixdown({ music, fx, vo }, { music: 0.5, fx: 0.9, vo: 1.6 }, { stemDir: process.env.STEMS ? out : null });
 MIX.highpass(mix, 30);
 MIX.fadeOut(mix, DURATION - 1.5, DURATION);
 const M = MIX.master(mix, 0.8, undefined, { lufs: -14 });
