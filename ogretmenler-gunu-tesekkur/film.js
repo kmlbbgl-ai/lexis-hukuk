@@ -97,6 +97,27 @@
     ctx.fillStyle = 'rgba(255,255,255,0.55)'; ctx.beginPath(); ctx.ellipse(x - r * 0.5, y - r * 0.3, r * 0.12, r * 0.25, -0.4, 0, Math.PI * 2); ctx.fill();
   }
 
+
+  // flower bouquet: (x, y) = centre of the blooms, r = overall size
+  function bouquet(ctx, x, y, r, seed = 1) {
+    // stems + wrapping cone
+    for (let i = -2; i <= 2; i++) G.line(ctx, [[x + i * r * 0.12, y], [x + i * r * 0.03, y + r * 1.1]], { color: '#4F8A3B', lw: r * 0.05, seed: seed + i });
+    for (const s of [-1, 1]) G.shape(ctx, G.ellPts(x + s * r * 0.55, y + r * 0.15, r * 0.32, r * 0.13), { fill: '#5FA34A', lw: 4, seed: seed + 20 + s });
+    G.poly(ctx, [[x - r * 0.75, y + r * 0.15], [x + r * 0.75, y + r * 0.15], [x + r * 0.12, y + r * 1.35], [x - r * 0.12, y + r * 1.35]], { fill: '#F6E7C8', lw: 5, seed: seed + 30, hatch: { color: 'rgba(160,110,60,0.18)', gap: 10 } });
+    G.poly(ctx, [[x - r * 0.75, y + r * 0.15], [x - r * 0.2, y + r * 0.15], [x - r * 0.05, y + r * 1.35], [x - r * 0.12, y + r * 1.35]], { fill: '#EED7A8', lw: 4, seed: seed + 31 });
+    // ribbon
+    G.ellipse(ctx, x - r * 0.18, y + r * 0.88, r * 0.17, r * 0.09, { fill: '#D9483B', lw: 4, seed: seed + 40 });
+    G.ellipse(ctx, x + r * 0.18, y + r * 0.88, r * 0.17, r * 0.09, { fill: '#D9483B', lw: 4, seed: seed + 41 });
+    G.ellipse(ctx, x, y + r * 0.88, r * 0.07, r * 0.07, { fill: '#B5362B', lw: 3, seed: seed + 42 });
+    // blooms
+    const F = [[-0.42, -0.05, '#E8718D'], [0.42, -0.02, '#F2B84B'], [0, -0.38, '#D9483B'], [-0.22, -0.58, '#F6F0E2'], [0.25, -0.55, '#E8718D'], [0, 0.05, '#F6F0E2'], [-0.55, -0.4, '#B28DE0'], [0.56, -0.38, '#B28DE0']];
+    F.forEach(([dx, dy, c], i) => {
+      const fx = x + dx * r, fy = y + dy * r, pr = r * 0.13;
+      for (let k = 0; k < 6; k++) { const a = (k / 6) * Math.PI * 2 + i; G.ellipse(ctx, fx + Math.cos(a) * pr, fy + Math.sin(a) * pr, pr * 0.85, pr * 0.85, { fill: c, lw: 3, seed: seed + 50 + i * 7 + k }); }
+      G.ellipse(ctx, fx, fy, pr * 0.6, pr * 0.6, { fill: c === '#F2B84B' ? '#B5774E' : '#F2B84B', lw: 3, seed: seed + 99 + i });
+    });
+  }
+
   function title(ctx, str, x, y, size, o = {}) {
     G.text(ctx, str, x, y, { size, fam: o.fam || 'Bungee', color: o.color || CREAM, align: 'center', stroke: o.stroke ?? INK, strokeW: o.strokeW ?? size * 0.12, alpha: o.alpha ?? 1 });
   }
@@ -197,7 +218,7 @@
     chalkText(ctx, 'neden 24 Kasım?', 0, 40, 110, t, ev.boardWrite + 1.1, 1.1, GOLD);
     if (t > ev.boardWrite + 2.4) chalkText(ctx, 'ABC', 0, 170, 80, t, ev.boardWrite + 2.4, 0.6);
     ctx.restore();
-    if (t < 14.4) apple(ctx, bx + bw - 30, by + bh + 20, 55, 5);
+    if (t < 14.4) bouquet(ctx, bx + bw - 40, by + bh - 10, 70, 5);
     // follow notifications
     ev.follows.forEach((tf, i) => {
       const p = pop(t, tf, 0.35); if (p <= 0) return;
@@ -205,7 +226,7 @@
       ctx.save(); ctx.translate(CX, y + 50); ctx.scale(p, p); ctx.translate(-CX, -(y + 50));
       card(ctx, 90, y, 900, 104, { r: 26 });
       ctx.fillStyle = '#FDECEA'; ctx.beginPath(); ctx.arc(150, y + 52, 36, 0, Math.PI * 2); ctx.fill();
-      apple(ctx, 150, y + 58, 26, 90 + i);
+      bouquet(ctx, 150, y + 44, 30, 90 + i);
       UI.text(ctx, 'Bir öğretmen', 205, y + 44, { size: 32, weight: 800, color: '#111' });
       UI.text(ctx, 'seni takip etmeye başladı', 205, y + 82, { size: 30, weight: 400, color: '#444' });
       ctx.fillStyle = '#4F5BD5'; ctx.beginPath(); ctx.roundRect(800, y + 30, 160, 46, 12); ctx.fill();
@@ -302,7 +323,7 @@
     warm(ctx, t);
     G.rays(ctx, CX, 820, { n: 18, r0: 260, r1: 900, color: '#FFF4D6', lw: 26, alpha: 0.55, spin: t * 0.15 });
     const p = pop(t, ev.apple, 0.45);
-    ctx.save(); ctx.translate(CX, 840); ctx.scale(p, p); apple(ctx, 0, 0, 230, 200); ctx.restore();
+    ctx.save(); ctx.translate(CX, 840); ctx.scale(p, p); bouquet(ctx, 0, -90, 300, 200); ctx.restore();
     popText(ctx, t, ev.apple + 0.3, 'İYİ Kİ', CX, 330, 100, { color: CREAM });
     popText(ctx, t, ev.apple + 0.6, 'VARSINIZ!', CX, 450, 110, { color: GOLD });
     // little planets around, bowing
@@ -442,7 +463,7 @@
       ctx.fillStyle = `rgba(20,26,62,${0.75 * fade(t, ev.end, 0.4)})`; ctx.fillRect(0, 0, W, H);
       popText(ctx, t, ev.end + 0.1, 'Öğretmenler Gününüz', CX, 760, 74, { color: CREAM });
       popText(ctx, t, ev.end + 0.35, 'Kutlu Olsun!', CX, 870, 96, { color: GOLD });
-      ctx.save(); ctx.translate(CX, 1050); ctx.scale(pop(t, ev.end + 0.5), pop(t, ev.end + 0.5)); apple(ctx, 0, 0, 80, 600); ctx.restore();
+      ctx.save(); ctx.translate(CX, 1050); ctx.scale(pop(t, ev.end + 0.5), pop(t, ev.end + 0.5)); bouquet(ctx, 0, -40, 110, 600); ctx.restore();
       popText(ctx, t, ev.end + 0.8, '@merakolojistudyo', CX, 1250, 54, { fam: 'Inter', color: CREAM, strokeW: 0 });
     }
   }
