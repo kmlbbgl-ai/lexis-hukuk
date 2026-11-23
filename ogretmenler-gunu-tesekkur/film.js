@@ -392,7 +392,7 @@
     card(ctx, 70, y, 940, 210, { r: 30 });
     avatar(ctx, 150, y + 80, 48, 'B', '#C96B9B');
     UI.text(ctx, user, 225, y + 68, { size: 36, weight: 800, color: '#111' });
-    UI.text(ctx, '24 Kasım', 225 + UI.measure(ctx, user, 36, 800) + 20, y + 68, { size: 28, weight: 400, color: '#999' });
+    UI.text(ctx, '6g', 225 + UI.measure(ctx, user, 36, 800) + 20, y + 68, { size: 28, weight: 400, color: '#999' });
     UI.text(ctx, text, 225, y + 128, { size: 40, weight: 400, color: '#222', maxW: 740 });
     if (hearts) for (let i = 0; i < hearts; i++) { ctx.save(); ctx.translate(250 + i * 58, y + 172); ctx.scale(1.4, 1.4); G.heart(ctx, 0, 0, 1); ctx.restore(); }
     ctx.restore();
@@ -400,9 +400,10 @@
 
   function sceneBusra(ctx, t) {
     space(ctx, t, '#2B2458', '#6A3F6E');
-    popText(ctx, t, ev.comment1 - 0.15, 'BİR DAKİKA…', CX, 330, 84, { color: GOLD, rot: -0.03 });
-    comment(ctx, t, ev.comment1 + 0.1, 470, 'busranurguler21', 'Doğummm günüm 24 kasımmmmm', 4);
-    comment(ctx, t, ev.comment2, 720, 'busranurguler21', 'umarım unutmazlar', 0);
+    popText(ctx, t, 43.7, 'BİR DAKİKA…', CX, 330, 84, { color: GOLD, rot: -0.03 });
+    if (t > 44.8) G.caption(ctx, { t: 44.8, end: 99, text: 'Öğretmenler Günü videomuzun yorumları', x: 150, y: 420, rot: -0.02, size: 50 }, t);
+    comment(ctx, t, ev.comment1, 540, 'busranurguler21', 'Doğummm günüm 24 kasımmmmm', 4);
+    comment(ctx, t, ev.comment2, 790, 'busranurguler21', 'umarım unutmazlar', 0);
     // stamp
     const st = ev.unutmadik;
     if (t >= st) {

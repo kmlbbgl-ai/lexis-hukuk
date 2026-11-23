@@ -13,7 +13,7 @@
   const WIDE = W / H > 1.2;
   const clock = makeClock({ bpm: 96, offset: 0 }); // 1 bar = 2.5s
   const { T, BEAT } = clock;
-  const DURATION = 54.5;
+  const DURATION = 60;
 
   // ---------- voiceover segments [start, end, text] ----------
   const SEG = [
@@ -34,10 +34,12 @@
     [37.32, 39.23, 'Öğretmenler Gününüz kutlu olsun!'],
     [39.55, 43.21, 'Şimdi yoklama alıyoruz! Takip etmeyenler "yok" yazılacak!'],
     [43.76, 44.33, 'Bir dakika…'],
-    [44.78, 46.35, 'Yoklamada bir kişi daha var.'],
-    [46.70, 47.99, 'Büşra, unutmadık!'],
-    [48.31, 49.10, 'İyi ki doğdun!'],
-    [49.42, 52.55, 'Hadi, yorumlara bir "İyi ki doğdun Büşra" bırakın!'],
+    [44.75, 48.10, 'Öğretmenler Günü videomuzun altına Büşra şöyle yazmıştı:'],
+    [48.55, 50.13, '"Doğum günüm 24 Kasım…'],
+    [50.45, 51.69, 'umarım unutmazlar!"'],
+    [52.15, 53.44, 'Büşra, unutmadık!'],
+    [53.76, 54.55, 'İyi ki doğdun!'],
+    [54.87, 58.00, 'Hadi, yorumlara bir "İyi ki doğdun Büşra" bırakın!'],
   ];
   const vowels = (w) => (w.match(/[aeıioöuüAEIİOÖUÜ]/g) || []).length || 1;
   const subtitles = SEG.map(([t0, t1, text]) => {
@@ -59,8 +61,8 @@
     jealous: [27.2, 34.3],
     celebrate: [34.3, 39.45],
     roll: [39.45, 43.6],
-    busra: [43.6, 49.3],
-    outro: [49.3, DURATION],
+    busra: [43.6, 54.75],
+    outro: [54.75, DURATION],
   };
 
   const ev = {
@@ -77,12 +79,12 @@
     kutlu: 37.32,
     ticks: [39.9, 40.25, 40.6, 40.95, 41.3, 41.65, 42.0, 42.35],
     pluto: 42.8,
-    comment1: 43.76,
-    comment2: 44.78,
-    unutmadik: wordAt(18, 1), // "unutmadık!"
-    cake: 48.31,
-    typing: 50.3,
-    end: 52.7,
+    comment1: 48.5,
+    comment2: 50.4,
+    unutmadik: wordAt(20, 1), // "unutmadık!"
+    cake: 53.76,
+    typing: 55.75,
+    end: 58.15,
   };
 
   const { chords, chordAt } = makeChords(clock, {
@@ -100,7 +102,7 @@
     roll: 41,
     unutmadik: { t: ev.unutmadik, sync: 'v' },
     cake: { t: ev.cake, sync: 'v' },
-    end: 51.5,
+    end: 57,
   };
 
   const SCORE = { FPS, FORMAT, W, H, SAFE, WIDE, DURATION, clock, T, BEAT, S, m, chords, chordAt, ev, markers, subtitles, SEG };
